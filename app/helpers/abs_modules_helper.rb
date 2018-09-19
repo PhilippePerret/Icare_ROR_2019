@@ -1,0 +1,2 @@
+module AbsModulesHelper
+end

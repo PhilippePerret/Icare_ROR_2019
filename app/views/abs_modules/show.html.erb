@@ -1,0 +1,38 @@
+<h2>Données de module</h2>
+<p>
+  <a href="/modules">Liste des modules</a>
+</p>
+<p style="font-size:x-large;">
+  Module « <%= @amodule.titre %> » (
+  <%= form_tag "/modules/#{@amodule.id}", method: 'delete' do %>
+    <input type="submit" name="" value="détruire">
+  <% end %>
+  )
+</p>
+<p><b>Diminutif : </b><%= @amodule.dim %></p>
+<p><b>Description courte : </b><%= @amodule.short_description %></p>
+
+
+<%= form_tag "/modules/#{@amodule.id}", method: 'patch' do %>
+<p>
+  <label for="module_titre">Titre</label>
+  <input type="text" id="module_titre" name="module[titre]" value="<%= @amodule.titre %>" />
+</p>
+<p>
+  <label for="module_dim">Diminutif</label>
+  <input type="text" name="module[dim]" id="module_dim" value="<%= @amodule.dim %>">
+</p>
+<p>
+  <label for="module_short_description">Description courte</label>
+  <textarea name="module[short_description]" id="module_short_description" rows="8" cols="80"><%= @amodule.short_description %></textarea>
+</p>
+<p>
+  <label for="module_long_description">Description longue du module</label>
+  <textarea name="module[long_description]" id="module_long_description" rows="8" cols="80">
+    <%= @amodule.long_description %>
+  </textarea>
+</p>
+<p>
+  <input type="submit" name="" value="Actualiser le module absolu">
+</p>
+<% end %>
