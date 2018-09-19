@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
   get 'abs_modules/index'
   get 'modules/:id' => 'abs_modules#show'
   patch 'modules/:id' => 'abs_modules#update'
