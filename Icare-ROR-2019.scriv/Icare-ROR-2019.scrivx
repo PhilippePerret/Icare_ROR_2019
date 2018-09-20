@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 08:11:19 +0300" ModID="5EC2C662-8170-4B2A-A234-A2F478EB1DDF">
+    <Binder>
+        <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
+            <Title>Manuel</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem UUID="1364231B-18EF-4426-BA08-5A1988CF90EC" Type="Text" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:29 +0300">
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2" Type="Text" Created="2018-09-20 07:24:45 +0300" Modified="2018-09-20 07:25:23 +0300">
+                    <Title>Introduction</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>107,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="268196E3-4E44-4A38-AB15-5B6979A7F846" Type="Text" Created="2018-09-20 07:27:42 +0300" Modified="2018-09-20 07:27:46 +0300">
+                    <Title>User</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="0C9EBC50-9996-44DA-A829-4ECE28824855" Type="Text" Created="2018-09-20 07:27:56 +0300" Modified="2018-09-20 08:02:23 +0300">
+                            <Title>Possessions</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>415,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="2A7D54BE-CAC8-44CE-A563-2726572156F8" Type="Text" Created="2018-09-20 07:30:14 +0300" Modified="2018-09-20 07:30:23 +0300">
+                    <Title>Modules Icariens (IcModules)</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="C5C9C828-8A59-46AD-8E55-4344F29C46BD" Type="Text" Created="2018-09-20 07:30:26 +0300" Modified="2018-09-20 07:38:10 +0300">
+                            <Title>Propriétés</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>379,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="7374CC1D-A149-4586-B0B7-5E5EBA139D83" Type="Text" Created="2018-09-20 07:39:19 +0300" Modified="2018-09-20 07:43:54 +0300">
+                    <Title>Quotidien programmation</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>345,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="F4920AD3-E838-49ED-AE17-6C88E0C4A799" Type="Folder" Created="2018-09-20 08:08:34 +0300" Modified="2018-09-20 08:08:40 +0300">
+            <Title>Notes testing</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <TextSettings>
+                <TextSelection>0,0</TextSelection>
+            </TextSettings>
+            <Children>
+                <BinderItem UUID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD" Type="Text" Created="2018-09-20 08:08:43 +0300" Modified="2018-09-20 08:09:10 +0300">
+                    <Title>Introduction</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>122,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="EC3EBABA-166D-43B6-828A-5E3098017CAF" Type="Text" Created="2018-09-20 08:09:14 +0300" Modified="2018-09-20 08:11:19 +0300">
+                    <Title>Tester une route</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A" Type="ResearchFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:29 +0300">
+            <Title>Recherche</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+        <BinderItem UUID="B8D12136-8DF7-4F21-80F8-70F915FA017A" Type="TrashFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:29 +0300">
+            <Title>Corbeille</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="848964C6-33E2-4F88-BD92-6D610AB04451" Color="0.924849 0.924014 0.949681">
+            <Title>Classeur</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="2A6327B8-7BC0-4A82-9D94-20E20E4D1B01" Color="0.922176 0.818589 0.999618">
+            <Title>Résultats de la recherche</Title>
+        </Collection>
+    </Collections>
+    <SectionTypes>
+        <TypeDefinitions>
+            <Type ID="F1F322D4-2726-4296-B1C8-3F8A7E444EB0">En-tête</Type>
+            <Type ID="994D944E-2495-452F-8313-53CB4E009814">En-tête</Type>
+            <Type ID="F391A3EF-A8B3-473E-9986-A61CC6727757">Section</Type>
+        </TypeDefinitions>
+        <LevelTypes>
+            <Folders>
+                <Type>F1F322D4-2726-4296-B1C8-3F8A7E444EB0</Type>
+            </Folders>
+            <Containers>
+                <Type>F391A3EF-A8B3-473E-9986-A61CC6727757</Type>
+            </Containers>
+            <Files>
+                <Type>F391A3EF-A8B3-473E-9986-A61CC6727757</Type>
+            </Files>
+        </LevelTypes>
+    </SectionTypes>
+    <LabelSettings>
+        <Title>Étiquette</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">Aucune étiquette</Label>
+            <Label ID="0" Color="0.993495 0.701207 0.732587">Rouge</Label>
+            <Label ID="1" Color="0.995418 0.790946 0.652385">Orange</Label>
+            <Label ID="2" Color="0.997722 0.89273 0.652569">Jaune</Label>
+            <Label ID="3" Color="0.715855 0.948712 0.697692">Vert</Label>
+            <Label ID="4" Color="0.702319 0.888276 0.974252">Bleu</Label>
+            <Label ID="5" Color="0.957566 0.766747 0.999616">Violet</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Statut</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">Aucun statut</Status>
+            <Status ID="0">À faire</Status>
+            <Status ID="1">En cours</Status>
+            <Status ID="2">Première ébauche</Status>
+            <Status ID="3">Ébauche révisée</Status>
+            <Status ID="4">Ébauche finale</Status>
+            <Status ID="5">Terminé</Status>
+        </StatusItems>
+    </StatusSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
+        <PreviousSession Words="186" Characters="1297" Date="2018-09-20 07:24:28 +0300"></PreviousSession>
+    </ProjectTargets>
+    <RecentWritingHistory Date="2018-09-20 07:24:28 +0300">
+        <DraftWordCount>186</DraftWordCount>
+        <DraftCharCount>1297</DraftCharCount>
+        <OtherWordCount>52</OtherWordCount>
+        <OtherCharCount>338</OtherCharCount>
+    </RecentWritingHistory>
+    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScrivenerProject>

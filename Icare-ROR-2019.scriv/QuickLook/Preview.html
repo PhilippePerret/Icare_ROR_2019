@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<title>Icare-ROR-2019</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- NOTE: margin property = top-right-bottom-left -->
+<style type="text/css">
+
+	body {background-color: #e2e2e2}
+    
+    p.topLevelItemTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Times, Times New Roman, Palatino, Cochin, Serif;
+    	font-size: 30px;
+    	}
+    	
+    p.folderTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Times, Times New Roman, Palatino, Cochin, Serif;
+    	font-size: 18px;
+    	}
+    
+    p.itemTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	font-weight: bold;
+    	}
+    	
+    p.itemText {
+    	margin: 0px 0px 10px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	}
+    	
+    p.itemTextStart {
+    	margin: 30px 0px 10px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	}
+    
+    .page {border: 1px solid #c0c0c0; background: #fff}
+    
+    hr {
+        border: none;
+        height: 1px;
+        color: #d4d4d4;
+        background-color: #d4d4d4;
+      	}
+      	
+    hr.afterTitle {
+    	margin-top: -3px;
+    }
+      	
+    hr.afterText {
+    	margin-top: 30px;
+    }
+      	
+    ul {
+      	list-style-type: none;
+      	padding-left: 30px;
+      	}
+      	
+</style>
+
+</head>
+
+<body>
+
+<table border="0" width="100%" cellspacing="3">
+<tr>
+<td>
+
+<table class="page" width="100%" cellspacing="10" cellpadding="2">
+
+<!-- Top margin -->
+<!-- Not needed, because of the padding above titles. -->
+<!--<tr><td height="15px"></td></tr>-->
+
+<tr>
+
+<!-- 42 + 30 of list indent = 72 - one inch. -->
+<!-- Actually that ends up too much, so we do 25 + 30 = 55px. -->
+<td width="25px">
+
+<td valign="top">
+
+<ul>
+<li>
+<p class="topLevelItemTitle">Document sans titre</p>
+</li>
+<li>
+<p class="topLevelItemTitle">Introduction</p>
+<p class="itemText">Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</p>
+</li>
+<li>
+<p class="topLevelItemTitle">User</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Possessions</p>
+<p class="itemText">Un user peut posséder :</p>
+<p class="itemText"> • un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)</p>
+<p class="itemText"> • un ou plusieurs icmodules (modules icariens), actifs ou non</p>
+<p class="itemText"> • des messages frigo</p>
+<p class="itemText"> • des icetapes (étapes de modules icariens)</p>
+<p class="itemText"> • des icdocuments (document de travail propres aux modules)</p>
+<p class="itemText"> • des tickets</p>
+<p class="itemText"> • des watchers (opération atelier)</p>
+<p class="itemText"> • des actualités</p>
+<p class="itemText"> • des témoignages</p>
+<p class="itemText"> • des questions mini-faq</p>
+
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="topLevelItemTitle">Modules Icariens (IcModules)</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un module d'apprentissage d'icarien sont :</p>
+<p class="itemText"></p>
+<p class="itemText">abs_modules_id</p>
+<p class="itemText">Identifiant du module d'apprentissage absolu.</p>
+<p class="itemText">state</p>
+<p class="itemText">l'état (en commande, en attente de démarrage, en cours, en pause, fini ou abandonné)</p>
+<p class="itemText">starting_at</p>
+<p class="itemText">Date de démarrage du module</p>
+<p class="itemText">ending_at</p>
+<p class="itemText">Date de fin du module (réelle, pas une pause)</p>
+<p class="itemText">updated_at</p>
+<p class="itemText">Date de dernière modification des données du module</p>
+<p class="itemText"> </p>
+<p class="itemText">     </p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="topLevelItemTitle">Quotidien programmation</p>
+<p class="itemText">Opérations de dépôt</p>
+<p class="itemText"> $ git add -A  # pour ajouter les nouveaux fichiers</p>
+<p class="itemText"> $ git commit -am "Message dépôt"  # pour faire un nouveau dépôt</p>
+<p class="itemText"> $ git push  # pour déposer ce dépôt</p>
+<p class="itemText"> $ git push heroku master  # pour actualiser ce dépôt sur heroku</p>
+<p class="itemText">Ajout d'un nouveau gem</p>
+<p class="itemText">Quand on ajoute un nouveau gem, il faut :</p>
+<p class="itemText"></p>
+<p class="itemText"> $ bundler install --without production </p>
+<p class="itemText"></p>
+<p class="itemText">Puis exécuter les opérations de dépôt ci-dessus.</p>
+</li>
+</ul>
+
+</td>
+<td width="55px">
+</td>
+</tr>
+
+<!-- Bottom margin -->
+<tr><td height="15px"></td></tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

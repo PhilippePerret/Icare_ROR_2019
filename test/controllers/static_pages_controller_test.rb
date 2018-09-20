@@ -11,4 +11,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "possède une page d'à propos" do
+    get static_pages_about_url
+    assert_response :success
+  end
 end
