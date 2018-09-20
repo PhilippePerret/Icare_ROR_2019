@@ -15,3 +15,15 @@
     </nav>
   </nav>
 </header>
+<%
+# Tant que l'user n'est pas identifié ou inscrit, on présente le bouton
+# pour s'inscrire à l'atelier
+%>
+<%# TODO Mettre la vraie condition %>
+<% if true %>
+  <div class="container">
+    <div class="row mt-2 mb-2 left">
+      <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
