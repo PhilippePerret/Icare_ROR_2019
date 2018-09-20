@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.1'
 
 # Ajouté au gemfile initial
 gem 'bootstrap-sass', '3.3.7'
+gem 'bcrypt',         '3.1.12'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
