@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get 'home' => 'static_pages#home'
-  get 'help' => 'static-pages#help'
+  get 'help' => 'static_pages#help'
 
   # Concernant les modules d'apprentissage
   get 'abs_modules/index'
