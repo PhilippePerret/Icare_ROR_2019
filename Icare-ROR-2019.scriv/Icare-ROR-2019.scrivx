@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 09:49:26 +0300" ModID="E405766C-97B3-4EC0-8DF5-068C65A2B089">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 10:39:14 +0300" ModID="0486A822-F508-4E59-A66D-4F3FD645D7C1">
     <Binder>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
             <Title>Manuel</Title>
@@ -67,22 +67,31 @@
                 </BinderItem>
             </Children>
         </BinderItem>
-        <BinderItem UUID="F07B69FF-3274-4D6A-9617-A4DEA77365AE" Type="Text" Created="2018-09-20 09:32:38 +0300" Modified="2018-09-20 09:33:21 +0300">
+        <BinderItem UUID="F07B69FF-3274-4D6A-9617-A4DEA77365AE" Type="Text" Created="2018-09-20 09:32:38 +0300" Modified="2018-09-20 10:38:05 +0300">
             <Title>LECTURE TUTORIEL</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>96,0</TextSelection>
+                <TextSelection>0,0</TextSelection>
             </TextSettings>
             <Children>
+                <BinderItem UUID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA" Type="Text" Created="2018-09-20 10:37:55 +0300" Modified="2018-09-20 10:38:10 +0300">
+                    <Title>Introduction</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>96,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
                 <BinderItem UUID="A7C272CE-1E37-44C1-B2C1-48EFA662F70B" Type="Text" Created="2018-09-20 09:33:27 +0300" Modified="2018-09-20 09:49:26 +0300">
                     <Title>Guard</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>162,0</TextSelection>
+                        <TextSelection>222,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E" Type="Text" Created="2018-09-20 09:44:20 +0300" Modified="2018-09-20 09:47:29 +0300">
@@ -92,6 +101,15 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>368,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14" Type="Text" Created="2018-09-20 10:38:15 +0300" Modified="2018-09-20 10:39:12 +0300">
+                    <Title>Hash</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -232,8 +250,8 @@
     <RecentWritingHistory Date="2018-09-20 07:24:28 +0300">
         <DraftWordCount>186</DraftWordCount>
         <DraftCharCount>1297</DraftCharCount>
-        <OtherWordCount>206</OtherWordCount>
-        <OtherCharCount>1335</OtherCharCount>
+        <OtherWordCount>224</OtherWordCount>
+        <OtherCharCount>1466</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

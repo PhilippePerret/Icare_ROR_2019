@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=
-      "#{yield(:title).empty? ? '' : t(yield(:title)) + ' | '}Atelier Icare"
-    %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div id="bande-logo" class="container">
-        ATELIER ICARE
-        <nav>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= image_tag('atelier_icare.png', width: '50px', alt: 'Logo Papillon Icare') %>
+        <%= link_to 'ATELIER ICARE', '#', id: 'logo' %>
+        <nav class="navbar navbar-nav navbar-right">
           <a href="/home" class="nav-item">Accueil</a>
           <a href="/about" class="nav-item">À propos</a>
           <a href="/help" class="nav-item">Aide</a>
           <a href="/contact" class="nav-item">Contact</a>
         </nav>
       </div>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
