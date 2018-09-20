@@ -1,0 +1,17 @@
+<header class="navbar container-fluid">
+  <nav id="toprow" class="navbar">
+    <% link_text = 'Atelier Icare' %>
+    <%= link_to link_text, '#', id: 'logo', class: 'navbar-brand' %>
+    <nav>
+
+      <ul class="nav navbar navbar-right collapse navbar-collapse">
+        <li><%= link_to 'Accueil', home_path, class: 'nav-item' %></li>
+        <li><%= link_to 'À propos', about_path, class: 'nav-item' %></li>
+        <li><%= link_to 'Aide', help_path, class: 'nav-item' %></li>
+        <li><%= link_to 'Contact', contact_path, class: 'nav-item' %></li>
+        <li><%= link_to 'Connexion', '#', class: 'nav-item signin-button' %> </li>
+      </ul>
+
+    </nav>
+  </nav>
+</header>

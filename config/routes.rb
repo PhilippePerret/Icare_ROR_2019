@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'users/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ACCUEIL (URL de base)
   root 'static_pages#home'
 
   # === PAGES STATIQUES ===
-  get 'static_pages/home'
-  get 'static_pages/help'
-  get 'static_pages/about'
-  get 'static_pages/contact'
+  # get 'static_pages/home'
+  # get 'static_pages/help'
+  # get 'static_pages/about'
+  # get 'static_pages/contact'
 
   get 'home'    => 'static_pages#home'
   get 'help'    => 'static_pages#help'
