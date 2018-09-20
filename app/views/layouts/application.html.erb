@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Atelier Icare</title>
+    <title><%=
+      "#{yield(:title).empty? ? '' : t(yield(:title)) + ' | '}Atelier Icare"
+    %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,8 +16,10 @@
       <div id="bande-logo" class="container">
         ATELIER ICARE
         <nav>
+          <a href="/home" class="nav-item">Accueil</a>
           <a href="/about" class="nav-item">À propos</a>
           <a href="/help" class="nav-item">Aide</a>
+          <a href="/contact" class="nav-item">Contact</a>
         </nav>
       </div>
     </div>

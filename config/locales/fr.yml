@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
-  hello: "Bonjour à vous, bienvenue à l’atelier Icare."
+  hello:    "Bonjour à vous, bienvenue à l’atelier Icare."
+  help:     "Aide"
+  home:     "Accueil"
+  about:    "À propos"
+  contact:  "Contact"

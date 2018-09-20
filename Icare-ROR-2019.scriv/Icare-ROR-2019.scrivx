@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 08:11:19 +0300" ModID="5EC2C662-8170-4B2A-A234-A2F478EB1DDF">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 08:35:54 +0300" ModID="C6B44642-8945-45A0-B6B8-837A7F915FF7">
     <Binder>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
             <Title>Manuel</Title>
@@ -99,6 +99,15 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
+                        <TextSelection>110,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="231FCC1C-1690-4854-AF63-EBBB69D7B48F" Type="Text" Created="2018-09-20 08:34:33 +0300" Modified="2018-09-20 08:35:54 +0300">
+                    <Title>Définition générale avant test</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
@@ -177,8 +186,8 @@
     <RecentWritingHistory Date="2018-09-20 07:24:28 +0300">
         <DraftWordCount>186</DraftWordCount>
         <DraftCharCount>1297</DraftCharCount>
-        <OtherWordCount>52</OtherWordCount>
-        <OtherCharCount>338</OtherCharCount>
+        <OtherWordCount>60</OtherWordCount>
+        <OtherCharCount>408</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
