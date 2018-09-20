@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ajouter pour empêcher un conflit avec Guard
+/spring/*.pid
