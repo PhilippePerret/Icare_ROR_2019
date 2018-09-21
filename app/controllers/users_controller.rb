@@ -10,10 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # OK
-      render :show # pour le moment
-      # TODO Rediriger vers une page statique expliquant la suite
-      # redirect_to 'static_pages#after_signup'
+      # Icarien.ne OK
+      # Rediriger vers une page statique expliquant la suite
+      redirect_to ('/static_pages/after_signup?id=%i' % [@user.id])
     else
       # Si l'enregistrement n'a pas pu se faire, on réaffiche
       # le formulaire en affichant les erreurs

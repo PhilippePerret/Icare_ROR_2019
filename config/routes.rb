@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
+  get 'static_pages/after_signup'
 
   # Concernant les modules d'apprentissage
   get 'abs_modules/index'

@@ -10,4 +10,8 @@ class StaticPagesController < ApplicationController
 
   # def contact
   # end
+
+  def after_signup
+    @user = User.find(params[:id])
+  end
 end
