@@ -14,4 +14,12 @@ module ApplicationHelper
       "#{page_titre} | "
     end + "Atelier Icare"
   end
+
+  # Pour définir en même temps la balise title et le titre de la page
+  def set_title(titre_page, title = nil)
+    title ||= titre_page
+    provide(:title, title)
+    provide(:titre_page, titre_page)
+  end
+
 end

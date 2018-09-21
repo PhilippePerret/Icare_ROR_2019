@@ -9,7 +9,11 @@
         <li><%= link_to 'À propos', about_path, class: 'nav-item' %></li>
         <li><%= link_to 'Aide', help_path, class: 'nav-item' %></li>
         <li><%= link_to 'Contact', contact_path, class: 'nav-item' %></li>
-        <li><%= link_to 'Connexion', '#', class: 'nav-item signin-button' %> </li>
+        <li>
+          <% unless current_user? %>
+            <%= link_to 'Connexion', login_path, class: 'nav-item signin-button' %>
+          <% end %>
+        </li>
       </ul>
 
     </nav>
@@ -19,11 +23,25 @@
 # Tant que l'user n'est pas identifié ou inscrit, on présente le bouton
 # pour s'inscrire à l'atelier
 %>
-<%# TODO Mettre la vraie condition %>
-<% if true %>
-  <div class="container">
-    <div class="row mt-2 mb-2 left">
-      <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
+<div class="container" style="margin-bottom:2rem;">
+  <div class="row">
+
+    <div class="col-md-8 left">
+      <h2><%= yield(:titre_page) %></h2>
     </div>
+
+    <div class="col-md-4 right">
+      <% if current_user? %>
+        <ul id="user_tools" class="" style="list-style:none;">
+          <li><%= link_to 'Bureau', bureau_path %></li>
+          <li><%= link_to 'Profil', user_path(current_user.id) %></li>
+          <li><%= link_to 'Réglages', '#' %></li>
+          <li><%= link_to 'Déconnexion', logout_path, class: 'nav-item signin-button' %></li>
+        </ul>
+      <% else %>
+        <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+
   </div>
-<% end %>
+</div>

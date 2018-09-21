@@ -1,2 +1,27 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, 'Identification') %>
+<h2>Identification</h2>
+<div class="row">
+  <div class="col-md-5 col-md-offset-3">
+
+    <%= form_for( :session, url: login_path ) do |f| %>
+
+      <%= f.label :email, 'Votre adresse mail' %>
+      <%= f.email_field :email, class: 'form-control', required: true %>
+
+      <%= f.label :password, 'Votre mot de passe' %>
+      <%= f.password_field :password, class: 'form-control', required: true %>
+
+      <div class="right vair">
+        <%= f.submit 'M’identifier', class: 'btn btn-primary' %>
+      </div>
+
+    <% end %>
+    <%# /form_for %>
+
+    <p>
+      <%= link_to 'Candidature', signup_path, style:'margin-right:4rem' %>
+      <%= link_to 'Mot de passe oublié', '#' %>
+    </p>
+
+  </div>
+</div>

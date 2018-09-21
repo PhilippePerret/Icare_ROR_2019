@@ -15,4 +15,18 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}
 
+
+  # Retourne la route à suivre après l'identification de l'user
+  # Pour le moment, on envoie vers le bureau (bureau_path) qui conduit
+  # à une page virtuelle
+  def redirection_after_login
+    opt = 1
+    case opt
+    when 1 then '/bureau'
+    when 2 then '/profil'
+    when 3 then '/'
+    when 4 then '/last_activites'
+      # TODO Mettre les autres path possible
+    end
+  end
 end

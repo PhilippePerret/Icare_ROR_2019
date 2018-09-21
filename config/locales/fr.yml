@@ -8,6 +8,9 @@ fr:
   about:    "À propos"
   contact:  "Contact"
 
+  session:
+    email:    Votre adresse mail
+
   activerecord:
     models:
       user:

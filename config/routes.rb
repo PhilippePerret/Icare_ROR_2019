@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ACCUEIL (URL de base)
@@ -15,11 +14,22 @@ Rails.application.routes.draw do
 
 
   # === U T I L I S A T E U R S ===
+
   resources :users # => REST
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
 
-  get 'static_pages/after_signup'
+  get 'bureau' => 'static_pages#undefined' # bureau_path
+  # TODO mettre le vrai path quand la page sera créée
+
+  get 'static_pages/after_signup' # route rejointe après l'inscription
+
+  # = sessions =
+  get  'login'  => 'sessions#new'
+  post 'login'  => 'sessions#create'
+  get  'logout' => 'sessions#destroy'
+
+  # === MODULES D'APPRENTISSAGE ===
 
   # Concernant les modules d'apprentissage
   get 'abs_modules/index'
