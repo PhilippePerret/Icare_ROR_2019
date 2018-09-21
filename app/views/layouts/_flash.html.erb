@@ -1,5 +1,3 @@
 <% flash.each do |mtype, mcontent| %>
-  <div class="alert alert-<%= mtype %>">
-    <%= mcontent %>
-  </div>
+  <%= content_tag(:div, mcontent, class: "alert alert-#{mtype}")%>
 <% end %>

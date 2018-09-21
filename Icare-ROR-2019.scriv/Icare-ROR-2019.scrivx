@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-21 10:01:09 +0300" ModID="D4141FC6-9B45-478A-87D2-CA7494EA1399">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-21 10:42:45 +0300" ModID="4ADC6522-F1DF-4815-9953-9722D809EF96">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-21 09:57:01 +0300">
             <Title>TODO</Title>
@@ -157,7 +157,7 @@
                         <TextSelection>260,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-20 18:24:26 +0300">
+                <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-21 10:42:42 +0300">
                     <Title>Production (heroku)</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -199,7 +199,16 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>0,0</TextSelection>
+                        <TextSelection>80,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12" Type="Text" Created="2018-09-21 10:26:46 +0300" Modified="2018-09-21 10:29:42 +0300">
+                    <Title>Helpers HTML</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>143,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -250,6 +259,15 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>66,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="49A5533E-DE18-4CFC-A77D-5C2A3324D69F" Type="Text" Created="2018-09-21 10:22:35 +0300" Modified="2018-09-21 10:23:28 +0300">
+                    <Title>Redirection</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>212,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -340,8 +358,8 @@
     <RecentWritingHistory Date="2018-09-21 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>204</OtherWordCount>
-        <OtherCharCount>1451</OtherCharCount>
+        <OtherWordCount>270</OtherWordCount>
+        <OtherCharCount>1987</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
