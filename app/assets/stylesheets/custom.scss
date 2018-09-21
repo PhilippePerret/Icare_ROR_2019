@@ -71,29 +71,29 @@ header {
   margin-left: 1rem;
   margin-right: 1rem;
 }
-
-#user_tools {
-  list-style: none;
-  border: 2px solid $lightertheme;
-  display: inline-grid;
-  text-align: left;
-  background-color: $lightertheme;
-  padding: 0;
-  li {
-    padding: 0.5rem 2rem;
-    &:hover {
-      background-color: white;
-      a {
-        color: $lightertheme !important;
-      }
-    }
-  }
-  a, a:hover, a:link, a:visited {
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
+//
+// #user_tools {
+//   list-style: none;
+//   border: 2px solid $lightertheme;
+//   display: inline-grid;
+//   text-align: left;
+//   background-color: $lightertheme;
+//   padding: 0;
+//   li {
+//     padding: 0.5rem 2rem;
+//     &:hover {
+//       background-color: white;
+//       a {
+//         color: $lightertheme !important;
+//       }
+//     }
+//   }
+//   a, a:hover, a:link, a:visited {
+//     &:link, &:visited {
+//       color: white;
+//     }
+//     &:hover {
+//       text-decoration: none;
+//     }
+//   }
+// }

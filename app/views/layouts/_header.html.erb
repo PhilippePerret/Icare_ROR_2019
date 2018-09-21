@@ -9,11 +9,24 @@
         <li><%= link_to 'À propos', about_path, class: 'nav-item' %></li>
         <li><%= link_to 'Aide', help_path, class: 'nav-item' %></li>
         <li><%= link_to 'Contact', contact_path, class: 'nav-item' %></li>
-        <li>
-          <% unless current_user? %>
+        <% if current_user? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Compte <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Bureau', bureau_path %></li>
+              <li><%= link_to 'Profil', user_path(current_user.id) %></li>
+              <li><%= link_to 'Réglages', '#' %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Déconnexion', logout_path, class: 'nav-item' %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
             <%= link_to 'Connexion', login_path, class: 'nav-item signin-button' %>
-          <% end %>
-        </li>
+          </li>
+        <% end %>
       </ul>
 
     </nav>
@@ -31,17 +44,11 @@
     </div>
 
     <div class="col-md-4 right">
-      <% if current_user? %>
-        <ul id="user_tools" class="" style="list-style:none;">
-          <li><%= link_to 'Bureau', bureau_path %></li>
-          <li><%= link_to 'Profil', user_path(current_user.id) %></li>
-          <li><%= link_to 'Réglages', '#' %></li>
-          <li><%= link_to 'Déconnexion', logout_path, class: 'nav-item signin-button' %></li>
-        </ul>
-      <% else %>
+      <% unless current_user? %>
         <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
+
 
   </div>
 </div>
