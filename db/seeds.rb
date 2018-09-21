@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create([
-  {id: 1, name: 'Philippe Perret', email: 'phil@atelier-icare.net',
+  {name: 'Philippe Perret', email: 'phil@atelier-icare.net',
     password: 'motdepasse', password_confirmation: 'motdepasse'},
-  {id: 2, name: 'Marion Michel', email: 'marion.michel31@free.fr',
+  {name: 'Marion Michel', email: 'marion.michel31@free.fr',
     password: 'motdepasse', password_confirmation: 'motdepasse'}
   ])
