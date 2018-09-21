@@ -3,8 +3,35 @@
 
 <h2>Poser sa candidature</h2>
 
-<h3>Identité</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<h3>Documents de présentation</h3>
+    <%= form_for(@user, url: signup_path) do |f| %>
 
-<h3>Modules d’apprentissage optionnés</h3>
+      <%= render 'shared/error_messages' %>
+
+      <h3>Identité</h3>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control', required: true %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control', required: true %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+
+      <h3>Documents de présentation</h3>
+
+      <h3>Modules d’apprentissage optionnés</h3>
+
+      <input type="submit" name="commit" class="btn btn-primary" value="Poser ma candidature">
+    <% end %>
+    <%# /form_for %>
+
+
+  </div><%# /col %>
+</div><%# /row %>

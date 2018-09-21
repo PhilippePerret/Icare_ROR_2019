@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-20 15:26:10 +0300" ModID="F1A46F34-2ECD-443A-86A2-18B48C69B033">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-21 08:18:23 +0300" ModID="0C654352-321F-4D55-8005-DB9BCF18FA18">
     <Binder>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
             <Title>Manuel</Title>
@@ -145,6 +145,42 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
+                        <TextSelection>260,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-20 18:24:26 +0300">
+                    <Title>Production (heroku)</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>273,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0" Type="Text" Created="2018-09-21 07:04:58 +0300" Modified="2018-09-21 07:16:50 +0300">
+                    <Title>resources :model</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>191,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="09716B8B-3043-4D9D-B067-E8BAACF46E34" Type="Text" Created="2018-09-21 07:26:52 +0300" Modified="2018-09-21 07:37:54 +0300">
+                    <Title>Debugger</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>306,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="551C36A2-9C97-44BA-8D23-439EF971C7A7" Type="Text" Created="2018-09-21 08:16:04 +0300" Modified="2018-09-21 08:18:23 +0300">
+                    <Title>Mass assignement</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
@@ -281,13 +317,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="282" Characters="1930" Date="2018-09-20 07:24:28 +0300"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-09-21 07:04:43 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-09-20 07:24:28 +0300">
-        <DraftWordCount>282</DraftWordCount>
-        <DraftCharCount>1930</DraftCharCount>
-        <OtherWordCount>303</OtherWordCount>
-        <OtherCharCount>2050</OtherCharCount>
+    <RecentWritingHistory Date="2018-09-21 00:00:00 +0300">
+        <DraftWordCount>0</DraftWordCount>
+        <DraftCharCount>0</DraftCharCount>
+        <OtherWordCount>184</OtherWordCount>
+        <OtherCharCount>1303</OtherCharCount>
     </RecentWritingHistory>
-    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+    <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

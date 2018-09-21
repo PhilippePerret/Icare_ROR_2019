@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
 
   # === U T I L I S A T E U R S ===
+  resources :users # => REST
   get 'signup' => 'users#new'
+  post 'signup' => 'users#create'
 
 
   # Concernant les modules d'apprentissage

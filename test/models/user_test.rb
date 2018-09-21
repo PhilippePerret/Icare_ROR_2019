@@ -3,7 +3,11 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: 'Un utilisateur', email: "sonemailvalidea#{Time.now.to_i}@chez.com")
+    @user = User.new(
+      name: 'Un utilisateur',
+      email: "sonemailvalidea#{Time.now.to_i}@chez.com",
+      password: 'motdepasse', password_confirmation: 'motdepasse'
+      )
   end
 
   test "L'utilisateur créé est valide" do
@@ -47,5 +51,15 @@ class UserTest < ActiveSupport::TestCase
     dupuser.email = @user.email.upcase
     @user.save
     assert_not dupuser.valid?
+  end
+
+  test "L'utilisateur doit avoir un mot de passe (non vierge)" do
+    @user.password = @user.password_confirmation = '     '
+    assert_not @user.valid?, 'Le mot de passe ne doit pas être vide'
+  end
+
+  test "Le mot de passe de l'utilisateur doit faire au moins 6 signes de long" do
+    @user.password = @user.password_confirmation = 'a1b2c'
+    assert_not @user.valid?, 'Le mot de passe ne doit pas être trop court'
   end
 end

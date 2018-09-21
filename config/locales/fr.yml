@@ -35,3 +35,19 @@ fr:
   home:     "Accueil"
   about:    "À propos"
   contact:  "Contact"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank:  Le pseudo est requis
+            email:
+              blank:  L’email est requis
+              invalid: L’email est invalide
+            password:
+              blank:      Le mot de passe est requis
+              too_short:  Le mot de passe est trop court
+            password_confirmation:
+              blank:  La confirmation du mot de passe est requise

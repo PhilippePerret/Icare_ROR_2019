@@ -1,0 +1,25 @@
+
+<% provide(:title, 'Profil')%>
+
+<h2>Profil</h2>
+
+<h3>Identité</h3>
+
+<div id="" class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= gravatar_for @user %>
+      <%= @user.name %> (<%= @user.email %>)
+    </section>
+  </aside>
+</div>
+
+
+<p>
+  Inscrit le : <%= @user.created_at %>
+</p>
+<p>
+  Dernière modification : <%= @user.updated_at %>
+</p>
+
+<h3>Modules d’apprentissage</h3>

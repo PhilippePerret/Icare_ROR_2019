@@ -3,6 +3,12 @@
 
 $darktheme: #578088;
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 header {
   background-color:  $darktheme !important;
   color: white;
@@ -38,4 +44,14 @@ header {
   &:hover {
     color:$darktheme!important;
   }
+}
+
+.debug_dump {
+  clear:  both;
+  width:        80%;
+  margin-left:  10%;
+  margin-right: 10%;
+  float:  left;
+  margin-top: 5em;
+  @include box_sizing;
 }
