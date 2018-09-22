@@ -199,7 +199,7 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>80,0</TextSelection>
+                        <TextSelection>199,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12" Type="Text" Created="2018-09-21 10:26:46 +0300" Modified="2018-09-21 10:29:42 +0300">

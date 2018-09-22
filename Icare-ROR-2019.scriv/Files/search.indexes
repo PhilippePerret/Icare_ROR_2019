@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
-
-abs_modules_id
-Identifiant du module d'apprentissage absolu.
-state
-l'état (en commande, en attente de démarrage, en cours, en pause, fini ou abandonné)
-starting_at
-Date de démarrage du module
-ending_at
-Date de fin du module (réelle, pas une pause)
-updated_at
-Date de dernière modification des données du module
-	
-					</Text>
+        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
+            <Title>Introduction</Title>
+            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
         </Document>
         <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
             <Title>Tester une route</Title>
@@ -29,127 +16,6 @@ test "le contrôleur répond à l'action" do
 	assert_response :success
 end
 </Text>
-        </Document>
-        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
-            <Title>Définition générale avant test</Title>
-            <Text>def set_up
-	@variable = "valeur"
-	@autre_variable = "autre valeur"
-end</Text>
-        </Document>
-        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
-            <Title>Object.create / .save</Title>
-            <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
-        </Document>
-        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
-            <Title>Possessions</Title>
-            <Text>Un user peut posséder :
-	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
-	•	un ou plusieurs icmodules (modules icariens), actifs ou non
-	•	des messages frigo
-	•	des icetapes (étapes de modules icariens)
-	•	des icdocuments (document de travail propres aux modules)
-	•	des tickets
-	•	des watchers (opération atelier)
-	•	des actualités
-	•	des témoignages
-	•	des questions mini-faq
-</Text>
-        </Document>
-        <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
-            <Title>Update</Title>
-            <Text>Pour actualiser un objet :
-
-	objet.update_attributes({... attributs})
-	# =&gt; true/false
-
-La méthode ci-dessous passe par la validation.
-
-On peut en revanche by-passer la validation en utilisant la méthode singulière :
-
-	objet.update_attribute(:attribut, valeur)</Text>
-        </Document>
-        <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
-            <Title>Production (heroku)</Title>
-            <Text>Pour "pusher" on line, après avoir pushé sur git :
-
- $ git push heroku # master seulement la première fois
-
-Pour que les migrations soient prises en compte :
-
- $ heroku run rails db:migrate 
-
-Pour essayer le bac à sable sur heroku :
-
- $ heroku run rails console --sandbox 
-</Text>
-        </Document>
-        <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
-            <Title>Introduction</Title>
-            <Text>Ce dossier présente des notes prises au cours de la fabrication de l'application en même temps que la lecture du tutoriel.</Text>
-        </Document>
-        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
-            <Title>_url et _path</Title>
-            <Text>On utilise _url pour une URL complète et _path pour une route simple :
-
-about_path 	=&gt; /static_pages/about
-about_url		=&gt; www.monsite.org/static_pages/about</Text>
-        </Document>
-        <Document ID="A7C272CE-1E37-44C1-B2C1-48EFA662F70B">
-            <Title>Guard</Title>
-            <Text>Le gem Guard permet de lancer automatiquement les tests sur les fichiers modifiés.
-Pour le mettre en place dans une application :
-
-# Dans le gemfile
- gem 'guard' 
-
-# Puis jouer (une seule fois) :
- $ bundle exec guard init 
-Puis régler le guardfile.
-
-# Pour mettre en route guard (à chaque session) :
- $ bundle exec guard 
-À partir de là, toute modification entraînera un test immédiat.</Text>
-        </Document>
-        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
-            <Title>Introduction</Title>
-            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
-        </Document>
-        <Document ID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7">
-            <Title>Ajouts à test_helper.rb</Title>
-            <Text>Voir dans le fichier test_helper.rb les ajouts faits pour améliorer les tests.</Text>
-        </Document>
-        <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
-            <Title>Processus courants</Title>
-            <Text>Notamment avec "spring" (serveur de Rails), il peut y avoir multiplication des processus ouverts.
-Pour voir les processus (tous) :
- $ ps aux 
-Pour voir les processus particuliers (ici consacrés à spring) :
- $ ps aux | grep spring 
-Pour "tuer" un processus :
- $ kill -15 &lt;numéro du processus&gt; 
-Ou pour tuer tous les processus d'un certain nom :
- $ pkill -15 -f spring 
-</Text>
-        </Document>
-        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
-            <Title>LECTURE TUTORIEL</Title>
-        </Document>
-        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
-            <Title>Introduction</Title>
-            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
         </Document>
         <Document ID="E9462355-BDF3-4C0A-99C8-EC106941D32A">
             <Title>Propriétés directes</Title>
@@ -177,6 +43,320 @@ updated_at
 Date de dernière modification des données de l'user
 	
 					</Text>
+        </Document>
+        <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
+            <Title>Object.create / .save</Title>
+            <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
+        </Document>
+        <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
+
+abs_modules_id
+Identifiant du module d'apprentissage absolu.
+state
+l'état (en commande, en attente de démarrage, en cours, en pause, fini ou abandonné)
+starting_at
+Date de démarrage du module
+ending_at
+Date de fin du module (réelle, pas une pause)
+updated_at
+Date de dernière modification des données du module
+	
+					</Text>
+        </Document>
+        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12">
+            <Title>Helpers HTML</Title>
+            <Text>content_tag(:&lt;balise&gt;, &lt;contenu&gt;, {&lt;options&gt;})
+
+Par exemple :
+
+         		    
+	content_tag(:div, "Bienvenue !", class: "notice-message")
+
+
+… produit :
+
+
+	&lt;div class="notice-message"&gt;
+		Bienvenue !
+	&lt;/div&gt;
+
+</Text>
+        </Document>
+        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
+            <Title>Possessions</Title>
+            <Text>Un user peut posséder :
+	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
+	•	un ou plusieurs icmodules (modules icariens), actifs ou non
+	•	des messages frigo
+	•	des icetapes (étapes de modules icariens)
+	•	des icdocuments (document de travail propres aux modules)
+	•	des tickets
+	•	des watchers (opération atelier)
+	•	des actualités
+	•	des témoignages
+	•	des questions mini-faq
+</Text>
+        </Document>
+        <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
+            <Title>TODO</Title>
+            <Text>Ajouter une confirmation de l'email dans le formulaire d'inscription</Text>
+        </Document>
+        <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
+            <Title>Update</Title>
+            <Text>Pour actualiser un objet :
+
+	objet.update_attributes({... attributs})
+	# =&gt; true/false
+
+La méthode ci-dessous passe par la validation.
+
+On peut en revanche by-passer la validation en utilisant la méthode singulière :
+
+	objet.update_attribute(:attribut, valeur)</Text>
+        </Document>
+        <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
+            <Title>Production (heroku)</Title>
+            <Text>S'assurer que tout est bien sur github :
+
+
+	$ git add -A
+	$ git commit -m "Dernier dépôt"
+	$ git push
+
+
+Pour "pusher" on line, après avoir pushé sur git :
+
+ $ git push heroku # master seulement la première fois
+
+Pour que les migrations soient prises en compte :
+
+ $ heroku run rails db:migrate 
+
+=== Fin ===
+
+Pour essayer le bac à sable sur heroku :
+
+ $ heroku run rails console --sandbox 
+</Text>
+        </Document>
+        <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
+            <Title>Introduction</Title>
+            <Text>Ce dossier présente des notes prises au cours de la fabrication de l'application en même temps que la lecture du tutoriel.</Text>
+        </Document>
+        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
+            <Title>Mass assignement</Title>
+            <Text>Pour éviter les assignements en masse à la création des objets, on peut utiliser (Rails &gt;=4) :
+
+ params.require(:&lt;model&gt;).permit(:prop1, :prop2, ..., :propN) 
+
+Par exemple
+
+def user_params
+	params.
+		require(:user).
+		permit(:name, :email, :password, :password_confirmation)
+end
+
+</Text>
+        </Document>
+        <Document ID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0">
+            <Title>resources :model</Title>
+            <Text>Mettre resources :&lt;model&gt; dans le fichier `routes.rb` revient à créer automatiquement les méthodes et variables suivantes :
+
+Si &lt;model&gt; = users
+
+HTTP request
+URL
+Action (méthode)
+Route nommée
+But
+GET
+/users
+index
+users_path
+Liste des users
+POST
+/users
+create
+users_path
+Création d'un user
+GET
+/users/:id
+show
+user_path(id)
+Fiche de l'user
+PATCH
+/users/:id
+update
+user_path(id)
+Modification de l'user
+DELETE
+/users/:id
+destroy
+user_path(id)
+Destruction d'un user
+GET
+/users/new
+new
+new_user_path
+Fiche d'inscription
+GET
+/users/:id/edit
+edit
+edit_user_path(:id)
+Page d'édition de l'user
+
+</Text>
+        </Document>
+        <Document ID="09716B8B-3043-4D9D-B067-E8BAACF46E34">
+            <Title>Debugger</Title>
+            <Text>Le gem `byebug` permet de connaitre l'état de l'application à un moment donné.
+Utilisation
+
+Placer `debugger` à l'endroit où l'on veut connaitre l'état de l'application
+Lancer l'application (une URL par exemple)
+Le serveur s'arrête sur `debugger` et présente une ligne de commande `(byebug)`
+Taper les valeurs à connaitre, par exemple `params[controller]` pour connaitre le contrôleur courant.
+Taper Ctrl-D pour poursuivre le lancement. </Text>
+        </Document>
+        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
+            <Title>Routes</Title>
+            <Text>Concernant les routes
+Toutes les routes
+Pour voir la liste de toutes les routes, jouer en console :
+
+
+	$ rails routes
+
+_url et _path
+On utilise _url pour une URL complète et _path pour une route simple :
+
+about_path 	=&gt; /static_pages/about
+about_url		=&gt; www.monsite.org/static_pages/about</Text>
+        </Document>
+        <Document ID="A7C272CE-1E37-44C1-B2C1-48EFA662F70B">
+            <Title>Guard</Title>
+            <Text>Le gem Guard permet de lancer automatiquement les tests sur les fichiers modifiés.
+Pour le mettre en place dans une application :
+
+# Dans le gemfile
+ gem 'guard' 
+
+# Puis jouer (une seule fois) :
+ $ bundle exec guard init 
+Puis régler le guardfile.
+
+# Pour mettre en route guard (à chaque session) :
+ $ bundle exec guard 
+À partir de là, toute modification entraînera un test immédiat.</Text>
+        </Document>
+        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="B0D092CD-0E58-4410-A80C-30D09876E418">
+            <Title>Git</Title>
+            <Text>Au tout départ :
+
+
+	$ git init
+
+
+Pour passer sur une autre branche :
+
+
+	$ git checkout -b &lt;nom-branche&gt;
+
+
+Pour merger la branche courante :
+
+
+	$ git checkout master # revenir à la branche maitresse
+	$ git merge &lt;nom-branche&gt;
+
+
+Pour supprimer une branche (après l'avoir mergée) :
+
+
+	$ git branch -d &lt;nom branche&gt;
+
+
+Pour voir où on en est :
+
+
+	$ git status
+
+</Text>
+        </Document>
+        <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="49A5533E-DE18-4CFC-A77D-5C2A3324D69F">
+            <Title>Redirection</Title>
+            <Text>Pour suivre une redirection dans un test, il faut utiliser la ligne :
+
+ follow_redirect! 
+
+Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
+        </Document>
+        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
+            <Title>Introduction</Title>
+            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        </Document>
+        <Document ID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7">
+            <Title>Ajouts à test_helper.rb</Title>
+            <Text>Voir dans le fichier test_helper.rb les ajouts faits pour améliorer les tests.</Text>
+        </Document>
+        <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
+            <Title>Processus courants</Title>
+            <Text>Notamment avec "spring" (serveur de Rails), il peut y avoir multiplication des processus ouverts.
+Pour voir les processus (tous) :
+ $ ps aux 
+Pour voir les processus particuliers (ici consacrés à spring) :
+ $ ps aux | grep spring 
+Pour "tuer" un processus :
+ $ kill -15 &lt;numéro du processus&gt; 
+Ou pour tuer tous les processus d'un certain nom :
+ $ pkill -15 -f spring 
+</Text>
+        </Document>
+        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
+            <Title>LECTURE TUTORIEL</Title>
+        </Document>
+        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
+            <Title>Définition générale avant test</Title>
+            <Text>def set_up
+	@variable = "valeur"
+	@autre_variable = "autre valeur"
+end</Text>
+        </Document>
+        <Document ID="3858968C-A691-412B-8199-3D5FBA49FE0C">
+            <Title>Flash</Title>
+            <Text>flash[:success] = "Le message de succès"
+
+flash[:danger] = "Le message d'échec"
+
+Les quatre types gérés par bootstrap sont :
+:success
+:info
+:warning
+:danger
+
+Pour tester qu'il y a un message flash :
+
+
+	assert flash.empty?
+	assert flash.any?
+	assert_not flash.empty?
+
+</Text>
         </Document>
         <Document ID="7374CC1D-A149-4586-B0B7-5E5EBA139D83">
             <Title>Quotidien programmation</Title>
