@@ -1,6 +1,14 @@
 # Modèle d'icarien
 class User < ApplicationRecord
 
+  # @return le mot de passe +pwd+ crypté
+  def User.digest(pwd)
+    cost = ActiveModel::SecurePassword.min_cost ?
+            BCrypt::Engine::MIN_COST :
+            BCrypt::Engine::cost
+    BCrypt::Password.create(pwd, cost: cost)
+  end
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   before_save { self.email = email.downcase }

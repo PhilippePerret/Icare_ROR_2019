@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   resources :users # => REST
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
-
-  get 'bureau' => 'static_pages#undefined' # bureau_path
-  # TODO mettre le vrai path quand la page sera créée
+  post 'profil' => 'users#show'
 
   get 'static_pages/after_signup' # route rejointe après l'inscription
 
@@ -28,6 +26,11 @@ Rails.application.routes.draw do
   get  'login'  => 'sessions#new'
   post 'login'  => 'sessions#create'
   get  'logout' => 'sessions#destroy'
+
+  # = bureau =
+  get 'bureau'      => 'bureau#home'
+  get 'historique'  => 'bureau#historique'
+  get 'documents'   => 'bureau#documents'
 
   # === MODULES D'APPRENTISSAGE ===
 

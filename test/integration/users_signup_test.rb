@@ -46,6 +46,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
         }
       }
     end
+    assert is_logged_in?
     follow_redirect!
     assert_template 'static_pages/after_signup'
     assert_select 'h2', 'Candidature enregistrée'

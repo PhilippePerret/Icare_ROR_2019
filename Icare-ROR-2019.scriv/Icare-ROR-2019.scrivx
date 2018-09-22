@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-21 14:16:34 +0300" ModID="CB0FAD3E-3724-4148-B38F-A73FE5CE47C4">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-22 16:56:49 +0300" ModID="59802828-568A-463D-8E6F-68445A5A4169">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-21 09:57:01 +0300">
             <Title>TODO</Title>
@@ -362,13 +362,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="0" Characters="0" Date="2018-09-21 07:04:43 +0300"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-09-22 16:56:31 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-09-21 00:00:00 +0300">
+    <RecentWritingHistory Date="2018-09-22 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>368</OtherWordCount>
-        <OtherCharCount>2663</OtherCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

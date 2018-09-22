@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # Icarien.ne OK
+      log_in @user
       # Rediriger vers une page statique expliquant la suite
       redirect_to ('/static_pages/after_signup?id=%i' % [@user.id])
     else

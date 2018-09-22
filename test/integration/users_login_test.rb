@@ -2,9 +2,25 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @user = users(:benoit)
+  end
+
   # Test de l'identification de l'user
   test 'Un user donnant les données valides s’identifie' do
-    
+    get root_path
+    assert_select 'a', 'Connexion'
+    get login_path
+    assert_select 'form[action="/login"]'
+    post login_path, params: {session: {
+      email: @user.email, password: 'mot de passe'
+      }}
+    assert_redirected_to '/bureau'
+    follow_redirect!
+    assert_template 'bureau/home'
+    assert_select 'a[href=?]',  login_path, count: 0
+    assert_select 'a[href=?]',  logout_path
+    assert_select 'a[href=?]',  profil_path
   end
 
   # test avec des mauvaises données
