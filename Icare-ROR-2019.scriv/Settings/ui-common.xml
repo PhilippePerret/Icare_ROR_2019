@@ -10,7 +10,7 @@
             <ItemID>F4920AD3-E838-49ED-AE17-6C88E0C4A799</ItemID>
         </ExpandedItems>
         <Selection>
-            <ItemID>3858968C-A691-412B-8199-3D5FBA49FE0C</ItemID>
+            <ItemID>D855DEAA-8B7B-4D60-8AFD-9C46E9944F12</ItemID>
         </Selection>
     </Binder>
     <Inspector Show="No" View="Bookmarks">
@@ -62,9 +62,9 @@
                 <CurrentViewMode>Single</CurrentViewMode>
                 <SelectionAffects>None</SelectionAffects>
                 <Content>
-                    <ItemID>3858968C-A691-412B-8199-3D5FBA49FE0C</ItemID>
+                    <ItemID>D855DEAA-8B7B-4D60-8AFD-9C46E9944F12</ItemID>
                 </Content>
-                <NavigationHistory CurrentIndex="64">
+                <NavigationHistory CurrentIndex="65">
                     <HistoryItem Type="BinderItems" ViewMode="Single">1364231B-18EF-4426-BA08-5A1988CF90EC</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Corkboard">9F311ED5-158F-4B88-B8ED-A48771C7F74A</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">7451CE5B-A7AB-4FBE-853D-773E6C9C48A2</HistoryItem>
@@ -130,6 +130,7 @@
                     <HistoryItem Type="BinderItems" ViewMode="Single">B0D092CD-0E58-4410-A80C-30D09876E418</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">BAFA57AC-76A2-4A28-8350-743C562869C3</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">3858968C-A691-412B-8199-3D5FBA49FE0C</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">D855DEAA-8B7B-4D60-8AFD-9C46E9944F12</HistoryItem>
                 </NavigationHistory>
             </View>
             <Text>
@@ -137,7 +138,7 @@
                 <PageLayout Facing="No">No</PageLayout>
                 <TypewriterScrolling>No</TypewriterScrolling>
                 <LineNumbers Interval="1">No</LineNumbers>
-                <Selection>199,0</Selection>
+                <Selection>143,0</Selection>
             </Text>
             <Outliner>
                 <Columns>
