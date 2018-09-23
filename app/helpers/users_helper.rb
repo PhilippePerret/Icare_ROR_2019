@@ -12,7 +12,7 @@ module UsersHelper
       end
     <<-HTML
     <span class="" style="">
-      <img src="#{gravatar_url(user, size: avi_size)}" alt="" style="width:#{img_size}px;" />
+      <img src="#{gravatar_url(user, size: avi_size)}" class="gravatar" alt="" style="width:#{img_size}px;" />
       #{user.name.capitalize}
     </span>
     HTML

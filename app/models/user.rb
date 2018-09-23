@@ -26,6 +26,8 @@ class User < ApplicationRecord
     length: {maximum: 255},
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
+  # Année de naissance
+  validates :birthyear, presence: true, length: {is: 4}, format: {with: /(19|20)[0-9][0-9]/}
 
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true

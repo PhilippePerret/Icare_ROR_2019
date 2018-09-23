@@ -1,0 +1,17 @@
+<li class="row mb-3">
+  <%= gravatar_for(user, size: 40) %>
+  <%= link_to user.name, user_path(user) %> (né en <%= user.birthyear %>)
+  <% if current_user? %>
+    (<%= user.email %>)
+  <% end %>
+  <%# Ici une boite de boutons qui dépendent du visiteur %>
+
+  <% if current_user? %>
+    <div class="row">
+      Inscription : <%= user.created_at %>
+    </div>
+    <div class="row">
+      Statut : <%= user.statut %>
+    </div>
+  <% end %>
+</li>

@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update]
 
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
   # Demande d'inscription
   def new
     @user = User.new

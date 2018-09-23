@@ -7,6 +7,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '~> 5.2.1'
 
 # Ajouté au gemfile initial
+gem 'will_paginate',  '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails',   '4.3.1'
@@ -44,6 +46,9 @@ group :production do
   gem 'pg', '0.20.0'
 end
 group :development, :test do
+  # Ajouté par le tutoriel
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

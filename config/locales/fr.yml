@@ -16,9 +16,12 @@ fr:
       user:
     attributes:
       user:
-        name:   Votre pseudo
-        email:  Votre adresse mail
-        password:   Votre mot de passe
+        name:           Votre pseudo
+        prenom:         Votre prénom
+        nom:            Votre nom
+        email:          Votre adresse mail
+        birthyear:      Votre année de naissance
+        password:       Votre mot de passe
         password_confirmation:  La confirmation de votre mot de passe
     # Erreurs
     errors:
@@ -39,3 +42,7 @@ fr:
             password_confirmation:
               blank:        est requise
               confirmation: ne correspond pas au mot de passe
+
+  will_paginate:
+    previous_label: Précédent
+    next_label:     Suivant

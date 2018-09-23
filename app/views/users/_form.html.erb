@@ -12,9 +12,23 @@
   <%= f.hidden_field :name %>
 <% end %>
 
-<%= f.label :email %>
-<%= f.email_field :email, class: 'form-control', required: true %>
+<%= f.label :prenom %>
+<%= f.text_field :prenom, class: 'form-control', require: true %>
 
+<%= f.label :nom %>
+<%= f.text_field :nom, class: 'form-control', require: true %>
+
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control', required: true, confirmation: true %>
+
+<!-- < % = f.label :email_confirmation, 'Confirmation de votre adresse mail' %> -->
+<!-- < % = f.email_field :email_confirmation, class: 'form-control', required: true %> -->
+
+<%= f.label :birthyear %>
+<%= f.select :birthyear, (Time.now.year-100..Time.now.year-16).to_a.reverse, class: 'form-control' %>
+
+<%= f.label :sexe, 'Vous êtes…' %>
+<%= f.select :sexe, [['une femme', 1], ['un homme', 0], ['autre chose…', 2]], class: 'form-control' %>
 <%
 # On ne présente le MOT DE PASSE et sa confirmation que lorsque l'user
 # candidate pour l'atelier.
