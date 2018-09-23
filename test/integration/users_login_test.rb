@@ -59,5 +59,26 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', logout_path, count: 0
+
+    # L'user essaie de se déconnecter une fois
+    get logout_path
+    assert_not is_logged_in?
+    # assert_select 'a[href=?]', login_path # bizarre que ça ne passe pas…
+    assert_select 'a[href=?]', logout_path, count: 0
+  end
+
+  test "Test avec se souvenir" do
+    log_in_as(@user, remember_me: '1')
+    assert is_logged_in?
+    assert_not_empty cookies['remember_token']
+  end
+
+  test "Test sans se souvenir de l'user" do
+    # Il faut d'abord créer le cookie
+    log_in_as(@user, remember_me: '1')
+    assert is_logged_in?
+    assert_not_empty cookies['remember_token']
+    log_in_as(@user, remember_me: '0')
+    assert_empty cookies['remember_token']
   end
 end

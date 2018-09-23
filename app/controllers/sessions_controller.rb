@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         flash[:success] = 'Bienvenue, %s !' % user.name
         log_in(user) # dans les helpers de sessions
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to user.redirection_after_login
       else
         flash.now[:danger] = 'Adresse mail et/ou mot de passe invalides.'
@@ -25,9 +26,11 @@ class SessionsController < ApplicationController
 
   # Détruire la session courante (logout)
   def destroy
-    u = current_user
-    log_out
-    flash[:success] = "À très bientôt, #{u.name} !"
+    if current_user?
+      u = current_user
+      log_out
+      flash[:success] = "À très bientôt, #{u.name} !"
+    end
     redirect_to root_path
   end
 

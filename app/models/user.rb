@@ -1,12 +1,19 @@
 # Modèle d'icarien
 class User < ApplicationRecord
 
+  attr_accessor :remember_token
+
   # @return le mot de passe +pwd+ crypté
   def User.digest(pwd)
     cost = ActiveModel::SecurePassword.min_cost ?
             BCrypt::Engine::MIN_COST :
             BCrypt::Engine::cost
     BCrypt::Password.create(pwd, cost: cost)
+  end
+
+  # Pour renvoyer un token sécurisé pour le "remember me" du user
+  def User.new_token
+    SecureRandom.urlsafe_base64
   end
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -23,6 +30,11 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}
 
+  # @return TRUE si le token correspond au digest enregistré
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
 
   # Retourne la route à suivre après l'identification de l'user
   # Pour le moment, on envoie vers le bureau (bureau_path) qui conduit
@@ -36,5 +48,13 @@ class User < ApplicationRecord
     when 4 then '/last_activites'
       # TODO Mettre les autres path possible
     end
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 end

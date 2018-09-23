@@ -62,4 +62,8 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = 'a1b2c'
     assert_not @user.valid?, 'Le mot de passe ne doit pas être trop court'
   end
+
+  test "authenticated? retourne false si l'user n'a pas de remember_digest" do
+    assert_not @user.authenticated?('')
+  end
 end

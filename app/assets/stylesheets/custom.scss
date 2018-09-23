@@ -71,3 +71,14 @@ header {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+/* Dès qu'on utilise la class .checkbox pour un checkbox*/
+.checkbox {
+  margin-top:     10px;
+  margin-bottom:  10px;
+  span {
+    margin-left:  20px;
+    font-weight:  normal;
+  }
+}
+#session_remember_me {width: auto;margin-left:0}
