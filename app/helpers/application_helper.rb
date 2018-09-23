@@ -22,4 +22,10 @@ module ApplicationHelper
     provide(:titre_page, titre_page)
   end
 
+
+  # @return TRUE si on est sur le formulaire d'inscription
+  def signup_route?
+    params[:controller] == 'users' && params[:action] == 'new'
+  end
+
 end

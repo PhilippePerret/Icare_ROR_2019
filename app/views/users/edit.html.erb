@@ -1,0 +1,25 @@
+
+<% provide(:title, 'Réglages')%>
+
+<h2>Vos informations</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@user) do |f| %>
+
+      <%= render 'shared/error_messages' %>
+
+      <h3>Identité</h3>
+
+      <%= render 'users/user_data_form', f: f %>
+
+      <div class="container right vair">
+        <input type="submit" name="commit" class="btn btn-primary" value="Enregistrer les modifications">
+      </div>
+    <% end %>
+    <%# /form_for %>
+
+
+  </div><%# /col %>
+</div><%# /row %>

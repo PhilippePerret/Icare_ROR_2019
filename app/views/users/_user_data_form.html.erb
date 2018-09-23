@@ -1,0 +1,37 @@
+<%
+# Formulaire commun pour la création et l'édition des données
+# de l'utilisateur.
+%>
+
+<%= f.label :name %>
+<% if signup_route? %>
+  <%= f.text_field :name, class: 'form-control', required: true %>
+<% else %>
+  &nbsp;:&nbsp;<%= content_tag(:span, @user.name) %>
+  <div class="clear"></div>
+  <%= f.hidden_field :name %>
+<% end %>
+
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control', required: true %>
+
+<%
+# On ne présente le MOT DE PASSE et sa confirmation que lorsque l'user
+# candidate pour l'atelier.
+%>
+<% if signup_route? %>
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control', required: true %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+<% end %>
+
+<!-- < % = f.label :birthyear, 'Année de naissance' %> -->
+<!-- < % = f.text_field :birthyear, class: 'form-control', required: true %> -->
+
+<% unless signup_route? %>
+  <div class="gravatar_edit" style="">
+    <%= gravatar_for(@user) %>
+    <a href="http://gravatar.com/emails" target="_blank" rel="noopener">modifier votre avatar</a>
+  </div>
+<% end %>

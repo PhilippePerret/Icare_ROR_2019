@@ -24,7 +24,8 @@ module UsersHelper
     image_tag(
       gravatar_url(user, size: size),
       alt:    'Photo',
-      class:  'gravatar'
+      class:  'gravatar',
+      style:  'float:inherit'
     )
   end
   def gravatar_url(user, size: 80)
@@ -32,4 +33,6 @@ module UsersHelper
     "https://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     # "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
   end
+
+
 end

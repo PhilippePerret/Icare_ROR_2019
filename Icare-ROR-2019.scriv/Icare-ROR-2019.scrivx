@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-23 08:38:53 +0300" ModID="377EB53B-BE17-40A2-BF2C-BB39BD588533">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-23 11:06:54 +0300" ModID="6250BE8B-A2C9-4B67-9C73-4313D9AAF770">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-21 09:57:01 +0300">
             <Title>TODO</Title>
@@ -163,7 +163,7 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>349,0</TextSelection>
+                        <TextSelection>451,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0" Type="Text" Created="2018-09-21 07:04:58 +0300" Modified="2018-09-21 07:16:50 +0300">
@@ -279,6 +279,15 @@
                         <TextSelection>212,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+                <BinderItem UUID="A86A6632-0AF1-4B0E-BD81-A5416A907900" Type="Text" Created="2018-09-23 11:05:21 +0300" Modified="2018-09-23 11:06:54 +0300">
+                    <Title>Validation</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
                 <BinderItem UUID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A" Type="Folder" Created="2018-09-23 08:26:11 +0300" Modified="2018-09-23 08:26:17 +0300">
                     <Title>Integration</Title>
                     <MetaData>
@@ -387,8 +396,8 @@
     <RecentWritingHistory Date="2018-09-23 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>35</OtherWordCount>
-        <OtherCharCount>231</OtherCharCount>
+        <OtherWordCount>73</OtherWordCount>
+        <OtherCharCount>484</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

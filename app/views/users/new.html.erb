@@ -12,17 +12,7 @@
 
       <h3>Identité</h3>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control', required: true %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control', required: true %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control', required: true %>
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+      <%= render 'users/user_data_form', f: f %>
 
       <h3>Documents de présentation</h3>
 

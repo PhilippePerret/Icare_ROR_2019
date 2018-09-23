@@ -22,4 +22,16 @@
   Dernière modification : <%= @user.updated_at %>
 </p>
 
+<div class="container right">
+  <%
+  # TODO Il faudra laisser cette possibilité de modifier seulement au
+  # propriétaire du profil ou à l'administrateur.
+  # TODO L'administrateur pourra aussi détruire l'user
+  # TODO L'administrateur pourra visiter avec ce profil.
+  %>
+  <% if current_user? && (current_user.id == @user.id || current_user.admin?) %>
+    <%= link_to 'modifier', edit_user_path(@user) %>
+  <% end %>
+</div>
+
 <h3>Modules d’apprentissage</h3>

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         flash[:success] = 'Bienvenue, %s !' % user.name
         log_in(user) # dans les helpers de sessions
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_to user.redirection_after_login
+        redirect_to redirection_after_login(user)
       else
         flash.now[:danger] = 'Adresse mail et/ou mot de passe invalides.'
         render :new

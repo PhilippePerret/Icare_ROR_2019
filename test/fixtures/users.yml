@@ -3,3 +3,8 @@ benoit:
   name:   Benoît Ackerman
   email:  benoit.ackerman@yahoo.fr
   password_digest: <%= User.digest('mot de passe') %>
+
+marion:
+  name: Marion Michel
+  email:  marion@example.com
+  password_digest: <%= User.digest('mot de passe') %>  

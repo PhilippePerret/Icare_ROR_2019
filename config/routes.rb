@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   # === U T I L I S A T E U R S ===
 
   resources :users # => REST
-  get 'signup' => 'users#new'
-  post 'signup' => 'users#create'
-  post 'profil' => 'users#show'
+  # => edit_user_path(user) => "users#edit"
+  get 'signup'      => 'users#new'
+  post 'signup'     => 'users#create'
+  get 'profil'      => 'users#show'
 
   get 'static_pages/after_signup' # route rejointe après l'inscription
 
