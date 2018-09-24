@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_130136) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
-    t.integer "statut"
+    t.integer "statut", default: 0
+    t.string "options", default: '00000000000000000'
     t.string "nom"
     t.string "prenom"
     t.integer "birthyear"

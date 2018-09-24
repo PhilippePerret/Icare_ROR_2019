@@ -6,6 +6,8 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(
       name: 'Un utilisateur',
       email: "sonemailvalidea#{Time.now.to_i}@chez.com",
+      nom: 'Un', prenom: 'Utilisateur',
+      birthyear: '1980', sexe: '2',
       password: 'motdepasse', password_confirmation: 'motdepasse'
       )
   end

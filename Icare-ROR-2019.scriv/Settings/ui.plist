@@ -11,6 +11,23 @@
 		<string>{{0, 0}, {265, 754}}</string>
 		<string>{{266, 0}, {1217, 754}}</string>
 	</array>
+	<key>bookmarksPreviewTextSettings</key>
+	<dict>
+		<key>hasMultiplePages</key>
+		<false/>
+		<key>isRulerVisible</key>
+		<false/>
+		<key>lineNumberingInterval</key>
+		<integer>1</integer>
+		<key>showsLineNumbers</key>
+		<false/>
+		<key>textScaleFactor</key>
+		<real>1</real>
+		<key>usesFacingPages</key>
+		<false/>
+		<key>usesTypewriterScrolling</key>
+		<false/>
+	</dict>
 	<key>bookmarksSelectionInfo</key>
 	<dict>
 		<key>AC4F88F7-4E13-4695-82E6-D2622D0F2CE7</key>
@@ -26,6 +43,10 @@
 		<key>SupportingID</key>
 		<string></string>
 	</dict>
+	<key>editorSplitFrames</key>
+	<array>
+		<string>{{609, 0}, {608, 724}}</string>
+	</array>
 	<key>fullScreenTextEditorSettings</key>
 	<dict>
 		<key>textScaleFactor</key>
@@ -43,7 +64,7 @@
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {608.5, 334}}</string>
+	<string>{{0, 27.5}, {608.5, 334}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
@@ -57,11 +78,11 @@
 		<real>1</real>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {620, 294}}</string>
+	<string>{{0, 0}, {304, 334}}</string>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
-		<real>1</real>
+		<real>2</real>
 	</dict>
 	<key>supportingDocumentViewIsCurrent</key>
 	<false/>

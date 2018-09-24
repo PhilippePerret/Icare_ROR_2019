@@ -21,9 +21,6 @@
 <%= f.label :email %>
 <%= f.email_field :email, class: 'form-control', required: true, confirmation: true %>
 
-<!-- < % = f.label :email_confirmation, 'Confirmation de votre adresse mail' %> -->
-<!-- < % = f.email_field :email_confirmation, class: 'form-control', required: true %> -->
-
 <%= f.label :birthyear %>
 <%= f.select :birthyear, (Time.now.year-100..Time.now.year-16).to_a.reverse, class: 'form-control' %>
 
@@ -39,9 +36,6 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
 <% end %>
-
-<!-- < % = f.label :birthyear, 'Année de naissance' %> -->
-<!-- < % = f.text_field :birthyear, class: 'form-control', required: true %> -->
 
 <% unless signup_route? %>
   <div class="gravatar_edit" style="">

@@ -18,7 +18,9 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
-  before_save { self.email = email.downcase }
+  before_save do
+    self.email      = email.downcase
+  end
 
   validates :name,  presence: true, length: {maximum: 50},
     uniqueness: {case_sensitive: false}
@@ -27,7 +29,8 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
   # Année de naissance
-  validates :birthyear, presence: true, length: {is: 4}, format: {with: /(19|20)[0-9][0-9]/}
+  validates :birthyear, presence: true, format: {with: /\A(19|20)[0-9][0-9]\z/}, numericality: true
+  validates :sexe,      presence: true, inclusion: {in: (0..2)}, numericality: true
 
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true

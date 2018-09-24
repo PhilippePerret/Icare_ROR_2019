@@ -25,7 +25,8 @@ module ApplicationHelper
 
   # @return TRUE si on est sur le formulaire d'inscription
   def signup_route?
-    params[:controller] == 'users' && params[:action] == 'new'
+    (params[:controller] == 'users' &&
+    (params[:action] == 'new') || params[:action] == 'create')
   end
 
 end

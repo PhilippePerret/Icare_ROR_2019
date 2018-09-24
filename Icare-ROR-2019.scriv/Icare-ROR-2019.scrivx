@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-23 16:00:14 +0300" ModID="9651F463-1F67-4F8E-AEE2-D16B69338D22">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-24 07:33:58 +0300" ModID="BF7E9F01-F49E-43C8-A1AB-6B456233878D">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-21 09:57:01 +0300">
             <Title>TODO</Title>
@@ -43,13 +43,13 @@
                                 <TextSelection>415,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem UUID="E9462355-BDF3-4C0A-99C8-EC106941D32A" Type="Text" Created="2018-09-20 15:09:21 +0300" Modified="2018-09-23 16:00:14 +0300">
+                        <BinderItem UUID="E9462355-BDF3-4C0A-99C8-EC106941D32A" Type="Text" Created="2018-09-20 15:09:21 +0300" Modified="2018-09-24 06:15:47 +0300">
                             <Title>Propriétés directes</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>508,0</TextSelection>
+                                <TextSelection>478,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem UUID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A" Type="Text" Created="2018-09-23 15:56:48 +0300" Modified="2018-09-23 15:59:55 +0300">
@@ -58,7 +58,19 @@
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>21,0</TextSelection>
+                                <TextSelection>162,0</TextSelection>
+                            </TextSettings>
+                            <Bookmarks>
+                                <Bookmark BinderUUID="E9462355-BDF3-4C0A-99C8-EC106941D32A"></Bookmark>
+                            </Bookmarks>
+                        </BinderItem>
+                        <BinderItem UUID="396A70B0-F39F-463A-999B-8B4DFB627037" Type="Text" Created="2018-09-24 06:15:24 +0300" Modified="2018-09-24 06:22:40 +0300">
+                            <Title>Options</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>313,0</TextSelection>
                             </TextSettings>
                             <Bookmarks>
                                 <Bookmark BinderUUID="E9462355-BDF3-4C0A-99C8-EC106941D32A"></Bookmark>
@@ -423,13 +435,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="22" Characters="170" Date="2018-09-23 08:25:50 +0300"></PreviousSession>
+        <PreviousSession Words="46" Characters="276" Date="2018-09-24 06:14:18 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-09-23 00:00:00 +0300">
-        <DraftWordCount>22</DraftWordCount>
-        <DraftCharCount>170</DraftCharCount>
-        <OtherWordCount>130</OtherWordCount>
-        <OtherCharCount>971</OtherCharCount>
+    <RecentWritingHistory Date="2018-09-24 00:00:00 +0300">
+        <DraftWordCount>46</DraftWordCount>
+        <DraftCharCount>276</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

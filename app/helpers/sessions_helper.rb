@@ -59,6 +59,8 @@ module SessionsHelper
       when 3 then '/'
       when 4 then '/last_activites'
         # TODO Mettre les autres path possible
+      else
+        '/'
       end
     end
   end
