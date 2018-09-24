@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string    :remember_digest
 
       t.smallint  :statut,  default: 0
-      t.string    :options, default: '00000000000000000'
+      t.string    :options, default: '00000000'
 
       t.timestamps
     end

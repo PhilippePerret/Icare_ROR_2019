@@ -38,6 +38,6 @@ nombre_annees = annees.count
     options: ((n % 4) + 1).to_s + '1' + ((n % 5) + 1).to_s + '00000',
     password: 'mot de passe', password_confirmation: 'mot de passe'
   }
-  puts "\nDATA: #{data_user.inspect}"
+  # puts "\nDATA: #{data_user.inspect}"
   User.create!(data_user)
 end

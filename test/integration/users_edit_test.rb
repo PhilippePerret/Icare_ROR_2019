@@ -37,14 +37,14 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   test "Un simple user ne peut pas modifier le profil d'un autre user" do
     get edit_user_path(@marion) # note : c'est benoit qui est loggué
-    assert_redirected_to login_path
+    assert_redirected_to home_path
   end
 
   test "L'user est redirigé après identification" do
     get edit_user_path(@marion)
-    assert_redirected_to login_path
+    assert_redirected_to home_path
     log_in_as(@marion)
-    assert_redirected_to edit_user_path(@marion)
+    assert_redirected_to bureau_path
   end
 
 end

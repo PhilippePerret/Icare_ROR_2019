@@ -52,6 +52,26 @@ class User < ApplicationRecord
 
 
   def admin?
-    false # pour le moment
+    self.statut & 4 > 0
   end
+  def super_admin?
+    self.statut & 8 > 0
+  end
+
+  def femme?
+    @is_femme ||= sexe == 1
+  end
+
+  # Pour ajouter un 'e' si c'est une femme
+  def f_e
+    femme? ? 'e' : ''
+  end
+
+
+  def destroy
+    self.options[0] = '9'
+    self.update_attribute(:options, options)
+  end
+
+  
 end

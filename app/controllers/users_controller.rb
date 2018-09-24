@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user,  only: [:edit, :update, :destroy]
+  before_action :only_for_admin,  only: [:destroy]
+  before_action :correct_user,    only: [:edit, :update]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where("options NOT LIKE '9%'").paginate(page: params[:page])
   end
 
   # Demande d'inscription
@@ -56,6 +58,14 @@ class UsersController < ApplicationController
       end
   end
 
+  # Pour détruire l'icarien(ne) voulu(e)
+  def destroy
+    u = User.find(params[:id])
+    u.destroy
+    flash[:success] = "#{u.name} a été supprimé avec succès."
+    redirect_to users_path
+  end
+
   private
 
     def user_params
@@ -66,9 +76,21 @@ class UsersController < ApplicationController
     end
 
     def logged_in_user
-      return if current_user? && (params[:id].nil? || current_user.id == params[:id].to_i)
+      return if current_user?
       store_original_url
       flash[:danger] = "Merci de vous identifier pour accomplir cette action."
       redirect_to login_url
+    end
+
+    def correct_user
+      return if current_user? && (params[:id].nil? || current_user.id == params[:id].to_i)
+      flash[:danger] = "Vous n’êtes pas autorisé#{current_user.f_e} à exécuter cette opération."
+      redirect_to home_path
+    end
+
+    def only_for_admin
+      return if current_user? && current_user.admin?
+      flash[:danger] = "Désolé, vous n’avez pas les privilèges pour exécuter cette opération."
+      redirect_to home_path
     end
 end
