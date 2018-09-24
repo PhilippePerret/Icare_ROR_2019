@@ -5,14 +5,14 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string    :name
       t.string    :nom
       t.string    :prenom
-      t.tinyint   :sexe
-      t.int4      :birthyear
+      t.int       :sexe,      limit: 1
+      t.int       :birthyear, limit: 4
 
       t.string    :email
       t.string    :password_digest
       t.string    :remember_digest
 
-      t.smallint  :statut,  default: 0
+      t.int       :statut,  default: 0, limit: 2
       t.string    :options, default: '00000000'
 
       t.timestamps
