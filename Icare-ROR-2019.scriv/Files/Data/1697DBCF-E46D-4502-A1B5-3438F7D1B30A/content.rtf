@@ -40,7 +40,21 @@ Pour que les migrations soient prises en compte :\
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28  $ heroku run rails db:migrate 
+\f2\fs28 	$ heroku pg:reset DATA --confirm <nom application heroku> 
+\f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
+\f0\fs28 \
+\
+
+\f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
+\f2\fs28 	$ heroku run rails db:migrate 
+\f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
+\f0\fs28 \
+\
+Si on veut peupler la base :\
+\
+
+\f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
+\f2\fs28 	$	heroku run rails db:seed 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
