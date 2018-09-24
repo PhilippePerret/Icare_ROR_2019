@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require './config/secret/data_phil'   # => DATA_PHIL
-require './config/secret/data_marion' # => DATA_MARION
+require "#{Rails.root}/config/secret/data_phil"   # => DATA_PHIL
+require "#{Rails.root}/config/secret/data_marion" # => DATA_MARION
 
 User.create([
   {name: DATA_PHIL[:pseudo], email: DATA_PHIL[:email],

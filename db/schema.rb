@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_130136) do
+ActiveRecord::Schema.define(version: 2018_09_20_120042) do
 
   create_table "abs_modules", force: :cascade do |t|
     t.string "titre"
@@ -21,17 +21,17 @@ ActiveRecord::Schema.define(version: 2018_09_23_130136) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "remember_digest"
-    t.integer "statut", default: 0
-    t.string "options", default: '00000000000000000'
     t.string "nom"
     t.string "prenom"
-    t.integer "birthyear"
-    t.integer "sexe"
+    t.integer "sexe", limit: 1
+    t.integer "birthyear", limit: 4
+    t.string "email"
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.integer "statut", limit: 2, default: 0
+    t.string "options", default: "00000000"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
