@@ -59,4 +59,65 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
   # test formulaire OK
 
+  test "Inscription valide avec activation du compte" do
+    get signup_url
+
+    nowi = Time.now.to_i
+    lename = "Maurice A#{nowi}"
+    post users_path, params:{user:{
+      name: lename,
+      prenom: 'Maurice',
+      nom: "À#{nowi}",
+      email: "email#{nowi}@example.com",
+      sexe: '0',
+      birthyear: '1992',
+      password: 'mot de passe',
+      password_confirmation: 'mot de passe'
+      }}
+
+    nuser   = assigns(:user) # récupérer l'user
+    token   = nuser.ticket_token # il faut le prendre tout de suite
+
+    # Il ne doit pas être loggué
+    assert_not is_logged_in?
+    follow_redirect!
+    assert_template 'static_pages/after_signup'
+
+    # Ses options portent bien la marque voulue
+    ticket  = Ticket.last
+    assert_not_nil ticket
+
+    # nuser = User.last
+    nuser.reload
+    assert_not nuser.compte_actif?, 'son compte n’est pas actif'
+
+    # Il va maintenant confirmer son inscription
+
+    # Avec un mauvais identifiant
+    get ticket_run_path(100000000, token: token)
+    nuser.reload
+    assert_not nuser.compte_actif?, 'son compte n’est pas actif'
+    assert_redirected_to home_path
+    follow_redirect!
+
+    # Avec un mauvais token
+    get ticket_run_path(ticket.id, token: 'bad token')
+    nuser.reload
+    assert_not nuser.compte_actif?, 'son compte n’est pas actif'
+    assert_redirected_to home_path
+    follow_redirect!
+
+    # Avec le bon ticket
+    get ticket_run_path(ticket.id, token: token)
+    nuser.reload
+    assert_redirected_to home_path
+    follow_redirect!
+    # Le compte est actif, mais il faut se logguer
+    assert nuser.compte_actif?, 'son compte doit être actif'
+    assert_not is_logged_in?
+
+    log_in_as(nuser)
+    assert is_logged_in?
+    
+  end
 end

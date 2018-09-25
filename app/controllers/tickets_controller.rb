@@ -7,12 +7,11 @@ class TicketsController < ApplicationController
   #   * du token du ticket
   #
   def run
-
     # Note : si on ne peut pas le trouver, ça raise ActiveRecord::RecordNotFound
     ticket  = Ticket.find(params[:id])
 
     # On peut vérifier
-    if BCrypt::Password.new(ticket.digest) == params[:token]
+    if BCrypt::Password.new(ticket.digest).is_password?(params[:token])
       begin
         eval ticket.action
       rescue Exception => e

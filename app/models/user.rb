@@ -78,24 +78,23 @@ class User < ApplicationRecord
   # donc activer son compte vraiment.
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
-    self.ticket_token = SessionsHelper.new_token
-    digest  = BCrypt::Password.create(self.ticket_token, cost: 5)
-    @ticket = self.tickets.create(
-      name:     'activation_compte',
-      digest:   digest.to_s,
-      action:   "User.find(#{self.id}).active_compte")
+    @ticket = Ticket.new(
+              name: 'activation_compte',
+              action: "User.find(#{self.id}).active_compte"
+              )
+    self.tickets.create(@ticket.hash_to_create)
+    self.ticket_token = @ticket.token
     return UserMailer.activation_compte(self)
   end
 
   # Méthode d'activation du compte
   def active_compte
-    self.options[1] = '1'
-    update_attribute(:options, options)
+    set_option(1, 1)
   end
 
   # RETURN true si le compte est actif (email confirmé)
   def compte_actif?
-    set_option(1, 1)
+    self.options[1] == '1'
   end
 
 end

@@ -22,6 +22,9 @@ class SessionsController < ApplicationController
           # TODO : On pourra joindre une adresse dans le message ci-dessus qui
           # pourra renvoyer le lien de confirmation de l'email (en recherchant
           # l'user et en relevant le ticket avec name: 'activation_compte')
+          # NON : le token est définitivement perdu, donc il faut créer un
+          # nouveau ticket (après avoir détruit le précédent). Il faut donc
+          # renvoyer le mail de confirmation de l'email
           redirect_to home_path
         end
       else

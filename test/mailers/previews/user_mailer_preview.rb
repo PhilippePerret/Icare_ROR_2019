@@ -6,7 +6,6 @@ class UserMailerPreview < ActionMailer::Preview
     # UserMailer.activation_compte
     user = User.first
     user.create_activation_digest
-    # UserMailer.activation_compte(user)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/reset_password
