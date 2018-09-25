@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
-            <Title>LECTURE TUTORIEL</Title>
-        </Document>
         <Document ID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0">
             <Title>resources :model</Title>
             <Text>Mettre resources :&lt;model&gt; dans le fichier `routes.rb` revient à créer automatiquement les méthodes et variables suivantes :
@@ -53,6 +50,9 @@ Page d'édition de l'user
 
 </Text>
         </Document>
+        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
+            <Title>LECTURE TUTORIEL</Title>
+        </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
             <Text>Pour qu'un hash retourne une valeur définie :
@@ -75,6 +75,20 @@ Le serveur s'arrête sur `debugger` et présente une ligne de commande `(byebug)
 Taper les valeurs à connaitre, par exemple `params[controller]` pour connaitre le contrôleur courant.
 Taper Ctrl-D pour poursuivre le lancement. </Text>
         </Document>
+        <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
+            <Title>Statut</Title>
+            <Text>Propriété privileges
+
+0	Simple inscrit
+1	Simple icarien
+2	Rédacteur (de ?)
+4	Administrateur
+8	Grand manitou
+
+Donc : 
+14 : tous les droits (super administrateur, rédacteur)
+6 	: administration et rédaction (4 + 2)</Text>
+        </Document>
         <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
             <Title>Update</Title>
             <Text>Pour actualiser un objet :
@@ -93,19 +107,6 @@ On peut en revanche by-passer la validation en utilisant la méthode singulière
             <Text>On peut ajouter  allow_nil: true  au  validates  pour dire que la données n'est pas toujours requise pour l'enregistrement, comme c'est le cas avec le mot de passe lors d'une modification du profil.
 
 	validates :password, presence: true, allow_nil: true</Text>
-        </Document>
-        <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
-            <Title>Statut</Title>
-            <Text>Propriété privileges
-
-0	Simple inscrit
-1	Simple icarien
-2	Rédacteur (de ?)
-4	Administrateur
-8	Grand manitou
-
-14 : tous les droits
-6 	: administration et rédaction </Text>
         </Document>
         <Document ID="3858968C-A691-412B-8199-3D5FBA49FE0C">
             <Title>Flash</Title>
@@ -128,8 +129,28 @@ Pour tester qu'il y a un message flash :
 
 </Text>
         </Document>
+        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
+            <Title>Mails</Title>
+            <Text>Pour générer un nouveau "mailer"
+
+
+	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
+						                  &lt;methode-mail&gt; ... 
+
+</Text>
+        </Document>
         <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
             <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
+            <Title>Options</Title>
+            <Text>Propriété : options
+C'est un mot de 32 chiffres où chaque chiffre représente une option.
+
+BIT (le premier chiffre est le nombre pour la base de données)
+1 (0)		État : 0 = à confirmer/1 = actif/2=en pause/3=inactif/9=détruit
+2 (1)		Confirmation du mail : 0 = non confirmé
+3 (2)		Redirection après l'identification </Text>
         </Document>
         <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
             <Title>Définition générale avant test</Title>
@@ -170,7 +191,7 @@ Mot de passe encrypté
 statut
 Bits des privilèges (cf. Statut)
 options
-Options diverses (mais à voir s'il ne faut pas les mettre ailleurs)
+Options diverses (cf. Options)
 created_at
 Date de création de la donnée de l'icarien
 updated_at
@@ -384,7 +405,13 @@ Pour "pusher" on line, après avoir pushé sur git :
 
 Pour que les migrations soient prises en compte :
 
- $ heroku run rails db:migrate 
+	$ heroku pg:reset DATA --confirm &lt;nom application heroku&gt; 
+
+	$ heroku run rails db:migrate 
+
+Si on veut peupler la base :
+
+	$	heroku run rails db:seed 
 
 On quitte la maintenance 
 
@@ -430,6 +457,12 @@ end
         <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
             <Title>Object.create / .save</Title>
             <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
+        </Document>
+        <Document ID="58768660-DA20-42FD-B4DF-FB51595A3C15">
+            <Title>Modules</Title>
+            <Text>Voir : 
+
+https://www.jeuweb.org/showthread.php?tid=5965</Text>
         </Document>
         <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
             <Title>Tester une route</Title>

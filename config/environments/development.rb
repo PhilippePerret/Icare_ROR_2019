@@ -4,6 +4,8 @@ Rails.application.configure do
   # Ajouté au développement pour obtenir des noms avec le gem faker
   Faker::Config.locale = 'fr'
 
+  host = 'localhost:3000'
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -33,10 +35,16 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  #### Don't care if the mailer can't send.
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  # Pour voir les mails dans les tests
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: host, protocol: 'https'}
 
   config.action_mailer.perform_caching = false
+
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

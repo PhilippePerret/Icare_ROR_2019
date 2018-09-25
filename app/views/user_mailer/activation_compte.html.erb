@@ -1,0 +1,7 @@
+<p><%= @greeting %>,</p>
+<p>
+Pour valider définitivement votre candidature à l'atelier — et confirmer votre adresse mail — veuillez cliquer sur le lien d’activation ci-dessous.
+</p>
+<p style="text-align:center;">
+  <%= link_to I18n.t('user_mailer.activation_compte.link_confirm'), @url_for_ticket %>
+</p>

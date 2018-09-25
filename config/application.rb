@@ -14,7 +14,8 @@ module IcareRor2019
     # Pour définir que le site est en français
     # Mettre les définitions dans config/locales/fr.yml et autres
     # Si les locales sont définies dans un autre dossier, utiliser :
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'fr', '*.yml').to_s]
     # Pour écrire dans un fichier ERB : <%= t('hello') %>
     # Ailleurs : i18n.t('hello')
     config.i18n.default_locale = :fr

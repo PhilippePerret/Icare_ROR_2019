@@ -200,6 +200,20 @@
 <p class="itemText"></p>
 <p class="itemText">Puis exécuter les opérations de dépôt ci-dessus.</p>
 </li>
+<li>
+<p class="topLevelItemTitle">Tickets</p>
+<p class="itemText">Pour créer un ticket à quelqu'un :</p>
+<p class="itemText"></p>
+<p class="itemText"> ticket = Ticket.new('<nom générique>', '<code à exécuter>')</p>
+<p class="itemText"> <user>.tickets.create(ticket.hash_to_create)</p>
+<p class="itemText"></p>
+<p class="itemText">Par exemple :</p>
+<p class="itemText"></p>
+<p class="itemText"> ticket = Ticket.new('activation_compte', "User.find(#{benoit.id}).confirm_compte")</p>
+<p class="itemText"> # Crée un objet qui possède les propriétés :</p>
+<p class="itemText"> # :name, :digest, :action, :token</p>
+<p class="itemText"> benoit.tickets.create(ticket.hash_to_create)</p>
+</li>
 </ul>
 
 </td>

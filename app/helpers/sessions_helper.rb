@@ -1,5 +1,11 @@
 module SessionsHelper
 
+  # Pour renvoyer un token sécurisé pour le "remember me" du user
+  # @usage : SessionsHelper.new_token
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
   def current_user
     @current_user ||= get_current_user
   end

@@ -10,16 +10,26 @@ class SessionsController < ApplicationController
     if params[:session]
       user = User.find_by_email(params[:session][:email].downcase)
       if user && user.authenticate(params[:session][:password])
-        flash[:success] = 'Bienvenue, %s !' % user.name
-        log_in(user) # dans les helpers de sessions
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_to redirection_after_login(user)
+        if user.compte_actif?
+          flash[:success] = I18n.t('users.success.welcome', name: user.name)
+          log_in(user) # dans les helpers de sessions
+          params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+          redirect_to redirection_after_login(user)
+        else
+          # Email pas encore confirmé
+
+          flash[:danger] = I18n.t('users.errors.mail.not_confirmed', name: user.name)
+          # TODO : On pourra joindre une adresse dans le message ci-dessus qui
+          # pourra renvoyer le lien de confirmation de l'email (en recherchant
+          # l'user et en relevant le ticket avec name: 'activation_compte')
+          redirect_to home_path
+        end
       else
-        flash.now[:danger] = 'Adresse mail et/ou mot de passe invalides.'
+        flash.now[:danger] = I18n.t('users.errors.login.invalid')
         render :new
       end
     else
-      flash[:danger] = 'Essayeriez-vous de forcer le site ?…'
+      flash[:danger] = I18n.t('users.errors.login.force_tentative')
       redirect_to login_path
     end
   end
@@ -29,7 +39,7 @@ class SessionsController < ApplicationController
     if current_user?
       u = current_user
       log_out
-      flash[:success] = "À très bientôt, #{u.name} !"
+      flash[:success] = I18n.t('users.success.goodbye', name: u.name)
     end
     redirect_to root_path
   end

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # Icarien.ne OK
-      log_in @user
+      # On lui envoie un mail pour confirmer son adresse email
+      @user.create_activation_digest
       # Rediriger vers une page statique expliquant la suite
       redirect_to ('/static_pages/after_signup?id=%i' % [@user.id])
     else
@@ -93,4 +94,6 @@ class UsersController < ApplicationController
       flash[:danger] = "Désolé, vous n’avez pas les privilèges pour exécuter cette opération."
       redirect_to home_path
     end
+  # /private
+
 end

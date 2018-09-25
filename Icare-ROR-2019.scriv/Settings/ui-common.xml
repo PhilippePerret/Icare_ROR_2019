@@ -8,12 +8,11 @@
             <ItemID>9F311ED5-158F-4B88-B8ED-A48771C7F74A</ItemID>
             <ItemID>268196E3-4E44-4A38-AB15-5B6979A7F846</ItemID>
             <ItemID>F07B69FF-3274-4D6A-9617-A4DEA77365AE</ItemID>
-            <ItemID>D855DEAA-8B7B-4D60-8AFD-9C46E9944F12</ItemID>
             <ItemID>F4920AD3-E838-49ED-AE17-6C88E0C4A799</ItemID>
             <ItemID>484A8C6E-2AD2-4AD3-A9A4-990B4614986A</ItemID>
         </ExpandedItems>
         <Selection>
-            <ItemID>E9462355-BDF3-4C0A-99C8-EC106941D32A</ItemID>
+            <ItemID>BAFA57AC-76A2-4A28-8350-743C562869C3</ItemID>
         </Selection>
     </Binder>
     <Inspector Show="No" View="Bookmarks">
@@ -56,7 +55,7 @@
         <PageLayout Facing="No">No</PageLayout>
         <TypewriterScrolling>Yes</TypewriterScrolling>
     </FullScreen>
-    <Editors Primary="Editor1">
+    <Editors Primary="Editor2">
         <Editor1>
             <View>
                 <ShowHeader>Yes</ShowHeader>
@@ -64,10 +63,7 @@
                 <GroupsViewMode>Corkboard</GroupsViewMode>
                 <CurrentViewMode>Single</CurrentViewMode>
                 <SelectionAffects>None</SelectionAffects>
-                <Content>
-                    <ItemID>E9462355-BDF3-4C0A-99C8-EC106941D32A</ItemID>
-                </Content>
-                <NavigationHistory CurrentIndex="91">
+                <NavigationHistory CurrentIndex="94">
                     <HistoryItem Type="BinderItems" ViewMode="Single">1364231B-18EF-4426-BA08-5A1988CF90EC</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Corkboard">9F311ED5-158F-4B88-B8ED-A48771C7F74A</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">7451CE5B-A7AB-4FBE-853D-773E6C9C48A2</HistoryItem>
@@ -160,6 +156,9 @@
                     <HistoryItem Type="BinderItems" ViewMode="Single">E9462355-BDF3-4C0A-99C8-EC106941D32A</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">6E25DD15-7A1F-4DE7-A705-F0F7C695126A</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">E9462355-BDF3-4C0A-99C8-EC106941D32A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">396A70B0-F39F-463A-999B-8B4DFB627037</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">6E25DD15-7A1F-4DE7-A705-F0F7C695126A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">E9462355-BDF3-4C0A-99C8-EC106941D32A</HistoryItem>
                 </NavigationHistory>
             </View>
             <Text>
@@ -167,7 +166,7 @@
                 <PageLayout Facing="No">No</PageLayout>
                 <TypewriterScrolling>No</TypewriterScrolling>
                 <LineNumbers Interval="1">No</LineNumbers>
-                <Selection>448,0</Selection>
+                <Selection>0,0</Selection>
             </Text>
             <Outliner>
                 <Columns>
@@ -206,8 +205,25 @@
                 <GroupsViewMode>Corkboard</GroupsViewMode>
                 <CurrentViewMode>Single</CurrentViewMode>
                 <SelectionAffects>None</SelectionAffects>
-                <NavigationHistory CurrentIndex="0">
+                <Content>
+                    <ItemID>BAFA57AC-76A2-4A28-8350-743C562869C3</ItemID>
+                </Content>
+                <NavigationHistory CurrentIndex="14">
+                    <HistoryItem Type="BinderItems" ViewMode="Single">396A70B0-F39F-463A-999B-8B4DFB627037</HistoryItem>
                     <HistoryItem Type="BinderItems" ViewMode="Single">6E25DD15-7A1F-4DE7-A705-F0F7C695126A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">B0D092CD-0E58-4410-A80C-30D09876E418</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">58768660-DA20-42FD-B4DF-FB51595A3C15</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">396A70B0-F39F-463A-999B-8B4DFB627037</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">6E25DD15-7A1F-4DE7-A705-F0F7C695126A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">396A70B0-F39F-463A-999B-8B4DFB627037</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">1697DBCF-E46D-4502-A1B5-3438F7D1B30A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">91C3EFDC-8A8B-48A0-A7A9-682663C2801E</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">58768660-DA20-42FD-B4DF-FB51595A3C15</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">FD490A50-CD60-460B-8A8F-02FB90543C80</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">91C3EFDC-8A8B-48A0-A7A9-682663C2801E</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">1697DBCF-E46D-4502-A1B5-3438F7D1B30A</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D</HistoryItem>
+                    <HistoryItem Type="BinderItems" ViewMode="Single">BAFA57AC-76A2-4A28-8350-743C562869C3</HistoryItem>
                 </NavigationHistory>
             </View>
             <Text>
@@ -215,7 +231,7 @@
                 <PageLayout Facing="No">No</PageLayout>
                 <TypewriterScrolling>No</TypewriterScrolling>
                 <LineNumbers Interval="1">No</LineNumbers>
-                <Selection>0,0</Selection>
+                <Selection>118,0</Selection>
             </Text>
             <Outliner>
                 <Columns>

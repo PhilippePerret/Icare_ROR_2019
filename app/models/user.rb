@@ -1,9 +1,14 @@
 # Modèle d'icarien
 class User < ApplicationRecord
 
-  attr_accessor :remember_token
+  has_secure_password
 
-  # @return le mot de passe +pwd+ crypté
+  attr_accessor :remember_token
+  attr_accessor :ticket_token # pour les tickets, à commencer par l'activation
+
+  has_many :tickets
+
+  # RETURN le mot de passe +pwd+ crypté
   def User.digest(pwd)
     cost = ActiveModel::SecurePassword.min_cost ?
             BCrypt::Engine::MIN_COST :
@@ -11,16 +16,10 @@ class User < ApplicationRecord
     BCrypt::Password.create(pwd, cost: cost)
   end
 
-  # Pour renvoyer un token sécurisé pour le "remember me" du user
-  def User.new_token
-    SecureRandom.urlsafe_base64
-  end
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
-  before_save do
-    self.email      = email.downcase
-  end
+  before_save {email.downcase!}
 
   validates :name,  presence: true, length: {maximum: 50},
     uniqueness: {case_sensitive: false}
@@ -32,10 +31,9 @@ class User < ApplicationRecord
   validates :birthyear, presence: true, format: {with: /\A(19|20)[0-9][0-9]\z/}, numericality: true
   validates :sexe,      presence: true, inclusion: {in: (0..2)}, numericality: true
 
-  has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  # @return TRUE si le token correspond au digest enregistré
+  # RETURN TRUE si le token correspond au digest enregistré
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
@@ -43,7 +41,7 @@ class User < ApplicationRecord
 
 
   def remember
-    self.remember_token = User.new_token
+    self.remember_token = SessionsHelper.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
   def forget
@@ -67,11 +65,37 @@ class User < ApplicationRecord
     femme? ? 'e' : ''
   end
 
-
-  def destroy
-    self.options[0] = '9'
+  def set_option offset, value
+    self.options[offset] = value.to_s
     self.update_attribute(:options, options)
   end
 
-  
+  def destroy
+    set_option(0, 9)
+  end
+
+  # Envoie un mail pour que l'user puisse confirmer son adresse email et
+  # donc activer son compte vraiment.
+  # RETURN l'instance mail envoyée, utile pour les tests
+  def create_activation_digest
+    self.ticket_token = SessionsHelper.new_token
+    digest  = BCrypt::Password.create(self.ticket_token, cost: 5)
+    @ticket = self.tickets.create(
+      name:     'activation_compte',
+      digest:   digest.to_s,
+      action:   "User.find(#{self.id}).active_compte")
+    return UserMailer.activation_compte(self)
+  end
+
+  # Méthode d'activation du compte
+  def active_compte
+    self.options[1] = '1'
+    update_attribute(:options, options)
+  end
+
+  # RETURN true si le compte est actif (email confirmé)
+  def compte_actif?
+    set_option(1, 1)
+  end
+
 end

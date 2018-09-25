@@ -1,0 +1,5 @@
+fr:
+  user_mailer:
+    activation_compte:
+      subject:          Veuillez confirmer votre candidature
+      link_confirm:     Confirmez votre candidature à l’atelier Icare

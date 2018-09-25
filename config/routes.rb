@@ -33,6 +33,13 @@ Rails.application.routes.draw do
   get 'historique'  => 'bureau#historique'
   get 'documents'   => 'bureau#documents'
 
+  # === TICKETS ===
+  # resources :tickets
+  get 'tickets/new' => 'tickets#create'
+  # get 'tickets/run/:id' => 'tickets#run'
+  get 'tickets/:id/:token' => 'tickets#run', as: 'ticket_run'
+
+
   # === MODULES D'APPRENTISSAGE ===
 
   # Concernant les modules d'apprentissage
