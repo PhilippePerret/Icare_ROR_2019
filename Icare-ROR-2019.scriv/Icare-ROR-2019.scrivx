@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-25 11:37:26 +0300" ModID="33F06913-96F2-48BB-9D63-E645B122F39A">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-25 14:21:39 +0300" ModID="B829415C-FD87-45B5-957D-7704BAC9D156">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-25 11:37:24 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-25 14:20:15 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>68,0</TextSelection>
+                <TextSelection>231,0</TextSelection>
             </TextSettings>
         </BinderItem>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
@@ -172,13 +172,13 @@
                         <TextSelection>148,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="36F6909E-D617-4006-98D9-7515D7B24D34" Type="Text" Created="2018-09-20 15:23:55 +0300" Modified="2018-09-20 15:26:08 +0300">
+                <BinderItem UUID="36F6909E-D617-4006-98D9-7515D7B24D34" Type="Text" Created="2018-09-20 15:23:55 +0300" Modified="2018-09-25 14:21:37 +0300">
                     <Title>Update</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>260,0</TextSelection>
+                        <TextSelection>402,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-24 12:28:28 +0300">
@@ -485,8 +485,8 @@
     <RecentWritingHistory Date="2018-09-25 00:00:00 +0300">
         <DraftWordCount>37</DraftWordCount>
         <DraftCharCount>369</DraftCharCount>
-        <OtherWordCount>135</OtherWordCount>
-        <OtherCharCount>989</OtherCharCount>
+        <OtherWordCount>193</OtherWordCount>
+        <OtherCharCount>1362</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

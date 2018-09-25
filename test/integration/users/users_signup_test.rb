@@ -4,6 +4,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   def setup
     @page_titre = "Poser sa candidature"
+    ActionMailer::Base.deliveries.clear
   end
 
   test "La page d'inscription présente le bon titre" do
@@ -83,6 +84,15 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'static_pages/after_signup'
 
+    # S'il essaie de se logguer, ça ne fonctionne pas
+    log_in_as(nuser)
+    assert_not is_logged_in?
+    follow_redirect!
+    assert_select 'div.alert', /rien faire avant d’avoir confirmé votre email/
+
+    # Un mail doit avoir été délivré
+    assert_equal 1, ActionMailer::Base.deliveries.size # ne fonctionne pas
+
     # Ses options portent bien la marque voulue
     ticket  = Ticket.last
     assert_not_nil ticket
@@ -118,6 +128,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     log_in_as(nuser)
     assert is_logged_in?
-    
+
   end
 end

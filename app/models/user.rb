@@ -84,7 +84,10 @@ class User < ApplicationRecord
               )
     self.tickets.create(@ticket.hash_to_create)
     self.ticket_token = @ticket.token
-    return UserMailer.activation_compte(self)
+    # Laisser en bas pour retourner le mail produit
+    mail = UserMailer.activation_compte(self) #=> Class Mail
+    mail.deliver_now
+    return mail
   end
 
   # Méthode d'activation du compte

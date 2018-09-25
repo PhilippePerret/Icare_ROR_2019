@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
     @user = user # pour le mail
     @user.ticket_token ||= SessionsHelper.new_token # non défini quand preview
     @url_for_ticket = ticket_run_url(@user.tickets.last.id, token: user.ticket_token)
-    mail(to: user.email)
+    mail(to: user.email) # retourné à la méthode appelante
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
