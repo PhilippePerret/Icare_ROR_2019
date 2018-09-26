@@ -78,14 +78,15 @@ class User < ApplicationRecord
   # donc activer son compte vraiment.
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
-    @ticket = Ticket.new(
+    ticket = self.tickets.create(
+      Ticket.new(
               name: 'activation_compte',
               action: "User.find(%{user_id}).active_compte"
+              ).hash_to_create
               )
-    self.tickets.create(@ticket.hash_to_create)
-    self.ticket_token = @ticket.token
+    self.ticket_token = ticket.token
     # Laisser en bas pour retourner le mail produit
-    mail = UserMailer.activation_compte(self, @ticket) #=> Class Mail
+    mail = UserMailer.activation_compte(self, ticket) #=> Class Mail
     mail.deliver_now
     return mail
   end
