@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
+        <Document ID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F">
+            <Title>Tickets</Title>
+            <Text>Pour créer un ticket à quelqu'un :
+
+	ticket = Ticket.new('&lt;nom générique&gt;', '&lt;code à exécuter&gt;')
+	&lt;user&gt;.tickets.create(ticket.hash_to_create)
+
+Par exemple :
+
+	ticket = Ticket.new('activation_compte', "User.find(#{benoit.id}).confirm_compte")
+	# Crée un objet qui possède les propriétés :
+	#	:name, :digest, :action, :token
+	benoit.tickets.create(ticket.hash_to_create)</Text>
+        </Document>
         <Document ID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0">
             <Title>resources :model</Title>
             <Text>Mettre resources :&lt;model&gt; dans le fichier `routes.rb` revient à créer automatiquement les méthodes et variables suivantes :
@@ -55,7 +69,7 @@ Page d'édition de l'user
         </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
-            <Text>Pour qu'un hash retourne une valeur définie :
+            <Text>Pour qu'un élément de hash retourne une valeur définie :
 
 h = Hash.new
 h[:inexistant]
@@ -93,14 +107,36 @@ Donc :
             <Title>Update</Title>
             <Text>Pour actualiser un objet :
 
+
 	objet.update_attributes({... attributs})
 	# =&gt; true/false
+
 
 La méthode ci-dessous passe par la validation.
 
 On peut en revanche by-passer la validation en utilisant la méthode singulière :
 
-	objet.update_attribute(:attribut, valeur)</Text>
+
+	objet.update_attribute(:attribut, valeur)
+
+
+On peut aussi utiliser la méthode qui semble ne pas passer par la validation, lorsque plusieurs valeurs sont à modifier en même temps (noter que update_at n'est pas actualisé, avec cette méthode) :
+
+
+	objet.update_columns(&lt;hash&gt;) 
+
+
+</Text>
+        </Document>
+        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
+            <Title>Mails</Title>
+            <Text>Pour générer un nouveau "mailer"
+
+
+	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
+						                  &lt;methode-mail&gt; ... 
+
+</Text>
         </Document>
         <Document ID="A86A6632-0AF1-4B0E-BD81-A5416A907900">
             <Title>Validation</Title>
@@ -126,16 +162,6 @@ Pour tester qu'il y a un message flash :
 	assert flash.empty?
 	assert flash.any?
 	assert_not flash.empty?
-
-</Text>
-        </Document>
-        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
-            <Title>Mails</Title>
-            <Text>Pour générer un nouveau "mailer"
-
-
-	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
-						                  &lt;methode-mail&gt; ... 
 
 </Text>
         </Document>
@@ -198,6 +224,40 @@ updated_at
 Date de dernière modification des données de l'user
 	
 					</Text>
+        </Document>
+        <Document ID="9F1BE186-BD95-4A3B-8FC9-12D9C4FFF7C0">
+            <Title>Cryptage</Title>
+            <Text>On utilise la class BCrypt
+
+Soit un mot à coder 'mot en clair'.
+
+	version_claire = 'mot en clair'
+
+	# Pour une utilisation avec un « token », on utilise :
+	# C'est ce token qui sera utilisé et comparé à la version
+	# enregistrée et cryptée
+	version_claire = SessionsHelper.new_token
+
+On peut en obtenir une version cryptée avec :
+
+	version_crypted = BCrypt::Password.create(version_claire[, cost: &lt;prix&gt;])
+	# &lt;prix&gt; est un nombre qui augmente le nombre de passe.
+
+On enregistre ce mot crypté dans une table :
+
+	model.update_attribute(cversion: version_crypted.to_s)
+	# Remarquer le "to_s"
+
+Pour tester la correspondance :
+
+	c = BCrypt::Password.new(model.cversion)
+	# cversion est la version cryptéé et stringifiée du mot de passe
+	if c == 'mot en clair' =&gt; true
+		# Noter que BCrypt::Password surclasse la méthode '=='
+		# C'est OK
+	else
+		# Le mot codé ne correspond pas
+	end</Text>
         </Document>
         <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
             <Title>Possessions</Title>
@@ -426,7 +486,9 @@ Pour essayer le bac à sable sur heroku :
         </Document>
         <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
             <Title>TODO</Title>
-            <Text>Ajouter une confirmation de l'email dans le formulaire d'inscription</Text>
+            <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
+	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
+</Text>
         </Document>
         <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
             <Title>Introduction</Title>
@@ -475,6 +537,12 @@ test "le contrôleur répond à l'action" do
 	assert_response :success
 end
 </Text>
+        </Document>
+        <Document ID="B5ABE287-7122-48A9-9B89-9C1687BE9664">
+            <Title>Autres ressources</Title>
+            <Text>Le "Rails style guide"
+
+https://github.com/rubocop-hq/rails-style-guide</Text>
         </Document>
         <Document ID="7374CC1D-A149-4586-B0B7-5E5EBA139D83">
             <Title>Quotidien programmation</Title>

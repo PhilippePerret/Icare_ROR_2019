@@ -1,0 +1,18 @@
+<% set_title('Réinitialisation du mot de passe')%>
+
+<div class="container">
+  <div class="row">
+    <p>Merci de préciser avec quelle adresse mail vous vous êtes inscrit(e).</p>
+  </div>
+  <div class="row">
+    <div class="col col-md-offset-2 col-md-4">
+      <%= form_for('infopassword', url: password_resets_path) do |f| %>
+        <%= f.label :email, 'Votre adresse mail' %>
+        <%= f.email_field :email, required: true %>
+        <div class="right vair">
+          <%= f.submit 'M’envoyer le code de réinitialisation', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

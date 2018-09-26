@@ -51,4 +51,10 @@ Rails.application.routes.draw do
   # Création d'un module
   post  'modules'  => 'abs_modules#create'
 
+
+  # === Mot de passe réinitialisation ===
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  # get 'password_resets/new'
+  # get 'password_resets/edit'
+
 end

@@ -80,12 +80,12 @@ class User < ApplicationRecord
   def create_activation_digest
     @ticket = Ticket.new(
               name: 'activation_compte',
-              action: "User.find(#{self.id}).active_compte"
+              action: "User.find(%{user_id}).active_compte"
               )
     self.tickets.create(@ticket.hash_to_create)
     self.ticket_token = @ticket.token
     # Laisser en bas pour retourner le mail produit
-    mail = UserMailer.activation_compte(self) #=> Class Mail
+    mail = UserMailer.activation_compte(self, @ticket) #=> Class Mail
     mail.deliver_now
     return mail
   end

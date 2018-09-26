@@ -1,26 +1,24 @@
 class UserMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
+  # Envoi le mail d'activation du compte
   #
-  #   en.user_mailer.activation_compte.subject
-  #
-  def activation_compte(user)
+  # Attention : ça n'envoie pas le mail.
+  def activation_compte(user, ticket)
     @greeting = "Bonjour #{user.name}"
     @user = user # pour le mail
     @user.ticket_token ||= SessionsHelper.new_token # non défini quand preview
-    @url_for_ticket = ticket_run_url(@user.tickets.last.id, token: user.ticket_token)
+    @url_for_ticket = ticket_run_url(ticket.id, token: ticket.token)
     mail(to: user.email) # retourné à la méthode appelante
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
+  # Envoi le mail de réinitialisation du mot de passe
   #
-  #   en.user_mailer.reset_password.subject
-  #
-  def reset_password(user)
+  # Attention : ça n'envoie pas le mail (ajouter .deliver_now à la méthode
+  # appelante)
+  def reset_password(user, ticket)
     @greeting = "Bonjour #{user.name}"
-
-    mail( to: user.email, subject: 'Modification du mot de passe')
+    @user = user
+    @url_for_ticket = ticket_run_url(ticket.id, token: ticket.token)
+    mail(to: user.email)
   end
 end

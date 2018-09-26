@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         else
           # Email pas encore confirmé
 
-          flash[:danger] = I18n.t('users.errors.mail.not_confirmed', name: user.name)
+          flash[:danger] = I18n.t('users.errors.email.not_confirmed', name: user.name)
           # TODO : On pourra joindre une adresse dans le message ci-dessus qui
           # pourra renvoyer le lien de confirmation de l'email (en recherchant
           # l'user et en relevant le ticket avec name: 'activation_compte')

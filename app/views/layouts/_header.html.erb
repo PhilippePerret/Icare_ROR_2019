@@ -47,7 +47,14 @@
         <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
-
-
   </div>
+
+  <%
+    # Pour faire des tests, en définissant une URL avec ?urltry=...
+    if params[:urltry]
+      %>
+    <div class="row">
+      <%= link_to "Essayer : #{params[:urltry]}", params[:urltry] %>
+    </div>
+  <% end %>
 </div>

@@ -1,16 +1,28 @@
 fr:
   users:
     success:
-      welcome:            'Bienvenue, %{name} !'
-      goodbye:            'À très bientôt, %{name} !'
+      welcome:            '🤗 Bienvenue, %{name} !'
+      goodbye:            '👋 À très bientôt, %{name} !'
     errors:
       login:
         invalid:          'Adresse mail et/ou mot de passe invalides.'
         force_tentative:  'Essayeriez-vous de forcer le site ?…'
-      mail:
+      email:
         not_confirmed:    '%{name}, vous ne pouvez rien faire avant d’avoir confirmé votre email.'
+        unknown:          'Désolé, mais ce mail est inconnu à l’atelier…'
 
+  email:
+    success:
+      mail_reset_sent:    'Un message vous a été envoyé à l’adresse %{email} pour ré-initialiser votre mot de passe.'
   tickets:
     errors:
-      unknown:  Soit ce ticket a déjà été joué, soit vous tentez de forcer le site, ce qui n’est pas très cool, dude…
-      invalid:  Malheureusement, je ne peux pas jouer ce ticket. Les informations que vous me transmettez sont invalides…
+      unknown:      Soit ce ticket a déjà été joué, soit vous tentez de forcer le site, ce qui n’est pas très cool, dude…
+      invalid:      Malheureusement, je ne peux pas jouer ce ticket. Les informations que vous me transmettez sont invalides…
+      out_of_date:  'Ce ticket est malheureusement périmé. Je ne peux rien faire pour vous…'
+
+  password:
+    success:
+      reset:              '%{pseudo}, votre mot de passe a été changé avec succès. 🤓 Notez-le bien, cette fois-ci !'
+    errors:
+      reset_not_allowed:          'Désolé, mais vous n’êtes pas en mesure de modifier ce mot de passe.'
+      confirmation_doesnt_match:  '🤔 La confirmation ne correspond pas au mot de passe. Merci de reconfirmer.'

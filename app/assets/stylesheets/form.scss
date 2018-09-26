@@ -1,14 +1,14 @@
 /* Formulaire */
 @import 'custom'; /* pour avoir les mixins */
 
-input[type="text"], textarea, select, .uneditable-input {
+input[type="text"], input[type="email"], input[type="password"], textarea, select, .uneditable-input {
   border: 1px solid #BBBBBB;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
-input[type="text"] {
+input[type="text"], input[type="email"], input[type="password"] {
   height: auto!important;
 }
 

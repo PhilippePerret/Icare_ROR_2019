@@ -3,3 +3,6 @@ fr:
     activation_compte:
       subject:          Veuillez confirmer votre candidature
       link_confirm:     Confirmez votre candidature à l’atelier Icare
+    reset_password:
+      subject:          Modification du mot de passe
+      mail_link:        Modifier le mot de passe
