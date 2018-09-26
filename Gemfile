@@ -70,7 +70,7 @@ group :test do
   gem 'minitest',                 '5.10.3'
   gem 'minitest-reporters',       '1.1.14'
 
-  gem 'minitest-rails-capybara'
+  gem 'minitest-rails-capybara',  '3.0.1'
 
   # Pour les tests automatiques
   gem 'guard',                    '2.13.0'
