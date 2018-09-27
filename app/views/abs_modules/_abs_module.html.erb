@@ -3,9 +3,23 @@
 
 def bouton_postulation(amod = nil)
   @absmod = amod unless amod.nil?
-  button = content_tag(:a, 'Postuler à ce module', href: abs_modules_path(@absmod), class: 'btn btn-primary')
-  div = content_tag(:div, button, class: 'col right')
-  content_tag(:div, div, class: 'row vair')
+  # buttons = Array.new
+  # buttons << content_tag(:a, 'Postuler à ce module', href: abs_modules_path(@absmod), class: 'btn btn-primary')
+  # if current_user.admin?
+  #   buttons << content_tag(:a, 'voir', href: abs_module_path(@absmod))
+  # end
+  # div = content_tag(:div, buttons.join, class: 'col right')
+  # content_tag(:div, div, class: 'row vair')
+
+  content_tag(:div, class: 'row vair') do
+    content_tag(:div, class: 'col right') do
+      if current_user && current_user.admin?
+        link_to('voir', abs_module_path(@absmod))
+      else
+        link_to('Postuler à ce module', abs_modules_path(@absmod))
+      end
+    end
+  end
 end
 %>
 <div class="container">

@@ -5,7 +5,7 @@ class AbsModulesController < ApplicationController
 
   # Afficher un module absolu en particulier
   def show
-    @amodule = AbsModule.find(params[:id])
+    @absmodule = AbsModule.find(params[:id])
   end
 
   # Updater les données d'un module d'apprentissage en particulier

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ACCUEIL (URL de base)
@@ -44,13 +45,7 @@ Rails.application.routes.draw do
 
   # Concernant les modules d'apprentissage
   resources :abs_modules
-  # get 'abs_modules/index'
-  # get 'modules/:id' => 'abs_modules#show'
-  # patch 'modules/:id' => 'abs_modules#update'
-  # delete 'modules/:id' => 'abs_modules#destroy'
-  # get   'modules' => 'abs_modules#index'
-  # # Création d'un module
-  # post  'modules'  => 'abs_modules#create'
+  resources :abs_etapes
 
 
   # === Mot de passe réinitialisation ===

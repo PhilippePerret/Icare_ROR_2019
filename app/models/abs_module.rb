@@ -7,5 +7,5 @@ class AbsModule < ActiveRecord::Base
 
   validates :short_description, presence: true
   validates :long_description, presence: true
-  
+
 end

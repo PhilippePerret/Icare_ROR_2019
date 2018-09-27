@@ -3,7 +3,7 @@
 
 fr:
   votre_email:    'Votre adresse mail'
-  
+
   hello:    "Bonjour à vous, bienvenue à l’atelier Icare."
   help:     "Aide"
   home:     "Accueil"
@@ -57,3 +57,6 @@ fr:
   will_paginate:
     previous_label: Précédent
     next_label:     Suivant
+  time:
+    formats:
+      long:   'Format de date long'

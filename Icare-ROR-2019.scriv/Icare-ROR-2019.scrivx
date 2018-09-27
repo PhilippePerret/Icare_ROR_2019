@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-27 10:59:13 +0300" ModID="D8F81AB2-93D7-49D7-8B6A-BF1EA1E47F4E">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-27 13:18:57 +0300" ModID="DE8B75DD-096B-4CEC-B156-CC13D715A52C">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-26 13:40:04 +0300">
             <Title>TODO</Title>
@@ -370,6 +370,55 @@
                     <TextSettings>
                         <TextSelection>96,0</TextSelection>
                     </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="4E13651D-70C3-4E95-9484-68853AA9B1DA" Type="Folder" Created="2018-09-27 13:01:49 +0300" Modified="2018-09-27 13:01:54 +0300">
+                    <Title>Administration</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="FD4D3546-4C14-4455-8D60-EEFE2988D1C1" Type="Text" Created="2018-09-27 13:02:03 +0300" Modified="2018-09-27 13:05:04 +0300">
+                            <Title>Introduction</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>280,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="4B837D6C-FF1A-44AF-B30E-05A9264C532B" Type="Text" Created="2018-09-27 13:13:19 +0300" Modified="2018-09-27 13:18:57 +0300">
+                            <Title>Ajouter ressource</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="38C3C0F0-E0FF-4F12-B0D2-D52661303255" Type="Text" Created="2018-09-27 13:07:49 +0300" Modified="2018-09-27 13:07:59 +0300">
+                    <Title>DB</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="25D5E120-67F9-43EF-B549-2368D4915AF8" Type="Text" Created="2018-09-27 13:08:12 +0300" Modified="2018-09-27 13:08:50 +0300">
+                            <Title>Reset</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>128,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
                 </BinderItem>
                 <BinderItem UUID="BDF6C165-D027-4AD0-A539-F2A4BBD3D815" Type="Text" Created="2018-09-26 08:15:31 +0300" Modified="2018-09-26 08:15:33 +0300">
                     <Title>Controller</Title>
@@ -811,8 +860,8 @@
     <RecentWritingHistory Date="2018-09-27 00:00:00 +0300">
         <DraftWordCount>211</DraftWordCount>
         <DraftCharCount>1518</DraftCharCount>
-        <OtherWordCount>220</OtherWordCount>
-        <OtherCharCount>1754</OtherCharCount>
+        <OtherWordCount>294</OtherWordCount>
+        <OtherCharCount>2290</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
