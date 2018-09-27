@@ -10,13 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_101941) do
+ActiveRecord::Schema.define(version: 2018_09_27_072449) do
+
+  create_table "abs_etapes", force: :cascade do |t|
+    t.integer "numero", limit: 3
+    t.integer "abs_module_id"
+    t.integer "type"
+    t.string "titre"
+    t.string "objectif"
+    t.text "travail"
+    t.text "methode"
+    t.integer "duree", limit: 3
+    t.integer "duree_max", limit: 4
+    t.text "liens"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["abs_module_id"], name: "index_abs_etapes_on_abs_module_id"
+  end
 
   create_table "abs_modules", force: :cascade do |t|
-    t.string "titre"
+    t.string "name"
     t.string "dim"
+    t.integer "module_id", limit: 2
+    t.integer "tarif", limit: 4
     t.text "long_description"
     t.text "short_description"
+    t.integer "nombre_jours", limit: 3
+    t.string "hduree"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tickets", force: :cascade do |t|

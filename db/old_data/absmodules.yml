@@ -1,0 +1,180 @@
+%YAML 1.1
+---
+# icare_modules.absmodules
+-
+  id: 1
+  name: "Analyse de film"
+  module_id: "analyse"
+  dim: 'ana'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>Ce module, destiné à l’apprenti-auteur comme à toute personne intéressée par le cinéma,  offre les outils indispensables à l'analyse pertinente d'un film.</p><p>Si vous êtes auteur, l’accent est particulièrement mis sur la façon de tirer profit de sa capacité d’analyse pour enrichir sa propre écriture, pour tirer des films tous les enseignements qui permettront de rendre plus pertinente son écriture.</p><p>Ce module s'appuie sur votre propre choix des films à analyser.</p>"
+  long_description: "<p>Ce module consacre deux mois (extensibles) à l'analyse précise et complète d'un film que vous choisissez, avec les conseils de Phil, parmi les grands films du cinéma ancien ou nouveau. Au cours de cette analyse, systématique, vous vous familiarisez avec tous les outils nécessaires à une approche riche et éclairée de l'œuvre filmée, outils qui vous permettront ensuite d'aborder toute autre œuvre cinématographique et même romanesque.</p><p>L'objectif de ce module est double :</p><ul>  <li>À titre de spectateur, l'objectif de ce module est de permettre de développer un plaisir entre plus grand (je dirais même plus “véritable”) des œuvres cinématographiques, en plaçant des mots et des concepts sur des émotions et des impressions et, plus encore, en découvrant les mécanismes invisibles qui régissent toute œuvre digne de ce nom.  </li>  <li>À titre d'auteur, l'objectif de ce module est de permettre de se familiariser avec les principaux concepts narratifs mis en action dans toute œuvre filmée et de découvrir d'autres notions plus particulières ou propres à l'œuvre choisie.  </li></ul><p>  Il est possible de suivre ce module plusieurs fois, sur autant de films que désiré, en bénéficiant chaque fois de l'accompagnement et du soutien du pédagogue du site. Trois films sont abordés par module.</p><p>  Notions théoriques et pratiques générales abordées&nbsp;:</p><ul>  <li>Approche générale de l'œuvre, éléments de méthodes (du général au particulier, la collecte des informations, etc.)&nbsp;;</li>  <li>Analyse des personnages principaux&nbsp;;</li>  <li>Analyse des mécanismes narratifs&nbsp;;</li>  <li>Établissement des fondamentales du film&nbsp;;</li>  <li>Analyse de la structure du film&nbsp;</li>  <li>Analyse et exploitation la plus complète des informations collectées (recherche et établissement des “brins”, panel des procédés courants utilisés, caractérisation et idiosyncrasie des personnages, gestion de la temporalité, procédés propres à l'œuvre analysée, développement des thématiques, éléments dynamiques, etc.).</li></ul>"
+  created_at: 1396892986
+  updated_at: 1417670945
+-
+  id: 2
+  name: "Documents"
+  module_id: "documents"
+  dim: 'doc'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>Ce module se concentre sur les documents que tout scénariste se doit de connaitre et maitriser afin d'acquérir une méthode efficace de travail : le Pitch, le Synopsis, le Séquencier,  l'Évènemencier, le Traitement, etc.</p><p>Est abordé ici le rôle spécifique de chaque document suivant les deux axes principaux de leur  utilisation et de leur nécessité : en tant que document indispensable au développement du projet et en tant que document utile à la présentation ou la vente du projet.</p><p>Un accent particulier est mis sur la clarté et la pertinence de ces documents, pour leur plus grande efficacité et le développement harmonieux du projet.</p><p><i>Note : le Scénario n'est pas abordé dans ce module, il fait l'objet, de par sa spécificité, d'un module dédié.</i></p>"
+  long_description: "<p>Tout auteur, toute personne peut-être, a entendu parler des “résumé”, “synopsis”, “pitch” et autre “Note d'intention”. Cependant, connaitre les termes est une chose, maitriser les notions qu'ils recouvrent en est une autre.</p><p>Ce module, unique en son genre, se propose de se concentrer sur l'usage et la forme, de faire toucher concrètement du doigt tous les documents de travail que sont :</p><ul><li>Le Pitch,</li><li>Le Brainstorming,</li><li>Le Synopsis,</li><li>Le Séquencier,</li><li>Le Chemin de fer,</li><li>Le Traitement,</li><li>La Note d'intention,</li><li>L'Évènemencier,</li></ul><p><em>Notez que le scénario, en tant que document, est abordé dans un module propre.</em></p><p>Au cours de ce module, l'icarien est amené à travailler sur la rédaction efficiente de chacun de ces documents, soit sur la base d'une histoire qui lui est proposé, soit sur la base d'un ou plusieurs de ses propres projets.</p><p>Sont abordés principalement, pour chacun des documents :</p><ul><li>Sa forme, sa rédaction, son caractère et son style&nbsp;;</li><li>Son intérêt et sa nécessité pour le projet&nbsp;;</li><li>Sa fonction précise&nbsp;;</li><li>Sa place chronologique dans le développement professionnel d'un projet&nbsp;;</li><li>Son type en tant que “Document de travail” ou “Document de vente”.</li></ul>"
+  created_at: 1396893024
+  updated_at: 1417670890
+-
+  id: 3
+  name: "Dynamique narrative"
+  module_id: "dynamique"
+  dim: 'dyn'
+  tarif: 115
+  nombre_jours: 60
+  hduree: "60 jours"
+  short_description: "<p>Dans ce module au nom quelque peu abscons, on se focalise sur la triade “OBJECTIF - OBSTACLE - CONFLIT” qui constitue le nerf de la guerre d'une histoire, qui constitue la réelle dynamique d'une récit (d'où son nom).</p><p>On apprend par ce biais à créer des intrigues les plus puissantes et les plus pertinences possibles.</p>"
+  long_description: "<p>Notions principales abordées et travaillées au cours de ce module&nbsp;:</p><ul><li>Importance narrative de la triade dynamique&nbsp;: OBJECTIF - OBSTACLE - CONFLIT&nbsp;;</li><li>Définition d'un réel objectif narratif&nbsp;;</li><li>Ce qu'est un véritable “obstacle dramaturgique”&nbsp;;</li><li>Maintien efficace de l'objectif d'un bout à l'autre de l'histoire&nbsp;;</li><li>Crescendo conflictuel versus crescendo d'obstacle&nbsp;;</li><li>Aborder avec pertinence et précision la notion d'“enjeu”&nbsp;;</li><li>La construction du personnage par rapport à l'objectif&nbsp;;</li><li>Influence des autres éléments narratifs sur la triade dynamique.</li></ul>"
+  created_at: 1417685945
+  updated_at: 1417685945
+-
+  id: 4
+  name: "Personnages"
+  module_id: "personnage"
+  dim: 'per'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>Ce module est consacré au développement des personnages de son histoire, pour leur donner épaisseur, complexité, crédibilité et intérêt.</p><p>L’accent est mis sur les deux personnages les plus importants du récit, le protagoniste et l’antagoniste (lorsqu’il existe), mais est également abordé le développement des autres  personnages ainsi que les relations indispensables qu'ils doivent entretenir.</p><p>Dans ce module sont abordés des notions telles que l’identification, la background et la backstory, les motivations, l’objectif de vie et l’objectif narration ainsi que les relations  ténues entre les personnages et les autres éléments dramaturgiques tels que la structure,  les éléments dynamiques ou les thèmes.</p>"
+  long_description: "<p>  Notions pratiques et théoriques abordées&nbsp;:</p><ul><li>Le personnage de fiction est-il une “vraie” personne ?</li><li>Les personnages principaux</li><li>Les personnages secondaires</li><li>Fonction et personnalité du personnage</li><li>Évolution du personnage</li><li>Croquis du personnage, les grands traits</li><li>Interroger le personnage, backstory et background</li><li>Personnage actif et personnage proactif</li><li>Fonction et spécificité du dialogue</li><li>Cohérence du personnage dans ses actions et dans l'intrigue</li><li>Rendre perceptible le personnage et ses facettes</li><li>Nécessité des personnages, nombre de personnages</li><li>Relation entre les personnages</li><li>Histoire à protagoniste multiple</li></ul><p>Au cours de ce module, vous serez amené à développer un certain nombre de personnages, sur la base de contraintes narratives ou sur la base d'histoires que vous proposerez.</p><p>Bien que focalisé sur les personnages, ce module n'en aborde pas moins les autres éléments dramaturgiques tels que la structure ou les thématiques, en exploitant la synergie que les personnages entretiennent avec ces éléments pour produire une dynamique narrative forte et prenante.</p>"
+  created_at: 1396893077
+  updated_at: 1417670770
+-
+  id: 5
+  name: "Scénario"
+  module_id: "scenario"
+  dim: 'sce'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>Ce module se concentre sur l'aspect rédactionnel du scénario. Au cours de ce module, l'apprenti-auteur apprendra à rédiger un scénario de façon professionnelle.</p>\n\n<p>L'accent est mis sur le fait que des problèmes ou des difficultés rédactionnelles révèlent souvent des problèmes dramaturgiques. En ce sens, l'apprentissage de la <em>rédaction scénaristique</em> est également un formidable outil d'apprentissage et d'amélioration de la  dramaturgie elle-même.</p>"
+  long_description: "<p>Notions abordées et travaillées au cours de ce module :</p>\n\n<ul>\n  <li>pour qui est écrit le scénario ?</li>\n  <li>règles de mise en page, intitulé, action, dialogues…</li>\n  <li>qu'est-ce qu'un bon scénario ?</li>\n  <li>comment lit le lecteur du scénario ?</li>\n  <li>les règles de rédaction, à mi-chemin entre littérature et technique cinématographique ;</li>\n  <li>suprématie de la simplicité ;</li>\n  <li>découpe en scènes, notion de rythme ;</li>\n  <li>termes à bannir, cartouches à économiser ;</li>\n  <li>écueils narratifs que révèle la rédaction du scénario, ainsi que leur solution ;</li>\n  <li>bonne approche de l'écriture du scénario ;</li>\n  <li>scènes particulières (flashbacks, montage en parallèle…) ;</li>\n  <li>relectures du scénario.</li>\n</ul>\n\n<p>Au cours de ce module, vous pourrez vous familiariser avec toutes les règles de rédaction d'une continuité dialoguée professionnelle. À l'aide d'exercices simples, tirés en priorité de votre propre projet, vous vous confronterez à toutes les difficultés et les particularités de l'écriture.</p>"
+  created_at: 1396893098
+  updated_at: 1417670923
+-
+  id: 6
+  name: "Structure"
+  module_id: "structure"
+  dim: 'stt'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>  Ce module est consacré à l'un des éléments dramaturgiques qui pose de nombreux problèmes  même aux auteurs les plus expérimentés : la structure.</p><p>  Quelle forme doit adopter le récit ? Aucune recette miracle ne permet de répondre à cette  question. En revanche, à partir de points de répères clairs et une bonne compréhension des nécessités et des mécanismes de la structuration, ce module permet de parvenir à créer une forme solide, prenante et harmonieuse qui s'affranchit du moule des paradigmes artificiels.</p>"
+  long_description: "<p>  Notions principales mises en pratique au cours de ce module&nbsp;:</p> <ul>  <li>Nécessité de la structure&nbsp;;</li>   <li>La forme générale de l'histoire&nbsp;;</li>   <li>Les scènes-clés&nbsp;;</li>   <li>Gestion et travail du rythme et du crescendo dramatique&nbsp;;</li>   <li>Construction progressive de la structure&nbsp;;</li>   <li>Les personnages et la dynamique narrative au service de la structure&nbsp;;</li> </ul><p>Au cours de ce module, vous serez amené à développer plusieurs structures, à différentes échelles (depuis la simple définition des actes jusqu'à la définition d'un séquencier complet), sur la base d'histoires que vous proposerez ou qui vous seront proposées.</p> <p>L'objectif est de se familiariser avec la structure jusqu'à se sentir parfaitement à l'aise pour aborder en confiance —&nbsp;grâce aux outils souples proposés&nbsp;— toute nouvelle histoire.</p>"
+  created_at: 1396892676
+  updated_at: 1417670730
+-
+  id: 7
+  name: "Suivi de projet (normal)"
+  module_id: "suivi_lent"
+  dim: 'spn'
+  tarif: 75
+  short_description: "<p>L'accompagnement de projet en rythme lent vous permet de développer votre projet de film (court ou long métrage) sous l'œil exigeant mais bienveillant d'un professionnel (Phil) passionné de dramaturgie et de réalisation personnelle.</p><p>Le “rythme lent” est adapté à tout auteur qui n'exerce pas l'écriture en tant qu'activité principale. À titre purement indicatif, cela correspond peu ou prou à un travail tous les  quinze jours.</p>"
+  long_description: "<p>L'objectif ultime de ce module est d'accompagner le développement d'un projet personnel de court ou de long métrage.</p><p>Ce développement se fait par étapes successives et progressives, qui s'adaptent à l'avancée particulière du projet et les compétences de ou des auteurs (deux co-auteurs peuvent en effet s'inscrire comme un icarien unique), pour parvenir le plus harmonieusement possible au film rêvé.</p><p>Au cours de ce module, les notions pratiques et théoriques des autres modules sont abordées (fondamentales, personnages et structure, éléments dynamiques, thématiques, méthode, etc. — voir le détail en choisissant les autres modules)</p><p>La durée de ce module est très variable. Elle est fonction du type du projet (long ou court métrage), de l'état de son avancement lors de l'inscription et du niveau d'expérience de l'auteur. La durée du module peut varier de 3 mois (pour le court-métrage d'un auteur expérimenté)  à 2 ans (pour un tout premier long-métrage d'un apprenti-auteur).</p><p>Contrairement au module “suivi en rythme normal”, ce module est préconisé particulièrement pour les auteurs sans expérience qui ne peuvent consacrer qu'un temps limité à l'écriture.</p><p>Bien entendu, l'icarien a tout loisir d'interrompre le cursus d'apprentissage à tout moment en fin du mois (puisque le paiement est mensuel).</p><p>Des points sur le projet sont faits régulièrement, au téléphone ou par mail à la convenance de l'auteur.</p><p>En fin de projet, suivant le résultat obtenu et les désirs de l'auteur, un suivi pour la réalisation du film pourra être suggéré (proposition aux maisons de production, conseils de réalisation, aides financières et subventions, etc.).</p>"
+  created_at: 1396893329
+  updated_at: 1417670819
+-
+  id: 8
+  name: "Suivi de projet (intensif)"
+  module_id: "suivi_normal"
+  dim: 'spi'
+  tarif: 115
+  short_description: "<p>L'accompagnement de projet en rythme normal vous permet de développer votre projet de film (court ou long métrage) sous l'œil exigeant mais bienveillant d'un professionnel (Phil) passionné de dramaturgie et de réalisation personnelle.</p><p>Le “rythme normal” est adapté à tout auteur exerce ou veut exercer l'écriture en tant qu'activité principale, s'en donne les moyens par un travail quotidien. À titre purement  indicatif, cela correspond peu ou prou à un travail sur le projet par semaine.</p>"
+  long_description: "<!--HTML--><p>L'objectif ultime de ce module est d'accompagner le développement d'un projet personnel de court ou de long métrage.</p><p>Ce développement se fait par étapes successives et progressives, qui s'adaptent à l'avancée particulière du projet et les compétences de ou des auteurs (deux co-auteurs peuvent en effet s'inscrire comme un icarien unique), pour parvenir le plus harmonieusement possible au film rêvé.</p><p>Au cours de ce module, les notions pratiques et théoriques des autres modules sont abordées (fondamentales, personnages et structure, éléments dynamiques, thématiques, méthode, etc. — voir le détail en choisissant les autres modules)</p><p>La durée de ce module est très variable. Elle est fonction du type du projet (long ou court métrage), de l'état de son avancement lors de l'inscription et du niveau d'expérience de l'auteur. La durée du module peut varier de 3 mois (pour le court-métrage d'un auteur expérimenté)  à 2 ans (pour un tout premier long-métrage d'un apprenti-auteur).</p><p>Contrairement au module “suivi en rythme lent”, ce module est préconisé particulièrement pour les auteurs (possédant déjà une expérience de l'écriture) qui peuvent consacrer un temps suffisant à l'écriture, de une à deux heures par jour en moyenne.</p><p>Bien entendu, l'icarien a tout loisir d'interrompre le cursus d'apprentissage à tout moment en fin du mois (puisque le paiement est mensuel).</p><p>Des points sur le projet sont faits régulièrement, au téléphone ou par mail à la convenance de l'auteur.</p><p>En fin de projet, suivant le résultat obtenu et les désirs de l'auteur, un suivi pour la réalisation du film pourra être suggéré (proposition aux maisons de production, conseils de réalisation, aides financières et subventions, etc.).</p>"
+  created_at: 1396893303
+  updated_at: 1417670859
+-
+  id: 9
+  name: "Thèmes"
+  module_id: "thematique"
+  dim: 'thm'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois (extensibles)"
+  short_description: "<p>Ce module se concentre sur les aspects “thématique” de l'histoire. Il vise à permettre  à l'apprenti-auteur d'acquérir une pleine maitrise du développement riche et pertinent de ses thèmes, quels qu'ils soient.</p><p>Il vise également à permettre de prendre conscience de l'influence capitale des thèmes sur  le récit et son développement et, partant, d'exploiter et de s'appuyer sur ces thèmes pour  développer de façon harmonieuse et profonde aussi bien les personnages que la structure de son récit.</p>"
+  long_description: "<p>  Notions abordées et travaillées au cours de ce module&nbsp;:</p><ul>  <li>L'importance de l'attention portée aux thèmes</li>  <li>Dégager les thématiques mises en œuvre dans l'histoire</li>  <li>Étude de l'importance de chaque thème, macro-thèmes et micro-thèmes</li>  <li>Hiérarchisation des thèmes pour aboutir à un propos pertinent</li>  <li>Concentration sur les thèmes forts</li>  <li>Le message du film, la ou les prémisses, propos implicite ou explicite</li>  <li>Les thèmes, facteur d'enrichissement des personnages et de l'intrigue</li>  <li>Développement harmonieux des thèmes, idées centripètes et idées centrifuges</li>  <li>La note d'intention comme source de réflexions et de perspectives</li></ul><p>  Au cours de ce module, vous serez amené à dégager les thématiques de votre histoire, ou d'histoires qui vous seront proposées, et à apprendre à les développer de façon harmonieuse dans le récit pour lui donner une réelle intensité dramatique, que ce soit dans la comédie, le film d'action ou le film “à message”.</p>"
+  created_at: 1396893160
+  updated_at: 1417670970
+-
+  id: 10
+  name: "Bible de série"
+  module_id: "bible"
+  dim: 'bib'
+  tarif: 165
+  nombre_jours: 90
+  hduree: "90 jours"
+  short_description: "<p>  Vous avez l'idée d'une série TV mais vous n'avez aucune connaissance ou seulement une connaissance vague du document qu'attendent les producteurs&nbsp;?… Ce module est destiné à combler cette lacune <strong>en vous accompagnant dans la réalisation d'une bible de série complète</strong> depuis la définition des éléments de base jusqu'à la réalisation d'un dossier complet et pertinent.</p><p>Cet apprentissage peut se faire sur la base d'un projet de série allant du format court (environ 3 minutes) jusqu'au format 52 minutes. Il est prioritairement destiné à des auteurs ayant déjà une certaine expérience de l'écriture audiovisuelle.</p><p>Ce module peut être abordé <em>ex nihilo</em> par l'apprenti-auteur, c'est-à-dire sans aucune idée de la série à développer, mais il sera plus profitable d'avoir une idée —&nbsp;même vague&nbsp;— de la série qu'on aimerait entreprendre.</p>"
+  long_description: "<p>Notions étudiées et travaillées au cours de ce module&nbsp;:</p><ul><li>Constitution du dossier complet d'une bible&nbsp;;</li><li>L'impact des premières pages&nbsp;;</li><li>Éléments indispensables du dossier&nbsp;;</li><li>La définition et l'affirmation précise du genre&nbsp;;</li><li>Mise en exergue du potentiel de la série&nbsp;;</li><li>Définition dynamique des personnages et idiosyncrasie&nbsp;;</li><li>Construction des arches des personnages&nbsp;;</li><li>Construction des arches des intrigues principales&nbsp;;</li><li>Adéquation entre le projet et la durée des épisodes&nbsp;;</li><li>Adéquation entre le projet et la production actuelle&nbsp;;</li><li>Les exemples d'épisodes&nbsp;;</li><li>Où et à qui proposer la bible une fois achevée&nbsp;?</li></ul><p>Noter qu'à l'instar des autres modules, la durée de trois mois de ce module est purement indicative et ne correspond qu'à la durée pour un auteur possédant déjà une certaine expérience et se consacrant à temps complet à son travail. Dans la réalité, ce module de développement et d'apprentissage se réalise en 12 étapes de travail qui peuvent s'étaler sur une durée beaucoup plus longue (sur la base du même tarif, faut-il le préciser&nbsp;?)</p><p>À l'issue de ces 12 étapes de travail, suffisantes pour l'apprentissage mais insuffisantes pour parvenir à une bible de série professionnelle (qui nécessite en général plus d'un an de travail), ce module peut être renouvelé —&nbsp;au même tarif&nbsp;— pour permettre à l'auteur d'aboutir à une série susceptible d'être achetée.</p>"
+  created_at: 1417683906
+  updated_at: 1417683906
+-
+  id: 11
+  name: "Procédés"
+  module_id: "procedes"
+  dim: 'prc'
+  tarif: 115
+  nombre_jours: 61
+  hduree: "2 mois"
+  short_description: "<p>Ce module est consacré au travail particulier des procédés dramatiques les plus importants rencontrés dans toutes histoires quelle qu'elle soit.</p><p>Ce travail se fait sur la base d'exercices concrets proposés à l'auteur —&nbsp;la plupart du temps des scènes ou des séquences&nbsp;— où il apprend à maitriser ces procédés dramatiques indispensables.</p><p>Ce module peut être répété (donc acheté une seconde fois, voire plus) pour aborder d'autres procédés que ceux travaillés au cours du premier module ou ne sont abordés que les procédés les plus essentiels.</p>"
+  long_description: "<p>Notions principales abordées et travaillées au cours de ce module&nbsp;:</p><ul><li>Développement d'<strong>Ironies dramatiques</strong> sous des formes diverses pour produire des effets tout aussi variés&nbsp;;</li><li>Exploitation de la notion incontournable de <strong>Préparation / Paiement</strong>&nbsp;;</li><li>Exploitation des <strong>Inférences</strong>, moyen puissant et universel de susciter l'intérêt du lecteur/spectateur&nbsp;;</li><li>Exploitation des <strong>changements de valeurs</strong>, outil puissant et universel pour créer une progression dynamique et pertinente tout au long du récit&nbsp;;</li><li>Exploitation du <strong>révélateur de changement</strong>&nbsp;;</li><li>Approche de procédés plus ponctuels (contre-pied, préparation d'une émotion par son contraire, action vaut réponse, etc.)&nbsp;;</li><li>Autres procédés en fonction des demandes ou besoins de l'auteur…</li></ul>"
+  created_at: 1417690283
+  updated_at: 1417690283
+-
+  id: 12
+  name: "Coaching intensif"
+  module_id: "coaching_intensif"
+  dim: 'coa'
+  tarif: 200
+  nombre_jours: 180
+  hduree: "3 mois"
+  short_description: "<p>Ce module d'un caractère un peu particulier permet de travailler de façon assez intense sur un projet.</p><p>Il est particulièrement adapté par exemple pour&nbsp;:</p><ul>  <li>La finalisation d'un dossier de scénario à envoyer à une production&nbsp;;</li>  <li>La préparation à un concours, tel que l'entrée au CEEA ou autre école de cinéma&nbsp;;</li>  <li>L'accompagnement sur la finalisation d'un scénario.</li></ul>"
+  long_description: "<p>Ce module se déroule différemment des autres modules pour s'adapter très exactement à la nature du travail à effectuer. S'il fonctionne comme les autres modules sur la base <em>d'étapes de travail précises</em>, ces étapes peuvent être de nature très différentes.</p><p>C'est le module idéal si l'on est satisfait de son projet par exemple, mais que l'on souhaite le passer à l'épreuve d'un regard profesionnel et apporter les modifications qui pourront lui donner toutes ses chances.</p><p>C'est le module idéal si l'on compte intégrer une école audiovisuelle qui recrute par concours telle que le CEEA (un icarien a réussi cette entrée difficile après sa préparation à l'atelier, et un autre est allé jusqu'au troisième tour — un tour exceptionnellement ajouté en 2014 après les deux tours normaux pour quelques candidats à la limite d'être acceptés).</p><p>C'est le module idéal si l'on veut être accompagné pendant une courte période sur son développement, pour passer un cap difficile par exemple.</p><p><em>Noter que ce module ne bénéficie pas du mois à l'essai comme les autres modules, pour une raison qui vous semblera certainement évidente…</em></p>"
+  created_at: 1421435968
+  updated_at: 1421435968
+-
+  id: 13
+  name: "Découverte"
+  module_id: "decouverte"
+  dim: 'dec'
+  tarif: 95
+  nombre_jours: 60
+  hduree: "60 jours"
+  short_description: "<p>Si vous n'avez jamais écrit, si vous n'avez jamais conçu la moindre histoire, alors ce module est fait pour vous. Il vous permet d'aborder la narration en mode “découvrerte”, par le biais d'exercices simples et créatifs.</p>"
+  long_description: "<p>Le module “Découverte” permet une première sensibilisation au monde créatif riche et infini qu'est la narration. Quoi de plus attractif, de plus épanouissant, que de plonger dans une histoire, dans ses personnages, dans ses univers&nbsp;?</p><p>Cependant, on peut avoir des craintes, se dire que ça n'est pas pour soi, se dire qu'on n'en a pas les compétences, et que ces compétences sont nombreuses et exigeantes. On peut en bref ne pas oser le faire.</p><p>Ce module voudrait apporter une réponse décomplexée à ces freins qui vous empêchent peut-être de vous lancer. Il voudrait vous amener tout naturellement à le faire, sans même vous poser de (mauvaises) questions.</p><p>Par le biais d'exercices simples et stimulants, vous pourrez grâce à ce module approcher la narration de très près, faire plus que la toucher du doigt mais plutôt vous en emparer à pleines mains.</p><p>Et ce, toujours avec ce qui fait la marque de fabrique de l'atelier Icare, c'est-à-dire l'apprentissage par la pratique. Cette pratique est plus importante encore ici qu'ailleurs, aux tout débuts, pour apprendre d'un côté à savoir stimuler de façon simple son imaginaire et de l'autre à savoir organiser ses idées pour en tirer le meilleur.</p>"
+  created_at: 1424693055
+  updated_at: 1424693055
+-
+  id: 14
+  name: "Initiation à la dramaturgie"
+  module_id: "initiation"
+  dim: 'ini'
+  tarif: 98
+  nombre_jours: 60
+  hduree: "2 mois"
+  short_description: "<p>Le module “Initiation à la dramaturgie” permet comme son nom l'indique de s'initier à la conception d'histoires principalement visuelles.</p><p>Il se destine à toute personne n'ayant aucune expérience d'écriture ou très peu et permet d'aborder les différents aspects du développement d'une histoire.</p><p>Voir le détail du module pour comprendre la différence avec le module “Découverte”.</p>"
+  long_description: "<p>À l'instar du module “Découverte” qui permet un premier contact avec les généralités d'une histoire, ce module “Initiation à la dramaturgie” permet de mieux se familiariser encore avec la conception narrative en abordant chaque élément de façon plus profonde et précise.</p><p>Grâce à la modularité de la pédagogie appliquée à l'atelier Icare, ce module s'adapte de façon parfaite au niveau propre de chaque apprenti(e)-auteur(e). Aussi bien, vous pouvez le choisir si vous n'avez aucune expérience de l'écriture que si vous écrivez de loin en loin, épisodiquement, depuis un certain temps déjà.</p><p>Toujours par le biais d'exercices simples, stimulants et ludiques, l'apprenti(e)-auteur(e) apprend dans ce module à poser les bases d'une histoire solide, au niveau des personnages comme au niveau de la structure générale. Il ou elle apprend ensuite à développer et organiser de la façon la plus harmonieuse possible le cours de son récit.</p><p>Bien qu'il ne soit qu'une “initiation”, ce module n'en aborde pas moins des notions aussi importantes et universelles dans l'écriture que la notion de protagoniste, la notion d'objectif et d'enjeu, la notion de conflit, la notion de développement thématique ou encore de prémisse.</p><p>Ce module est le meilleur tremplin avant de se lancer dans un module de type “accompagnement de projet” au sein de l'atelier.</p>"
+  created_at: 1424790485
+  updated_at: 1424790485
+-
+  id: 15
+  name: "Pourquoi votre manuscrit a-t-il été refusé ?"
+  module_id: "pourquoi_refus"
+  dim: 'ref'
+  tarif: 50
+  nombre_jours: 30
+  hduree: "1 mois"
+  short_description: "<p>Votre manuscrit vient d’être refusé par toutes les maisons d’édition auxquelles vous l’aviez envoyé. Ou c’est votre scénario qui vient d’être rejeté par toutes les maisons de production qui l’avaient reçu.</p>\n\n<p>Dans presque tous les cas, vous n’avez aucune idée du “pourquoi” ?</p>\n\n<p>Ce module d’un genre tout particulier vous offre l’opportunité de comprendre objectivement ce <em>pourquoi</em>.</p>\n\n<p>Il vous offre l’opportunité unique de ne pas en rester à cette incertitude qui découle du fait de l’absence totale de tout commentaire, de toute raison. Grâce à ce module, vous pouvez découvrir précisément pourquoi votre histoire, en l’état, n’a convaincu personne.</p>"
+  long_description: "<p>Il peut paraitre ironique de proposer un module « après l’échec » plutôt que de proposer un module qui permettrait de produire un projet retenu. C’est vrai. Faisons cependant remarquer que plusieurs modules de l’atelier Icare permettent justement de le faire. Il s’agit des modules de suivi de projet, ainsi que du module de coaching.</p>\r\n\r\n<p>Mais en réalité, le fait de proposer un « service après échec » découle d’une expérience que possède Phil des aspirant-auteur(e)s : dans un premier temps, ils se pensent tout puissants, très compétents en matière de narration comme en matière de style, ils croient tellement en leur histoire et leur écriture qu’ils sont convaincus que les éditeurs ou les producteurs vont se jeter sur leur manuscrit ou leur scénario…</p>\r\n\r\n<p>Plus dure est la chute… Car malheureusement, dans la plupart des cas, pour ne pas dire <em>dans presque tous les cas</em>, ces aspirant-auteur(e)s sont ramené(e)s durement à la réalité, et ce sans un seul mot d’explication, sans un seul commentaire autre que la phrase-type bien connue : “Malgré l’intérêt indéniable de votre projet, nous sommes au regret etc.”…</p>\r\n\r\n<p>Les aspirant-auteur(e)s se rassurent alors en relisant dix fois ce “l’intérêt indiscutable de votre projet” sans comprendre que c’est, au mieux, une formule de politesse et, dans la plupart des cas, une simple façon de ne pas fâcher les prétendant(e)s auteur(e)s.</p>\r\n\r\n<p><strong>Ce module vise à expliquer, sur la base d’éléments les plus objectifs possible, les raisons réelles de ce refus.</strong></p>\r\n\r\n<p>Ce module s’appuie également sur un principe bien connu : il faut <strong>apprendre de ses échecs</strong>. En ayant un retour sur les premières pages de ce que l’on pensait être une “œuvre”, voir un “chef-d’œuvre”, on peut apprendre beaucoup sur son écriture, sur les choses à travailler, à apprendre, ainsi que sur la façon dont sera perçu, loin de tout fantasme, son manuscrit ou son scénario.</p>\r\n\r\n<p>C’est donc un service d’une importance capitale rendu à l’aspirant-auteur(e) qui souhaite aller plus loin, qui souhaite progresser, ne pas faire les mêmes erreurs, l’auteur(e) qui n’a pas peur de se regarder en face, qui n’a pas peur de se remettre en cause pour tenter de convaincre un cercle plus large que celui de son simple entourage ou de son blog.</p>\r\n\r\n<p><strong>DÉROULEMENT DU MODULE</strong></p>\r\n<p>Ce module consiste à expliquer aux aspirant-auteur(e)s, sur la base des vingts premières pages de leur manuscrit ou les dix premières pages de leur scénario, pourquoi celui-ci n’a pas été retenu, publié ou acheté.</p>\r\n\r\n<p><em>Note : souvent, et naïvement, l’aspirant-auteur(e) s’imagine que le lecteur de maison d’édition ou de boite de productions va lire sa prose d’un bout à l’autre pour se faire son avis. Et qu’il sera indulgent quant à certains aspects, un début un peu mou, des fautes d’orthographes, des phrases approximatives, etc.</em><br>\r\n<em>Sachez-le : rien de plus faux. Contrairement à ce que l’aspirant-auteur(e) s’imagine, c’est sur ses 10 pages de scénario ou ses 20 pages de manuscrit (parfois beaucoup moins) que se détermine le destin d’une histoire.</em></p>\r\n\r\n<p>On peut même affirmer qu’un auteur ou qu’un scénariste se reconnait dès la première ligne.\r\nPhil, qui lit une quantité importante de manuscrits et de scénarios professionnels ou amateurs, est presque capable, <em>dès les 5 premières lignes</em>, de déterminer la valeur de l’auteur auquel il a à faire.</p>\r\n\r\n<p>Ce module se déroule donc, concrètement, en quatre étapes :</p>\r\n\r\n<ol>\r\n<li>Transmission à Phil des 20 premières pages du manuscrit de roman ou des 10 premières pages du scénario.</li>\r\n<li>Phil en fait l’analyse. Si nécessaire, il peut demander à l’auteur(e) des pages supplémentaires pour se faire une idée plus juste.</li>\r\n<li>Phil remet à l’auteur(e) une fiche très détaillée qui contient principalement : <ul>\r\n<li>les faiblesses rédhibitoires relevées,</li>\r\n<li>les pistes d’évolution de l’auteur(e) s’il veut parvenir à convaincre.</li>\r\n</ul></li>\r\n<li>Après lecture de cette fiche détaillée, l’auteur(e) peut demander des précisions, si nécessaire, sur les commentaires émis, afin d’en tirer le meilleur parti.\r\n</ol>"
+  created_at: 1520403791
+  updated_at: 1520403791
+...

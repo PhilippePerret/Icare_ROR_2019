@@ -1,0 +1,32 @@
+<%
+# Partiel pour afficher les modules sous forme de liste
+
+def bouton_postulation(amod = nil)
+  @absmod = amod unless amod.nil?
+  button = content_tag(:a, 'Postuler à ce module', href: abs_modules_path(@absmod), class: 'btn btn-primary')
+  div = content_tag(:div, button, class: 'col right')
+  content_tag(:div, div, class: 'row vair')
+end
+%>
+<div class="container">
+  <h3>Module « <%= abs_module.name %> »</h3>
+  <%= bouton_postulation(abs_module) %>
+
+  <h4>En résumé</h4>
+  <div class="row">
+    <div class="col col-md-7 col-md-offset-1 justify">
+      <%= raw abs_module.short_description %>
+    </div>
+  </div>
+
+  <%= bouton_postulation %>
+
+  <h4>Plus en détail</h4>
+  <div class="row">
+    <div class="col col-md-7 col-md-offset-1 justify">
+      <%= raw abs_module.long_description %>
+    </div>
+  </div>
+
+  <%= bouton_postulation %>
+</div>

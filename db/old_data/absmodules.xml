@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.9
+- https://www.phpmyadmin.net
+-
+- Host: mysql-icare.alwaysdata.net
+- Generation Time: Sep 27, 2018 at 09:35 AM
+- Server version: 10.1.31-MariaDB
+- PHP Version: 7.2.2
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="icare_modules" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="absmodules">
+                CREATE TABLE `absmodules` (
+                  `id` int(2) NOT NULL,
+                  `module_id` varchar(40) NOT NULL,
+                  `name` varchar(50) NOT NULL,
+                  `tarif` int(4) NOT NULL,
+                  `nombre_jours` int(3) DEFAULT NULL,
+                  `hduree` varchar(100) DEFAULT NULL,
+                  `short_description` text NOT NULL,
+                  `long_description` text NOT NULL,
+                  `created_at` int(10) NOT NULL,
+                  `updated_at` int(10) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'icare_modules'
+    -->
+    <database name="icare_modules">
+        <!-- Table absmodules -->
+        <table name="absmodules">
+            <column name="id">1</column>
+            <column name="module_id">analyse</column>
+            <column name="name">Analyse de film</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;Ce module, destiné à l’apprenti-auteur comme à toute personne intéressée par le cinéma,  offre les outils indispensables à l'analyse pertinente d'un film.&lt;/p&gt;&lt;p&gt;Si vous êtes auteur, l’accent est particulièrement mis sur la façon de tirer profit de sa capacité d’analyse pour enrichir sa propre écriture, pour tirer des films tous les enseignements qui permettront de rendre plus pertinente son écriture.&lt;/p&gt;&lt;p&gt;Ce module s'appuie sur votre propre choix des films à analyser.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Ce module consacre deux mois (extensibles) à l'analyse précise et complète d'un film que vous choisissez, avec les conseils de Phil, parmi les grands films du cinéma ancien ou nouveau. Au cours de cette analyse, systématique, vous vous familiarisez avec tous les outils nécessaires à une approche riche et éclairée de l'œuvre filmée, outils qui vous permettront ensuite d'aborder toute autre œuvre cinématographique et même romanesque.&lt;/p&gt;&lt;p&gt;L'objectif de ce module est double :&lt;/p&gt;&lt;ul&gt;  &lt;li&gt;À titre de spectateur, l'objectif de ce module est de permettre de développer un plaisir entre plus grand (je dirais même plus “véritable”) des œuvres cinématographiques, en plaçant des mots et des concepts sur des émotions et des impressions et, plus encore, en découvrant les mécanismes invisibles qui régissent toute œuvre digne de ce nom.  &lt;/li&gt;  &lt;li&gt;À titre d'auteur, l'objectif de ce module est de permettre de se familiariser avec les principaux concepts narratifs mis en action dans toute œuvre filmée et de découvrir d'autres notions plus particulières ou propres à l'œuvre choisie.  &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;  Il est possible de suivre ce module plusieurs fois, sur autant de films que désiré, en bénéficiant chaque fois de l'accompagnement et du soutien du pédagogue du site. Trois films sont abordés par module.&lt;/p&gt;&lt;p&gt;  Notions théoriques et pratiques générales abordées&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;  &lt;li&gt;Approche générale de l'œuvre, éléments de méthodes (du général au particulier, la collecte des informations, etc.)&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;Analyse des personnages principaux&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;Analyse des mécanismes narratifs&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;Établissement des fondamentales du film&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;Analyse de la structure du film&amp;nbsp;&lt;/li&gt;  &lt;li&gt;Analyse et exploitation la plus complète des informations collectées (recherche et établissement des “brins”, panel des procédés courants utilisés, caractérisation et idiosyncrasie des personnages, gestion de la temporalité, procédés propres à l'œuvre analysée, développement des thématiques, éléments dynamiques, etc.).&lt;/li&gt;&lt;/ul&gt;</column>
+            <column name="created_at">1396892986</column>
+            <column name="updated_at">1417670945</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">2</column>
+            <column name="module_id">documents</column>
+            <column name="name">Documents</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;Ce module se concentre sur les documents que tout scénariste se doit de connaitre et maitriser afin d'acquérir une méthode efficace de travail : le Pitch, le Synopsis, le Séquencier,  l'Évènemencier, le Traitement, etc.&lt;/p&gt;&lt;p&gt;Est abordé ici le rôle spécifique de chaque document suivant les deux axes principaux de leur  utilisation et de leur nécessité : en tant que document indispensable au développement du projet et en tant que document utile à la présentation ou la vente du projet.&lt;/p&gt;&lt;p&gt;Un accent particulier est mis sur la clarté et la pertinence de ces documents, pour leur plus grande efficacité et le développement harmonieux du projet.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Note : le Scénario n'est pas abordé dans ce module, il fait l'objet, de par sa spécificité, d'un module dédié.&lt;/i&gt;&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Tout auteur, toute personne peut-être, a entendu parler des “résumé”, “synopsis”, “pitch” et autre “Note d'intention”. Cependant, connaitre les termes est une chose, maitriser les notions qu'ils recouvrent en est une autre.&lt;/p&gt;&lt;p&gt;Ce module, unique en son genre, se propose de se concentrer sur l'usage et la forme, de faire toucher concrètement du doigt tous les documents de travail que sont :&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Le Pitch,&lt;/li&gt;&lt;li&gt;Le Brainstorming,&lt;/li&gt;&lt;li&gt;Le Synopsis,&lt;/li&gt;&lt;li&gt;Le Séquencier,&lt;/li&gt;&lt;li&gt;Le Chemin de fer,&lt;/li&gt;&lt;li&gt;Le Traitement,&lt;/li&gt;&lt;li&gt;La Note d'intention,&lt;/li&gt;&lt;li&gt;L'Évènemencier,&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;em&gt;Notez que le scénario, en tant que document, est abordé dans un module propre.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;Au cours de ce module, l'icarien est amené à travailler sur la rédaction efficiente de chacun de ces documents, soit sur la base d'une histoire qui lui est proposé, soit sur la base d'un ou plusieurs de ses propres projets.&lt;/p&gt;&lt;p&gt;Sont abordés principalement, pour chacun des documents :&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Sa forme, sa rédaction, son caractère et son style&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Son intérêt et sa nécessité pour le projet&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Sa fonction précise&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Sa place chronologique dans le développement professionnel d'un projet&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Son type en tant que “Document de travail” ou “Document de vente”.&lt;/li&gt;&lt;/ul&gt;</column>
+            <column name="created_at">1396893024</column>
+            <column name="updated_at">1417670890</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">3</column>
+            <column name="module_id">dynamique</column>
+            <column name="name">Dynamique narrative</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">60</column>
+            <column name="hduree">60 jours</column>
+            <column name="short_description">&lt;p&gt;Dans ce module au nom quelque peu abscons, on se focalise sur la triade “OBJECTIF - OBSTACLE - CONFLIT” qui constitue le nerf de la guerre d'une histoire, qui constitue la réelle dynamique d'une récit (d'où son nom).&lt;/p&gt;&lt;p&gt;On apprend par ce biais à créer des intrigues les plus puissantes et les plus pertinences possibles.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Notions principales abordées et travaillées au cours de ce module&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Importance narrative de la triade dynamique&amp;nbsp;: OBJECTIF - OBSTACLE - CONFLIT&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Définition d'un réel objectif narratif&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Ce qu'est un véritable “obstacle dramaturgique”&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Maintien efficace de l'objectif d'un bout à l'autre de l'histoire&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Crescendo conflictuel versus crescendo d'obstacle&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Aborder avec pertinence et précision la notion d'“enjeu”&amp;nbsp;;&lt;/li&gt;&lt;li&gt;La construction du personnage par rapport à l'objectif&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Influence des autres éléments narratifs sur la triade dynamique.&lt;/li&gt;&lt;/ul&gt;</column>
+            <column name="created_at">1417685945</column>
+            <column name="updated_at">1417685945</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">4</column>
+            <column name="module_id">personnage</column>
+            <column name="name">Personnages</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;Ce module est consacré au développement des personnages de son histoire, pour leur donner épaisseur, complexité, crédibilité et intérêt.&lt;/p&gt;&lt;p&gt;L’accent est mis sur les deux personnages les plus importants du récit, le protagoniste et l’antagoniste (lorsqu’il existe), mais est également abordé le développement des autres  personnages ainsi que les relations indispensables qu'ils doivent entretenir.&lt;/p&gt;&lt;p&gt;Dans ce module sont abordés des notions telles que l’identification, la background et la backstory, les motivations, l’objectif de vie et l’objectif narration ainsi que les relations  ténues entre les personnages et les autres éléments dramaturgiques tels que la structure,  les éléments dynamiques ou les thèmes.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;  Notions pratiques et théoriques abordées&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Le personnage de fiction est-il une “vraie” personne ?&lt;/li&gt;&lt;li&gt;Les personnages principaux&lt;/li&gt;&lt;li&gt;Les personnages secondaires&lt;/li&gt;&lt;li&gt;Fonction et personnalité du personnage&lt;/li&gt;&lt;li&gt;Évolution du personnage&lt;/li&gt;&lt;li&gt;Croquis du personnage, les grands traits&lt;/li&gt;&lt;li&gt;Interroger le personnage, backstory et background&lt;/li&gt;&lt;li&gt;Personnage actif et personnage proactif&lt;/li&gt;&lt;li&gt;Fonction et spécificité du dialogue&lt;/li&gt;&lt;li&gt;Cohérence du personnage dans ses actions et dans l'intrigue&lt;/li&gt;&lt;li&gt;Rendre perceptible le personnage et ses facettes&lt;/li&gt;&lt;li&gt;Nécessité des personnages, nombre de personnages&lt;/li&gt;&lt;li&gt;Relation entre les personnages&lt;/li&gt;&lt;li&gt;Histoire à protagoniste multiple&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Au cours de ce module, vous serez amené à développer un certain nombre de personnages, sur la base de contraintes narratives ou sur la base d'histoires que vous proposerez.&lt;/p&gt;&lt;p&gt;Bien que focalisé sur les personnages, ce module n'en aborde pas moins les autres éléments dramaturgiques tels que la structure ou les thématiques, en exploitant la synergie que les personnages entretiennent avec ces éléments pour produire une dynamique narrative forte et prenante.&lt;/p&gt;</column>
+            <column name="created_at">1396893077</column>
+            <column name="updated_at">1417670770</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">5</column>
+            <column name="module_id">scenario</column>
+            <column name="name">Scénario</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;Ce module se concentre sur l'aspect rédactionnel du scénario. Au cours de ce module, l'apprenti-auteur apprendra à rédiger un scénario de façon professionnelle.&lt;/p&gt;
+
+&lt;p&gt;L'accent est mis sur le fait que des problèmes ou des difficultés rédactionnelles révèlent souvent des problèmes dramaturgiques. En ce sens, l'apprentissage de la &lt;em&gt;rédaction scénaristique&lt;/em&gt; est également un formidable outil d'apprentissage et d'amélioration de la  dramaturgie elle-même.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Notions abordées et travaillées au cours de ce module :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pour qui est écrit le scénario ?&lt;/li&gt;
+  &lt;li&gt;règles de mise en page, intitulé, action, dialogues…&lt;/li&gt;
+  &lt;li&gt;qu'est-ce qu'un bon scénario ?&lt;/li&gt;
+  &lt;li&gt;comment lit le lecteur du scénario ?&lt;/li&gt;
+  &lt;li&gt;les règles de rédaction, à mi-chemin entre littérature et technique cinématographique ;&lt;/li&gt;
+  &lt;li&gt;suprématie de la simplicité ;&lt;/li&gt;
+  &lt;li&gt;découpe en scènes, notion de rythme ;&lt;/li&gt;
+  &lt;li&gt;termes à bannir, cartouches à économiser ;&lt;/li&gt;
+  &lt;li&gt;écueils narratifs que révèle la rédaction du scénario, ainsi que leur solution ;&lt;/li&gt;
+  &lt;li&gt;bonne approche de l'écriture du scénario ;&lt;/li&gt;
+  &lt;li&gt;scènes particulières (flashbacks, montage en parallèle…) ;&lt;/li&gt;
+  &lt;li&gt;relectures du scénario.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Au cours de ce module, vous pourrez vous familiariser avec toutes les règles de rédaction d'une continuité dialoguée professionnelle. À l'aide d'exercices simples, tirés en priorité de votre propre projet, vous vous confronterez à toutes les difficultés et les particularités de l'écriture.&lt;/p&gt;</column>
+            <column name="created_at">1396893098</column>
+            <column name="updated_at">1417670923</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">6</column>
+            <column name="module_id">structure</column>
+            <column name="name">Structure</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;  Ce module est consacré à l'un des éléments dramaturgiques qui pose de nombreux problèmes  même aux auteurs les plus expérimentés : la structure.&lt;/p&gt;&lt;p&gt;  Quelle forme doit adopter le récit ? Aucune recette miracle ne permet de répondre à cette  question. En revanche, à partir de points de répères clairs et une bonne compréhension des nécessités et des mécanismes de la structuration, ce module permet de parvenir à créer une forme solide, prenante et harmonieuse qui s'affranchit du moule des paradigmes artificiels.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;  Notions principales mises en pratique au cours de ce module&amp;nbsp;:&lt;/p&gt; &lt;ul&gt;  &lt;li&gt;Nécessité de la structure&amp;nbsp;;&lt;/li&gt;   &lt;li&gt;La forme générale de l'histoire&amp;nbsp;;&lt;/li&gt;   &lt;li&gt;Les scènes-clés&amp;nbsp;;&lt;/li&gt;   &lt;li&gt;Gestion et travail du rythme et du crescendo dramatique&amp;nbsp;;&lt;/li&gt;   &lt;li&gt;Construction progressive de la structure&amp;nbsp;;&lt;/li&gt;   &lt;li&gt;Les personnages et la dynamique narrative au service de la structure&amp;nbsp;;&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;Au cours de ce module, vous serez amené à développer plusieurs structures, à différentes échelles (depuis la simple définition des actes jusqu'à la définition d'un séquencier complet), sur la base d'histoires que vous proposerez ou qui vous seront proposées.&lt;/p&gt; &lt;p&gt;L'objectif est de se familiariser avec la structure jusqu'à se sentir parfaitement à l'aise pour aborder en confiance —&amp;nbsp;grâce aux outils souples proposés&amp;nbsp;— toute nouvelle histoire.&lt;/p&gt;</column>
+            <column name="created_at">1396892676</column>
+            <column name="updated_at">1417670730</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">7</column>
+            <column name="module_id">suivi_lent</column>
+            <column name="name">Suivi de projet (normal)</column>
+            <column name="tarif">75</column>
+            <column name="nombre_jours">NULL</column>
+            <column name="hduree">NULL</column>
+            <column name="short_description">&lt;p&gt;L'accompagnement de projet en rythme lent vous permet de développer votre projet de film (court ou long métrage) sous l'œil exigeant mais bienveillant d'un professionnel (Phil) passionné de dramaturgie et de réalisation personnelle.&lt;/p&gt;&lt;p&gt;Le “rythme lent” est adapté à tout auteur qui n'exerce pas l'écriture en tant qu'activité principale. À titre purement indicatif, cela correspond peu ou prou à un travail tous les  quinze jours.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;L'objectif ultime de ce module est d'accompagner le développement d'un projet personnel de court ou de long métrage.&lt;/p&gt;&lt;p&gt;Ce développement se fait par étapes successives et progressives, qui s'adaptent à l'avancée particulière du projet et les compétences de ou des auteurs (deux co-auteurs peuvent en effet s'inscrire comme un icarien unique), pour parvenir le plus harmonieusement possible au film rêvé.&lt;/p&gt;&lt;p&gt;Au cours de ce module, les notions pratiques et théoriques des autres modules sont abordées (fondamentales, personnages et structure, éléments dynamiques, thématiques, méthode, etc. — voir le détail en choisissant les autres modules)&lt;/p&gt;&lt;p&gt;La durée de ce module est très variable. Elle est fonction du type du projet (long ou court métrage), de l'état de son avancement lors de l'inscription et du niveau d'expérience de l'auteur. La durée du module peut varier de 3 mois (pour le court-métrage d'un auteur expérimenté)  à 2 ans (pour un tout premier long-métrage d'un apprenti-auteur).&lt;/p&gt;&lt;p&gt;Contrairement au module “suivi en rythme normal”, ce module est préconisé particulièrement pour les auteurs sans expérience qui ne peuvent consacrer qu'un temps limité à l'écriture.&lt;/p&gt;&lt;p&gt;Bien entendu, l'icarien a tout loisir d'interrompre le cursus d'apprentissage à tout moment en fin du mois (puisque le paiement est mensuel).&lt;/p&gt;&lt;p&gt;Des points sur le projet sont faits régulièrement, au téléphone ou par mail à la convenance de l'auteur.&lt;/p&gt;&lt;p&gt;En fin de projet, suivant le résultat obtenu et les désirs de l'auteur, un suivi pour la réalisation du film pourra être suggéré (proposition aux maisons de production, conseils de réalisation, aides financières et subventions, etc.).&lt;/p&gt;</column>
+            <column name="created_at">1396893329</column>
+            <column name="updated_at">1417670819</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">8</column>
+            <column name="module_id">suivi_normal</column>
+            <column name="name">Suivi de projet (intensif)</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">NULL</column>
+            <column name="hduree">NULL</column>
+            <column name="short_description">&lt;p&gt;L'accompagnement de projet en rythme normal vous permet de développer votre projet de film (court ou long métrage) sous l'œil exigeant mais bienveillant d'un professionnel (Phil) passionné de dramaturgie et de réalisation personnelle.&lt;/p&gt;&lt;p&gt;Le “rythme normal” est adapté à tout auteur exerce ou veut exercer l'écriture en tant qu'activité principale, s'en donne les moyens par un travail quotidien. À titre purement  indicatif, cela correspond peu ou prou à un travail sur le projet par semaine.&lt;/p&gt;</column>
+            <column name="long_description">&lt;!--HTML--&gt;&lt;p&gt;L'objectif ultime de ce module est d'accompagner le développement d'un projet personnel de court ou de long métrage.&lt;/p&gt;&lt;p&gt;Ce développement se fait par étapes successives et progressives, qui s'adaptent à l'avancée particulière du projet et les compétences de ou des auteurs (deux co-auteurs peuvent en effet s'inscrire comme un icarien unique), pour parvenir le plus harmonieusement possible au film rêvé.&lt;/p&gt;&lt;p&gt;Au cours de ce module, les notions pratiques et théoriques des autres modules sont abordées (fondamentales, personnages et structure, éléments dynamiques, thématiques, méthode, etc. — voir le détail en choisissant les autres modules)&lt;/p&gt;&lt;p&gt;La durée de ce module est très variable. Elle est fonction du type du projet (long ou court métrage), de l'état de son avancement lors de l'inscription et du niveau d'expérience de l'auteur. La durée du module peut varier de 3 mois (pour le court-métrage d'un auteur expérimenté)  à 2 ans (pour un tout premier long-métrage d'un apprenti-auteur).&lt;/p&gt;&lt;p&gt;Contrairement au module “suivi en rythme lent”, ce module est préconisé particulièrement pour les auteurs (possédant déjà une expérience de l'écriture) qui peuvent consacrer un temps suffisant à l'écriture, de une à deux heures par jour en moyenne.&lt;/p&gt;&lt;p&gt;Bien entendu, l'icarien a tout loisir d'interrompre le cursus d'apprentissage à tout moment en fin du mois (puisque le paiement est mensuel).&lt;/p&gt;&lt;p&gt;Des points sur le projet sont faits régulièrement, au téléphone ou par mail à la convenance de l'auteur.&lt;/p&gt;&lt;p&gt;En fin de projet, suivant le résultat obtenu et les désirs de l'auteur, un suivi pour la réalisation du film pourra être suggéré (proposition aux maisons de production, conseils de réalisation, aides financières et subventions, etc.).&lt;/p&gt;</column>
+            <column name="created_at">1396893303</column>
+            <column name="updated_at">1417670859</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">9</column>
+            <column name="module_id">thematique</column>
+            <column name="name">Thèmes</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois (extensibles)</column>
+            <column name="short_description">&lt;p&gt;Ce module se concentre sur les aspects “thématique” de l'histoire. Il vise à permettre  à l'apprenti-auteur d'acquérir une pleine maitrise du développement riche et pertinent de ses thèmes, quels qu'ils soient.&lt;/p&gt;&lt;p&gt;Il vise également à permettre de prendre conscience de l'influence capitale des thèmes sur  le récit et son développement et, partant, d'exploiter et de s'appuyer sur ces thèmes pour  développer de façon harmonieuse et profonde aussi bien les personnages que la structure de son récit.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;  Notions abordées et travaillées au cours de ce module&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;  &lt;li&gt;L'importance de l'attention portée aux thèmes&lt;/li&gt;  &lt;li&gt;Dégager les thématiques mises en œuvre dans l'histoire&lt;/li&gt;  &lt;li&gt;Étude de l'importance de chaque thème, macro-thèmes et micro-thèmes&lt;/li&gt;  &lt;li&gt;Hiérarchisation des thèmes pour aboutir à un propos pertinent&lt;/li&gt;  &lt;li&gt;Concentration sur les thèmes forts&lt;/li&gt;  &lt;li&gt;Le message du film, la ou les prémisses, propos implicite ou explicite&lt;/li&gt;  &lt;li&gt;Les thèmes, facteur d'enrichissement des personnages et de l'intrigue&lt;/li&gt;  &lt;li&gt;Développement harmonieux des thèmes, idées centripètes et idées centrifuges&lt;/li&gt;  &lt;li&gt;La note d'intention comme source de réflexions et de perspectives&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;  Au cours de ce module, vous serez amené à dégager les thématiques de votre histoire, ou d'histoires qui vous seront proposées, et à apprendre à les développer de façon harmonieuse dans le récit pour lui donner une réelle intensité dramatique, que ce soit dans la comédie, le film d'action ou le film “à message”.&lt;/p&gt;</column>
+            <column name="created_at">1396893160</column>
+            <column name="updated_at">1417670970</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">10</column>
+            <column name="module_id">bible</column>
+            <column name="name">Bible de série</column>
+            <column name="tarif">165</column>
+            <column name="nombre_jours">90</column>
+            <column name="hduree">90 jours</column>
+            <column name="short_description">&lt;p&gt;  Vous avez l'idée d'une série TV mais vous n'avez aucune connaissance ou seulement une connaissance vague du document qu'attendent les producteurs&amp;nbsp;?… Ce module est destiné à combler cette lacune &lt;strong&gt;en vous accompagnant dans la réalisation d'une bible de série complète&lt;/strong&gt; depuis la définition des éléments de base jusqu'à la réalisation d'un dossier complet et pertinent.&lt;/p&gt;&lt;p&gt;Cet apprentissage peut se faire sur la base d'un projet de série allant du format court (environ 3 minutes) jusqu'au format 52 minutes. Il est prioritairement destiné à des auteurs ayant déjà une certaine expérience de l'écriture audiovisuelle.&lt;/p&gt;&lt;p&gt;Ce module peut être abordé &lt;em&gt;ex nihilo&lt;/em&gt; par l'apprenti-auteur, c'est-à-dire sans aucune idée de la série à développer, mais il sera plus profitable d'avoir une idée —&amp;nbsp;même vague&amp;nbsp;— de la série qu'on aimerait entreprendre.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Notions étudiées et travaillées au cours de ce module&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Constitution du dossier complet d'une bible&amp;nbsp;;&lt;/li&gt;&lt;li&gt;L'impact des premières pages&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Éléments indispensables du dossier&amp;nbsp;;&lt;/li&gt;&lt;li&gt;La définition et l'affirmation précise du genre&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Mise en exergue du potentiel de la série&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Définition dynamique des personnages et idiosyncrasie&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Construction des arches des personnages&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Construction des arches des intrigues principales&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Adéquation entre le projet et la durée des épisodes&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Adéquation entre le projet et la production actuelle&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Les exemples d'épisodes&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Où et à qui proposer la bible une fois achevée&amp;nbsp;?&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Noter qu'à l'instar des autres modules, la durée de trois mois de ce module est purement indicative et ne correspond qu'à la durée pour un auteur possédant déjà une certaine expérience et se consacrant à temps complet à son travail. Dans la réalité, ce module de développement et d'apprentissage se réalise en 12 étapes de travail qui peuvent s'étaler sur une durée beaucoup plus longue (sur la base du même tarif, faut-il le préciser&amp;nbsp;?)&lt;/p&gt;&lt;p&gt;À l'issue de ces 12 étapes de travail, suffisantes pour l'apprentissage mais insuffisantes pour parvenir à une bible de série professionnelle (qui nécessite en général plus d'un an de travail), ce module peut être renouvelé —&amp;nbsp;au même tarif&amp;nbsp;— pour permettre à l'auteur d'aboutir à une série susceptible d'être achetée.&lt;/p&gt;</column>
+            <column name="created_at">1417683906</column>
+            <column name="updated_at">1417683906</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">11</column>
+            <column name="module_id">procedes</column>
+            <column name="name">Procédés</column>
+            <column name="tarif">115</column>
+            <column name="nombre_jours">61</column>
+            <column name="hduree">2 mois</column>
+            <column name="short_description">&lt;p&gt;Ce module est consacré au travail particulier des procédés dramatiques les plus importants rencontrés dans toutes histoires quelle qu'elle soit.&lt;/p&gt;&lt;p&gt;Ce travail se fait sur la base d'exercices concrets proposés à l'auteur —&amp;nbsp;la plupart du temps des scènes ou des séquences&amp;nbsp;— où il apprend à maitriser ces procédés dramatiques indispensables.&lt;/p&gt;&lt;p&gt;Ce module peut être répété (donc acheté une seconde fois, voire plus) pour aborder d'autres procédés que ceux travaillés au cours du premier module ou ne sont abordés que les procédés les plus essentiels.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Notions principales abordées et travaillées au cours de ce module&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Développement d'&lt;strong&gt;Ironies dramatiques&lt;/strong&gt; sous des formes diverses pour produire des effets tout aussi variés&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Exploitation de la notion incontournable de &lt;strong&gt;Préparation / Paiement&lt;/strong&gt;&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Exploitation des &lt;strong&gt;Inférences&lt;/strong&gt;, moyen puissant et universel de susciter l'intérêt du lecteur/spectateur&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Exploitation des &lt;strong&gt;changements de valeurs&lt;/strong&gt;, outil puissant et universel pour créer une progression dynamique et pertinente tout au long du récit&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Exploitation du &lt;strong&gt;révélateur de changement&lt;/strong&gt;&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Approche de procédés plus ponctuels (contre-pied, préparation d'une émotion par son contraire, action vaut réponse, etc.)&amp;nbsp;;&lt;/li&gt;&lt;li&gt;Autres procédés en fonction des demandes ou besoins de l'auteur…&lt;/li&gt;&lt;/ul&gt;</column>
+            <column name="created_at">1417690283</column>
+            <column name="updated_at">1417690283</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">12</column>
+            <column name="module_id">coaching_intensif</column>
+            <column name="name">Coaching intensif</column>
+            <column name="tarif">200</column>
+            <column name="nombre_jours">180</column>
+            <column name="hduree">3 mois</column>
+            <column name="short_description">&lt;p&gt;Ce module d'un caractère un peu particulier permet de travailler de façon assez intense sur un projet.&lt;/p&gt;&lt;p&gt;Il est particulièrement adapté par exemple pour&amp;nbsp;:&lt;/p&gt;&lt;ul&gt;  &lt;li&gt;La finalisation d'un dossier de scénario à envoyer à une production&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;La préparation à un concours, tel que l'entrée au CEEA ou autre école de cinéma&amp;nbsp;;&lt;/li&gt;  &lt;li&gt;L'accompagnement sur la finalisation d'un scénario.&lt;/li&gt;&lt;/ul&gt;</column>
+            <column name="long_description">&lt;p&gt;Ce module se déroule différemment des autres modules pour s'adapter très exactement à la nature du travail à effectuer. S'il fonctionne comme les autres modules sur la base &lt;em&gt;d'étapes de travail précises&lt;/em&gt;, ces étapes peuvent être de nature très différentes.&lt;/p&gt;&lt;p&gt;C'est le module idéal si l'on est satisfait de son projet par exemple, mais que l'on souhaite le passer à l'épreuve d'un regard profesionnel et apporter les modifications qui pourront lui donner toutes ses chances.&lt;/p&gt;&lt;p&gt;C'est le module idéal si l'on compte intégrer une école audiovisuelle qui recrute par concours telle que le CEEA (un icarien a réussi cette entrée difficile après sa préparation à l'atelier, et un autre est allé jusqu'au troisième tour — un tour exceptionnellement ajouté en 2014 après les deux tours normaux pour quelques candidats à la limite d'être acceptés).&lt;/p&gt;&lt;p&gt;C'est le module idéal si l'on veut être accompagné pendant une courte période sur son développement, pour passer un cap difficile par exemple.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Noter que ce module ne bénéficie pas du mois à l'essai comme les autres modules, pour une raison qui vous semblera certainement évidente…&lt;/em&gt;&lt;/p&gt;</column>
+            <column name="created_at">1421435968</column>
+            <column name="updated_at">1421435968</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">13</column>
+            <column name="module_id">decouverte</column>
+            <column name="name">Découverte</column>
+            <column name="tarif">95</column>
+            <column name="nombre_jours">60</column>
+            <column name="hduree">60 jours</column>
+            <column name="short_description">&lt;p&gt;Si vous n'avez jamais écrit, si vous n'avez jamais conçu la moindre histoire, alors ce module est fait pour vous. Il vous permet d'aborder la narration en mode “découvrerte”, par le biais d'exercices simples et créatifs.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Le module “Découverte” permet une première sensibilisation au monde créatif riche et infini qu'est la narration. Quoi de plus attractif, de plus épanouissant, que de plonger dans une histoire, dans ses personnages, dans ses univers&amp;nbsp;?&lt;/p&gt;&lt;p&gt;Cependant, on peut avoir des craintes, se dire que ça n'est pas pour soi, se dire qu'on n'en a pas les compétences, et que ces compétences sont nombreuses et exigeantes. On peut en bref ne pas oser le faire.&lt;/p&gt;&lt;p&gt;Ce module voudrait apporter une réponse décomplexée à ces freins qui vous empêchent peut-être de vous lancer. Il voudrait vous amener tout naturellement à le faire, sans même vous poser de (mauvaises) questions.&lt;/p&gt;&lt;p&gt;Par le biais d'exercices simples et stimulants, vous pourrez grâce à ce module approcher la narration de très près, faire plus que la toucher du doigt mais plutôt vous en emparer à pleines mains.&lt;/p&gt;&lt;p&gt;Et ce, toujours avec ce qui fait la marque de fabrique de l'atelier Icare, c'est-à-dire l'apprentissage par la pratique. Cette pratique est plus importante encore ici qu'ailleurs, aux tout débuts, pour apprendre d'un côté à savoir stimuler de façon simple son imaginaire et de l'autre à savoir organiser ses idées pour en tirer le meilleur.&lt;/p&gt;</column>
+            <column name="created_at">1424693055</column>
+            <column name="updated_at">1424693055</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">14</column>
+            <column name="module_id">initiation</column>
+            <column name="name">Initiation à la dramaturgie</column>
+            <column name="tarif">98</column>
+            <column name="nombre_jours">60</column>
+            <column name="hduree">2 mois</column>
+            <column name="short_description">&lt;p&gt;Le module “Initiation à la dramaturgie” permet comme son nom l'indique de s'initier à la conception d'histoires principalement visuelles.&lt;/p&gt;&lt;p&gt;Il se destine à toute personne n'ayant aucune expérience d'écriture ou très peu et permet d'aborder les différents aspects du développement d'une histoire.&lt;/p&gt;&lt;p&gt;Voir le détail du module pour comprendre la différence avec le module “Découverte”.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;À l'instar du module “Découverte” qui permet un premier contact avec les généralités d'une histoire, ce module “Initiation à la dramaturgie” permet de mieux se familiariser encore avec la conception narrative en abordant chaque élément de façon plus profonde et précise.&lt;/p&gt;&lt;p&gt;Grâce à la modularité de la pédagogie appliquée à l'atelier Icare, ce module s'adapte de façon parfaite au niveau propre de chaque apprenti(e)-auteur(e). Aussi bien, vous pouvez le choisir si vous n'avez aucune expérience de l'écriture que si vous écrivez de loin en loin, épisodiquement, depuis un certain temps déjà.&lt;/p&gt;&lt;p&gt;Toujours par le biais d'exercices simples, stimulants et ludiques, l'apprenti(e)-auteur(e) apprend dans ce module à poser les bases d'une histoire solide, au niveau des personnages comme au niveau de la structure générale. Il ou elle apprend ensuite à développer et organiser de la façon la plus harmonieuse possible le cours de son récit.&lt;/p&gt;&lt;p&gt;Bien qu'il ne soit qu'une “initiation”, ce module n'en aborde pas moins des notions aussi importantes et universelles dans l'écriture que la notion de protagoniste, la notion d'objectif et d'enjeu, la notion de conflit, la notion de développement thématique ou encore de prémisse.&lt;/p&gt;&lt;p&gt;Ce module est le meilleur tremplin avant de se lancer dans un module de type “accompagnement de projet” au sein de l'atelier.&lt;/p&gt;</column>
+            <column name="created_at">1424790485</column>
+            <column name="updated_at">1424790485</column>
+        </table>
+        <table name="absmodules">
+            <column name="id">15</column>
+            <column name="module_id">pourquoi_refus</column>
+            <column name="name">Pourquoi votre manuscrit a-t-il été refusé ?</column>
+            <column name="tarif">50</column>
+            <column name="nombre_jours">30</column>
+            <column name="hduree">1 mois</column>
+            <column name="short_description">&lt;p&gt;Votre manuscrit vient d’être refusé par toutes les maisons d’édition auxquelles vous l’aviez envoyé. Ou c’est votre scénario qui vient d’être rejeté par toutes les maisons de production qui l’avaient reçu.&lt;/p&gt;
+
+&lt;p&gt;Dans presque tous les cas, vous n’avez aucune idée du “pourquoi” ?&lt;/p&gt;
+
+&lt;p&gt;Ce module d’un genre tout particulier vous offre l’opportunité de comprendre objectivement ce &lt;em&gt;pourquoi&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Il vous offre l’opportunité unique de ne pas en rester à cette incertitude qui découle du fait de l’absence totale de tout commentaire, de toute raison. Grâce à ce module, vous pouvez découvrir précisément pourquoi votre histoire, en l’état, n’a convaincu personne.&lt;/p&gt;</column>
+            <column name="long_description">&lt;p&gt;Il peut paraitre ironique de proposer un module « après l’échec » plutôt que de proposer un module qui permettrait de produire un projet retenu. C’est vrai. Faisons cependant remarquer que plusieurs modules de l’atelier Icare permettent justement de le faire. Il s’agit des modules de suivi de projet, ainsi que du module de coaching.&lt;/p&gt;
+
+&lt;p&gt;Mais en réalité, le fait de proposer un « service après échec » découle d’une expérience que possède Phil des aspirant-auteur(e)s : dans un premier temps, ils se pensent tout puissants, très compétents en matière de narration comme en matière de style, ils croient tellement en leur histoire et leur écriture qu’ils sont convaincus que les éditeurs ou les producteurs vont se jeter sur leur manuscrit ou leur scénario…&lt;/p&gt;
+
+&lt;p&gt;Plus dure est la chute… Car malheureusement, dans la plupart des cas, pour ne pas dire &lt;em&gt;dans presque tous les cas&lt;/em&gt;, ces aspirant-auteur(e)s sont ramené(e)s durement à la réalité, et ce sans un seul mot d’explication, sans un seul commentaire autre que la phrase-type bien connue : “Malgré l’intérêt indéniable de votre projet, nous sommes au regret etc.”…&lt;/p&gt;
+
+&lt;p&gt;Les aspirant-auteur(e)s se rassurent alors en relisant dix fois ce “l’intérêt indiscutable de votre projet” sans comprendre que c’est, au mieux, une formule de politesse et, dans la plupart des cas, une simple façon de ne pas fâcher les prétendant(e)s auteur(e)s.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ce module vise à expliquer, sur la base d’éléments les plus objectifs possible, les raisons réelles de ce refus.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce module s’appuie également sur un principe bien connu : il faut &lt;strong&gt;apprendre de ses échecs&lt;/strong&gt;. En ayant un retour sur les premières pages de ce que l’on pensait être une “œuvre”, voir un “chef-d’œuvre”, on peut apprendre beaucoup sur son écriture, sur les choses à travailler, à apprendre, ainsi que sur la façon dont sera perçu, loin de tout fantasme, son manuscrit ou son scénario.&lt;/p&gt;
+
+&lt;p&gt;C’est donc un service d’une importance capitale rendu à l’aspirant-auteur(e) qui souhaite aller plus loin, qui souhaite progresser, ne pas faire les mêmes erreurs, l’auteur(e) qui n’a pas peur de se regarder en face, qui n’a pas peur de se remettre en cause pour tenter de convaincre un cercle plus large que celui de son simple entourage ou de son blog.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DÉROULEMENT DU MODULE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ce module consiste à expliquer aux aspirant-auteur(e)s, sur la base des vingts premières pages de leur manuscrit ou les dix premières pages de leur scénario, pourquoi celui-ci n’a pas été retenu, publié ou acheté.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note : souvent, et naïvement, l’aspirant-auteur(e) s’imagine que le lecteur de maison d’édition ou de boite de productions va lire sa prose d’un bout à l’autre pour se faire son avis. Et qu’il sera indulgent quant à certains aspects, un début un peu mou, des fautes d’orthographes, des phrases approximatives, etc.&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Sachez-le : rien de plus faux. Contrairement à ce que l’aspirant-auteur(e) s’imagine, c’est sur ses 10 pages de scénario ou ses 20 pages de manuscrit (parfois beaucoup moins) que se détermine le destin d’une histoire.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut même affirmer qu’un auteur ou qu’un scénariste se reconnait dès la première ligne.
+Phil, qui lit une quantité importante de manuscrits et de scénarios professionnels ou amateurs, est presque capable, &lt;em&gt;dès les 5 premières lignes&lt;/em&gt;, de déterminer la valeur de l’auteur auquel il a à faire.&lt;/p&gt;
+
+&lt;p&gt;Ce module se déroule donc, concrètement, en quatre étapes :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Transmission à Phil des 20 premières pages du manuscrit de roman ou des 10 premières pages du scénario.&lt;/li&gt;
+&lt;li&gt;Phil en fait l’analyse. Si nécessaire, il peut demander à l’auteur(e) des pages supplémentaires pour se faire une idée plus juste.&lt;/li&gt;
+&lt;li&gt;Phil remet à l’auteur(e) une fiche très détaillée qui contient principalement : &lt;ul&gt;
+&lt;li&gt;les faiblesses rédhibitoires relevées,&lt;/li&gt;
+&lt;li&gt;les pistes d’évolution de l’auteur(e) s’il veut parvenir à convaincre.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Après lecture de cette fiche détaillée, l’auteur(e) peut demander des précisions, si nécessaire, sur les commentaires émis, afin d’en tirer le meilleur parti.
+&lt;/ol&gt;</column>
+            <column name="created_at">1520403791</column>
+            <column name="updated_at">1520403791</column>
+        </table>
+    </database>
+</pma_xml_export>

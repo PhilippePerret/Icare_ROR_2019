@@ -4,77 +4,96 @@
 {\*\expandedcolortbl;;\csgray\c0;}
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f0\fs26 \cf0 Les propri\'e9t\'e9s d'un module d'apprentissage d'icarien sont :\
+\f0\fs26 \cf0 Les propri\'e9t\'e9s d'un module d'apprentissage absolu sont :\
 \
-belongs_to :user\
-belongs_to :abs_module\
-has_many :paiements\
-has_many :pauses\
-has_many :ic_etapes\
+has_many :ic_modules\
+has_many :users, through :ic_modules\
 \
-has_many :documents, through: :ic_etapes\
+has_many :documents, through: :ic_modules (fonctionne ?)\
 \
 \
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
+\pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs28 \cf0 name
+\b0 \cell 
+\pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 Nom humain du module\
+P.e. \'ab\'a0Structure\'a0\'bb\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
+\pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf0 dim\cell 
+\pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0 \cf0 Diminutif, pour les noms par exemple. \
+p.e. "Stt" pour "Structure"\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalc \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b\fs28 \cf0 project_name
+\b \cf0 module_id
 \b0 \cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
-\cf0 Nom du projet (son titre) s'il en a un\cell \row
+\cf0 ID du module absolu avant 2016.\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b \cf0 state
-\b0 \cell 
+\b \cf0 tarif\cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
-\cf0 Etat du module (nouvelle propri\'e9t\'e9). Cf. {\field{\*\fldinst{HYPERLINK "scrivlnk://3C7DE251-2F53-4E77-A75A-CBF210890BCC"}}{\fldrslt State}}\cell \row
+
+\b0 \cf0 Tarif en euros du module (mensualit\'e9 pour les modules \'e0 dur\'e9e ind\'e9finie)\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b \cf0 \strike \strikec0 options\strike0\striked0 \cell 
+\b \cf0 nombre_jours\cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b0 \cf0 OBSOL\'c8TE (cf. le fichier {\field{\*\fldinst{HYPERLINK "scrivlnk://DF310288-799D-45D4-80B4-79459E833115"}}{\fldrslt Options}})\cell \row
+\b0 \cf0 Dur\'e9e en nombre de jour du module. Si nil, c'est un module \'e0 dur\'e9e ind\'e9termin\'e9e.\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b \cf0 starting_at\cell 
+\b \cf0 hduree\cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b0 \cf0 Date de d\'e9marrage du module\cell \row
+\b0 \cf0 Dur\'e9e au format humain, par exemple "deux mois" ou "ind\'e9termin\'e9e".\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b \cf0 ending_at\cell 
+\b \cf0 short_description\cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b0 \cf0 Date de fin du module (r\'e9elle, pas une pause)\cell \row
+\b0 \cf0 Description courte du module d'apprentissage (HTML)\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
 \clvertalt \clshdrawnil \clwWidth2780\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
 \clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b \cf0 next_paiement\cell 
+\b \cf0 long_description\cell 
 \pard\intbl\itap1\tx1440\tx2880\sl264\slmult1\pardirnatural\partightenfactor0
 
-\b0 \cf0 La date de prochain paiement (if any)\cell \lastrow\row
+\b0 \cf0 Description longue du module (HTML)\cell \lastrow\row
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
 
 \fs26 \cf0 	+ les timestamps par d\'e9faut, created_at et updated_at\

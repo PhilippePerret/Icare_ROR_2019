@@ -5,6 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+# =========== ATELIER ICARE =============
+#
+# Pour prendre les données ultimes de l'atelier :
+#   * rejoindre l'administration sur AlwaysData
+#   * rejoindre myPhpAdmin
+#   * exporter les tables séparéments, au format YAML
+#   * les enregistrer dans le dossier "old_data" de ce dossier
+#   * Lancer un `rails db:reset` qui va effacer les données et
+#     les remplacer par les nouvelles.
+# 
 require "#{Rails.root}/config/secret/data_phil"   # => DATA_PHIL
 require "#{Rails.root}/config/secret/data_marion" # => DATA_MARION
 
@@ -23,27 +34,46 @@ User.create([
     password: 'mot de passe', password_confirmation: 'mot de passe'}
   ])
 
-unless Rails.env == 'production'
+# unless Rails.env == 'production'
+#
+#   annees = (1970..(Time.now.year-16)).to_a.shuffle.shuffle
+#   nombre_annees = annees.count
+#   100.times do |n|
+#     gender_male = (n % 2 == 0)
+#     first_name  = Faker::Name.send("#{gender_male ? 'male' : 'female'}_first_name")
+#     last_name   = Faker::Name.last_name
+#     name  = "#{first_name} #{last_name}"
+#     email = Faker::Internet.email
+#     data_user = {
+#       name: name, email: email,
+#       prenom: first_name, nom: last_name,
+#       birthyear: annees[n % nombre_annees],
+#       sexe: (gender_male ? 0 : 1),
+#       statut: 2,
+#       options: ((n % 4) + 1).to_s + '1' + ((n % 5) + 1).to_s + '00000',
+#       password: 'mot de passe', password_confirmation: 'mot de passe'
+#     }
+#     # puts "\nDATA: #{data_user.inspect}"
+#     User.create!(data_user)
+#   end
+#
+# end
 
-  annees = (1970..(Time.now.year-16)).to_a.shuffle.shuffle
-  nombre_annees = annees.count
-  100.times do |n|
-    gender_male = (n % 2 == 0)
-    first_name  = Faker::Name.send("#{gender_male ? 'male' : 'female'}_first_name")
-    last_name   = Faker::Name.last_name
-    name  = "#{first_name} #{last_name}"
-    email = Faker::Internet.email
-    data_user = {
-      name: name, email: email,
-      prenom: first_name, nom: last_name,
-      birthyear: annees[n % nombre_annees],
-      sexe: (gender_male ? 0 : 1),
-      statut: 2,
-      options: ((n % 4) + 1).to_s + '1' + ((n % 5) + 1).to_s + '00000',
-      password: 'mot de passe', password_confirmation: 'mot de passe'
-    }
-    # puts "\nDATA: #{data_user.inspect}"
-    User.create!(data_user)
-  end
+thisfolder = File.expand_path(File.dirname(__FILE__))
+OLD_DATA_FOLDER = File.join(thisfolder, 'old_data')
 
+# Chargement des modules absolus
+# ==============================
+abs_modules_yml = YAML.load_file(File.join(OLD_DATA_FOLDER, 'absmodules.yml'))
+AbsModule.create(abs_modules_yml)
+
+# ÉTAPES DE MODULE D'APPRENTISSAGE
+# ================================
+abs_etapes_yml = YAML.load_file(File.join(OLD_DATA_FOLDER, 'absetapes.yml'))
+final_abs_etapes = abs_etapes_yml.collect do |aed|
+  aed.delete('travaux')
+  aed.merge!('abs_module_id' => aed.delete('module_id'))
+  aed
 end
+# puts 'Nombre d’étapes : %i' % final_abs_etapes.count
+AbsEtape.create(final_abs_etapes)

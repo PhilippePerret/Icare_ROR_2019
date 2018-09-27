@@ -162,7 +162,43 @@
 <hr class="afterText"/>
 
 <li>
-<p class="topLevelItemTitle">Modules Icariens (IcModules)</p>
+<p class="topLevelItemTitle">Modules Icariens</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">AbsModules</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un module d'apprentissage absolu sont :</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :ic_modules</p>
+<p class="itemText">has_many :users, through :ic_modules</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :documents, through: :ic_modules (fonctionne ?)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">name</p>
+<p class="itemText">Nom humain du module</p>
+<p class="itemText">P.e. « Structure »</p>
+<p class="itemText">dim</p>
+<p class="itemText">Diminutif, pour les noms par exemple. </p>
+<p class="itemText">p.e. "Stt" pour "Structure"</p>
+<p class="itemText">module_id</p>
+<p class="itemText">ID du module absolu avant 2016.</p>
+<p class="itemText">tarif</p>
+<p class="itemText">Tarif en euros du module (mensualité pour les modules à durée indéfinie)</p>
+<p class="itemText">nombre_jours</p>
+<p class="itemText">Durée en nombre de jour du module. Si nil, c'est un module à durée indéter...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">IcModules</p>
 </li>
 <hr class="afterTitle"/>
 <ul>
@@ -170,19 +206,380 @@
 <p class="itemTitle">Propriétés</p>
 <p class="itemText">Les propriétés d'un module d'apprentissage d'icarien sont :</p>
 <p class="itemText"></p>
-<p class="itemText">abs_modules_id</p>
-<p class="itemText">Identifiant du module d'apprentissage absolu.</p>
+<p class="itemText">belongs_to :user</p>
+<p class="itemText">belongs_to :abs_module</p>
+<p class="itemText">has_many :paiements</p>
+<p class="itemText">has_many :pauses</p>
+<p class="itemText">has_many :ic_etapes</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :documents, through: :ic_etapes</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">project_name</p>
+<p class="itemText">Nom du projet (son titre) s'il en a un</p>
 <p class="itemText">state</p>
-<p class="itemText">l'état (en commande, en attente de démarrage, en cours, en pause, fini ou abandonné)</p>
+<p class="itemText">Etat du module (nouvelle propriété). Cf. State</p>
+<p class="itemText">options</p>
+<p class="itemText">OBSOLÈTE (cf. le fichier Options)</p>
 <p class="itemText">starting_at</p>
 <p class="itemText">Date de démarrage du module</p>
 <p class="itemText">ending_at</p>
 <p class="itemText">Date de fin du module (réelle, pas une pause)</p>
-<p class="itemText">updated_at</p>
-<p class="itemText">Date de dernière modification des données du module</p>
-<p class="itemText"> </p>
+<p class="itemText">next_paiement</p>
+<p class="itemText">La date de prochain paiement (if any)</p>
+<p class="itemText"> + ...</p>
+</li>
+<li>
+<p class="itemTitle">State</p>
+<p class="itemText"></p>
+<p class="itemText">Statut (état) du module (propriété :state)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Valeurs</p>
+<p class="itemText">Description</p>
+<p class="itemText">0</p>
+<p class="itemText">Module en attente de démarrage</p>
+<p class="itemText">1</p>
+<p class="itemText">Module d'apprentissage en cours de travail</p>
+<p class="itemText">2</p>
+<p class="itemText">Module d'apprentissage en pause</p>
+<p class="itemText">3</p>
+<p class="itemText">Module terminé normalement</p>
+<p class="itemText">4</p>
+<p class="itemText">Module interrompu/abandonné</p>
+<p class="itemText">5</p>
+<p class="itemText"></p>
+<p class="itemText">6</p>
+<p class="itemText"></p>
+<p class="itemText">7</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
+</li>
+<li>
+<p class="itemTitle">Options</p>
+<p class="itemText">Options pour l'ic-module.</p>
+<p class="itemText"></p>
+<p class="itemText">OBSOLÈTE — Mais il faut passer les valeurs du bit 0 dans la propriété :state.</p>
+<p class="itemText"></p>
+<p class="itemText"> Bit</p>
+<p class="itemText">Valeurs possibles</p>
+<p class="itemText">0</p>
+<p class="itemText">1</p>
+<p class="itemText">cf. state</p>
+<p class="itemText">1</p>
+<p class="itemText">2</p>
+<p class="itemText"></p>
+<p class="itemText">2</p>
+<p class="itemText">3</p>
+<p class="itemText"></p>
+<p class="itemText">3</p>
+<p class="itemText">4</p>
+<p class="itemText"></p>
+<p class="itemText">4</p>
+<p class="itemText">5</p>
+<p class="itemText"></p>
+<p class="itemText">5</p>
+<p class="itemText">6</p>
+<p class="itemText"></p>
+<p class="itemText">6</p>
+<p class="itemText">7</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">AbsEtapes</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un module d'apprentissage absolu sont :</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :ic_modules</p>
+<p class="itemText">has_many :users, through :ic_modules</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :documents, through: :ic_modules (fonctionne ?)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">numero</p>
+<p class="itemText">Numéro de l'étape (de 1 à 999)</p>
+<p class="itemText">type</p>
+<p class="itemText">(nouvelle propriété) Type de l'étape. Cf. Type.</p>
+<p class="itemText">titre</p>
+<p class="itemText">Titre de l'étape</p>
+<p class="itemText">objectif</p>
+<p class="itemText">L'objectif à atteindre au cours de cette étape</p>
+<p class="itemText">travail</p>
+<p class="itemText">Définition du travail (HTML). Note : peut être une liste de travaux.</p>
+<p class="itemText">methode</p>
+<p class="itemText">Éléments de méthode</p>
+<p class="itemText">travaux</p>
+<p class="itemText">OBSOLÈTE</p>
+<p class="itemText">duree</p>
+<p class="itemText">Nombre de jours par défaut...</p>
+</li>
+<li>
+<p class="itemTitle">Type</p>
+<p class="itemText"></p>
+<p class="itemText">Types de l'étape absolue (propriété :type)</p>
+<p class="itemText"></p>
+<p class="itemText">Note : ce sont des bits qui s'additionnent (bit|bit)</p>
+<p class="itemText">Valeurs</p>
+<p class="itemText">Description</p>
+<p class="itemText">0</p>
+<p class="itemText">Aucun type</p>
+<p class="itemText">1</p>
+<p class="itemText">Travail sur la structure</p>
+<p class="itemText">2</p>
+<p class="itemText">Travail sur les personnages</p>
+<p class="itemText">4</p>
+<p class="itemText">Travail sur les thèmes</p>
+<p class="itemText">8</p>
+<p class="itemText">Travail sur les intrigues</p>
+<p class="itemText">16</p>
+<p class="itemText">Travail sur un document en particulier (synopsis, pitch, etc.)</p>
+<p class="itemText">32</p>
+<p class="itemText">Travail de recherche d'idées</p>
+<p class="itemText">64</p>
+<p class="itemText">Travail de réflexion</p>
+<p class="itemText">128</p>
+<p class="itemText">Travail de rédaction</p>
+<p class="itemText">256</p>
+<p class="itemText">Travail d'affinement, de finalisation</p>
+<p class="itemText"></p>
+
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">IcEtapes</p>
+<p class="itemText">Les étapes des modules d'icariens</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'une étape de module d'apprentissage d'icarien sont :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :ic_module</p>
+<p class="itemText">belongs_to :abs_etape</p>
+<p class="itemText">belongs_to :user, through :ic_module</p>
+<p class="itemText">has_many :documents</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">status</p>
+<p class="itemText">Statut de l'étape. Cf. Statuts</p>
+<p class="itemText">options</p>
+<p class="itemText">Options de l'étape, quelques valeurs utiles, fixes ou mobiles. Cf. Options</p>
+<p class="itemText">travail_propre</p>
+<p class="itemText">Éventuellement, le travail propre de l'étape, ou un travail supplémentaire pour l'étape.</p>
+<p class="itemText">starting_at</p>
+<p class="itemText">Date de démarrage de l'étape. Elle pourrait être définie lorsque l'user arrive sur son bu...</p>
+</li>
+<li>
+<p class="itemTitle">Statuts</p>
+<p class="itemText"></p>
+<p class="itemText">Statuts de l'étape (propriété :status)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Valeurs</p>
+<p class="itemText">Description</p>
+<p class="itemText">0</p>
+<p class="itemText">Jamais affecté</p>
+<p class="itemText">1</p>
+<p class="itemText">Étape démarrée, l'icarien y travaille (valeur par défaut)</p>
+<p class="itemText">2</p>
+<p class="itemText">L'icarien a remis son travail, mais il n'est pas encore reçu</p>
+<p class="itemText">3</p>
+<p class="itemText">Travail téléchargé par Phil</p>
+<p class="itemText">4</p>
+<p class="itemText">Dépôt des commentaires (mais l'icarien ne les a pas téléchargé)</p>
+<p class="itemText">5</p>
+<p class="itemText">L'icarien télécharge ses commentaires</p>
+<p class="itemText">6</p>
+<p class="itemText">Dépôt des documents sur le QDD (donc il faut que l'icarien ait téléchargé ses commentaires)</p>
+<p class="itemText">7</p>
+<p class="itemText">Définition du partage des documents par l'icarien (fin de cycle)</p>
+<p class="itemText"></p>
+
+</li>
+<li>
+<p class="itemTitle">Options</p>
+<p class="itemText">Options pour l'ic-étape.</p>
+<p class="itemText"></p>
+<p class="itemText"> Bit</p>
+<p class="itemText">Valeurs possibles</p>
+<p class="itemText">0</p>
+<p class="itemText">1</p>
+<p class="itemText">Bit d'avertissement d'échéance d'étape dépassée</p>
+<p class="itemText">De 0: pas d'avertissement à 9: tous les avertissements ont été donnés, on considère l'icarien comme déserteur.</p>
+<p class="itemText">1</p>
+<p class="itemText">2</p>
+<p class="itemText">Réalité de l'étape</p>
+<p class="itemText">1: l'étape est considérée comme "réelle" (*). 0: l'étape n'est pas réelle.</p>
+<p class="itemText">(*) Une étape « réelle » sera comptabilisée dans les modules à durée déterminée qui doivent suivre 8 étapes en général.</p>
+<p class="itemText">2</p>
+<p class="itemText">3</p>
+<p class="itemText"></p>
+<p class="itemText">3</p>
+<p class="itemText">4</p>
+<p class="itemText"></p>
+<p class="itemText">4</p>
+<p class="itemText">5</p>
+<p class="itemText"></p>
+<p class="itemText">5</p>
+<p class="itemText">6</p>
+<p class="itemText"></p>
+<p class="itemText">6</p>
+<p class="itemText">7</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">Pauses</p>
+<p class="itemText">Les pauses des modules d'icarien.</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un module d'apprentissage d'icarien sont :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :ic_module</p>
+<p class="itemText"></p>
+<p class="itemText">started_at</p>
+<p class="itemText">La date du début de la pause (ne pas utiliser created_at car la donnée peut être créée plus tard)</p>
+<p class="itemText">ended_at</p>
+<p class="itemText">Date de la fin de la pause</p>
+<p class="itemText">motif</p>
+<p class="itemText">Motif de la pause</p>
+<p class="itemText"> + les timestamps par défaut, created_at et updated_at</p>
 <p class="itemText">     </p>
 </li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">IcDocuments</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un document de module d'apprentissage d'icarien sont :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :ic_etape</p>
+<p class="itemText">belongs_to :ic_module, through :ic_etape</p>
+<p class="itemText">belongs_to :user, through :ic_etape</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :lectures</p>
+<p class="itemText"></p>
+<p class="itemText">original_name</p>
+<p class="itemText">Le nom original du fichier tel qu'il a été transmis</p>
+<p class="itemText">doc_affixe</p>
+<p class="itemText">Affixe donné au document</p>
+<p class="itemText">expected_comments_at</p>
+<p class="itemText">Date espérée de remise des commentaires</p>
+<p class="itemText">OBSOLÈTE : c'est l'étape qui porte cette donnée.</p>
+<p class="itemText">commented_at</p>
+<p class="itemText">Date effective de remise des commentaires</p>
+<p class="itemText">note_auteur</p>
+<p class="itemText">La note donnée par l'auteur à...</p>
+</li>
+<li>
+<p class="itemTitle">Options</p>
+<p class="itemText">Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.</p>
+<p class="itemText"></p>
+<p class="itemText"> Bit</p>
+<p class="itemText">Valeurs possibles</p>
+<p class="itemText">0</p>
+<p class="itemText">1</p>
+<p class="itemText">Existence</p>
+<p class="itemText">1: Le document existe, 0: le document  n'existe pas</p>
+<p class="itemText">1</p>
+<p class="itemText">2</p>
+<p class="itemText">Partage</p>
+<p class="itemText">0: non défini, 1: partagé, 2: non partagé</p>
+<p class="itemText">2</p>
+<p class="itemText">3</p>
+<p class="itemText">Téléchargement (user ou admin)</p>
+<p class="itemText">0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)</p>
+<p class="itemText">3</p>
+<p class="itemText">4</p>
+<p class="itemText">Présence sur le QDD</p>
+<p class="itemText">0: non déposé, 1: déposé sur le QDD</p>
+<p class="itemText">4</p>
+<p class="itemText">5</p>
+<p class="itemText">Définition du partage (obsolète, cf. le 2ème bit)</p>
+<p class="itemText">5</p>
+<p class="itemText">6</p>
+<p class="itemText">Fin du cycle de ...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">Lectures</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés des lectures d'un document sont :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :ic_document</p>
+<p class="itemText">belongs_to :user, as: lecteur</p>
+<p class="itemText">belongs_to :user, through :ic_document, as: auteur</p>
+<p class="itemText"></p>
+<p class="itemText">comments</p>
+<p class="itemText">Commentaire éventuel du lecteur</p>
+<p class="itemText">original_cote</p>
+<p class="itemText">Cote sur 5 attribuée par le lecteur au document original</p>
+<p class="itemText">comments_cote</p>
+<p class="itemText">Cote sur 5 du lecteur au document commenté</p>
+<p class="itemText"> + les timestamps par défaut, created_at et updated_at</p>
+<p class="itemText">     </p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">Paiements</p>
+<p class="itemText">Les paiements concernant un module d'icarien.</p>
+<p class="itemText"></p>
+
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un module d'apprentissage d'icarien sont :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :ic_module</p>
+<p class="itemText">belongs_to :user, through :ic_module</p>
+<p class="itemText"></p>
+<p class="itemText">objet</p>
+<p class="itemText">Objet du paiement</p>
+<p class="itemText">montant</p>
+<p class="itemText">Montant du paiement en euros</p>
+<p class="itemText">facture</p>
+<p class="itemText">Le texte de la facture complète (HTML)</p>
+<p class="itemText">note</p>
+<p class="itemText">Une note (de l'admin) sur ce paiement</p>
+<p class="itemText"> + les timestamps par défaut, created_at et updated_at</p>
+<p class="itemText">     </p>
+</li>
+</ul>
 </ul>
 <hr class="afterText"/>
 
