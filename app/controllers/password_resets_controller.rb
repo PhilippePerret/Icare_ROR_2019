@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     ticket = Ticket.new(
       name:    'reset_password',
       action:  '/password_resets/%{token}/edit',
-      duree:   2.days
+      duree:   2.hours
       )
     ticket = u.tickets.create(ticket.hash_to_create)
     UserMailer.reset_password(u, ticket).deliver_now
@@ -53,4 +53,5 @@ class PasswordResetsController < ApplicationController
       render :edit
     end
   end
+
 end

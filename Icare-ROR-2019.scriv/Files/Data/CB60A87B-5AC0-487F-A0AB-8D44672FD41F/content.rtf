@@ -21,7 +21,7 @@ Par exemple :\
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 \
+\f2\fs22 \
 	ticket = Ticket.new(name: 'activation_compte', action: "User.find(#\{benoit.id\}).confirm_compte", duree: 2.days)\
 	# Cr\'e9e un objet qui poss\'e8de les propri\'e9t\'e9s :\
 	#	:name, :digest, :action, :token, :expire_at\
@@ -36,13 +36,13 @@ ATTENTION
 \
 L'
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 :action
+\f2\fs22 :action
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28  peut \'eatre soit du code Ruby \'e0 \'e9valuer, soit une route.\
 \
 Quand il s'agit d'une route, il est toujours ajout\'e9e \'e0 cette route le param\'e8tre 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 :uid
+\f2\fs22 :uid
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28  qui contient l'ID de l'user poss\'e9dant le ticket. Le ticket, lui est d\'e9truit, donc on ne peut pas le retrouver (mais \'e0 l'avenir, s'il s'av\'e8re qu'il est int\'e9ressant de le reprendre, on pourra le garder et le d\'e9truire apr\'e8s).\
 \
@@ -50,7 +50,7 @@ On peut passer des variables dans l'action ou la route, avec :\
 \
 	
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28  %\{<nom variable>\} 
+\f2\fs22  %\{<nom variable>\} 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
@@ -69,7 +69,7 @@ Avant l'ex\'e9cution du code (en fait, dans la m\'e9thode), on met le digest du 
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 \
+\f2\fs22 \
 	tdigest = session['ticket_digest']\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0

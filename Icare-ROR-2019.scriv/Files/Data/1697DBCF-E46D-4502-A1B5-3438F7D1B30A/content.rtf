@@ -10,7 +10,7 @@
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 \
+\f2\fs22 \
 	$ git add -A\
 	$ git commit -m "Dernier d\'e9p\'f4t"\
 	$ git push\
@@ -24,7 +24,7 @@ Avant de pusher, s'il peut y avoir du trafic, on se met en maintenance :\
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 	$ heroku maintenance:on 
+\f2\fs22 	$ heroku maintenance:on 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
@@ -32,7 +32,7 @@ Pour "pusher" on line, apr\'e8s avoir push\'e9 sur git :\
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28  $ git push heroku # master 
+\f2\fs22  $ git push heroku # master 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 seulement la premi\'e8re fois\
 \
@@ -40,13 +40,13 @@ Pour que les migrations soient prises en compte :\
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 	$ heroku pg:reset DATA --confirm <nom application heroku> 
+\f2\fs22 	$ heroku pg:reset DATA --confirm <nom application heroku> 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 	$ heroku run rails db:migrate 
+\f2\fs22 	$ heroku run rails db:migrate 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
@@ -54,7 +54,7 @@ Si on veut peupler la base :\
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 	$	heroku run rails db:seed 
+\f2\fs22 	$	heroku run rails db:seed 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
@@ -62,7 +62,7 @@ On quitte la maintenance \
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28 	$ heroku maintenance:off 
+\f2\fs22 	$ heroku maintenance:off 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 \
@@ -72,7 +72,7 @@ Pour essayer le bac \'e0 sable sur heroku :\
 \
 
 \f1\fs24 \cf2 \cb3 <$Scr_Cs::0>
-\f2\fs28  $ heroku run rails console --sandbox 
+\f2\fs22  $ heroku run rails console --sandbox 
 \f1\fs24 \cf0 \cb1 <!$Scr_Cs::0>
 \f0\fs28 \
 }
