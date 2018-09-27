@@ -5,15 +5,65 @@
             <Title>Tickets</Title>
             <Text>Pour créer un ticket à quelqu'un :
 
-	ticket = Ticket.new('&lt;nom générique&gt;', '&lt;code à exécuter&gt;')
+	ticket = Ticket.new(
+		name: '&lt;nom générique&gt;', 
+		action: '&lt;code à exécuter&gt;|&lt;route&gt;',
+		[duree: &lt;durée de vie du ticket&gt;]
+	)
 	&lt;user&gt;.tickets.create(ticket.hash_to_create)
 
 Par exemple :
 
-	ticket = Ticket.new('activation_compte', "User.find(#{benoit.id}).confirm_compte")
+
+	ticket = Ticket.new(name: 'activation_compte', action: "User.find(#{benoit.id}).confirm_compte", duree: 2.days)
 	# Crée un objet qui possède les propriétés :
-	#	:name, :digest, :action, :token
-	benoit.tickets.create(ticket.hash_to_create)</Text>
+	#	:name, :digest, :action, :token, :expire_at
+	autre_ticket = benoit.tickets.create(ticket.hash_to_create)
+
+
+ATTENTION, si on veut récupérer le token du ticket, il ne faut pas faire `user.tickets.last` (qui créerait une nouvelle instance avec un token vide), il faut la prendre du ticket ou autre_ticket.
+
+L':action peut être soit du code Ruby à évaluer, soit une route.
+
+Quand il s'agit d'une route, il est toujours ajoutée à cette route le paramètre :uid qui contient l'ID de l'user possédant le ticket. Le ticket, lui est détruit, donc on ne peut pas le retrouver (mais à l'avenir, s'il s'avère qu'il est intéressant de le reprendre, on pourra le garder et le détruire après).
+
+On peut passer des variables dans l'action ou la route, avec :
+
+	 %{&lt;nom variable&gt;} 
+
+Les noms de variable possible sont :
+
+	%{digest}  		# pour une url/action par exemple
+	%{token}  		# pour une url/action par exemple
+	%{user_id}		# ID du possesseur du ticket
+
+Par exemple :
+
+	action: '/icmodule/%{digest}/edit'
+
+Avant l'exécution du code (en fait, dans la méthode), on met le digest du ticket dans la variable session :ticket_digest
+
+
+	tdigest = session['ticket_digest']
+
+
+De cette manière, on peut faire encore des contrôles, comme lorsque l'url appelée en action contient le même token que le ticket, pour double vérification.
+Ensuite, il suffit donc de faire :
+
+	if BCrypt::Password.new(session['ticket_digest']).is_password?(params[:id])
+		# =&gt; OK
+	else
+		# =&gt; Not OK
+	end</Text>
+        </Document>
+        <Document ID="F2B7BD47-50B0-4B31-AC9C-99F70413103D">
+            <Title>Reset password</Title>
+            <Text>1. L'user clique sur le lien "mot de passe oublié"
+2. Il rejoint un formulaire pour donner son adresse mail, et le soumet
+3. On lui envoie un ticket avec un lien lui permettant de réinitialiser son mot de passe
+4. L'user clique ce lien et…
+5. rejoint un formulaire pour entrer une nouveau mot de passe
+6. Le nouveau mot de passe (crypté) est enregistré dans la base de donnée et l'user est loggué.</Text>
         </Document>
         <Document ID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0">
             <Title>resources :model</Title>
@@ -185,45 +235,25 @@ BIT (le premier chiffre est le nombre pour la base de données)
 	@autre_variable = "autre valeur"
 end</Text>
         </Document>
+        <Document ID="00D37C5D-EF94-41AD-BE9B-6DE698823CAE">
+            <Title>Formulaires</Title>
+            <Text>Pour définir l'action (avec une route en path), il faut utiliser url: ...._path
+
+Par exemple :
+
+
+	&lt;%= form_form(:ressource, url: ressources_path) do |f| %&gt;
+		...
+	&lt;% end %&gt;
+
+
+Ça ne fonctionne pas avec   action: ressources_path .</Text>
+        </Document>
         <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
             <Title>Production (heroku)</Title>
         </Document>
         <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
             <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
-            <Title>Introduction</Title>
-            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
-        </Document>
-        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
-            <Title>Statut</Title>
-        </Document>
-        <Document ID="E9462355-BDF3-4C0A-99C8-EC106941D32A">
-            <Title>Propriétés directes</Title>
-            <Text>J'appelle "propriétés directes" les propriétés qui ne dépendent pas d'autres objets. C'est le cas par exemple de l'adresse email ou du pseudo.
-
-id
-Identifiant absolu de l'utilisateur (icarien-ne).
-email
-Son adresse email, validée
-name
-Pseudo utilisé sur le site (obligatoire)
-nom
-Nom réel de l'icarien (obligatoire)
-prenom
-Prénom réel de l'icarien (obligatoire)
-password_digest
-Mot de passe encrypté
-statut
-Bits des privilèges (cf. Statut)
-options
-Options diverses (cf. Options)
-created_at
-Date de création de la donnée de l'icarien
-updated_at
-Date de dernière modification des données de l'user
-	
-					</Text>
         </Document>
         <Document ID="9F1BE186-BD95-4A3B-8FC9-12D9C4FFF7C0">
             <Title>Cryptage</Title>
@@ -258,6 +288,40 @@ Pour tester la correspondance :
 	else
 		# Le mot codé ne correspond pas
 	end</Text>
+        </Document>
+        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
+            <Title>Statut</Title>
+        </Document>
+        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
+            <Title>Introduction</Title>
+            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
+        </Document>
+        <Document ID="E9462355-BDF3-4C0A-99C8-EC106941D32A">
+            <Title>Propriétés directes</Title>
+            <Text>J'appelle "propriétés directes" les propriétés qui ne dépendent pas d'autres objets. C'est le cas par exemple de l'adresse email ou du pseudo.
+
+id
+Identifiant absolu de l'utilisateur (icarien-ne).
+email
+Son adresse email, validée
+name
+Pseudo utilisé sur le site (obligatoire)
+nom
+Nom réel de l'icarien (obligatoire)
+prenom
+Prénom réel de l'icarien (obligatoire)
+password_digest
+Mot de passe encrypté
+statut
+Bits des privilèges (cf. Statut)
+options
+Options diverses (cf. Options)
+created_at
+Date de création de la donnée de l'icarien
+updated_at
+Date de dernière modification des données de l'user
+	
+					</Text>
         </Document>
         <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
             <Title>Possessions</Title>
@@ -325,6 +389,10 @@ Et même :
 Explication :
 Ce "render" recevant une collection d'objets de type User, il cherche un partiel de nom '_user.html.erb' pour traiter chaque élément de la collection.</Text>
         </Document>
+        <Document ID="19E59F12-6DD0-4D7C-A210-D717164470F3">
+            <Title>Essayer une URL</Title>
+            <Text>Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</Text>
+        </Document>
         <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
             <Title>Propriétés</Title>
             <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
@@ -341,6 +409,18 @@ updated_at
 Date de dernière modification des données du module
 	
 					</Text>
+        </Document>
+        <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
+            <Title>MAILS</Title>
+            <Text>Récupérer le dernier mail en intégration :
+
+	mail = ActionMailer::Base.deliveries.last  
+
+Pour retrouver un texte dans le corps, par exemple une URL :
+
+	url = mail.body.encoded.match(/"[^"]+"&gt;Modifi/)[1] 
+
+</Text>
         </Document>
         <Document ID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7">
             <Title>Ajouts à test_helper.rb</Title>
@@ -365,6 +445,9 @@ Par exemple :
 
 </Text>
         </Document>
+        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
+            <Title>MAILS</Title>
+        </Document>
         <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
             <Title>Processus courants</Title>
             <Text>Notamment avec "spring" (serveur de Rails), il peut y avoir multiplication des processus ouverts.
@@ -372,9 +455,13 @@ Pour voir les processus (tous) :
  $ ps aux 
 Pour voir les processus particuliers (ici consacrés à spring) :
  $ ps aux | grep spring 
-Pour "tuer" un processus :
- $ kill -15 &lt;numéro du processus&gt; 
-Ou pour tuer tous les processus d'un certain nom :
+
+Pour "tuer" un processus (-9 fonctionne mieux, semble-t-il) :
+
+ $ kill -9 &lt;numéro de processus&gt;
+ $ kill -15 &lt;numéro du processus&gt;           
+
+Ou pour tuer tous les processus d'un certain nom (ne pas oublier le "p" de "pkill") :
  $ pkill -15 -f spring 
 </Text>
         </Document>
@@ -442,8 +529,21 @@ Pour voir où on en est :
 
 Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
         </Document>
+        <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
+            <Title>Générer sans fiche test</Title>
+            <Text>Pour générer un contrôleur sans feuille de test, on ajoute l'option --no-test-framework.
+Par exemple :
+
+
+	$ rails g controller Controls edit new --no-test-framework  
+
+</Text>
+        </Document>
         <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
             <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="BDF6C165-D027-4AD0-A539-F2A4BBD3D815">
+            <Title>MAILS</Title>
         </Document>
         <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
             <Title>Production (heroku)</Title>
@@ -488,6 +588,7 @@ Pour essayer le bac à sable sur heroku :
             <Title>TODO</Title>
             <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
+	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
 </Text>
         </Document>
         <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">

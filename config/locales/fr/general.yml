@@ -2,6 +2,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  votre_email:    'Votre adresse mail'
+  
   hello:    "Bonjour à vous, bienvenue à l’atelier Icare."
   help:     "Aide"
   home:     "Accueil"

@@ -6,6 +6,15 @@ module SessionsHelper
     SecureRandom.urlsafe_base64
   end
 
+  # Utiliser SessionsHelper.digest(pwd) pour hasher une valeur, à commencer
+  # par le mot de passe (à la place de User.digest)
+  def self.digest mot_clair
+    cost = ActiveModel::SecurePassword.min_cost ?
+            BCrypt::Engine::MIN_COST :
+            BCrypt::Engine::cost
+    BCrypt::Password.create(mot_clair, cost: cost)
+  end
+
   def current_user
     @current_user ||= get_current_user
   end

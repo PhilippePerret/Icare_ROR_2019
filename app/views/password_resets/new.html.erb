@@ -7,10 +7,10 @@
   <div class="row">
     <div class="col col-md-offset-2 col-md-4">
       <%= form_for('infopassword', url: password_resets_path) do |f| %>
-        <%= f.label :email, 'Votre adresse mail' %>
+        <%= f.label :email, I18n.t('votre_email') %>
         <%= f.email_field :email, required: true %>
         <div class="right vair">
-          <%= f.submit 'M’envoyer le code de réinitialisation', class: 'btn btn-primary' %>
+          <%= f.submit I18n.t('users.password.send_reset_code.button'), class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>

@@ -4,7 +4,7 @@
 
     <%= form_for( :session, url: login_path ) do |f| %>
 
-      <%= f.label :email, 'Votre adresse mail' %>
+      <%= f.label :email, I18n.t('votre_email') %>
       <%= f.email_field :email, class: 'form-control', required: true %>
 
       <%= f.label :password, 'Votre mot de passe' %>
@@ -12,18 +12,18 @@
 
       <%= f.label :remember_me, class: 'checkbox inline' do %>
         <%= f.check_box :remember_me %>
-        <%= content_tag(:span, 'Se souvenir de moi sur cet ordinateur') %>
+        <%= content_tag(:span, I18n.t('users.remember_me.button')) %>
       <% end %>
 
       <div class="right vair">
-        <%= f.submit 'M’identifier', class: 'btn btn-primary' %>
+        <%= f.submit I18n.t('users.signin.button'), class: 'btn btn-primary' %>
       </div>
 
     <% end %><%# /form_for %>
 
     <p>
-      <%= link_to 'Poser sa candidature', signup_path, style:'margin-right:4rem' %>
-      <%= link_to 'Mot de passe oublié', new_password_reset_path %>
+      <%= link_to I18n.t('users.signup.button'), signup_path, style:'margin-right:4rem' %>
+      <%= link_to I18n.t('users.password.forgotten'), new_password_reset_path %>
     </p>
 
   </div>

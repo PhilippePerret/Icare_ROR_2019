@@ -8,13 +8,13 @@ class User < ApplicationRecord
 
   has_many :tickets
 
-  # RETURN le mot de passe +pwd+ crypté
-  def User.digest(pwd)
-    cost = ActiveModel::SecurePassword.min_cost ?
-            BCrypt::Engine::MIN_COST :
-            BCrypt::Engine::cost
-    BCrypt::Password.create(pwd, cost: cost)
-  end
+  # # RETURN le mot de passe +pwd+ crypté
+  # def User.digest(pwd)
+  #   cost = ActiveModel::SecurePassword.min_cost ?
+  #           BCrypt::Engine::MIN_COST :
+  #           BCrypt::Engine::cost
+  #   BCrypt::Password.create(pwd, cost: cost)
+  # end
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = SessionsHelper.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, SessionsHelper.digest(remember_token))
   end
   def forget
     update_attribute(:remember_digest, nil)

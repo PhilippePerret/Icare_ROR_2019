@@ -1,2 +1,18 @@
 fr:
-  
+  users:
+    signup:
+      button:         'Poser sa candidature'
+    signin:
+      button:         'M’identifier'
+    password:
+      new:
+        label:        'Nouveau mot de passe'
+      confirmation:
+        label:        'Confirmation du nouveau mot de passe'
+      change:
+        button:       'Changer le mot de passe'
+      forgotten:      'Mot de passe oublié'
+      send_reset_code:
+        button:       'M’envoyer le code de réinitialisation'
+    remember_me:
+      button:         'Se souvenir de moi sur cet ordinateur'

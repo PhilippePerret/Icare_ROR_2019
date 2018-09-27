@@ -43,6 +43,7 @@ class PasswordResetsController < ApplicationController
     pwdconf = params[:newpass][:password_confirmation].strip
     if pwd == pwdconf
       # => OK
+      @user.update_attribute(:password_digest, SessionsHelper.digest(pwd))
       log_in(@user)
       flash[:success] = I18n.t('password.success.reset', {pseudo: @user.name})
       redirect_to home_path

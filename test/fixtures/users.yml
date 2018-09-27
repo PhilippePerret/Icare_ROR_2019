@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-<% digest_pwd = User.digest('mot de passe') %>
+<% digest_pwd = SessionsHelper.digest('mot de passe') %>
 phil:
   name:       Phil
   prenom:     Philippe
@@ -17,7 +17,7 @@ benoit:
   nom:        Ackerman
   sexe:       0
   email:      benoit.ackerman@yahoo.fr
-  password_digest: <%= User.digest('mot de passe') %>
+  password_digest: <%= digest_pwd %>
   options:    '01100000'
   statut:     1
 
@@ -28,14 +28,14 @@ marion:
   sexe:       1
   birthyear:  1992
   email:  marion.michel31@free.fr
-  password_digest: <%= User.digest('mot de passe') %>
+  password_digest: <%= digest_pwd %>
   statut:     6
   options:    '01100000'
 
 lana:
   name:       Lana Witzniac
   email:      lana.witzniac@example.com
-  password_digest: <%= User.digest('mot de passe') %>
+  password_digest: <%= digest_pwd %>
   sexe:       1
   birthyear:  1987
   statut:     1

@@ -13,7 +13,7 @@ class SessionsHelperTest < ActionView::TestCase
   end
 
   test "current_user retourne nil quand le remember digest est mauvais" do
-    @user.update_attribute(:remember_digest, User.digest(SessionsHelper.new_token))
+    @user.update_attribute(:remember_digest, SessionsHelper.digest(SessionsHelper.new_token))
     assert_nil current_user
   end
 
