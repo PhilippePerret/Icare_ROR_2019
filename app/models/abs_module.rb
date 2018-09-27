@@ -1,7 +1,9 @@
 class AbsModule < ActiveRecord::Base
 
-  has_many :abs_etapes
+  has_many  :abs_etapes
+  has_many  :ic_modules
 
+  # = VALIDATIONS =
   validates :name, presence: true
   validates :dim, presence: true
 

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'ic_modules/show'
+  get 'ic_modules/update'
+  get 'ic_modules/new'
+  get 'ic_modules/create'
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

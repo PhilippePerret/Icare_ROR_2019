@@ -221,13 +221,15 @@
 <p class="itemText">Etat du module (nouvelle propriété). Cf. State</p>
 <p class="itemText">options</p>
 <p class="itemText">OBSOLÈTE (cf. le fichier Options)</p>
-<p class="itemText">starting_at</p>
+<p class="itemText">started_at</p>
 <p class="itemText">Date de démarrage du module</p>
-<p class="itemText">ending_at</p>
+<p class="itemText">Avant : starting_at</p>
+<p class="itemText">ended_at</p>
+<p class="itemText"></p>
 <p class="itemText">Date de fin du module (réelle, pas une pause)</p>
+<p class="itemText">Avant : ending_at</p>
 <p class="itemText">next_paiement</p>
-<p class="itemText">La date de prochain paiement (if any)</p>
-<p class="itemText"> + ...</p>
+<p class="itemText">La d...</p>
 </li>
 <li>
 <p class="itemTitle">State</p>
@@ -298,12 +300,9 @@
 <ul>
 <li>
 <p class="itemTitle">Propriétés</p>
-<p class="itemText">Les propriétés d'un module d'apprentissage absolu sont :</p>
+<p class="itemText">Les propriétés d'une étape de module d'apprentissage absolu sont :</p>
 <p class="itemText"></p>
-<p class="itemText">has_many :ic_modules</p>
-<p class="itemText">has_many :users, through :ic_modules</p>
-<p class="itemText"></p>
-<p class="itemText">has_many :documents, through: :ic_modules (fonctionne ?)</p>
+<p class="itemText">belongs_to :abs_module</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
 <p class="itemText">numero</p>
@@ -321,7 +320,11 @@
 <p class="itemText">travaux</p>
 <p class="itemText">OBSOLÈTE</p>
 <p class="itemText">duree</p>
-<p class="itemText">Nombre de jours par défaut...</p>
+<p class="itemText">Nombre de jours par défaut pour cette étape.</p>
+<p class="itemText">duree_max</p>
+<p class="itemText">La durée maximum acceptable pour cette étape.</p>
+<p class="itemText">liens</p>
+<p class="itemText">Li...</p>
 </li>
 <li>
 <p class="itemTitle">Type</p>
@@ -379,8 +382,8 @@
 <p class="itemText">Options de l'étape, quelques valeurs utiles, fixes ou mobiles. Cf. Options</p>
 <p class="itemText">travail_propre</p>
 <p class="itemText">Éventuellement, le travail propre de l'étape, ou un travail supplémentaire pour l'étape.</p>
-<p class="itemText">starting_at</p>
-<p class="itemText">Date de démarrage de l'étape. Elle pourrait être définie lorsque l'user arrive sur son bu...</p>
+<p class="itemText">started_at</p>
+<p class="itemText">Date de démarrage de l'étape. Elle pourrait être définie lorsque l'user arrive sur son bur...</p>
 </li>
 <li>
 <p class="itemTitle">Statuts</p>
