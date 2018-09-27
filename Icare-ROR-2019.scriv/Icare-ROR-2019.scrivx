@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-27 07:42:58 +0300" ModID="3E2FFE76-5AB0-490C-BC25-D8D4D0E5CAD3">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-27 08:27:17 +0300" ModID="BAF83C7B-B3A7-45BC-82D1-46D56546BF20">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-26 13:40:04 +0300">
             <Title>TODO</Title>
@@ -204,14 +204,34 @@
                         <TextSelection>441,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-27 07:05:25 +0300">
+                <BinderItem UUID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A" Type="Text" Created="2018-09-20 18:22:22 +0300" Modified="2018-09-27 07:58:51 +0300">
                     <Title>Production (heroku)</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>487,0</TextSelection>
+                        <TextSelection>725,0</TextSelection>
                     </TextSettings>
+                    <Children>
+                        <BinderItem UUID="1088D74F-8060-4921-A0A8-BCB749FE7D7F" Type="Text" Created="2018-09-27 08:18:51 +0300" Modified="2018-09-27 08:19:45 +0300">
+                            <Title>Infos sur la base</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>105,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="01F41402-4522-41EA-8C60-C12EEBCDA45B" Type="Text" Created="2018-09-27 08:24:40 +0300" Modified="2018-09-27 08:27:17 +0300">
+                            <Title>Gérer les processus en cours</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
                 </BinderItem>
                 <BinderItem UUID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0" Type="Text" Created="2018-09-21 07:04:58 +0300" Modified="2018-09-21 07:16:50 +0300">
                     <Title>resources :model</Title>
@@ -340,7 +360,7 @@
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>0,0</TextSelection>
+                                <TextSelection>366,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -568,8 +588,8 @@
     <RecentWritingHistory Date="2018-09-27 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>115</OtherWordCount>
-        <OtherCharCount>1135</OtherCharCount>
+        <OtherWordCount>220</OtherWordCount>
+        <OtherCharCount>1754</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
