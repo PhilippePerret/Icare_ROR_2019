@@ -1,0 +1,5 @@
+class ActionWatcher < ApplicationRecord
+
+
+
+end

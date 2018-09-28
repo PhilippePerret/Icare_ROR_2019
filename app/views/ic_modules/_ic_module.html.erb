@@ -1,0 +1,35 @@
+<%
+# Template pour afficher un module d'apprentissage d'icarien
+%>
+
+<li class="container">
+  <div class="row">
+    <div class="col col-sm-2 col-lg-offset-2">
+      #<%= ic_module.id %>
+    </div>
+    <div class="col col-sm-3">
+      Module « <%= ic_module.abs_module.name %> »
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-sm-6">
+      <%= myLabel('time.started_at', suffix: ' : ')%>
+      <%= ic_module.started? ? ic_module.started_at : I18n.t('module.status.waiting_for_start')%>
+    </div>
+    <div class="col col-sm-6">
+      <%= myLabel('time.ended_at', suffix: ' : ')%>
+      <%= ic_module.ended? ? ic_module.ended_at : (ic_module.started? ? I18n.t('module.status.waiting_for_start') : I18n.t('module.status.is_current')) %>
+    </div>
+  </div><%# /row %>
+
+  <div class="row">
+    <div class="col col-sm-6">
+      <%= myLabel('module.current_etape.label', suffix: ' : ') %>
+      <%= ic_module.current? ? "#{ic_module.current_etape.numero} #{ic_module.current_etape.titre}" : I18n.t('module.status.waiting_for_start') %>
+    </div>
+    <div class="col col-sm-6">
+
+    </div>
+  </div>
+</li>

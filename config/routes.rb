@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'ic_modules/show'
-  get 'ic_modules/update'
-  get 'ic_modules/new'
-  get 'ic_modules/create'
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -38,6 +34,11 @@ Rails.application.routes.draw do
   get 'historique'  => 'bureau#historique'
   get 'documents'   => 'bureau#documents'
 
+
+  # === MODULES D'APPRENTISSAGE DE L'ICARIEN (ICMODULES) ===
+  resources :ic_modules
+  resources :ic_etapes
+  
   # === TICKETS ===
   # resources :tickets
   get 'tickets/new' => 'tickets#create'

@@ -6,16 +6,12 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   attr_accessor :ticket_token # pour les tickets, à commencer par l'activation
 
+  has_many :ic_modules
+  has_many :ic_etapes, through: :ic_modules
+  has_many :documents, through: :ic_etapes
+
+  has_many :action_watchers
   has_many :tickets
-
-  # # RETURN le mot de passe +pwd+ crypté
-  # def User.digest(pwd)
-  #   cost = ActiveModel::SecurePassword.min_cost ?
-  #           BCrypt::Engine::MIN_COST :
-  #           BCrypt::Engine::cost
-  #   BCrypt::Password.create(pwd, cost: cost)
-  # end
-
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -47,7 +43,6 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
-
 
   def admin?
     self.statut & 4 > 0

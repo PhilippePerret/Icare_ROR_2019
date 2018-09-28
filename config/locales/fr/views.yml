@@ -1,5 +1,27 @@
 fr:
+  # Généralités
+  # Pour la méthode 'myLabel' (ne pas mettre 'myLabel' pour l'appeler)
+  myLabel:
+    time:
+      started_at:       'commencé le'
+      ended_at:         'achevé le'
+    module:
+      current_etape:
+        label:          'étape courante'
+
+  module:
+    status:
+      is_current:           'en cours de travail'
+      waiting_for_start:    'en attente de démarrage'
+
+  # Pour les users
   users:
+    status:
+      actif:          'actif'
+      inactif:        'inactif'
+      ancien:         'ancien'
+      en_pause:       'en pause'
+
     signup:
       button:         'Poser sa candidature'
     signin:

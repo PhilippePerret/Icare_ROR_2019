@@ -4,12 +4,58 @@
 <dict>
 	<key>NotesScaleFactor</key>
 	<real>1</real>
+	<key>QRPanelSettings</key>
+	<dict>
+		<key>3C7DE251-2F53-4E77-A75A-CBF210890BCC</key>
+		<dict>
+			<key>BinderUUID</key>
+			<string>3C7DE251-2F53-4E77-A75A-CBF210890BCC</string>
+			<key>CurrentMetaData</key>
+			<integer>-1</integer>
+			<key>MainPaneWidth</key>
+			<real>960</real>
+			<key>ProjectBookmarksSplitInfo</key>
+			<array>
+				<string>{{0, 0}, {225, 495}}</string>
+				<string>{{235, 0}, {443, 495}}</string>
+			</array>
+			<key>ProjectBookmarksVisible</key>
+			<false/>
+			<key>ShowsFormatBar</key>
+			<true/>
+			<key>ShowsMetaData</key>
+			<false/>
+			<key>SplitInfo</key>
+			<array>
+				<string>{{0, 277}, {475, 167}}</string>
+			</array>
+			<key>TextSettings</key>
+			<dict>
+				<key>hasMultiplePages</key>
+				<false/>
+				<key>isRulerVisible</key>
+				<false/>
+				<key>lineNumberingInterval</key>
+				<integer>1</integer>
+				<key>showsLineNumbers</key>
+				<false/>
+				<key>textScaleFactor</key>
+				<real>1</real>
+				<key>usesFacingPages</key>
+				<false/>
+				<key>usesTypewriterScrolling</key>
+				<false/>
+			</dict>
+			<key>WindowFrame</key>
+			<string>602 170 960 730 0 0 1680 1027 </string>
+		</dict>
+	</dict>
 	<key>SuppressBookmarksFolderCheck</key>
 	<false/>
 	<key>binderSplitFrames</key>
 	<array>
-		<string>{{0, 0}, {265, 754}}</string>
-		<string>{{266, 0}, {1217, 754}}</string>
+		<string>{{0, 0}, {265, 779}}</string>
+		<string>{{266, 0}, {1217, 779}}</string>
 	</array>
 	<key>bookmarksPreviewTextSettings</key>
 	<dict>
@@ -45,7 +91,7 @@
 	</dict>
 	<key>editorSplitFrames</key>
 	<array>
-		<string>{{609, 0}, {608, 724}}</string>
+		<string>{{609, 0}, {608, 749}}</string>
 	</array>
 	<key>fullScreenTextEditorSettings</key>
 	<dict>
@@ -64,21 +110,21 @@
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {620, 294}}</string>
+	<string>{{0, 0}, {304, 346.5}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
 		<real>2</real>
 	</dict>
 	<key>mainWindowFrame</key>
-	<string>0 251 1483 776 0 0 1680 1027 </string>
+	<string>0 226 1483 801 0 0 1680 1027 </string>
 	<key>supportingDocumentEditor.dockedQRTextSettings</key>
 	<dict>
 		<key>textScaleFactor</key>
 		<real>1</real>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {608.5, 334}}</string>
+	<string>{{0, 0}, {608.5, 331}}</string>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>

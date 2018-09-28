@@ -1,0 +1,52 @@
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        name:           Votre pseudo
+        prenom:         Votre prénom
+        nom:            Votre nom
+        email:          Votre adresse mail
+        birthyear:      Votre année de naissance
+        password:       Votre mot de passe
+        password_confirmation:  La confirmation de votre mot de passe
+    # Erreurs
+    errors:
+      models:
+        record_not_found:     'L’instance %{classe} d’identifiant %{id} est introuvable.'
+        user:
+          attributes:
+            name:
+              blank:          est requis
+              too_long:       est trop long
+              taken:          est déjà utilisé par un(e) icarien(ne)
+            email:
+              blank:          est requise
+              invalid:        est invalide
+              taken:          est déjà utilisée
+            password:
+              blank:          est requis
+              too_short:      est trop court
+            password_confirmation:
+              blank:          est requise
+              confirmation:   ne correspond pas au mot de passe
+            birthyear:
+              blank:          est requise
+              wrong_length:   n’a pas la longueur attendue (4 chiffres)
+              invalid:        devrait être une année valide
+              not_a_number:   devrait être un nombre
+            sexe:
+              blank:          Il faut indiquer si vous êtes un homme, une femme ou autre chose…
+              inclusion:      Vous devez être une femme, un homme, ou autre chose…
+              not_a_number:   Le sexe doit être indiqué par un nombre de 0 à 1
+        action_watcher:
+          attributes:
+            user_id:
+              blank:        'est requis'
+            action_watcher_path:
+              blank:        'est requis (il peut être transmis par :path).'
+              too_short:    'est trop court (doit faire au moins 6 caractères)'

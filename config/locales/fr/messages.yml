@@ -1,5 +1,7 @@
 fr:
   users:
+    asked_for:
+      login:              'Merci de vous identifier, pour pouvoir exécuter cette action.'
     success:
       welcome:            '🤗 Bienvenue, %{name} !'
       goodbye:            '👋 À très bientôt, %{name} !'
@@ -10,6 +12,15 @@ fr:
       email:
         not_confirmed:    '%{name}, vous ne pouvez rien faire avant d’avoir confirmé votre email.'
         unknown:          'Désolé, mais ce mail est inconnu à l’atelier…'
+
+  action:
+    errors:
+      not_autorised:          'Vous n’êtes pas autorisé%{e} à exécuter cette opération.'
+      not_enough_privileges:  'Vous n’avez pas les privilèges requis pour exécuter cette opération.'
+
+  page:
+    errors:
+      interdite:          'Vous n’êtes pas autorisé(e) à rejoindre cette page.'
 
   email:
     success:

@@ -13,47 +13,6 @@ fr:
   session:
     email:    Votre adresse mail
 
-  activerecord:
-    models:
-      user:
-    attributes:
-      user:
-        name:           Votre pseudo
-        prenom:         Votre prénom
-        nom:            Votre nom
-        email:          Votre adresse mail
-        birthyear:      Votre année de naissance
-        password:       Votre mot de passe
-        password_confirmation:  La confirmation de votre mot de passe
-    # Erreurs
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank:          est requis
-              too_long:       est trop long
-              taken:          est déjà utilisé par un(e) icarien(ne)
-            email:
-              blank:          est requise
-              invalid:        est invalide
-              taken:          est déjà utilisée
-            password:
-              blank:          est requis
-              too_short:      est trop court
-            password_confirmation:
-              blank:          est requise
-              confirmation:   ne correspond pas au mot de passe
-            birthyear:
-              blank:          est requise
-              wrong_length:   n’a pas la longueur attendue (4 chiffres)
-              invalid:        devrait être une année valide
-              not_a_number:   devrait être un nombre
-            sexe:
-              blank:          Il faut indiquer si vous êtes un homme, une femme ou autre chose…
-              inclusion:      Vous devez être une femme, un homme, ou autre chose…
-              not_a_number:   Le sexe doit être indiqué par un nombre de 0 à 1
-
   will_paginate:
     previous_label: Précédent
     next_label:     Suivant

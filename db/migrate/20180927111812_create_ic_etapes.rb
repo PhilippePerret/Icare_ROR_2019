@@ -1,7 +1,7 @@
 class CreateIcEtapes < ActiveRecord::Migration[5.2]
   def change
     create_table :ic_etapes do |t|
-      t.integer     :status,                limit: 2
+      t.integer     :status,                limit: 2,   default: 0
       t.string      :options,               limit: 16
       t.text        :travail_propre
       t.datetime    :started_at

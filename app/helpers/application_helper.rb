@@ -29,4 +29,13 @@ module ApplicationHelper
     (params[:action] == 'new') || params[:action] == 'create')
   end
 
+  # Il faut mettre les locales dans locale/fr/views.yml, dans la partie
+  # 'myLabel'. +locale+ ci-dessous ne doit pas contenir myLabel
+  def myLabel(locale, options = nil)
+    options ||= Hash.new
+    lab = I18n.t("myLabel.#{locale}")
+    options[:suffix] && lab.concat(options[:suffix])
+    options[:prefix] && lab.prepend(options[:prefix])
+    content_tag(:label, lab, class: options[:class])
+  end
 end

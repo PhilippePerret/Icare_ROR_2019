@@ -620,8 +620,104 @@
 <p class="itemText"> autre_ticket = benoit.tickets.create(ticket.hash_to_create)</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
-<p class="itemText">ATTE...</p>
+<p class="itemText">Note...</p>
 </li>
+<li>
+<p class="topLevelItemTitle">ActionWatchers</p>
+<p class="itemText">Watchers</p>
+<p class="itemText">Réflexion</p>
+<p class="itemText">Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.</p>
+<p class="itemText">À quoi est-ce que ça ressemblerait dans une application Rails ?</p>
+<p class="itemText"></p>
+<p class="itemText">Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.</p>
+<p class="itemText">Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un pa...</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un action_watcher :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :user</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">model</p>
+<p class="itemText">Modèle qui sera touché par l'actionwatcher</p>
+<p class="itemText">Avant : `objet`.</p>
+<p class="itemText">model_id</p>
+<p class="itemText">Identifiant de l'instance du modèle.</p>
+<p class="itemText">Avant : `objet_id`</p>
+<p class="itemText">action_watcher_path</p>
+<p class="itemText">Path de l'action watcher, là où se trouve ses fichiers.</p>
+<p class="itemText">Avant : `processus`</p>
+<p class="itemText">triggered_at</p>
+<p class="itemText">Date où le watcher doit être déclenché. Par exemple, pour un paiement, quelques jours avant son échéance.</p>
+<p class="itemText">Avant : `trigerred`</p>
+<p class="itemText">data</p>
+<p class="itemText">Éventuellement les données dont a besoin l'action-watcher. </p>
+<p class="itemText">TODO : voir ...</p>
+</li>
+<li>
+<p class="itemTitle">Création</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">De l'action-watcher lui-même</p>
+<p class="itemText">Faire un dossier dans un des dossiers de ./lib/action_watchers/.</p>
+<p class="itemText"></p>
+<p class="itemText">Par exemple le dossier : ./lib/action_watchers/user/contacter/.</p>
+<p class="itemText"></p>
+<p class="itemText">Ce dossier doit contenir au minimum le fichier action_watcher.rb avec le code :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> # Dans ./lib/action_watchers/<action_watcher_path>/action_watcher.rb</p>
+<p class="itemText"> class ActionWatcher < ApplicationRecord</p>
+<p class="itemText">  def execute</p>
+<p class="itemText">   ... Code à exécuter à l'exécution du watcher ...</p>
+<p class="itemText">  end</p>
+<p class="itemText"> end</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Si un mail doit être envoyé à l'administration à la création de cet action-watcher, on le définit...</p>
+</li>
+<li>
+<p class="itemTitle">De l'association</p>
+<p class="itemText">On crée un action-watcher avec :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> <user>.action_watchers.create(<hash data>)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Hash data doit impérativement comporter :</p>
+<p class="itemText"></p>
+<p class="itemText"> :path ou :action_watcher_path</p>
+<p class="itemText">  Le chemin d'accès au dossier contenant les éléments du watchers, à partir de</p>
+<p class="itemText">  ./lib/action_watchers/</p>
+<p class="itemText">  Par exemple 'user/traitement_candidature'</p>
+<p class="itemText">  Bien sûr, ce path doit renvoyer à un dossier existant.</p>
+<p class="itemText"></p>
+<p class="itemText"> :model (String) et :model_id (Integer) ou :objet (instance de class :model)</p>
+<p class="itemText">  L'objet visé par l'action-watcher, par exemple un document.</p>
+<p class="itemText">...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="itemTitle">Notes</p>
+<p class="itemText">Peut-être mettre les dossiers des actions-watchers dans lib/ et utiliser `require_dependency` pour les utiliser. En fait, il semble que 'require_dependency' recharge vraiment, même la seconde fois.</p>
+<p class="itemText">Pour pouvoir utiliser require_dependency, il faut ajouter dans le fichier config/application.rb :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> config.watchable_dirs['lib'] = [:rb]</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Note : en fait, j'ai utilisé simplement `load` et ça fonctionne.</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
 <li>
 <p class="topLevelItemTitle">Essayer une URL</p>
 <p class="itemText">Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</p>

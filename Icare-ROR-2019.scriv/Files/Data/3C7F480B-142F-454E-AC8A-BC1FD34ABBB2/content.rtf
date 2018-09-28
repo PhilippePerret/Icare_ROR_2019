@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Palatino-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <$ScrKeepWithNext><$Scr_Ps::0>
+\f1\fs56 Watchers\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><!$Scr_Ps::0><$Scr_Ps::1>
+\f1\b\fs36 R\'e9flexion\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::1>
+\f1\fs28 Adopte-t-on le m\'eame fonctionnement que sur l'ancien site\'a0? C'est-\'e0-dire que les actions sont d\'e9clench\'e9es par des notifications complexes.\
+\'c0 quoi est-ce que \'e7a ressemblerait dans une application Rails\'a0?\
+\
+Il y aurait un model ActionWatcher qui serait en m\'eame temps un observateur et une action possible. Il surveille d'un c\'f4t\'e9 et op\'e8re de l'autre.\
+Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses \'e0 faire\'a0? Par exemple, quand l'icarien doit proc\'e9der \'e0 un paiement, c'est toujours la m\'eame action : au moment venu, on lui pr\'e9sente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a pay\'e9, un mail lui est envoy\'e9, confirmant le paiement et un mail est envoy\'e9 \'e0 l'administration informant du paiement.\
+Avant, ces choses se trouvaient dans des fichiers (les mails \'e0 envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donn\'e9e du mod\'e8le AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. \
+\
+Il y aurait donc aussi le controller ActionWatchers qui r\'e9pondrait aux diff\'e9rentes m\'e9thodes, comme dans le truc original.\
+La m\'e9thode `run` ex\'e9cuterait le watcher, c'est-\'e0-dire le code contenu dans 'action_watcher.rb' du dossier et d\'e9finissant la m\'e9thode ActionWatcher.run.\
+La m\'e9thode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite\
+La m\'e9thode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.\
+La m\'e9thode `action_user` return le code du formulaire 'action_user.html.erb'\
+La m\'e9thode `watcher_admin` retournerait la notification pour l'user.\
+Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` d\'e9finissant des m\'e9thodes utiles \'e0 tous les autres fichiers.\
+\
+L'ActionWatcher appartient toujours \'e0 un user. L'autre personne concern\'e9e est l'administrateur, toujours.\
+}

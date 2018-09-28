@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  model_id: 1
+  action_watcher_path: MyString
+  triggered_at: 2018-09-27 20:41:04
+  data: MyText
+
+two:
+  model: MyString
+  model_id: 1
+  action_watcher_path: MyString
+  triggered_at: 2018-09-27 20:41:04
+  data: MyText

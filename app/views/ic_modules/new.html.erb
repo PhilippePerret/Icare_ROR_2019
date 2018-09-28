@@ -1,2 +1,25 @@
-<h1>IcModules#new</h1>
-<p>Find me in app/views/ic_modules/new.html.erb</p>
+<% set_title('Commande d’un module d’apprentissage') %>
+
+<!-- TODO Ici la liste des modules d'apprentissage -->
+
+<!-- Ici un bouton pour le commander -->
+
+<!--
+Où c'est plutôt ici que l'administrateur peut donner un module à un icarien, de façon artificielle, sans passer par un ticket.
+-->
+
+<div class="container">
+  <div class="col col-sm-4">
+    <%= form_for(:module, url: ic_modules_path, method: :post ) do |f| %>
+      <%= f.label :user, 'Icarien' %>
+      <%= f.select(:user_id, options_from_collection_for_select(User.all, :id, :name)) %>
+
+      <%= f.label(:abs_module, 'Module d’apprentissage') %>
+      <%= f.select(:abs_module, options_from_collection_for_select(AbsModule.all, :id, :name)) %>
+
+      <div class="right vair">
+        <%= f.submit('Attribuer ce module', class: 'btn btn-primary') %>
+      </div>
+    <% end %>
+  </div>
+</div>

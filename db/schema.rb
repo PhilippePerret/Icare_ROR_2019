@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_111812) do
+ActiveRecord::Schema.define(version: 2018_09_27_174104) do
 
   create_table "abs_etapes", force: :cascade do |t|
     t.integer "numero", limit: 3
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 2018_09_27_111812) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "action_watchers", force: :cascade do |t|
+    t.string "model", limit: 50
+    t.integer "model_id"
+    t.string "action_watcher_path"
+    t.datetime "triggered_at"
+    t.text "data"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_action_watchers_on_user_id"
+  end
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -56,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_111812) do
   end
 
   create_table "ic_etapes", force: :cascade do |t|
-    t.integer "status", limit: 2
+    t.integer "status", limit: 2, default: 0
     t.string "options", limit: 16
     t.text "travail_propre"
     t.datetime "started_at"
@@ -71,16 +83,18 @@ ActiveRecord::Schema.define(version: 2018_09_27_111812) do
 
   create_table "ic_modules", force: :cascade do |t|
     t.string "project_name"
-    t.integer "state", limit: 2
+    t.integer "state", limit: 2, default: 0
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "next_paiement"
     t.integer "abs_module_id"
     t.integer "current_etape_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["abs_module_id"], name: "index_ic_modules_on_abs_module_id"
     t.index ["current_etape_id"], name: "index_ic_modules_on_current_etape_id"
+    t.index ["user_id"], name: "index_ic_modules_on_user_id"
   end
 
   create_table "tickets", force: :cascade do |t|

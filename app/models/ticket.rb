@@ -8,6 +8,11 @@ class Ticket < ApplicationRecord
   after_create :rectifie_action
 
   def initialize with_data
+    # # On peut avoir fourni le ticket à la création de l'association
+    # puts "with_data.class: #{with_data.class}"
+    # with_data = with_data.hash_to_create if with_data.instance_of?(Ticket)
+    # puts "with_data.class: #{with_data.class}"
+
     with_data.key?(:digest) && @digest = with_data[:digest]
     # Définition de la date de péremption si une durée de vie
     # est définie.
@@ -17,6 +22,14 @@ class Ticket < ApplicationRecord
     end
     @token = with_data.delete(:token) || SessionsHelper.new_token
     super(with_data)
+
+    # super({
+    #   name: with_data[:name],
+    #   action: with_data[:action],
+    #   digest: with_data[:digest],
+    #   user_id: with_data[:user_id],
+    #   expire_at: with_data[:expire_at]
+    #   })
   end
 
   def token
