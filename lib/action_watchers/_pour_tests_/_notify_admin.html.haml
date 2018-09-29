@@ -1,0 +1,10 @@
+
+%div
+  %span Notification pour l'objet
+  %span= action_watcher.objet.class
+  %span= '#%i' % action_watcher.objet.id
+
+  .container
+    = form_for :user do
+      = text_field(:pseudo, 'pour voir', placeholder: 'Votre pseudo')
+      = submit_tag('Soumettre', class: 'btn btn-primary')

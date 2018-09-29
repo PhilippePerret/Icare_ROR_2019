@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
 
+  # Pour la gestion administrative
   ActiveAdmin.routes(self)
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ACCUEIL (URL de base)
   root 'static_pages#home'
 
-  # === PAGES STATIQUES ===
+  # === P A G E S   S T A T I Q U E S ===
 
   get 'home'    => 'static_pages#home'
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
+
+  # === ACTIONS-WATCHERS ===
+
+  resources :action_watchers, only: [:destroy]
+  get 'action_watchers/:id/run' => 'action_watchers#run', as: 'awrun'
+  # get 'action_watchers/:id/destroy'
 
 
   # === U T I L I S A T E U R S ===
@@ -38,11 +46,10 @@ Rails.application.routes.draw do
   # === MODULES D'APPRENTISSAGE DE L'ICARIEN (ICMODULES) ===
   resources :ic_modules
   resources :ic_etapes
-  
+
   # === TICKETS ===
   # resources :tickets
   get 'tickets/new' => 'tickets#create'
-  # get 'tickets/run/:id' => 'tickets#run'
   get 'tickets/:id/:token' => 'tickets#run', as: 'ticket_run'
 
 

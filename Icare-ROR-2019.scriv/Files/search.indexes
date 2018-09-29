@@ -1,482 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
-            <Title>Générer sans fiche test</Title>
-            <Text>Pour générer un contrôleur sans feuille de test, on ajoute l'option --no-test-framework.
-Par exemple :
-
-
-	$ rails g controller Controls edit new --no-test-framework  
-
-</Text>
-        </Document>
-        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
-            <Title>Définition générale avant test</Title>
-            <Text>def set_up
-	@variable = "valeur"
-	@autre_variable = "autre valeur"
-end</Text>
-        </Document>
-        <Document ID="56881565-8CB5-47DA-ADE1-F08A61B3A0CE">
-            <Title>ActionWatchers</Title>
-        </Document>
-        <Document ID="1CA1269D-400B-42F1-AB79-10F199FDC380">
-            <Title>IcEtapes</Title>
-            <Text>Les étapes des modules d'icariens</Text>
-        </Document>
-        <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
-            <Title>TODO</Title>
-            <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
-	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
-	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
-</Text>
-        </Document>
-        <Document ID="89019469-47C4-4FAA-A301-44D718A02881">
-            <Title>Production sur Heroku</Title>
-            <Text>Si le compte est vérifié (par carte de crédit), on peut utiliser sendgrid pour envoyer des mails en production.
-
-	# On ajoute l'addons
-	$ heroku addons:create sendgrid:starter
-
-	# On peut voir les USERNAME et PASSWORD avec :
-	$ heroku config:get SENDGRID_USERNAME
-	$ heroku config:get SENDGRID_PASSWORD
-
-On ajoute dans le fichier ./config/environments/production.rb
-
-
-	host = '&lt;nom application&gt;.herokuapp.com'
-	config.action_mailer.raise_delivery_errors = true
-	config.action_mailer.delivery_method = :smtp
-  	config.action_mailer.default_url_options = {host: host}
- 	ActionMailer::Base.smtp_settings = {
-		address:          'smtp.sendgrid.net',
-		port:             587,
-		authentication:   :plain,
-		user_name:        ENV['SENDGRID_USERNAME'],
-		password:         ENV['SENDGRID_PASSWORD'],
-		domain:           'heroku.com',
-		enable_starttls_auto: true
-	}
-
-</Text>
-        </Document>
-        <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
-            <Title>Introduction</Title>
-            <Text>Ce dossier présente des notes prises au cours de la fabrication de l'application en même temps que la lecture du tutoriel.</Text>
-        </Document>
-        <Document ID="1559C7B3-6A82-4F52-ACC2-8B1606FDBFE8">
-            <Title>Type</Title>
-            <Text>
-Types de l'étape absolue (propriété :type)
-
-Note : ce sont des bits qui s'additionnent (bit|bit)
-Valeurs
-Description
-0
-Aucun type
-1
-Travail sur la structure
-2
-Travail sur les personnages
-4
-Travail sur les thèmes
-8
-Travail sur les intrigues
-16
-Travail sur un document en particulier (synopsis, pitch, etc.)
-32
-Travail de recherche d'idées
-64
-Travail de réflexion
-128
-Travail de rédaction
-256
-Travail d'affinement, de finalisation
-
-</Text>
-        </Document>
-        <Document ID="1088D74F-8060-4921-A0A8-BCB749FE7D7F">
-            <Title>Infos sur la base</Title>
-            <Text>Pour obtenir des infos de base sur la base (et notamment le nombre de tables et de rangées), utiliser :
-
-
-	$ heroku pg:info --app &lt;nom application&gt;
-
-</Text>
-        </Document>
-        <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
-            <Title>Object.create / .save</Title>
-            <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
-        </Document>
-        <Document ID="78658323-A6C4-4F71-9779-AD1AAA428281">
-            <Title>Statuts</Title>
-            <Text>
-Statuts de l'étape (propriété :status)
-
-
-Valeurs
-Description
-0
-Jamais affecté
-1
-Étape démarrée, l'icarien y travaille (valeur par défaut)
-2
-L'icarien a remis son travail, mais il n'est pas encore reçu
-3
-Travail téléchargé par Phil
-4
-Dépôt des commentaires (mais l'icarien ne les a pas téléchargé)
-5
-L'icarien télécharge ses commentaires
-6
-Dépôt des documents sur le QDD (donc il faut que l'icarien ait téléchargé ses commentaires)
-7
-Définition du partage des documents par l'icarien (fin de cycle)
-
-</Text>
-        </Document>
-        <Document ID="FD4D3546-4C14-4455-8D60-EEFE2988D1C1">
-            <Title>Introduction</Title>
-            <Text>L'administration est gérée par le gem `activeadmin` :
-
-	gem 'activeadmin', '1.3.1'
-
-Pour l'installer pour les utilisateurs, sans utiliser Devise :
-
-	$ rails g active_admin:install --skip-users
-
-Ou avec une classe User existante :
-
-	$ rails g active_admin:install User --skip-users
-</Text>
-        </Document>
-        <Document ID="E9462355-BDF3-4C0A-99C8-EC106941D32A">
-            <Title>Propriétés directes</Title>
-            <Text>J'appelle "propriétés directes" les propriétés qui ne dépendent pas d'autres objets. C'est le cas par exemple de l'adresse email ou du pseudo.
-
-id
-Identifiant absolu de l'utilisateur (icarien-ne).
-email
-Son adresse email, validée
-name
-Pseudo utilisé sur le site (obligatoire)
-nom
-Nom réel de l'icarien (obligatoire)
-prenom
-Prénom réel de l'icarien (obligatoire)
-password_digest
-Mot de passe encrypté
-statut
-Bits des privilèges (cf. Statut)
-options
-Options diverses (cf. Options)
-created_at
-Date de création de la donnée de l'icarien
-updated_at
-Date de dernière modification des données de l'user
-	
-					has_many :watchers
-</Text>
-        </Document>
-        <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
-            <Title>Mass assignement</Title>
-            <Text>Pour éviter les assignements en masse à la création des objets, on peut utiliser (Rails &gt;=4) :
-
- params.require(:&lt;model&gt;).permit(:prop1, :prop2, ..., :propN) 
-
-Par exemple
-
-def user_params
-	params.
-		require(:user).
-		permit(:name, :email, :password, :password_confirmation)
-end
-
-</Text>
-        </Document>
-        <Document ID="DF310288-799D-45D4-80B4-79459E833115">
-            <Title>Options</Title>
-            <Text>Options pour l'ic-module.
-
-OBSOLÈTE — Mais il faut passer les valeurs du bit 0 dans la propriété :state.
-
- Bit
-Valeurs possibles
-0
-1
-cf. state
-1
-2
-
-2
-3
-
-3
-4
-
-4
-5
-
-5
-6
-
-6
-7
-
-
-</Text>
-        </Document>
-        <Document ID="3858968C-A691-412B-8199-3D5FBA49FE0C">
-            <Title>Flash</Title>
-            <Text>flash[:success] = "Le message de succès"
-
-flash[:danger] = "Le message d'échec"
-
-Les quatre types gérés par bootstrap sont :
-:success
-:info
-:warning
-:danger
-
-Pour tester qu'il y a un message flash :
-
-
-	assert flash.empty?
-	assert flash.any?
-	assert_not flash.empty?
-
-</Text>
-        </Document>
-        <Document ID="B263E8D4-8EB7-4ACF-A69C-D34E2C6C4D99">
-            <Title>Récupérer une variable</Title>
-            <Text>Il faut que ce soit une variable d'instance (@...)
-
-	v = assigns(:variable)</Text>
-        </Document>
-        <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
-            <Title>Hash</Title>
-            <Text>Pour qu'un élément de hash retourne une valeur définie :
-
-h = Hash.new
-h[:inexistant]
-=&gt; nil
-h = Hash.new('boudin')
-h[:inexistant]
-=&gt; 'boudin'</Text>
-        </Document>
-        <Document ID="09716B8B-3043-4D9D-B067-E8BAACF46E34">
-            <Title>Debugger</Title>
-            <Text>Le gem `byebug` permet de connaitre l'état de l'application à un moment donné.
-Utilisation
-
-Placer `debugger` à l'endroit où l'on veut connaitre l'état de l'application
-Lancer l'application (une URL par exemple)
-Le serveur s'arrête sur `debugger` et présente une ligne de commande `(byebug)`
-Taper les valeurs à connaitre, par exemple `params[controller]` pour connaitre le contrôleur courant.
-Taper Ctrl-D pour poursuivre le lancement. </Text>
-        </Document>
-        <Document ID="946B4A4D-AFF2-4C26-AE92-DC92068D6B01">
-            <Title>ActionWatchers</Title>
-        </Document>
         <Document ID="3EDB798B-84FA-4E88-BDA1-9B005E335D27">
             <Title>ActionWatchers</Title>
-        </Document>
-        <Document ID="996AB775-1C69-4DE6-A705-9A48765509DB">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'une étape de module d'apprentissage absolu sont :
-
-belongs_to :abs_module
-
-
-numero
-Numéro de l'étape (de 1 à 999)
-type
-(nouvelle propriété) Type de l'étape. Cf. Type.
-titre
-Titre de l'étape
-objectif
-L'objectif à atteindre au cours de cette étape
-travail
-Définition du travail (HTML). Note : peut être une liste de travaux.
-methode
-Éléments de méthode
-travaux
-OBSOLÈTE
-duree
-Nombre de jours par défaut pour cette étape.
-duree_max
-La durée maximum acceptable pour cette étape.
-liens
-Liens utiles, par exemple vers la collection Narration
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12">
-            <Title>Helpers HTML</Title>
-        </Document>
-        <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
-            <Title>Tester une route</Title>
-            <Text>Quand on a…
- get 'controller/action' 
-… dans le fichier routes, on peut tester ensuite que la page fonctionne par :
-
-test "le contrôleur répond à l'action" do
-	get controller_action_url
-	assert_response :success
-end
-</Text>
-        </Document>
-        <Document ID="BBE7194B-8ACC-47A6-92E5-3150D9C65344">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'une étape de module d'apprentissage d'icarien sont :
-
-belongs_to :ic_module
-belongs_to :abs_etape
-belongs_to :user, through :ic_module
-has_many :documents
-
-
-status
-Statut de l'étape. Cf. Statuts
-options
-Options de l'étape, quelques valeurs utiles, fixes ou mobiles. Cf. Options
-travail_propre
-Éventuellement, le travail propre de l'étape, ou un travail supplémentaire pour l'étape.
-started_at
-Date de démarrage de l'étape. Elle pourrait être définie lorsque l'user arrive sur son bureau et que son travail est affiché.
-expected_end_at
-Date de fin attentue pour le travail.
-ended_at
-Date effective de fin de l'étape (remise des documents)
-Avant : ending_at
-expected_comments_at
-La date espérée de remise des commentaires de l'étape. Note : ce n'est pas/plus les documents qui portent cette donnée.
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="4E13651D-70C3-4E95-9484-68853AA9B1DA">
-            <Title>ActionWatchers</Title>
-        </Document>
-        <Document ID="8A7EADC0-235B-46CA-B142-90FAEE6A846C">
-            <Title>content_tag</Title>
-            <Text>content_tag(:&lt;balise&gt;, &lt;contenu&gt;, {&lt;options&gt;})
-
-Par exemple :
-
-         		    
-	content_tag(:div, "Bienvenue !", class: "notice-message")
-
-
-… produit :
-
-
-	&lt;div class="notice-message"&gt;
-		Bienvenue !
-	&lt;/div&gt;
-
-</Text>
-        </Document>
-        <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
-            <Title>Production (heroku)</Title>
-            <Text>S'assurer que tout est bien sur github :
-
-
-	$ git add -A
-	$ git commit -m "Dernier dépôt"
-	$ git push
-
-
-Avant de pusher, s'il peut y avoir du trafic, on se met en maintenance :
-
-	$ heroku maintenance:on 
-
-Pour "pusher" on line, après avoir pushé sur git :
-
- $ git push heroku # master seulement la première fois
-
-Pour que les migrations soient prises en compte :
-
-Ne pas utiliser :
-	$ heroku run rails db:reset
-Utiliser :
-	$ heroku pg:reset DATA --confirm &lt;nom application heroku&gt; 
-
-	$ heroku run rails db:migrate 
-
-Si on veut peupler la base :
-
-	$	heroku run rails db:seed 
-
-On quitte la maintenance 
-
-	$ heroku maintenance:off 
-
-=== Fin ===
-
-Pour essayer le bac à sable sur heroku :
-
- $ heroku run rails console --sandbox 
-</Text>
-        </Document>
-        <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
-            <Title>Update</Title>
-            <Text>Pour actualiser un objet :
-
-
-	objet.update_attributes({... attributs})
-	# =&gt; true/false
-
-
-La méthode ci-dessous passe par la validation.
-
-On peut en revanche by-passer la validation en utilisant la méthode singulière :
-
-
-	objet.update_attribute(:attribut, valeur)
-
-
-On peut aussi utiliser la méthode qui semble ne pas passer par la validation, lorsque plusieurs valeurs sont à modifier en même temps (noter que update_at n'est pas actualisé, avec cette méthode) :
-
-
-	objet.update_columns(&lt;hash&gt;) 
-
-
-</Text>
-        </Document>
-        <Document ID="25446996-C221-49FD-906A-E06392B051C2">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
-
-belongs_to :ic_module
-
-started_at
-La date du début de la pause (ne pas utiliser created_at car la donnée peut être créée plus tard)
-ended_at
-Date de la fin de la pause
-motif
-Motif de la pause
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
-            <Title>Possessions</Title>
-            <Text>Un user peut posséder :
-	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
-	•	un ou plusieurs icmodules (modules icariens), actifs ou non
-	•	des messages frigo
-	•	des icetapes (étapes de modules icariens)
-	•	des icdocuments (document de travail propres aux modules)
-	•	des tickets
-	•	des watchers (opération atelier)
-	•	des actualités
-	•	des témoignages
-	•	des questions mini-faq
-</Text>
         </Document>
         <Document ID="9F1BE186-BD95-4A3B-8FC9-12D9C4FFF7C0">
             <Title>Cryptage</Title>
@@ -512,240 +38,103 @@ Pour tester la correspondance :
 		# Le mot codé ne correspond pas
 	end</Text>
         </Document>
-        <Document ID="CA019198-A84E-4043-B084-6CFC4864D121">
-            <Title>Pauses</Title>
-            <Text>Les pauses des modules d'icarien.</Text>
-        </Document>
-        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
-            <Title>Production (heroku)</Title>
-        </Document>
-        <Document ID="2EEF34E8-AA8F-4467-83F5-71B195456BAC">
-            <Title>Menu Select</Title>
-            <Text>À partir d'une table :
+        <Document ID="996AB775-1C69-4DE6-A705-9A48765509DB">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'une étape de module d'apprentissage absolu sont :
 
-	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;) %&gt;
+belongs_to :abs_module
 
-Par exemple, pour choisir un utilisateur :
 
-	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name) %&gt;</Text>
+numero
+Numéro de l'étape (de 1 à 999)
+type
+(nouvelle propriété) Type de l'étape. Cf. Type.
+titre
+Titre de l'étape
+objectif
+L'objectif à atteindre au cours de cette étape
+travail
+Définition du travail (HTML). Note : peut être une liste de travaux.
+methode
+Éléments de méthode
+travaux
+OBSOLÈTE
+duree
+Nombre de jours par défaut pour cette étape.
+duree_max
+La durée maximum acceptable pour cette étape.
+liens
+Liens utiles, par exemple vers la collection Narration
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
         </Document>
-        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
+        <Document ID="29A18D21-012B-40A5-8A5B-5A7D594D6A60">
+            <Title>Options</Title>
+            <Text>Options pour l'ic-étape.
+
+ Bit
+Valeurs possibles
+0
+1
+Bit d'avertissement d'échéance d'étape dépassée
+De 0: pas d'avertissement à 9: tous les avertissements ont été donnés, on considère l'icarien comme déserteur.
+1
+2
+Réalité de l'étape
+1: l'étape est considérée comme "réelle" (*). 0: l'étape n'est pas réelle.
+(*) Une étape « réelle » sera comptabilisée dans les modules à durée déterminée qui doivent suivre 8 étapes en général.
+2
+3
+
+3
+4
+
+4
+5
+
+5
+6
+
+6
+7
+
+
+</Text>
+        </Document>
+        <Document ID="DF310288-799D-45D4-80B4-79459E833115">
+            <Title>Options</Title>
+            <Text>Options pour l'ic-module.
+
+OBSOLÈTE — Mais il faut passer les valeurs du bit 0 dans la propriété :state.
+
+ Bit
+Valeurs possibles
+0
+1
+cf. state
+1
+2
+
+2
+3
+
+3
+4
+
+4
+5
+
+5
+6
+
+6
+7
+
+
+</Text>
+        </Document>
+        <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
             <Title>ActionWatchers</Title>
-        </Document>
-        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
-            <Title>Introduction</Title>
-            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
-        </Document>
-        <Document ID="01F41402-4522-41EA-8C60-C12EEBCDA45B">
-            <Title>Gérer les processus en cours</Title>
-            <Text>(utile par exemple lorsque le message d'erreur est "Can not run more than 1 Free size dyno.")
-
-
-	$ heroku ps
-	# =&gt; Liste des processus
-
-	$ heroku ps:stop &lt;dyno&gt;
-	# =&gt; Stop un processus en cours
-
-
-Par exemple :
-	=== web (Free): bundle exec puma -C config/puma.rb (1)
-	web.1: starting 2018/09/27 08:24:02 +0300 (~ 12s ago)
-
-C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
-
-	$ heroku ps:stop web.1
-
-</Text>
-        </Document>
-        <Document ID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7">
-            <Title>Ajouts à test_helper.rb</Title>
-            <Text>Voir dans le fichier test_helper.rb les ajouts faits pour améliorer les tests.</Text>
-        </Document>
-        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
-            <Title>Introduction</Title>
-            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
-        </Document>
-        <Document ID="F7FB0D91-055F-4B5F-9372-2B29CA06D129">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un action_watcher :
-
-belongs_to :user
-
-
-model
-Modèle qui sera touché par l'actionwatcher
-Avant : `objet`.
-model_id
-Identifiant de l'instance du modèle.
-Avant : `objet_id`
-action_watcher_path
-Path de l'action watcher, là où se trouve ses fichiers.
-Avant : `processus`
-triggered_at
-Date où le watcher doit être déclenché. Par exemple, pour un paiement, quelques jours avant son échéance.
-Avant : `trigerred`
-data
-Éventuellement les données dont a besoin l'action-watcher. 
-TODO : voir comment elles seront évaluées. Ce sera peut-être un json.
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
-            <Title>Reset</Title>
-            <Text>Pour resetter la base :
-
-	$ rails db:reset
-
-Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
-        </Document>
-        <Document ID="85A29CAD-F729-479C-A608-28137D58FA7B">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un module d'apprentissage absolu sont :
-
-has_many :ic_modules
-has_many :users, through :ic_modules
-
-has_many :documents, through: :ic_modules (fonctionne ?)
-
-
-name
-Nom humain du module
-P.e. « Structure »
-dim
-Diminutif, pour les noms par exemple. 
-p.e. "Stt" pour "Structure"
-module_id
-ID du module absolu avant 2016.
-tarif
-Tarif en euros du module (mensualité pour les modules à durée indéfinie)
-nombre_jours
-Durée en nombre de jour du module. Si nil, c'est un module à durée indéterminée.
-hduree
-Durée au format humain, par exemple "deux mois" ou "indéterminée".
-short_description
-Description courte du module d'apprentissage (HTML)
-long_description
-Description longue du module (HTML)
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="B5ABE287-7122-48A9-9B89-9C1687BE9664">
-            <Title>Autres ressources</Title>
-            <Text>Le "Rails style guide"
-
-https://github.com/rubocop-hq/rails-style-guide</Text>
-        </Document>
-        <Document ID="7E5FC383-7CAE-4AA6-B3AE-851220B7CB10">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
-
-belongs_to :ic_module
-belongs_to :user, through :ic_module
-
-objet
-Objet du paiement
-montant
-Montant du paiement en euros
-facture
-Le texte de la facture complète (HTML)
-note
-Une note (de l'admin) sur ce paiement
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="B0D092CD-0E58-4410-A80C-30D09876E418">
-            <Title>Git</Title>
-            <Text>Au tout départ :
-
-
-	$ git init
-
-
-Pour passer sur une autre branche :
-
-
-	$ git checkout -b &lt;nom-branche&gt;
-
-
-Pour merger la branche courante :
-
-
-	$ git checkout master # revenir à la branche maitresse
-	$ git merge &lt;nom-branche&gt;
-
-
-Pour supprimer une branche (après l'avoir mergée) :
-
-
-	$ git branch -d &lt;nom branche&gt;
-
-
-Pour voir où on en est :
-
-
-	$ git status
-
-</Text>
-        </Document>
-        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
-            <Title>ActionWatchers</Title>
-            <Text>Watchers
-Réflexion
-Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
-À quoi est-ce que ça ressemblerait dans une application Rails ?
-
-Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
-Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
-Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
-
-Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
-La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
-La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
-La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
-La méthode `action_user` return le code du formulaire 'action_user.html.erb'
-La méthode `watcher_admin` retournerait la notification pour l'user.
-Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
-
-L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
-</Text>
-        </Document>
-        <Document ID="35D45C28-0FAC-4792-AEF7-BDEAEA2943BF">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés des lectures d'un document sont :
-
-belongs_to :ic_document
-belongs_to :user, as: lecteur
-belongs_to :user, through :ic_document, as: auteur
-
-comments
-Commentaire éventuel du lecteur
-original_cote
-Cote sur 5 attribuée par le lecteur au document original
-comments_cote
-Cote sur 5 du lecteur au document commenté
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
-        </Document>
-        <Document ID="7374CC1D-A149-4586-B0B7-5E5EBA139D83">
-            <Title>Quotidien programmation</Title>
-            <Text>Opérations de dépôt
- $ git add -A  # pour ajouter les nouveaux fichiers
- $ git commit -am "Message dépôt"  # pour faire un nouveau dépôt
- $ git push  # pour déposer ce dépôt
- $ git push heroku master  # pour actualiser ce dépôt sur heroku
-Ajout d'un nouveau gem
-Quand on ajoute un nouveau gem, il faut :
-
- $ bundler install --without production 
-
-Puis exécuter les opérations de dépôt ci-dessus.</Text>
-        </Document>
-        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
-            <Title>LECTURE TUTORIEL</Title>
-        </Document>
-        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
-            <Title>MAILS</Title>
         </Document>
         <Document ID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F">
             <Title>Tickets</Title>
@@ -765,6 +154,12 @@ Par exemple :
 	# Crée un objet qui possède les propriétés :
 	#	:name, :digest, :action, :token, :expire_at
 	autre_ticket = benoit.tickets.create(ticket.hash_to_create)
+
+
+Noter qu'on peut aussi envoyer seulement l'instance :
+
+
+	benoit.tickets.create(ticket)
 
 
 ATTENTION, si on veut récupérer le token du ticket, il ne faut pas faire `user.tickets.last` (qui créerait une nouvelle instance avec un token vide), il faut la prendre du ticket ou autre_ticket.
@@ -802,108 +197,211 @@ Ensuite, il suffit donc de faire :
 		# =&gt; Not OK
 	end</Text>
         </Document>
-        <Document ID="A7C272CE-1E37-44C1-B2C1-48EFA662F70B">
-            <Title>Guard</Title>
-            <Text>Le gem Guard permet de lancer automatiquement les tests sur les fichiers modifiés.
-Pour le mettre en place dans une application :
-
-# Dans le gemfile
- gem 'guard' 
-
-# Puis jouer (une seule fois) :
- $ bundle exec guard init 
-Puis régler le guardfile.
-
-# Pour mettre en route guard (à chaque session) :
- $ bundle exec guard 
-À partir de là, toute modification entraînera un test immédiat.</Text>
+        <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
+            <Title>TODO</Title>
+            <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
+	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
+	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
+</Text>
         </Document>
-        <Document ID="BDF6C165-D027-4AD0-A539-F2A4BBD3D815">
-            <Title>MAILS</Title>
+        <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
+            <Title>De l'action-watcher lui-même</Title>
+            <Text>Le plus simple est d'utiliser mon générateur rails :
+
+
+	$ rails g action_watcher &lt;nom_du_watcher&gt;[ &lt;options&gt;]
+
+
+Cela crée tout ce qu'il faut dans le dossier ./lib/action_watchers/&lt;nom_du_watcher&gt;/
+
+Création « à la main »
+
+Faire un dossier dans un des dossiers de ./lib/action_watchers/.
+
+Par exemple le dossier : ./lib/action_watchers/user/contacter/.
+
+Ce dossier doit contenir au minimum le fichier action_watcher.rb avec le code :
+
+
+	# Dans ./lib/action_watchers/&lt;action_watcher_path&gt;/action_watcher.rb
+	class ActionWatcher &lt; ApplicationRecord
+		def execute
+			... Code à exécuter à l'exécution du watcher ...
+		end
+	end
+
+
+Si un mail doit être envoyé à l'administration à la création de cet action-watcher, on le définit dans le dossier de l'action-watcher, dans le fichier :
+
+	.../mailto_admin_before.html.erb
+
+Note : dans tous ces fichiers mails, on doit définir :
+
+
+	&lt;%
+		self.subject = 'Le sujet du message'
+	%&gt;
+
+
+Si un mail doit être envoyé à l'user à la création de l'action-watcher, on le définit dans le fichier :
+
+	.../mailto_user_before.html.erb
+
+Dans ces fichiers, on peut utiliser toutes les propriétés de l'action-watcher, à commencer par ` objet `, l'instance visée par le watcher.
+
+On peut aussi utiliser l'helper `action_watcher_helpers.rb` dans le dossier de l'action-watcher pour définir des méthodes propres.
+
+Si des mails doivent être envoyés à l'exécution de l'action-watcher, on les définit dans les fichiers :
+
+	.../mailto_admin_after.html.erb
+	.../mailto_user_after.html.erb
+
+Notifications
+
+Il existe deux sortes de notifications : celle qui peuvent accomplir une action (à commencer par jouer l'action-watcher) et celle qui affichent simplement une note informative. Par exemple, quand l'icarien envoie son document de travail, cela génère une action-watcher qui lui crée une notification disant que son document a bien été envoyé et une notification permettant à l'admin (moi, Phil), de télécharger ce document.
+Noter qu'à la création de ce watcher, dans cette nouvelle version de l'atelier, un mail d'information est automatiquement envoyé à l'administration tout de suite et un email de confirmation pour l'user.</Text>
         </Document>
-        <Document ID="3C7DE251-2F53-4E77-A75A-CBF210890BCC">
-            <Title>State</Title>
+        <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
+            <Title>Processus courants</Title>
+            <Text>Notamment avec "spring" (serveur de Rails), il peut y avoir multiplication des processus ouverts.
+Pour voir les processus (tous) :
+ $ ps aux 
+Pour voir les processus particuliers (ici consacrés à spring) :
+ $ ps aux | grep spring 
+
+Pour "tuer" un processus (-9 fonctionne mieux, semble-t-il) :
+
+ $ kill -9 &lt;numéro de processus&gt;
+ $ kill -15 &lt;numéro du processus&gt;           
+
+Ou pour tuer tous les processus d'un certain nom (ne pas oublier le "p" de "pkill") :
+ $ pkill -15 -f spring 
+</Text>
+        </Document>
+        <Document ID="09716B8B-3043-4D9D-B067-E8BAACF46E34">
+            <Title>Debugger</Title>
+            <Text>Le gem `byebug` permet de connaitre l'état de l'application à un moment donné.
+Utilisation
+
+Placer `debugger` à l'endroit où l'on veut connaitre l'état de l'application
+Lancer l'application (une URL par exemple)
+Le serveur s'arrête sur `debugger` et présente une ligne de commande `(byebug)`
+Taper les valeurs à connaitre, par exemple `params[controller]` pour connaitre le contrôleur courant.
+Taper Ctrl-D pour poursuivre le lancement. </Text>
+        </Document>
+        <Document ID="4ECD23B3-5580-4099-8B3F-57FB1359B9F1">
+            <Title>ActionWatchers</Title>
+        </Document>
+        <Document ID="1CA1269D-400B-42F1-AB79-10F199FDC380">
+            <Title>IcEtapes</Title>
+            <Text>Les étapes des modules d'icariens</Text>
+        </Document>
+        <Document ID="49A5533E-DE18-4CFC-A77D-5C2A3324D69F">
+            <Title>Redirection</Title>
+            <Text>Pour suivre une redirection dans un test, il faut utiliser la ligne :
+
+ follow_redirect! 
+
+Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
+        </Document>
+        <Document ID="CA019198-A84E-4043-B084-6CFC4864D121">
+            <Title>Pauses</Title>
+            <Text>Les pauses des modules d'icarien.</Text>
+        </Document>
+        <Document ID="4F4727C1-4967-4AE9-98FB-955A4531697C">
+            <Title>Paiements</Title>
+            <Text>Les paiements concernant un module d'icarien.
+
+</Text>
+        </Document>
+        <Document ID="7E5FC383-7CAE-4AA6-B3AE-851220B7CB10">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
+
+belongs_to :ic_module
+belongs_to :user, through :ic_module
+
+objet
+Objet du paiement
+montant
+Montant du paiement en euros
+facture
+Le texte de la facture complète (HTML)
+note
+Une note (de l'admin) sur ce paiement
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="B263E8D4-8EB7-4ACF-A69C-D34E2C6C4D99">
+            <Title>Récupérer une variable</Title>
+            <Text>Il faut que ce soit une variable d'instance (@...)
+
+	v = assigns(:variable)</Text>
+        </Document>
+        <Document ID="FD4D3546-4C14-4455-8D60-EEFE2988D1C1">
+            <Title>Introduction</Title>
+            <Text>L'administration est gérée par le gem `activeadmin` :
+
+	gem 'activeadmin', '1.3.1'
+
+Pour l'installer pour les utilisateurs, sans utiliser Devise :
+
+	$ rails g active_admin:install --skip-users
+
+Ou avec une classe User existante :
+
+	$ rails g active_admin:install User --skip-users
+</Text>
+        </Document>
+        <Document ID="78658323-A6C4-4F71-9779-AD1AAA428281">
+            <Title>Statuts</Title>
             <Text>
-Statut (état) du module (propriété :state)
+Statuts de l'étape (propriété :status)
 
 
 Valeurs
 Description
 0
-Module en attente de démarrage
+Jamais affecté
 1
-Module d'apprentissage en cours de travail
+Étape démarrée, l'icarien y travaille (valeur par défaut)
 2
-Module d'apprentissage en pause
+L'icarien a remis son travail, mais il n'est pas encore reçu
 3
-Module terminé normalement
+Travail téléchargé par Phil
 4
-Module interrompu/abandonné
+Dépôt des commentaires (mais l'icarien ne les a pas téléchargé)
 5
-
+L'icarien télécharge ses commentaires
 6
-
+Dépôt des documents sur le QDD (donc il faut que l'icarien ait téléchargé ses commentaires)
 7
-
-
-</Text>
-        </Document>
-        <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
-            <Title>ActionWatchers</Title>
-        </Document>
-        <Document ID="09A74A46-A528-4ED0-86B4-74839BC45AF9">
-            <Title>Ajouter un message d'erreur</Title>
-            <Text>On peut ajouter un message d'erreur particulier à un retour de formulaire en utilisant :
-
-
-	&lt;instance&gt;.errors.add(:&lt;property&gt;, "&lt;message&gt;")	
-
-	
-Par exemple, dans un contrôleur :
-
-
-	if password.blank?
-		@user.errors.add(:password, 'ne doit pas être vide')
-	else
-		# =&gt; OK
-	end
+Définition du partage des documents par l'icarien (fin de cycle)
 
 </Text>
         </Document>
-        <Document ID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E">
-            <Title>Options</Title>
-            <Text>Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.
+        <Document ID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7">
+            <Title>Ajouts à test_helper.rb</Title>
+            <Text>Voir dans le fichier test_helper.rb les ajouts faits pour améliorer les tests.</Text>
+        </Document>
+        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
+            <Title>Définition générale avant test</Title>
+            <Text>def set_up
+	@variable = "valeur"
+	@autre_variable = "autre valeur"
+end</Text>
+        </Document>
+        <Document ID="1088D74F-8060-4921-A0A8-BCB749FE7D7F">
+            <Title>Infos sur la base</Title>
+            <Text>Pour obtenir des infos de base sur la base (et notamment le nombre de tables et de rangées), utiliser :
 
- Bit
-Valeurs possibles
-0
-1
-Existence
-1: Le document existe, 0: le document  n'existe pas
-1
-2
-Partage
-0: non défini, 1: partagé, 2: non partagé
-2
-3
-Téléchargement (user ou admin)
-0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)
-3
-4
-Présence sur le QDD
-0: non déposé, 1: déposé sur le QDD
-4
-5
-Définition du partage (obsolète, cf. le 2ème bit)
-5
-6
-Fin du cycle de vie
-0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD)
-6
-7
 
+	$ heroku pg:info --app &lt;nom application&gt;
 
 </Text>
+        </Document>
+        <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
+            <Title>Production (heroku)</Title>
         </Document>
         <Document ID="35F85038-E2A3-4A94-9893-EA03D4942E12">
             <Title>render</Title>
@@ -940,135 +438,155 @@ Et même :
 Explication :
 Ce "render" recevant une collection d'objets de type User, il cherche un partiel de nom '_user.html.erb' pour traiter chaque élément de la collection.</Text>
         </Document>
-        <Document ID="58768660-DA20-42FD-B4DF-FB51595A3C15">
-            <Title>Modules</Title>
-            <Text>Voir : 
-
-https://www.jeuweb.org/showthread.php?tid=5965</Text>
+        <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
+            <Title>Introduction</Title>
+            <Text>Ce dossier présente des notes prises au cours de la fabrication de l'application en même temps que la lecture du tutoriel.</Text>
         </Document>
-        <Document ID="4F4727C1-4967-4AE9-98FB-955A4531697C">
-            <Title>Paiements</Title>
-            <Text>Les paiements concernant un module d'icarien.
+        <Document ID="01F41402-4522-41EA-8C60-C12EEBCDA45B">
+            <Title>Gérer les processus en cours</Title>
+            <Text>(utile par exemple lorsque le message d'erreur est "Can not run more than 1 Free size dyno.")
+
+
+	$ heroku ps
+	# =&gt; Liste des processus
+
+	$ heroku ps:stop &lt;dyno&gt;
+	# =&gt; Stop un processus en cours
+
+
+Par exemple :
+	=== web (Free): bundle exec puma -C config/puma.rb (1)
+	web.1: starting 2018/09/27 08:24:02 +0300 (~ 12s ago)
+
+C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
+
+	$ heroku ps:stop web.1
 
 </Text>
         </Document>
-        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
-            <Title>Mails</Title>
-            <Text>Pour générer un nouveau "mailer"
-
-
-	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
-						                  &lt;methode-mail&gt; ... 
-
-</Text>
-        </Document>
-        <Document ID="29A18D21-012B-40A5-8A5B-5A7D594D6A60">
-            <Title>Options</Title>
-            <Text>Options pour l'ic-étape.
-
- Bit
-Valeurs possibles
-0
-1
-Bit d'avertissement d'échéance d'étape dépassée
-De 0: pas d'avertissement à 9: tous les avertissements ont été donnés, on considère l'icarien comme déserteur.
-1
-2
-Réalité de l'étape
-1: l'étape est considérée comme "réelle" (*). 0: l'étape n'est pas réelle.
-(*) Une étape « réelle » sera comptabilisée dans les modules à durée déterminée qui doivent suivre 8 étapes en général.
-2
-3
-
-3
-4
-
-4
-5
-
-5
-6
-
-6
-7
-
-
-</Text>
-        </Document>
-        <Document ID="334E0A55-0178-43F8-B74F-B8772142669E">
+        <Document ID="25446996-C221-49FD-906A-E06392B051C2">
             <Title>Propriétés</Title>
-            <Text>Les propriétés d'un document de module d'apprentissage d'icarien sont :
+            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
 
-belongs_to :ic_etape
-belongs_to :ic_module, through :ic_etape
-belongs_to :user, through :ic_etape
+belongs_to :ic_module
 
-has_many :lectures
-
-original_name
-Le nom original du fichier tel qu'il a été transmis
-doc_affixe
-Affixe donné au document
-expected_comments_at
-Date espérée de remise des commentaires
-OBSOLÈTE : c'est l'étape qui porte cette donnée.
-commented_at
-Date effective de remise des commentaires
-note_auteur
-La note donnée par l'auteur à son document
-original_options
-Les options concernant le document original
-comments_options
-Les options concernant le document commentaire
-original_cote
-Cote du document original, en fonction des lectures (cf. la table lectures)
-comments_cote
-Cote du document commentaires, en fonction des lectures.
+started_at
+La date du début de la pause (ne pas utiliser created_at car la donnée peut être créée plus tard)
+ended_at
+Date de la fin de la pause
+motif
+Motif de la pause
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
         </Document>
-        <Document ID="4ECD23B3-5580-4099-8B3F-57FB1359B9F1">
+        <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
+            <Title>Tester une route</Title>
+            <Text>Quand on a…
+ get 'controller/action' 
+… dans le fichier routes, on peut tester ensuite que la page fonctionne par :
+
+test "le contrôleur répond à l'action" do
+	get controller_action_url
+	assert_response :success
+end
+</Text>
+        </Document>
+        <Document ID="7374CC1D-A149-4586-B0B7-5E5EBA139D83">
+            <Title>Quotidien programmation</Title>
+            <Text>Opérations de dépôt
+ $ git add -A  # pour ajouter les nouveaux fichiers
+ $ git commit -am "Message dépôt"  # pour faire un nouveau dépôt
+ $ git push  # pour déposer ce dépôt
+ $ git push heroku master  # pour actualiser ce dépôt sur heroku
+Ajout d'un nouveau gem
+Quand on ajoute un nouveau gem, il faut :
+
+ $ bundler install --without production 
+
+Puis exécuter les opérations de dépôt ci-dessus.</Text>
+        </Document>
+        <Document ID="937AD4E4-2058-41C8-9507-80163F973587">
+            <Title>Notes</Title>
+            <Text>Peut-être mettre les dossiers des actions-watchers dans lib/ et utiliser `require_dependency` pour les utiliser. En fait, il semble que 'require_dependency' recharge vraiment, même la seconde fois.
+Pour pouvoir utiliser require_dependency, il faut ajouter dans le fichier config/application.rb :
+
+
+	config.watchable_dirs['lib'] = [:rb]
+
+
+Note : en fait, j'ai utilisé simplement `load` et ça fonctionne.</Text>
+        </Document>
+        <Document ID="7451CE5B-A7AB-4FBE-853D-773E6C9C48A2">
+            <Title>Introduction</Title>
+            <Text>Ce manuel présente l'utilisation du site de l'atelier Icare en version Ruby On Rails mise en place en 2019.</Text>
+        </Document>
+        <Document ID="946B4A4D-AFF2-4C26-AE92-DC92068D6B01">
             <Title>ActionWatchers</Title>
         </Document>
-        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
-            <Title>Statut</Title>
+        <Document ID="1559C7B3-6A82-4F52-ACC2-8B1606FDBFE8">
+            <Title>Type</Title>
+            <Text>
+Types de l'étape absolue (propriété :type)
+
+Note : ce sont des bits qui s'additionnent (bit|bit)
+Valeurs
+Description
+0
+Aucun type
+1
+Travail sur la structure
+2
+Travail sur les personnages
+4
+Travail sur les thèmes
+8
+Travail sur les intrigues
+16
+Travail sur un document en particulier (synopsis, pitch, etc.)
+32
+Travail de recherche d'idées
+64
+Travail de réflexion
+128
+Travail de rédaction
+256
+Travail d'affinement, de finalisation
+
+</Text>
         </Document>
-        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
-            <Title>Production (heroku)</Title>
+        <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
+            <Title>Mass assignement</Title>
+            <Text>Pour éviter les assignements en masse à la création des objets, on peut utiliser (Rails &gt;=4) :
+
+ params.require(:&lt;model&gt;).permit(:prop1, :prop2, ..., :propN) 
+
+Par exemple
+
+def user_params
+	params.
+		require(:user).
+		permit(:name, :email, :password, :password_confirmation)
+end
+
+</Text>
+        </Document>
+        <Document ID="F07B69FF-3274-4D6A-9617-A4DEA77365AE">
+            <Title>LECTURE TUTORIEL</Title>
         </Document>
         <Document ID="38C3C0F0-E0FF-4F12-B0D2-D52661303255">
             <Title>ActionWatchers</Title>
         </Document>
-        <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
-            <Title>Propriétés</Title>
-            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
+        <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
+            <Title>MAILS</Title>
+            <Text>Récupérer le dernier mail en intégration :
 
-belongs_to :user
-belongs_to :abs_module
-has_many :paiements
-has_many :pauses
-has_many :ic_etapes
+	mail = ActionMailer::Base.deliveries.last  
 
-has_many :documents, through: :ic_etapes
+Pour retrouver un texte dans le corps, par exemple une URL :
 
+	url = mail.body.encoded.match(/"[^"]+"&gt;Modifi/)[1] 
 
-project_name
-Nom du projet (son titre) s'il en a un
-state
-Etat du module (nouvelle propriété). Cf. State
-options
-OBSOLÈTE (cf. le fichier Options)
-started_at
-Date de démarrage du module
-Avant : starting_at
-ended_at
-
-Date de fin du module (réelle, pas une pause)
-Avant : ending_at
-next_paiement
-La date de prochain paiement (if any)
-	+ les timestamps par défaut, created_at et updated_at
-					</Text>
+</Text>
         </Document>
         <Document ID="00D37C5D-EF94-41AD-BE9B-6DE698823CAE">
             <Title>Formulaires</Title>
@@ -1084,21 +602,320 @@ Par exemple :
 
 Ça ne fonctionne pas avec   action: ressources_path .</Text>
         </Document>
-        <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
-            <Title>Processus courants</Title>
-            <Text>Notamment avec "spring" (serveur de Rails), il peut y avoir multiplication des processus ouverts.
-Pour voir les processus (tous) :
- $ ps aux 
-Pour voir les processus particuliers (ici consacrés à spring) :
- $ ps aux | grep spring 
+        <Document ID="BDF6C165-D027-4AD0-A539-F2A4BBD3D815">
+            <Title>MAILS</Title>
+        </Document>
+        <Document ID="4B837D6C-FF1A-44AF-B30E-05A9264C532B">
+            <Title>Ajouter ressource</Title>
+            <Text>
 
-Pour "tuer" un processus (-9 fonctionne mieux, semble-t-il) :
+	$ rails generate active_admin:resource &lt;NomRessource&gt;
 
- $ kill -9 &lt;numéro de processus&gt;
- $ kill -15 &lt;numéro du processus&gt;           
+Noter que le nom de la ressource est au singulier (nom de la classe).</Text>
+        </Document>
+        <Document ID="2C65CED0-60E6-422B-8C55-590CF10161C9">
+            <Title>Création</Title>
+        </Document>
+        <Document ID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E">
+            <Title>Options</Title>
+            <Text>Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.
 
-Ou pour tuer tous les processus d'un certain nom (ne pas oublier le "p" de "pkill") :
- $ pkill -15 -f spring 
+ Bit
+Valeurs possibles
+0
+1
+Existence
+1: Le document existe, 0: le document  n'existe pas
+1
+2
+Partage
+0: non défini, 1: partagé, 2: non partagé
+2
+3
+Téléchargement (user ou admin)
+0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)
+3
+4
+Présence sur le QDD
+0: non déposé, 1: déposé sur le QDD
+4
+5
+Définition du partage (obsolète, cf. le 2ème bit)
+5
+6
+Fin du cycle de vie
+0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD)
+6
+7
+
+
+</Text>
+        </Document>
+        <Document ID="B5ABE287-7122-48A9-9B89-9C1687BE9664">
+            <Title>Autres ressources</Title>
+            <Text>Le "Rails style guide"
+
+https://github.com/rubocop-hq/rails-style-guide</Text>
+        </Document>
+        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="3C7DE251-2F53-4E77-A75A-CBF210890BCC">
+            <Title>State</Title>
+            <Text>
+Statut (état) du module (propriété :state)
+
+
+Valeurs
+Description
+0
+Module en attente de démarrage
+1
+Module d'apprentissage en cours de travail
+2
+Module d'apprentissage en pause
+3
+Module terminé normalement
+4
+Module interrompu/abandonné
+5
+
+6
+
+7
+
+
+</Text>
+        </Document>
+        <Document ID="89019469-47C4-4FAA-A301-44D718A02881">
+            <Title>Production sur Heroku</Title>
+            <Text>Si le compte est vérifié (par carte de crédit), on peut utiliser sendgrid pour envoyer des mails en production.
+
+	# On ajoute l'addons
+	$ heroku addons:create sendgrid:starter
+
+	# On peut voir les USERNAME et PASSWORD avec :
+	$ heroku config:get SENDGRID_USERNAME
+	$ heroku config:get SENDGRID_PASSWORD
+
+On ajoute dans le fichier ./config/environments/production.rb
+
+
+	host = '&lt;nom application&gt;.herokuapp.com'
+	config.action_mailer.raise_delivery_errors = true
+	config.action_mailer.delivery_method = :smtp
+  	config.action_mailer.default_url_options = {host: host}
+ 	ActionMailer::Base.smtp_settings = {
+		address:          'smtp.sendgrid.net',
+		port:             587,
+		authentication:   :plain,
+		user_name:        ENV['SENDGRID_USERNAME'],
+		password:         ENV['SENDGRID_PASSWORD'],
+		domain:           'heroku.com',
+		enable_starttls_auto: true
+	}
+
+</Text>
+        </Document>
+        <Document ID="3858968C-A691-412B-8199-3D5FBA49FE0C">
+            <Title>Flash</Title>
+            <Text>flash[:success] = "Le message de succès"
+
+flash[:danger] = "Le message d'échec"
+
+Les quatre types gérés par bootstrap sont :
+:success
+:info
+:warning
+:danger
+
+Pour tester qu'il y a un message flash :
+
+
+	assert flash.empty?
+	assert flash.any?
+	assert_not flash.empty?
+
+</Text>
+        </Document>
+        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
+            <Title>Reset</Title>
+            <Text>Pour resetter la base :
+
+	$ rails db:reset
+
+Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
+        </Document>
+        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
+            <Title>Introduction</Title>
+            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        </Document>
+        <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
+            <Title>Update</Title>
+            <Text>Pour actualiser un objet :
+
+
+	objet.update_attributes({... attributs})
+	# =&gt; true/false
+
+
+La méthode ci-dessous passe par la validation.
+
+On peut en revanche by-passer la validation en utilisant la méthode singulière :
+
+
+	objet.update_attribute(:attribut, valeur)
+
+
+On peut aussi utiliser la méthode qui semble ne pas passer par la validation, lorsque plusieurs valeurs sont à modifier en même temps (noter que update_at n'est pas actualisé, avec cette méthode) :
+
+
+	objet.update_columns(&lt;hash&gt;) 
+
+
+</Text>
+        </Document>
+        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
+            <Title>Statut</Title>
+        </Document>
+        <Document ID="8BF94C6F-FBE6-41F2-89D2-F3D02B4208A8">
+            <Title>Transmettre le body</Title>
+            <Text>Par défaut, les mails utilisent les textes définis dans les vues du dossier ./app/views/&lt;nom_mailer&gt;/
+
+Mais on peut changer ça en définissant la méthode de fabrication du mail ainsi :
+
+
+	class MonMailerPropre &lt; ApplicationMailer
+
+		def sans_fichier_template(destinataire, corps, sujet)
+			mail(to: destinataire.email, subject: sujet) do |fmt|
+				fmt.html { render html: corps.safe_html }
+			end
+		end
+
+	end
+
+
+On envoie le mail normalement avec :
+
+
+	lemail = MonMailerPropre.sans_fichier_template(u, "&lt;p&gt;Hello !&lt;/p&gt;", 'Un essai')
+	lemail.deliver_now
+
+</Text>
+        </Document>
+        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
+            <Title>Mails</Title>
+            <Text>Pour générer un nouveau "mailer"
+
+
+	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
+						                  &lt;methode-mail&gt; ... 
+
+</Text>
+        </Document>
+        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
+            <Title>Possessions</Title>
+            <Text>Un user peut posséder :
+	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
+	•	un ou plusieurs icmodules (modules icariens), actifs ou non
+	•	des messages frigo
+	•	des icetapes (étapes de modules icariens)
+	•	des icdocuments (document de travail propres aux modules)
+	•	des tickets
+	•	des watchers (opération atelier)
+	•	des actualités
+	•	des témoignages
+	•	des questions mini-faq
+</Text>
+        </Document>
+        <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
+            <Title>Options</Title>
+            <Text>Propriété : options
+C'est un mot de 32 chiffres où chaque chiffre représente une option.
+
+BIT (le premier chiffre est le nombre pour la base de données)
+1 (0)		État : 0 = à confirmer/1 = actif/2=en pause/3=inactif/9=détruit
+2 (1)		Confirmation du mail : 0 = non confirmé
+3 (2)		Redirection après l'identification </Text>
+        </Document>
+        <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
+            <Title>Générer sans fiche test</Title>
+            <Text>Pour générer un contrôleur sans feuille de test, on ajoute l'option --no-test-framework.
+Par exemple :
+
+
+	$ rails g controller Controls edit new --no-test-framework  
+
+</Text>
+        </Document>
+        <Document ID="09A74A46-A528-4ED0-86B4-74839BC45AF9">
+            <Title>Ajouter un message d'erreur</Title>
+            <Text>On peut ajouter un message d'erreur particulier à un retour de formulaire en utilisant :
+
+
+	&lt;instance&gt;.errors.add(:&lt;property&gt;, "&lt;message&gt;")	
+
+	
+Par exemple, dans un contrôleur :
+
+
+	if password.blank?
+		@user.errors.add(:password, 'ne doit pas être vide')
+	else
+		# =&gt; OK
+	end
+
+</Text>
+        </Document>
+        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
+            <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
+            <Title>Hash</Title>
+            <Text>Pour qu'un élément de hash retourne une valeur définie :
+
+h = Hash.new
+h[:inexistant]
+=&gt; nil
+h = Hash.new('boudin')
+h[:inexistant]
+=&gt; 'boudin'</Text>
+        </Document>
+        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
+            <Title>ActionWatchers</Title>
+        </Document>
+        <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
+            <Title>Statut</Title>
+            <Text>Propriété privileges
+
+0	Simple inscrit
+1	Simple icarien
+2	Rédacteur (de ?)
+4	Administrateur
+8	Grand manitou
+
+Donc : 
+14 : tous les droits (super administrateur, rédacteur)
+6 	: administration et rédaction (4 + 2)</Text>
+        </Document>
+        <Document ID="8A7EADC0-235B-46CA-B142-90FAEE6A846C">
+            <Title>content_tag</Title>
+            <Text>content_tag(:&lt;balise&gt;, &lt;contenu&gt;, {&lt;options&gt;})
+
+Par exemple :
+
+         		    
+	content_tag(:div, "Bienvenue !", class: "notice-message")
+
+
+… produit :
+
+
+	&lt;div class="notice-message"&gt;
+		Bienvenue !
+	&lt;/div&gt;
+
 </Text>
         </Document>
         <Document ID="2C48F37C-16CD-4DCA-84F1-6254FAF3D9E0">
@@ -1150,6 +967,404 @@ Page d'édition de l'user
 
 </Text>
         </Document>
+        <Document ID="F2B7BD47-50B0-4B31-AC9C-99F70413103D">
+            <Title>Reset password</Title>
+            <Text>1. L'user clique sur le lien "mot de passe oublié"
+2. Il rejoint un formulaire pour donner son adresse mail, et le soumet
+3. On lui envoie un ticket avec un lien lui permettant de réinitialiser son mot de passe
+4. L'user clique ce lien et…
+5. rejoint un formulaire pour entrer une nouveau mot de passe
+6. Le nouveau mot de passe (crypté) est enregistré dans la base de donnée et l'user est loggué.</Text>
+        </Document>
+        <Document ID="A7C272CE-1E37-44C1-B2C1-48EFA662F70B">
+            <Title>Guard</Title>
+            <Text>Le gem Guard permet de lancer automatiquement les tests sur les fichiers modifiés.
+Pour le mettre en place dans une application :
+
+# Dans le gemfile
+ gem 'guard' 
+
+# Puis jouer (une seule fois) :
+ $ bundle exec guard init 
+Puis régler le guardfile.
+
+# Pour mettre en route guard (à chaque session) :
+ $ bundle exec guard 
+À partir de là, toute modification entraînera un test immédiat.</Text>
+        </Document>
+        <Document ID="85A29CAD-F729-479C-A608-28137D58FA7B">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un module d'apprentissage absolu sont :
+
+has_many :ic_modules
+has_many :users, through :ic_modules
+
+has_many :documents, through: :ic_modules (fonctionne ?)
+
+
+name
+Nom humain du module
+P.e. « Structure »
+dim
+Diminutif, pour les noms par exemple. 
+p.e. "Stt" pour "Structure"
+module_id
+ID du module absolu avant 2016.
+tarif
+Tarif en euros du module (mensualité pour les modules à durée indéfinie)
+nombre_jours
+Durée en nombre de jour du module. Si nil, c'est un module à durée indéterminée.
+hduree
+Durée au format humain, par exemple "deux mois" ou "indéterminée".
+short_description
+Description courte du module d'apprentissage (HTML)
+long_description
+Description longue du module (HTML)
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="A86A6632-0AF1-4B0E-BD81-A5416A907900">
+            <Title>Validation</Title>
+            <Text>On peut ajouter  allow_nil: true  au  validates  pour dire que la données n'est pas toujours requise pour l'enregistrement, comme c'est le cas avec le mot de passe lors d'une modification du profil.
+
+	validates :password, presence: true, allow_nil: true</Text>
+        </Document>
+        <Document ID="D02C325F-788D-4867-8BFC-9209A19C2841">
+            <Title>De l'association</Title>
+            <Text>On crée un action-watcher avec :
+
+
+	&lt;user&gt;.action_watchers.create(&lt;hash data&gt;)
+
+
+Hash data doit impérativement comporter :
+
+	:path ou :action_watcher_path
+		Le chemin d'accès au dossier contenant les éléments du watchers, à partir de
+		./lib/action_watchers/
+		Par exemple 'user/traitement_candidature'
+		Bien sûr, ce path doit renvoyer à un dossier existant.
+
+	:model (String) et :model_id (Integer) ou :objet (instance de class :model)
+		L'objet visé par l'action-watcher, par exemple un document.
+		Le format privilégié est objet: &lt;instance&gt;
+		C'est le nom de classe exacte qui doit être transmis par :model. P.e. « IcModule ».
+
+	:triggered_at ou :at ou :in
+		Temps où le watcher devra être déclenché.
+		:triggered_at et :at sont des alias
+		:in permet de définir dans combien de temps l'action-watcher devra se déclencher. Par 
+		exemple, suite au démarrage du module, l'user à 15 jours gratuit. Donc on crée un 
+		action-watcher de paiement avec `in: 15.days`.
+		</Text>
+        </Document>
+        <Document ID="4E13651D-70C3-4E95-9484-68853AA9B1DA">
+            <Title>ActionWatchers</Title>
+        </Document>
+        <Document ID="58768660-DA20-42FD-B4DF-FB51595A3C15">
+            <Title>Modules</Title>
+            <Text>Voir : 
+
+https://www.jeuweb.org/showthread.php?tid=5965</Text>
+        </Document>
+        <Document ID="19E59F12-6DD0-4D7C-A210-D717164470F3">
+            <Title>Essayer une URL</Title>
+            <Text>Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</Text>
+        </Document>
+        <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
+            <Title>Production (heroku)</Title>
+            <Text>S'assurer que tout est bien sur github :
+
+
+	$ git add -A
+	$ git commit -m "Dernier dépôt"
+	$ git push
+
+
+Avant de pusher, s'il peut y avoir du trafic, on se met en maintenance :
+
+	$ heroku maintenance:on 
+
+Pour "pusher" on line, après avoir pushé sur git :
+
+ $ git push heroku # master seulement la première fois
+
+Pour que les migrations soient prises en compte :
+
+Ne pas utiliser :
+	$ heroku run rails db:reset
+Utiliser :
+	$ heroku pg:reset DATA --confirm &lt;nom application heroku&gt; 
+
+	$ heroku run rails db:migrate 
+
+Si on veut peupler la base :
+
+	$	heroku run rails db:seed 
+
+On quitte la maintenance 
+
+	$ heroku maintenance:off 
+
+=== Fin ===
+
+Pour essayer le bac à sable sur heroku :
+
+ $ heroku run rails console --sandbox 
+</Text>
+        </Document>
+        <Document ID="35D45C28-0FAC-4792-AEF7-BDEAEA2943BF">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés des lectures d'un document sont :
+
+belongs_to :ic_document
+belongs_to :user, as: lecteur
+belongs_to :user, through :ic_document, as: auteur
+
+comments
+Commentaire éventuel du lecteur
+original_cote
+Cote sur 5 attribuée par le lecteur au document original
+comments_cote
+Cote sur 5 du lecteur au document commenté
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="56881565-8CB5-47DA-ADE1-F08A61B3A0CE">
+            <Title>ActionWatchers</Title>
+        </Document>
+        <Document ID="0CF03159-616A-4D64-8DC9-9482E2E35B00">
+            <Title>Prévisualisation</Title>
+            <Text>Pour prévisualiser un mail envoyé en développement (mais pas par la console, je crois, et peut-être seulement généré par test), utiliser l'url :
+
+	http://localhost:3000/rails/mailer/&lt;nom_du_mailer&gt;/&lt;nom_du_fichier_template&gt; 
+
+Par exemple, si on a un mailer `UserMailer` et qu'on envoie un message `mon_message` (qui est donc une méthode de UserMailer et l'affixe du fichier template contenant le code), on pourra le visualiser à l'adresse :
+
+	http://localhost:3000/rails/mailer/user_mailer/mon_message 
+
+</Text>
+        </Document>
+        <Document ID="E9462355-BDF3-4C0A-99C8-EC106941D32A">
+            <Title>Propriétés directes</Title>
+            <Text>J'appelle "propriétés directes" les propriétés qui ne dépendent pas d'autres objets. C'est le cas par exemple de l'adresse email ou du pseudo.
+
+id
+Identifiant absolu de l'utilisateur (icarien-ne).
+email
+Son adresse email, validée
+name
+Pseudo utilisé sur le site (obligatoire)
+nom
+Nom réel de l'icarien (obligatoire)
+prenom
+Prénom réel de l'icarien (obligatoire)
+password_digest
+Mot de passe encrypté
+statut
+Bits des privilèges (cf. Statut)
+options
+Options diverses (cf. Options)
+created_at
+Date de création de la donnée de l'icarien
+updated_at
+Date de dernière modification des données de l'user
+	
+					has_many :watchers
+</Text>
+        </Document>
+        <Document ID="BBE7194B-8ACC-47A6-92E5-3150D9C65344">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'une étape de module d'apprentissage d'icarien sont :
+
+belongs_to :ic_module
+belongs_to :abs_etape
+belongs_to :user, through :ic_module
+has_many :documents
+
+
+status
+Statut de l'étape. Cf. Statuts
+options
+Options de l'étape, quelques valeurs utiles, fixes ou mobiles. Cf. Options
+travail_propre
+Éventuellement, le travail propre de l'étape, ou un travail supplémentaire pour l'étape.
+started_at
+Date de démarrage de l'étape. Elle pourrait être définie lorsque l'user arrive sur son bureau et que son travail est affiché.
+expected_end_at
+Date de fin attentue pour le travail.
+ended_at
+Date effective de fin de l'étape (remise des documents)
+Avant : ending_at
+expected_comments_at
+La date espérée de remise des commentaires de l'étape. Note : ce n'est pas/plus les documents qui portent cette donnée.
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="B0D092CD-0E58-4410-A80C-30D09876E418">
+            <Title>Git</Title>
+            <Text>Au tout départ :
+
+
+	$ git init
+
+
+Pour passer sur une autre branche :
+
+
+	$ git checkout -b &lt;nom-branche&gt;
+
+
+Pour merger la branche courante :
+
+
+	$ git checkout master # revenir à la branche maitresse
+	$ git merge &lt;nom-branche&gt;
+
+
+Pour supprimer une branche (après l'avoir mergée) :
+
+
+	$ git branch -d &lt;nom branche&gt;
+
+
+Pour voir où on en est :
+
+
+	$ git status
+
+</Text>
+        </Document>
+        <Document ID="334E0A55-0178-43F8-B74F-B8772142669E">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un document de module d'apprentissage d'icarien sont :
+
+belongs_to :ic_etape
+belongs_to :ic_module, through :ic_etape
+belongs_to :user, through :ic_etape
+
+has_many :lectures
+
+original_name
+Le nom original du fichier tel qu'il a été transmis
+doc_affixe
+Affixe donné au document
+expected_comments_at
+Date espérée de remise des commentaires
+OBSOLÈTE : c'est l'étape qui porte cette donnée.
+commented_at
+Date effective de remise des commentaires
+note_auteur
+La note donnée par l'auteur à son document
+original_options
+Les options concernant le document original
+comments_options
+Les options concernant le document commentaire
+original_cote
+Cote du document original, en fonction des lectures (cf. la table lectures)
+comments_cote
+Cote du document commentaires, en fonction des lectures.
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="F7FB0D91-055F-4B5F-9372-2B29CA06D129">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un action_watcher :
+
+belongs_to :user
+
+
+model
+Modèle qui sera touché par l'actionwatcher
+Avant : `objet`.
+model_id
+Identifiant de l'instance du modèle.
+Avant : `objet_id`
+action_watcher_path
+Path de l'action watcher, là où se trouve ses fichiers.
+Avant : `processus`
+triggered_at
+Date où le watcher doit être déclenché. Par exemple, pour un paiement, quelques jours avant son échéance.
+Avant : `trigerred`
+data
+Éventuellement les données dont a besoin l'action-watcher. 
+TODO : voir comment elles seront évaluées. Ce sera peut-être un json.
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
+
+belongs_to :user
+belongs_to :abs_module
+has_many :paiements
+has_many :pauses
+has_many :ic_etapes
+
+has_many :documents, through: :ic_etapes
+
+
+project_name
+Nom du projet (son titre) s'il en a un
+state
+Etat du module (nouvelle propriété). Cf. State
+options
+OBSOLÈTE (cf. le fichier Options)
+started_at
+Date de démarrage du module
+Avant : starting_at
+ended_at
+
+Date de fin du module (réelle, pas une pause)
+Avant : ending_at
+next_paiement
+La date de prochain paiement (if any)
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
+        <Document ID="2EEF34E8-AA8F-4467-83F5-71B195456BAC">
+            <Title>Menu Select</Title>
+            <Text>À partir d'une table :
+
+	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;) %&gt;
+
+Par exemple, pour choisir un utilisateur :
+
+	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name) %&gt;</Text>
+        </Document>
+        <Document ID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12">
+            <Title>Helpers HTML</Title>
+        </Document>
+        <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
+            <Title>Object.create / .save</Title>
+            <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
+        </Document>
+        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
+            <Title>ActionWatchers</Title>
+            <Text>Watchers
+Réflexion
+Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
+À quoi est-ce que ça ressemblerait dans une application Rails ?
+
+Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
+Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
+Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
+
+Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
+La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
+La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
+La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
+La méthode `action_user` return le code du formulaire 'action_user.html.erb'
+La méthode `watcher_admin` retournerait la notification pour l'user.
+Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
+
+L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
+</Text>
+        </Document>
+        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
+            <Title>MAILS</Title>
+        </Document>
         <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
             <Title>Routes</Title>
             <Text>Concernant les routes
@@ -1164,77 +1379,6 @@ On utilise _url pour une URL complète et _path pour une route simple :
 
 about_path 	=&gt; /static_pages/about
 about_url		=&gt; www.monsite.org/static_pages/about</Text>
-        </Document>
-        <Document ID="F2B7BD47-50B0-4B31-AC9C-99F70413103D">
-            <Title>Reset password</Title>
-            <Text>1. L'user clique sur le lien "mot de passe oublié"
-2. Il rejoint un formulaire pour donner son adresse mail, et le soumet
-3. On lui envoie un ticket avec un lien lui permettant de réinitialiser son mot de passe
-4. L'user clique ce lien et…
-5. rejoint un formulaire pour entrer une nouveau mot de passe
-6. Le nouveau mot de passe (crypté) est enregistré dans la base de donnée et l'user est loggué.</Text>
-        </Document>
-        <Document ID="4B837D6C-FF1A-44AF-B30E-05A9264C532B">
-            <Title>Ajouter ressource</Title>
-            <Text>
-
-	$ rails generate active_admin:resource &lt;NomRessource&gt;
-
-Noter que le nom de la ressource est au singulier (nom de la classe).</Text>
-        </Document>
-        <Document ID="19E59F12-6DD0-4D7C-A210-D717164470F3">
-            <Title>Essayer une URL</Title>
-            <Text>Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</Text>
-        </Document>
-        <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
-            <Title>MAILS</Title>
-            <Text>Récupérer le dernier mail en intégration :
-
-	mail = ActionMailer::Base.deliveries.last  
-
-Pour retrouver un texte dans le corps, par exemple une URL :
-
-	url = mail.body.encoded.match(/"[^"]+"&gt;Modifi/)[1] 
-
-</Text>
-        </Document>
-        <Document ID="A86A6632-0AF1-4B0E-BD81-A5416A907900">
-            <Title>Validation</Title>
-            <Text>On peut ajouter  allow_nil: true  au  validates  pour dire que la données n'est pas toujours requise pour l'enregistrement, comme c'est le cas avec le mot de passe lors d'une modification du profil.
-
-	validates :password, presence: true, allow_nil: true</Text>
-        </Document>
-        <Document ID="49A5533E-DE18-4CFC-A77D-5C2A3324D69F">
-            <Title>Redirection</Title>
-            <Text>Pour suivre une redirection dans un test, il faut utiliser la ligne :
-
- follow_redirect! 
-
-Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
-        </Document>
-        <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
-            <Title>Options</Title>
-            <Text>Propriété : options
-C'est un mot de 32 chiffres où chaque chiffre représente une option.
-
-BIT (le premier chiffre est le nombre pour la base de données)
-1 (0)		État : 0 = à confirmer/1 = actif/2=en pause/3=inactif/9=détruit
-2 (1)		Confirmation du mail : 0 = non confirmé
-3 (2)		Redirection après l'identification </Text>
-        </Document>
-        <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
-            <Title>Statut</Title>
-            <Text>Propriété privileges
-
-0	Simple inscrit
-1	Simple icarien
-2	Rédacteur (de ?)
-4	Administrateur
-8	Grand manitou
-
-Donc : 
-14 : tous les droits (super administrateur, rédacteur)
-6 	: administration et rédaction (4 + 2)</Text>
         </Document>
     </Documents>
 </SearchIndexes>

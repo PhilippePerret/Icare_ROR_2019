@@ -100,7 +100,7 @@
 	</dict>
 	<key>inspectorSplitFrames</key>
 	<array>
-		<string>{{0, 0}, {336, 744}}</string>
+		<string>{{0, 0}, {336, 769}}</string>
 	</array>
 	<key>inspectorWidth</key>
 	<real>575</real>
@@ -110,7 +110,7 @@
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {304, 346.5}}</string>
+	<string>{{0, 0}, {620, 294}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>

@@ -17,7 +17,10 @@ fr:
     errors:
       not_autorised:          'Vous n’êtes pas autorisé%{e} à exécuter cette opération.'
       not_enough_privileges:  'Vous n’avez pas les privilèges requis pour exécuter cette opération.'
-
+  action_watchers:
+    errors:
+      destinataire:
+        unknown:              'Vous n’êtes ni le destinataire de l’action ni un administrateur. Vous êtes donc en train de pirater le site…'
   page:
     errors:
       interdite:          'Vous n’êtes pas autorisé(e) à rejoindre cette page.'

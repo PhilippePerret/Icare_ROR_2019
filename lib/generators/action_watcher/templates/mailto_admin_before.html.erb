@@ -1,0 +1,13 @@
+<%
+# Ce message sera envoyé à l'administration à la création même du watcher
+# Avec le sujet suivant :
+self.subject = "Email de test envoyé à la création du watcher à l'administrateur"
+
+%>
+<div class="container">
+  Je suis un mail envoyé à la création de l'action-watcher.
+</div>
+<div class="container">
+  <%# Ci-dessous, l'utiliastion d'une méthode d'helper pour définir le mail %>
+  L'objet visé par ce watcher est un <%= objet_designation %>.
+</div>

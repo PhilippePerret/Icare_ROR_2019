@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-28 11:14:54 +0300" ModID="2C18A766-27DA-4120-A8C7-B20DBF10D29E">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-09-29 07:17:02 +0300" ModID="6494CD86-BD61-4434-8A62-9DCACE6E090C">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-09-26 13:40:04 +0300">
             <Title>TODO</Title>
@@ -369,16 +369,45 @@
                                 <TextSelection>0,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem UUID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2" Type="Text" Created="2018-09-28 09:09:47 +0300" Modified="2018-09-28 09:20:09 +0300">
+                                <BinderItem UUID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2" Type="Text" Created="2018-09-28 09:09:47 +0300" Modified="2018-09-29 04:46:39 +0300">
                                     <Title>De l'action-watcher lui-même</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>1001,0</TextSelection>
+                                        <TextSelection>0,0</TextSelection>
                                     </TextSettings>
+                                    <Children>
+                                        <BinderItem UUID="84DB52AB-2658-48DC-90E4-6164B536CF02" Type="Text" Created="2018-09-29 04:46:24 +0300" Modified="2018-09-29 05:17:20 +0300">
+                                            <Title>Création du dossier et contenu</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>874,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="8E87DB4A-9EC9-4F69-A6F7-CDDD7B578372" Type="Text" Created="2018-09-29 04:29:30 +0300" Modified="2018-09-29 04:36:47 +0300">
+                                            <Title>Modification du mail envoyé</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>864,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="E57050D3-5F5A-405C-A37F-2D3B6D219449" Type="Text" Created="2018-09-29 04:43:49 +0300" Modified="2018-09-29 04:45:28 +0300">
+                                            <Title>Interruption de l'action-watcher</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>156,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                    </Children>
                                 </BinderItem>
-                                <BinderItem UUID="D02C325F-788D-4867-8BFC-9209A19C2841" Type="Text" Created="2018-09-28 09:10:01 +0300" Modified="2018-09-28 09:11:27 +0300">
+                                <BinderItem UUID="D02C325F-788D-4867-8BFC-9209A19C2841" Type="Text" Created="2018-09-28 09:10:01 +0300" Modified="2018-09-29 07:17:02 +0300">
                                     <Title>De l'association</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -717,7 +746,7 @@
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>0,0</TextSelection>
+                                <TextSelection>214,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -940,13 +969,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="329" Characters="2460" Date="2018-09-28 06:12:18 +0300"></PreviousSession>
+        <PreviousSession Words="260" Characters="1997" Date="2018-09-29 04:26:00 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-09-28 00:00:00 +0300">
-        <DraftWordCount>329</DraftWordCount>
-        <DraftCharCount>2460</DraftCharCount>
-        <OtherWordCount>138</OtherWordCount>
-        <OtherCharCount>1055</OtherCharCount>
+    <RecentWritingHistory Date="2018-09-29 00:00:00 +0300">
+        <DraftWordCount>260</DraftWordCount>
+        <DraftCharCount>1997</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

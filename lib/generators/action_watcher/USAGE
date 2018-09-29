@@ -1,0 +1,26 @@
+Description:
+    Produit un « action-watcher » pour l'atelier.
+
+Exemple :
+    rails generate action_watcher traite_candidature
+    rails g action_watcher send_comments
+
+Options :
+    --mail-admin-before       Ajoute le mail à la création du watcher
+                              Par défaut, le générateur ne le crée pas.
+    --mail-user-before        Ajoute le mail à la création du watcher
+                              Par défaut, le générateur ne le crée pas.
+    --mails-before            Crée les deux mails "avant"
+    --no-mail-user-after      Ne crée pas le mail à l'user en runnant le watcher
+                              Le fait par défaut.
+    --no-mail-admin-after     Ne crée pas le mail à l'admin en runnant le watcher
+                              Le fait par défaut.
+    --no-mails-after          Ne crée aucun des mails "après"
+
+    --no-notifies             Ne crée aucune notification, ni pour l'user ni pour
+                              l'administrateur.
+    --no-notify-admin         Pas de notification administrateur
+    --no-notify-user          Pas de notification utilisateur (possesseur de l'action-watcher)
+
+    Cette commande crée:
+        /lib/action_watchers/<dossier watcher>/*tous les fichiers voulus*

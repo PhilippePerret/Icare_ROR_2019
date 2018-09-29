@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(version: 2018_09_27_174104) do
     t.datetime "ended_at"
     t.datetime "expected_comments_at"
     t.integer "ic_module_id"
+    t.integer "abs_etape_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["abs_etape_id"], name: "index_ic_etapes_on_abs_etape_id"
     t.index ["ic_module_id"], name: "index_ic_etapes_on_ic_module_id"
   end
 

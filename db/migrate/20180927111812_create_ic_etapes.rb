@@ -9,6 +9,7 @@ class CreateIcEtapes < ActiveRecord::Migration[5.2]
       t.datetime    :ended_at
       t.datetime    :expected_comments_at
       t.references  :ic_module,               foreign_key: true
+      t.references  :abs_etape,               foreign_key: true
 
       t.timestamps
     end

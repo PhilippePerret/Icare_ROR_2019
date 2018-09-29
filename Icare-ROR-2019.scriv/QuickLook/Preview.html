@@ -664,23 +664,56 @@
 <ul>
 <li>
 <p class="itemTitle">De l'action-watcher lui-même</p>
-<p class="itemText">Faire un dossier dans un des dossiers de ./lib/action_watchers/.</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Création du dossier et contenu</p>
+<p class="itemText">Le plus simple est d'utiliser mon générateur rails :</p>
 <p class="itemText"></p>
-<p class="itemText">Par exemple le dossier : ./lib/action_watchers/user/contacter/.</p>
 <p class="itemText"></p>
-<p class="itemText">Ce dossier doit contenir au minimum le fichier action_watcher.rb avec le code :</p>
+<p class="itemText"> $ rails g action_watcher <nom_du_watcher>[ <options>]</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
-<p class="itemText"> # Dans ./lib/action_watchers/<action_watcher_path>/action_watcher.rb</p>
-<p class="itemText"> class ActionWatcher < ApplicationRecord</p>
-<p class="itemText">  def execute</p>
-<p class="itemText">   ... Code à exécuter à l'exécution du watcher ...</p>
-<p class="itemText">  end</p>
+<p class="itemText">Cela crée tout ce qu'il faut dans le dossier ./lib/action_watchers/<nom_du_watcher>/</p>
+<p class="itemText"></p>
+<p class="itemText">Les options peuvent définir les mails à créer dans le dossier. Par défaut, les mails envoyés à la création du watcher ne sont pas copiés. On les ajoute avec :</p>
+<p class="itemText"> --mails-before # pour les créer les deux</p>
+<p class="itemText"> --mail-admin-before</p>
+<p class="itemText"> --mail-user-before</p>
+<p class="itemText">Par défaut, les mails envoyés à l'exécution du watcher sont ...</p>
+</li>
+<li>
+<p class="itemTitle">Modification du mail envoyé</p>
+<p class="itemText">Le mail envoyé à l'exécution peut être modifié de deux façons. La première consiste à mettre une alternative dans le mail (if… else… end), le second consiste à modifier le nom du mail choisi.</p>
+<p class="itemText">Modification par alternative</p>
+<p class="itemText">Par exemple dans .../mailto_admin_after.html.erb</p>
+<p class="itemText"></p>
+<p class="itemText"> <% if cest_ce_cas_la %></p>
+<p class="itemText">  ... contenu du mail ...</p>
+<p class="itemText"> <% else %></p>
+<p class="itemText">  ... contenu alternatif</p>
+<p class="itemText"> <% end %></p>
+<p class="itemText"></p>
+<p class="itemText">Modification du mail utilisé</p>
+<p class="itemText">Par défaut, c'est le mail `mailto_<qui>_after.html.erb` qui est utilisé. On peut modifier ce nom en ...</p>
+</li>
+<li>
+<p class="itemTitle">Interruption de l'action-watcher</p>
+<p class="itemText">Dans le programme (méthode `execute`), on peut interrompre la procédure avec la tournure :</p>
+<p class="itemText"></p>
+<p class="itemText"> def execute</p>
+<p class="itemText">  ...</p>
+<p class="itemText">  interrupt and return</p>
+<p class="itemText">  ...</p>
 <p class="itemText"> end</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
-<p class="itemText">Si un mail doit être envoyé à l'administration à la création de cet action-watcher, on le définit...</p>
+<p class="itemText">Cela produit l'interruption totale du processus. Les mails `after` ne seront pas envoyés et l'action-watcher ne sera pas détruit. </p>
 </li>
+</ul>
+<hr class="afterText"/>
+
 <li>
 <p class="itemTitle">De l'association</p>
 <p class="itemText">On crée un action-watcher avec :</p>
@@ -691,15 +724,14 @@
 <p class="itemText"></p>
 <p class="itemText">Hash data doit impérativement comporter :</p>
 <p class="itemText"></p>
-<p class="itemText"> :path ou :action_watcher_path</p>
+<p class="itemText"> :path ou :name ou :action ou :action_watcher_path</p>
 <p class="itemText">  Le chemin d'accès au dossier contenant les éléments du watchers, à partir de</p>
 <p class="itemText">  ./lib/action_watchers/</p>
 <p class="itemText">  Par exemple 'user/traitement_candidature'</p>
 <p class="itemText">  Bien sûr, ce path doit renvoyer à un dossier existant.</p>
 <p class="itemText"></p>
 <p class="itemText"> :model (String) et :model_id (Integer) ou :objet (instance de class :model)</p>
-<p class="itemText">  L'objet visé par l'action-watcher, par exemple un document.</p>
-<p class="itemText">...</p>
+<p class="itemText">  L'objet visé par l'action-watcher, par e...</p>
 </li>
 </ul>
 <hr class="afterText"/>
