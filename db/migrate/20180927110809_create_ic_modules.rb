@@ -7,7 +7,7 @@ class CreateIcModules < ActiveRecord::Migration[5.2]
       t.datetime    :ended_at
       t.datetime    :next_paiement
       t.references  :abs_module,    foreign_key: true
-      t.references  :current_etape, references: :ic_etape
+      t.integer     :current_etape_id, references: :ic_etape, foreign_key: true
       t.references  :user,          foreign_key: true
 
       t.timestamps

@@ -21,7 +21,11 @@ class ActionWatcherGenerator < Rails::Generators::NamedBase
     @no_mail_user_after   = !!options['no-mail-user-after']   || !!options['no-mails-after']
     @no_notify_admin      = !!options['no-notify-admin']      || !!options['no-notifies']
     @no_notify_user       = !!options['no-notify-user']       || !!options['no-notifies']
-    Dir.mkdir(folder)
+
+
+    puts "Construction du dossier `#{folder}'…"
+    `mkdir -p "#{folder}"`
+
     Dir["#{__dir__}/templates/*.*"].each do |f|
       fname = File.basename(f)
       next if fname == 'mailto_admin_before.html.erb' && !@mail_admin_before
@@ -35,7 +39,7 @@ class ActionWatcherGenerator < Rails::Generators::NamedBase
   end
 
   def folder
-    @folder ||= File.join('.','lib','action_watchers',file_name)
+    @folder ||= File.join('.','lib','action_watchers',file_path)
   end
 
 end

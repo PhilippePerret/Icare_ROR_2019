@@ -1,0 +1,7 @@
+- if current_user.actif?
+  %ul.list-group.px-3
+    = render current_user.current_modules
+- else
+  -# L'user courant n'est pas actif, on lui présente un lien
+  -# pour commander un autre module.
+  [Bouton pour commander un module]

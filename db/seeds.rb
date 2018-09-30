@@ -30,12 +30,13 @@ User.create([
     password: DATA_MARION[:password], password_confirmation: DATA_MARION[:password]},
   {name: 'Benoit Ackerman', email: 'benoit.ackerman@yahoo.fr',
     prenom: 'Benoit', nom: 'Ackerman', birthyear: 1988,
-    statut: 2, sexe: 0, options: '01300000',
+    statut: 2, sexe: 0, options: '11300000',
     password: 'mot de passe', password_confirmation: 'mot de passe'}
   ])
 
 unless Rails.env == 'production'
 
+  # On fait d'autres utilisateurs
   annees = (1970..(Time.now.year-16)).to_a.shuffle.shuffle
   nombre_annees = annees.count
   100.times do |n|
@@ -77,3 +78,23 @@ final_abs_etapes = abs_etapes_yml.collect do |aed|
 end
 # puts 'Nombre d’étapes : %i' % final_abs_etapes.count
 AbsEtape.create(final_abs_etapes)
+
+
+
+
+unless Rails.env == 'production'
+
+  # On donne des modules d'apprentissage à benoit
+  benoit = User.find(3)
+  benoit.ic_modules.create(abs_module_id: 1, state: 1, started_at: Time.now - 2.days)
+  icm = IcModule.last
+  icetape = icm.ic_etapes.create(abs_etape_id: 1, started_at: Time.now - 2.days)
+  icm.update_attribute(:current_etape_id, icetape.id)
+
+  benoit.ic_modules.create(abs_module_id: 4, state: 1, started_at: Time.now - 10.days) # Etape 16
+  icm = IcModule.last
+  ict = icm.ic_etapes.create(abs_etape_id: 16, started_at: Time.now - 10.days)
+  icm.update_attribute(:current_etape_id, ict.id)
+
+end
+# /not production

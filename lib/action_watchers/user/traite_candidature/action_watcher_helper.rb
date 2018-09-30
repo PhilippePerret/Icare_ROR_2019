@@ -1,5 +1,0 @@
-class ActionWatcher < ApplicationRecord
-
-
-
-end

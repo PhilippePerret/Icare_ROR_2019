@@ -12,6 +12,5 @@ class ActionWatcher < ApplicationRecord
   #
   # end
 
-
   
 end

@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_174104) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["abs_module_id"], name: "index_ic_modules_on_abs_module_id"
-    t.index ["current_etape_id"], name: "index_ic_modules_on_current_etape_id"
     t.index ["user_id"], name: "index_ic_modules_on_user_id"
   end
 

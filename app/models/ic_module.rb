@@ -3,7 +3,7 @@ class IcModule < ApplicationRecord
   belongs_to  :abs_module
   belongs_to  :user
   # has_one     :ic_etape, as: :current_etape
-  has_one     :current_etape, class_name: 'IcEtape', foreign_key: 'ic_etape_id'
+  has_one     :current_etape, class_name: 'IcEtape'
   has_many    :ic_etapes
 
   # has_many    :documents, through :ic_etapes

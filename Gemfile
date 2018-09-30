@@ -10,10 +10,16 @@ gem 'rails', '~> 5.2.1'
 gem 'will_paginate',  '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
+# gem 'autoprefixer-rails' # auto chargé
 gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails',   '4.3.1'
 
-gem 'activeadmin', '1.3.1'
+# # Utile pour l'administration du site
+# Surtout pas, ça fout le bazard dans bootstrap (et autres)
+# gem 'activeadmin', '1.3.1'
+
+# Utile pour bootstrap
+gem 'popper_js', '~> 1.14.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

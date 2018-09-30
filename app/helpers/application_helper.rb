@@ -36,6 +36,7 @@ module ApplicationHelper
     lab = I18n.t("myLabel.#{locale}")
     options[:suffix] && lab.concat(options[:suffix])
     options[:prefix] && lab.prepend(options[:prefix])
+    (options[:cap] || options[:capitalize]) && lab = lab.mb_chars.capitalize.to_s
     content_tag(:label, lab, class: options[:class])
   end
 end

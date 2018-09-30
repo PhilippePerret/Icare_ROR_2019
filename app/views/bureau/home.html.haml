@@ -1,7 +1,23 @@
 - set_title('Votre bureau')
 
-%p
-  TODO Ici sera présenté votre bureau de travail, comme un tableau de bord général.
+.container
+  .row
+    -# COLONNE GAUCHE
+    .col-sm-6
+      .row
+        = render 'statut'
+      .row
+        = render 'current_modules_state'
+    -# COLONNE DROITE
+    .col-sm-6
+      %ul.list-group
+        = render @action_watchers
 
--# Affichage des actions-watchers de l'icarien
-%ul= render @action_watchers
+  -# Rangée pour mettre le travail à faire ou indiquer que c'est ici qu'il
+  -# se trouvera
+  .row
+    - if current_user.actif?
+      [DESCRIPTION DU TRAVAIL DES MODULES EN COURS]
+    - else
+      .text-muted.center.py-3.italic
+        Description du travail de l’étape quand un module est en cours.

@@ -1,6 +1,8 @@
 # Modèle d'icarien
 class User < ApplicationRecord
 
+  include IcModulable
+
   has_secure_password
 
   attr_accessor :remember_token
@@ -49,6 +51,13 @@ class User < ApplicationRecord
   end
   def super_admin?
     self.statut & 8 > 0
+  end
+
+  def option(offset)
+    self.options[offset].to_i
+  end
+  def actif?
+    option(0) == 1
   end
 
   def femme?
