@@ -1,5 +1,14 @@
 class ActionWatcher < ApplicationRecord
 
+  # L'utilisateur courant (icarien ou administrateur)
+  attr_reader :current_user
+  attr_reader :params
+  attr_accessor :success_message
+  attr_writer :danger_message, :failure_message
+  def danger_message
+    @danger_message || @failure_message
+  end
+
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
   attr_accessor :at, :in, :objet, :action
@@ -17,16 +26,19 @@ class ActionWatcher < ApplicationRecord
   attr_writer :mailto_admin_before_name
   attr_writer :mailto_user_before_name
   def mailto_admin_after_name
-    @mailto_admin_after_name ||= 'mailto_admin_after.html.erb'
+    @mailto_admin_after_name ||= "mailto_admin_after.html.#{extension_mails}"
   end
   def mailto_user_after_name
-    @mailto_user_after_name ||= 'mailto_user_after.html.erb'
+    @mailto_user_after_name ||= "mailto_user_after.html.#{extension_mails}"
   end
   def mailto_admin_before_name
-    @mailto_admin_before_name ||= 'mailto_admin_before.html.erb'
+    @mailto_admin_before_name ||= "mailto_admin_before.html.#{extension_mails}"
   end
   def mailto_user_before_name
-    @mailto_user_before_name ||= 'mailto_user_before.html.erb'
+    @mailto_user_before_name ||= "mailto_user_before.html.#{extension_mails}"
+  end
+  def extension_mails
+    'haml'
   end
 
   belongs_to :user
@@ -41,14 +53,19 @@ class ActionWatcher < ApplicationRecord
   validates :action_watcher_path, presence: true, length: {minimum: 6}, on: :create
 
   # Pour jouer l'action-watcher
-  def run
+  def run_for(cuser, params)
+    @current_user = cuser # TODO Il faudrait pouvoir récupérer l'user courant
+    @params = params
     is_valid? || return
     load_required
     execute
     unless interrupted?
       send_after_mails_if_any
-      self.destroy
+      puts "Pour le moment, je ne détruis pas le watcher ##{self.id}"
+      # self.destroy
     end
+  ensure
+    return self # pour le chainage
   end
 
   # Retourne true si l'User +utested+ est le propriétaire de l'action-watcher
@@ -116,9 +133,21 @@ class ActionWatcher < ApplicationRecord
   # ATTENTION : return [<code du message>, <sujet>]
   def rend_if_exist(relative_path)
     full_path = File.join(folder,relative_path)
+    puts "File.exist?('#{full_path}') ? #{File.exist?(full_path).inspect}"
     if File.exist?(full_path)
-      [ERB.new(File.read(full_path)).result(binding), self.subject]
+      begin
+        [ Haml::Engine.new(File.read(full_path)).render(binding), self.subject ]
+        # File.read(full_path)
+        # [ERB.new(File.read(full_path)).result(binding), self.subject]
+      rescue Exception => e
+        puts e.message
+        puts e.backtrace.join("\n")
+      end
     end
+  end
+
+  def bind
+    binding()
   end
 
   private

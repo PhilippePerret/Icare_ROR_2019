@@ -18,5 +18,5 @@ class ActionWatcherMailer < ApplicationMailer
       fmt.html { render html: mail_body }
     end
   end
-  
+
 end

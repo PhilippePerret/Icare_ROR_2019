@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Classes incluses
+  include UsersHelper
   include SessionsHelper
   include TicketsHelper
 
@@ -21,13 +22,13 @@ class ApplicationController < ActionController::Base
 
   def correct_user
     return if current_user? && (params[:id].nil? || current_user.id == params[:id].to_i)
-    flash[:danger] = I18n.t('action.errors.not_autorised', {e: current_user? ? current_user.f_e : ''})
+    flash[:danger] = I18n.t('action.errors.not_autorised'.sexize)
     redirect_to home_path
   end
 
   def only_for_admin
     return if current_user? && current_user.admin?
-    flash[:danger] = I18n.t('action.errors.not_enough_privileges')
+    flash[:danger] = I18n.t('action.errors.not_enough_privileges'.sexize)
     redirect_to home_path
   end
 

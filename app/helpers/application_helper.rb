@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+
   # @return Le titre à utiliser pour la balise HEAD>TITLE de la
   # page
   # @param {String} page_titre

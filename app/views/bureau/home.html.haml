@@ -5,12 +5,13 @@
     -# COLONNE GAUCHE
     .col-sm-6
       .row
-        = render 'statut'
+        = render 'statut_icarien'
       .row
         = render 'current_modules_state'
     -# COLONNE DROITE
     .col-sm-6
-      %ul.list-group
+      -# les ACTIONS-WATCHERS DE L'UTILISATEUR
+      %ul.list-group.container-fluid
         = render @action_watchers
 
   -# Rangée pour mettre le travail à faire ou indiquer que c'est ici qu'il
@@ -18,6 +19,10 @@
   .row
     - if current_user.actif?
       [DESCRIPTION DU TRAVAIL DES MODULES EN COURS]
+    - elsif current_user.en_pause?
+      [BOUTON POUR REDÉMARRER SON MODULE]
+    - elsif current_user.admin?
+      = render 'admin_dashboard'
     - else
       .text-muted.center.py-3.italic
         Description du travail de l’étape quand un module est en cours.

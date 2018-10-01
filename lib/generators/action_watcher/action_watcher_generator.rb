@@ -26,14 +26,16 @@ class ActionWatcherGenerator < Rails::Generators::NamedBase
     puts "Construction du dossier `#{folder}'…"
     `mkdir -p "#{folder}"`
 
+    ext = 'html.haml'
+
     Dir["#{__dir__}/templates/*.*"].each do |f|
       fname = File.basename(f)
-      next if fname == 'mailto_admin_before.html.erb' && !@mail_admin_before
-      next if fname == 'mailto_user_before.html.erb'  && !@mail_user_before
-      next if fname == 'mailto_admin_after.html.erb'  && @no_mail_admin_after
-      next if fname == 'mailto_user_after.html.erb'   && @no_mail_user_after
-      next if fname == 'notify_admin.html.erb'        && @no_notify_admin
-      next if fname == 'notify_user.html.erb'         && @no_notify_user
+      next if fname == "mailto_admin_before.#{ext}" && !@mail_admin_before
+      next if fname == "mailto_user_before.#{ext}"  && !@mail_user_before
+      next if fname == "mailto_admin_after.#{ext}"  && @no_mail_admin_after
+      next if fname == "mailto_user_after.#{ext}"   && @no_mail_user_after
+      next if fname == "notify_admin.#{ext}"        && @no_notify_admin
+      next if fname == "notify_user.#{ext}"         && @no_notify_user
       copy_file fname, "#{folder}/#{fname}"
     end
   end

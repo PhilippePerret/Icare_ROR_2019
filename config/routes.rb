@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # === ACTIONS-WATCHERS ===
 
   resources :action_watchers, only: [:destroy]
-  get 'action_watchers/:id/run' => 'action_watchers#run', as: 'awrun'
+  post 'action_watchers/:id/run' => 'action_watchers#run', as: 'awrun'
   # get 'action_watchers/:id/destroy'
 
 
@@ -48,8 +48,8 @@ Rails.application.routes.draw do
 
   # === TICKETS ===
   # resources :tickets
-  get 'tickets/new' => 'tickets#create'
-  get 'tickets/:id/:token' => 'tickets#run', as: 'ticket_run'
+  get 'tickets/new'         => 'tickets#create'
+  get 'tickets/:id/:token'  => 'tickets#run', as: 'ticket_run'
 
 
   # === MODULES D'APPRENTISSAGE ===

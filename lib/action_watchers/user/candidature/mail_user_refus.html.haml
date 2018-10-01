@@ -1,0 +1,14 @@
+-# LETTRE DE REFUS ENVOYANT À UN POSTULANT
+- aw = self
+- aw.subject = 'Votre candidature a malheureusement été refusée'
+%p
+  = "#{aw.user.name},"
+%p
+  J’ai le regret de vous annoncer que votre candidature à l'atelier Icare a été refusée pour le motif invoqué ci-dessous :
+= aw.params[:motif_refus]
+%p
+  En vous souhaitant bonne continuation dans vos projets,
+%p
+  Bien à vous,
+%p
+  L'administration de l'atelier Icare

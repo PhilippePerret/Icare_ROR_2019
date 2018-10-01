@@ -598,6 +598,8 @@
 <p class="itemText"></p>
 <p class="itemText"> $ bundler install --without production </p>
 <p class="itemText"></p>
+<p class="itemText">(note : le `--without production' n'est utile qu'une fois)</p>
+<p class="itemText"></p>
 <p class="itemText">Puis exécuter les opérations de dépôt ci-dessus.</p>
 </li>
 <li>
@@ -753,6 +755,24 @@
 <li>
 <p class="topLevelItemTitle">Essayer une URL</p>
 <p class="itemText">Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</p>
+</li>
+<li>
+<p class="topLevelItemTitle">Seed</p>
+<p class="itemText">Pour pouvoir essayer des configurations différentes, on peut utiliser des seeds différents.</p>
+<p class="itemText"></p>
+<p class="itemText">Il suffit de les définir dans `./db/seeds/' avec un nom qui commencer par 'seed_'. Par exemple : `seed_inscription.rb'. C'est alors le seed « inscription » et il suffit de jouer la commande ci-dessous pour l'invoquer :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> $ rails db:reset:inscription</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Noter que pour charger le seed principal il faut jouer :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> $ rails db:reset:main</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
 </li>
 </ul>
 

@@ -44,7 +44,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-
+  # Essai non convainquant pour utiliser haml avec les mails
+  # ActionMailer::Base.register_template_extension('haml')
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

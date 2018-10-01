@@ -6,8 +6,16 @@
 
 \f0\fs28 \cf0 \'c0 partir d'une table :\
 \
-	<%= select_tag(:<prop>, options_from_collection_for_select(<Table>.all, <cl\'e9 valeur>, <cl\'e9 titre>) %>\
+	<%= select_tag(:<prop>, options_from_collection_for_select(<Table>.all, <cl\'e9 valeur>, <cl\'e9 titre>[, <valeur s\'e9lectionn\'e9e>]) %>\
+\
+Note : si multiple: true, <valeur s\'e9lectionn\'e9e> est un Array des valeurs s\'e9lectionn\'e9es.\
+\
+Pour d\'e9finir la taille du menu : size: <taille> (par exemple size: 10 pour montrer 10 valeurs)\
 \
 Par exemple, pour choisir un utilisateur :\
 \
-	<%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name) %>}
+	- users_selected = [2, 12, 34]\
+\
+	<%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name, users_selected), size: 20, multiple: true %>\
+\
+}

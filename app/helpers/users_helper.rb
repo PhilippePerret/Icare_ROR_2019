@@ -34,5 +34,31 @@ module UsersHelper
     # "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
   end
 
+  # Statut humain de l'icarien (actif, en pause, etc.)
+  def human_statut(user)
+    case
+    when user.admin?      then 'Administra%{trice}'.sexize(user)
+    when user.actif?      then 'Icarien%{ne} acti%{ve}'.sexize(user)
+    when user.en_pause?   then 'En pause'
+    when user.ancien?     then 'Ancien%{ne} icarien%{ne}'.sexize(user)
+    when user.postulant?  then 'Postulant%{e}'.sexize(user)
+    when user.detruit?    then 'Détruit%{e}'.sexize(user)
+    end
+  end
 
+end
+class String
+  def sexize(user = nil)
+    user ||= current_user
+    self % hash_feminin_masculin(user)
+  end
+  def hash_feminin_masculin(user)
+    is_f = user.femme?
+    {
+      e:      is_f ? 'e'      : '',
+      ne:     is_f ? 'ne'     : '',
+      trice:  is_f ? 'trice'  : 'teur',
+      ve:     is_f ? 've'     : 'f',      # actif/active
+    }
+  end
 end

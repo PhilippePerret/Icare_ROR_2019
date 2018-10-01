@@ -12,7 +12,9 @@ fr:
       email:
         not_confirmed:    '%{name}, vous ne pouvez rien faire avant d’avoir confirmé votre email.'
         unknown:          'Désolé, mais ce mail est inconnu à l’atelier…'
-
+    candidature:
+      errors:
+        bad_validation_candidature: 'La validation ou le refus ne semblent pas conforme…'
   action:
     errors:
       not_autorised:          'Vous n’êtes pas autorisé%{e} à exécuter cette opération.'

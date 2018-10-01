@@ -1,3 +1,10 @@
+=begin
+
+  Pour jouer ce fichier :
+
+  $ rails db:reset:main
+
+=end
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -98,3 +105,5 @@ unless Rails.env == 'production'
 
 end
 # /not production
+
+puts "\n\nLE FICHIER PRINCIPAL EST JOUÉ\n\n"

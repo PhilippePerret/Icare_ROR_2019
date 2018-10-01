@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
-            <Title>Routes</Title>
-            <Text>Concernant les routes
-Toutes les routes
-Pour voir la liste de toutes les routes, jouer en console :
-
-
-	$ rails routes
-
-_url et _path
-On utilise _url pour une URL complète et _path pour une route simple :
-
-about_path 	=&gt; /static_pages/about
-about_url		=&gt; www.monsite.org/static_pages/about</Text>
+        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
+            <Title>MAILS</Title>
         </Document>
         <Document ID="3EDB798B-84FA-4E88-BDA1-9B005E335D27">
             <Title>ActionWatchers</Title>
@@ -217,6 +205,7 @@ Ensuite, il suffit donc de faire :
             <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
+	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.
 </Text>
         </Document>
         <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
@@ -578,6 +567,8 @@ Ajout d'un nouveau gem
 Quand on ajoute un nouveau gem, il faut :
 
  $ bundler install --without production 
+
+(note : le `--without production' n'est utile qu'une fois)
 
 Puis exécuter les opérations de dépôt ci-dessus.</Text>
         </Document>
@@ -945,6 +936,24 @@ Pour en insérer un :
 On peut les mettre dans la couleur qu'on veut ('color: ...')
 La taille se règle en fonction du conteneur, mais on peut utiliser aussi des `btn-&lt;taille&gt;' pour la régler, comme `btn-sm', `btn-lg', etc.
 Ajouter un `aria-label' si c'est un bouton , pour l'accessibilité.</Text>
+        </Document>
+        <Document ID="29D8F8EB-0FBE-4514-946B-997F1AB597A7">
+            <Title>Seed</Title>
+            <Text>Pour pouvoir essayer des configurations différentes, on peut utiliser des seeds différents.
+
+Il suffit de les définir dans `./db/seeds/' avec un nom qui commencer par 'seed_'. Par exemple : `seed_inscription.rb'. C'est alors le seed « inscription » et il suffit de jouer la commande ci-dessous pour l'invoquer :
+
+
+	$ rails db:reset:inscription
+
+
+Noter que pour charger le seed principal il faut jouer :
+
+
+	$ rails db:reset:main
+
+
+</Text>
         </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
@@ -1445,11 +1454,19 @@ La date de prochain paiement (if any)
             <Title>Menu Select</Title>
             <Text>À partir d'une table :
 
-	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;) %&gt;
+	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;[, &lt;valeur sélectionnée&gt;]) %&gt;
+
+Note : si multiple: true, &lt;valeur sélectionnée&gt; est un Array des valeurs sélectionnées.
+
+Pour définir la taille du menu : size: &lt;taille&gt; (par exemple size: 10 pour montrer 10 valeurs)
 
 Par exemple, pour choisir un utilisateur :
 
-	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name) %&gt;</Text>
+	- users_selected = [2, 12, 34]
+
+	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name, users_selected), size: 20, multiple: true %&gt;
+
+</Text>
         </Document>
         <Document ID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12">
             <Title>Helpers HTML</Title>
@@ -1485,8 +1502,20 @@ Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définis
 L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
 </Text>
         </Document>
-        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
-            <Title>MAILS</Title>
+        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
+            <Title>Routes</Title>
+            <Text>Concernant les routes
+Toutes les routes
+Pour voir la liste de toutes les routes, jouer en console :
+
+
+	$ rails routes
+
+_url et _path
+On utilise _url pour une URL complète et _path pour une route simple :
+
+about_path 	=&gt; /static_pages/about
+about_url		=&gt; www.monsite.org/static_pages/about</Text>
         </Document>
     </Documents>
 </SearchIndexes>

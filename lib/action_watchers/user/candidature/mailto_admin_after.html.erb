@@ -1,13 +1,15 @@
 <%
-# Ce message sera envoyé à l'administration APRÈS L'EXÉCUTION du watcher
-# Avec le sujet suivant :
-self.subject = "Email de test envoyé à l'admin à l'exécution du watcher"
-
+#
+# Mail envoyé à l'ADMIN À L'EXÉCUTION de l'action watcher
+#
+aw = action_watcher
+aw.subject = "Email de test envoyé à l'ADMIN à l'EXÉCUTION du watcher"
 %>
+
 <div class="container">
-  Je suis un mail envoyé à l'exécution de l'action-watcher.
+  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
 </div>
 <div class="container">
-  <%# Ci-dessous, l'utiliastion d'une méthode d'helper pour définir le mail %>
-  L'objet visé par ce watcher est un <%= objet_designation %>.
+  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
+  <%= objet_designation %>
 </div>
