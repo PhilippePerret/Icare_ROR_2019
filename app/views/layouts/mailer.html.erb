@@ -4,10 +4,82 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
       /* Email styles need to be inline */
+      body {
+        width:600px;
+        max-width:600px;
+        margin:0;
+        background-color:white;
+        color:#555;
+        font-size:2rem
+      }
+      div#logo{
+        font-size:1.7em;
+        font-variant:small-caps;
+        padding:8px 32px;
+        background-color:#578088;
+        color:white;
+      }
+      div#message_content{margin:2em 4em;}
+      span#signature{font-size:15.2pt;color:#555}
+      .tiny{font-size:x-small;}
+      .small{font-size:small;}
     </style>
+    <title>Message de l’atelier Icare</title>
   </head>
-
   <body>
-    <%= yield %>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr id="logo">
+        <td colspan="3">
+          <div style="font-size:1.4rem;font-variant:small-caps;padding:8px 32px;background-color:#578088;color:white;">
+            <%= link_to 'Atelier Icare', 'http://www.atelier-icare.net', style: 'color:inherit;text-decoration:inherit;') %>
+          </div>
+        </td>
+      </tr>
+      <tr id="citation">
+        <td style="min-width:25%;width:25%">&nbsp;</td>
+        <td colspan="2" style="font-size:0.85rem!important;padding:1rem;">
+          <%# Affichage d'une citation prise sur BOA %>
+          <%
+
+            Mail.instance_variable_get('@citation_courante') || begin
+
+              hquote = site.get_a_citation
+
+              url_citation    = "#{site.url_boa}/citation/#{hquote[:id]}/show"
+              style_citation  = 'text-decoration:none;color:#555555;font-style:italic;'
+              style_auteur    = 'text-align:right;font-weight:bold;'
+
+              q = hquote[:citation].strip_tags(' ')
+              current_quote =
+                (
+                  "#{q}".in_a(href: url_citation, style: style_citation).in_div(id: 'quote_citation') +
+                  hquote[:auteur].in_div(id: 'quote_auteur', style: style_auteur)
+                ).in_div(style:'text-align:left;')
+              Mail.instance_variable_set('@citation_courante', current_quote)
+            end
+          %>
+          <%= Mail.instance_variable_get('@citation_courante') %>
+        </td>
+      </tr>
+      <tr id="message_body" colspan="3">
+        <div id="message_content">
+          <%= yield %>
+        </div>
+      </tr>
+      <tr id="footer">
+        <td colspan="3" style="padding:1rem;">
+          <div style="font-size:x-small;"><%= site[:name] %></div>
+          <% if site[:distant_url] %>
+            <div style="font-size:x-small;">Site : <%= site[:distant_url] %></div>
+          <% end %>
+          <% if site[:facebook] %>
+            <div style="font-size:x-small;">Facebook : http://www.facebook.com/<%= site[:facebook] %></div>
+          <% end %>
+          <% if site[:twitter] %>
+            <div style="font-size:x-small;">Twitter : https://twitter.com/<%= site[:twitter] %></div>
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

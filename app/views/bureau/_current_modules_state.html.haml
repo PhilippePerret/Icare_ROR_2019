@@ -1,7 +1,10 @@
 - if current_user.actif?
   %ul.list-group.px-3
     = render current_user.current_modules
+- elsif current_user.accepted?
+  %small.italic= 'Bientôt, ici, les informations sur votre module d’apprentissage.'
 - elsif !current_user.admin?
   -# L'user courant n'est pas actif, on lui présente un lien
   -# pour commander un autre module.
+  -# TODO
   [Bouton pour commander un module]

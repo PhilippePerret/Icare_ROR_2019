@@ -5,6 +5,10 @@
     = "Module « #{ic_module.abs_module.name} » "
     %small
       = "(##{ic_module.id})"
+  - if current_user != ic_module.user
+    #module-owner
+      = myLabel('module.owner.label', suffix: ' : ', cap: true)
+      = ic_module.user.name
   #module-informations
     .col.col-xs-offset-1{class: ('col-xs-5' if ic_module.ended?)}
       = myLabel('time.started_at', suffix: ' : ', cap: true)
@@ -16,3 +20,5 @@
   #module-etape.col-xs-offset-1
     = myLabel('module.current_etape.label', suffix: ' : ', cap: true)
     = ic_module.current? ? "#{ic_module.current_etape.numero} #{ic_module.current_etape.titre}" : I18n.t('module.status.waiting_for_start')
+-# TODO Plus tard, ici, la liste des étapes du module.
+-# TODO Plus tard, ici, la liste des documents du module (ou avec étapes ?)

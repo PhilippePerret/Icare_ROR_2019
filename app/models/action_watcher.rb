@@ -1,18 +1,50 @@
 class ActionWatcher < ApplicationRecord
 
+  # Peuvent être transmis à la création de l'objet, et transformés avant
+  # la validation.
+  attr_accessor :at, :in, :action
+  attr_writer :path, :name, :objet
+
+  # Méthode définissant la classe du LI principal contenant la notification
+  # cette méthode sera surclassée par la méthode définie dans l'action_watcher.rb
+  def notification_type(cuser)
+    'simple-notice'
+  end
+
+  # Méthodes d'helper directes
+  # note : "directes" signifie que ce sont des propriétés de l'action-watcher,
+  # pas des méthodes d'helper où il faudrait envoyer l'instance
+
+  # Propriétés volatiles utiles
+  # Noter qu'à la création, :objet a pu être transmis à l'instance. Donc cette
+  # propriété fonctionne aussi bien à la création qu'à l'exécution du watcher.
+  def objet
+    @objet ||= begin
+      Object.const_get(model).find(model_id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise I18n.t('activerecord.errors.models.record_not_found', {classe: model, id: model_id})
+    end
+  end
+  # Pour connaitre l'objet (en cas d'erreur par exemple)
+  def objet_designation
+    "Objet de classe #{objet.class} et d'ID ##{objet.id}"
+  end
+
+  def form_url
+    "/action_watchers/#{self.id}/run"
+  end
+
+  # /---------------------------------------------------------------------
+
   # L'utilisateur courant (icarien ou administrateur)
   attr_reader :current_user
-  attr_reader :params
+  attr_accessor :params # accessorable surtout pour preview
   attr_accessor :success_message
   attr_writer :danger_message, :failure_message
   def danger_message
     @danger_message || @failure_message
   end
 
-  # Peuvent être transmis à la création de l'objet, et transformés avant
-  # la validation.
-  attr_accessor :at, :in, :objet, :action
-  attr_writer :path, :name
   # Pour quand l'instance est rechargée de la table
   def path ; @path ||= action_watcher_path end
   def name ; @name ||= action_watcher_path end
@@ -38,6 +70,10 @@ class ActionWatcher < ApplicationRecord
     @mailto_user_before_name ||= "mailto_user_before.html.#{extension_mails}"
   end
   def extension_mails
+    'erb'
+    # 'haml'
+  end
+  def extension_notifications
     'haml'
   end
 
@@ -76,6 +112,7 @@ class ActionWatcher < ApplicationRecord
   # Retourne true s'il existe une notification pour le destinataire +dest+
   # qui peut être soit le propriétaire du watcher soit l'administrateur
   def notification_for?(dest = nil)
+    load_helper # notamment pour le type de la notification
     dest ||= current_user
     owner?(dest) || dest.admin? || raise(I18.t('action_watchers.errors.destinataire.unknown'))
     File.exist?(notification_path(dest))
@@ -84,7 +121,8 @@ class ActionWatcher < ApplicationRecord
     File.join(name, send("notification_#{owner?(dest) ? 'user' : 'admin'}_partial"))
   end
   def notification_path(dest)
-    File.join(folder, send("notification_#{owner?(dest) ? 'user' : 'admin'}_partial") + '.html.haml')
+    File.join(folder, send("notification_#{owner?(dest) ? 'user' : 'admin'}_partial") +
+      ".html.#{extension_notifications}")
   end
   def notification_admin_partial
     @notification_admin_partial ||= '_notify_admin'
@@ -93,20 +131,6 @@ class ActionWatcher < ApplicationRecord
     @notification_user_partial  ||= '_notify_user'
   end
 
-  # Propriétés volatiles utiles
-  # Noter qu'à la création, :objet a pu être transmis à l'instance. Donc cette
-  # propriété fonctionne aussi bien à la création qu'à l'exécution du watcher.
-  def objet
-    @objet ||= begin
-      Object.const_get(model).find(model_id)
-    rescue ActiveRecord::RecordNotFound => e
-      raise I18n.t('activerecord.errors.models.record_not_found', {classe: model, id: model_id})
-    end
-  end
-  # Pour connaitre l'objet (en cas d'erreur par exemple)
-  def objet_designation
-    "Objet de classe #{objet.class} et d'ID ##{objet.id}"
-  end
 
 
   # Faut-il interrompre le programme ? Retourne TRUE si c'est le cas
@@ -133,12 +157,9 @@ class ActionWatcher < ApplicationRecord
   # ATTENTION : return [<code du message>, <sujet>]
   def rend_if_exist(relative_path)
     full_path = File.join(folder,relative_path)
-    puts "File.exist?('#{full_path}') ? #{File.exist?(full_path).inspect}"
     if File.exist?(full_path)
       begin
-        [ Haml::Engine.new(File.read(full_path)).render(binding), self.subject ]
-        # File.read(full_path)
-        # [ERB.new(File.read(full_path)).result(binding), self.subject]
+        [ ERB.new(File.read(full_path)).result(binding), self.subject ]
       rescue Exception => e
         puts e.message
         puts e.backtrace.join("\n")
@@ -209,6 +230,9 @@ class ActionWatcher < ApplicationRecord
     # Chargement de tout le dossier
     def load_required
       Dir["#{folder}/**/*.rb"].each{|m|load m}
+    end
+    def load_helper
+      load File.join(folder,'action_watcher_helpers.rb')
     end
 
 

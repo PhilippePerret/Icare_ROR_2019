@@ -12,20 +12,12 @@ class ActionWatcher < ApplicationRecord
   #
   # end
 
-  # Le type de la notification (le LI la contenant), en fonction du user
-  #
-  # Les types sont :
-  #   'main-action-required'  Une action importante requise
-  #   'action-required'       Une action mise en avant
-  #   'simple-notice'         Une simple note pour information (discrète)
-  # 
   def notification_type(cuser)
     if owner?(cuser)
-      'action-required'
+      'main-action-required'
     else
       'simple-notice'
     end
   end
-
 
 end

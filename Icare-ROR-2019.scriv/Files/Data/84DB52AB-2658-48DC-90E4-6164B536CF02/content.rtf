@@ -11,7 +11,7 @@
 
 \f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 \
-	$ rails g action_watcher <nom_du_watcher>[ <options>]\
+	$ rails g action_watcher <folder>/<nom_du_watcher>[ <options>]\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
 
@@ -29,8 +29,8 @@ Par d\'e9faut, les mails envoy\'e9s \'e0 l'ex\'e9cution du watcher sont cr\'e9\'
 	--no-mail-user-after\
 \
 Par d\'e9faut, les deux fichiers notification sont cr\'e9\'e9s, pour l'user et pour l'admin :\
-	\'96 notify_admin.html.erb\
-	\'96 notify_user.html.erb\
+	\'96 notify_admin.html.haml\
+	\'96 notify_user.html.haml\
 On peut demander \'e0 ce que ces fichiers ne soient pas cr\'e9\'e9s avec les options\'a0:\
 	--no-notifies	# Aucune des deux ne sera cr\'e9\'e9\
 	--no-notify-admin\
@@ -84,9 +84,7 @@ Note : dans tous ces fichiers mails, on doit d\'e9finir :\
 
 \f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 \
-	<%\
-		self.subject = 'Le sujet du message'\
-	%>\
+	<% self.subject = 'Le sujet du message' %>\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
 

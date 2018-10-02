@@ -13,6 +13,7 @@ fr:
         not_confirmed:    '%{name}, vous ne pouvez rien faire avant d’avoir confirmé votre email.'
         unknown:          'Désolé, mais ce mail est inconnu à l’atelier…'
     candidature:
+      confirmed:          'Validation de la candidature de %{pseudo} exécutée avec succès.<br>Module ID : %{id}<br><a href="/ic_modules/%{id}">Voir le module</a>'
       errors:
         bad_validation_candidature: 'La validation ou le refus ne semblent pas conforme…'
   action:

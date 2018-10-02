@@ -1,0 +1,22 @@
+<%
+# LETTRE DE REFUS ENVOYANT À UN POSTULANT
+
+self.subject = 'Votre candidature a malheureusement été refusée'
+%>
+
+<p>
+  <%= user.name %>,
+</p>
+<p>
+  J’ai le regret de vous annoncer que votre candidature à l'atelier Icare a été refusée pour le motif invoqué ci-dessous :
+</p>
+<%= params[:motif_refus].to_s.gsub(/(\r?\n)/,' ').gsub(/  +/,' ').strip %>
+<p>
+En vous souhaitant bonne continuation dans vos projets,
+</p>
+<p>
+Bien à vous,
+</p>
+<p class="signature">
+L'administration de l'atelier Icare
+</p>

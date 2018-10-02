@@ -15,7 +15,7 @@ class ActionWatcherMailer < ApplicationMailer
   # appelante)
   def send_to_admin(action_watcher, mail_body, mail_subject)
     mail(from: action_watcher.user.email, subject: mail_subject) do |fmt|
-      fmt.html { render html: mail_body }
+      fmt.html { render html: mail_body.html_safe }
     end
   end
 

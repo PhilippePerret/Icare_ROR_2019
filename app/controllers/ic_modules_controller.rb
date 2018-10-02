@@ -33,7 +33,7 @@ class IcModulesController < ApplicationController
   # Affichage du module icarien, toutes ses informations, ses étapes,
   # ses documents.
   def show
-
+    @ic_module = IcModule.find(params[:id])
   end
 
   # Liste des modules d'apprentissage de l'icarien (si params[:user_id] est

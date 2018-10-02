@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-01 15:53:38 +0300" ModID="3F46A265-8A3A-4693-974D-3397351DE738">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-02 10:21:56 +0300" ModID="474191CE-525C-4234-A87B-E83066E8690D">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-01 08:39:58 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-02 10:21:54 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
@@ -67,13 +67,13 @@
                                 <Bookmark BinderUUID="E9462355-BDF3-4C0A-99C8-EC106941D32A"></Bookmark>
                             </Bookmarks>
                         </BinderItem>
-                        <BinderItem UUID="396A70B0-F39F-463A-999B-8B4DFB627037" Type="Text" Created="2018-09-24 06:15:24 +0300" Modified="2018-09-24 06:22:40 +0300">
+                        <BinderItem UUID="396A70B0-F39F-463A-999B-8B4DFB627037" Type="Text" Created="2018-09-24 06:15:24 +0300" Modified="2018-10-02 08:40:01 +0300">
                             <Title>Options</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>204,1</TextSelection>
+                                <TextSelection>89,0</TextSelection>
                             </TextSettings>
                             <Bookmarks>
                                 <Bookmark BinderUUID="E9462355-BDF3-4C0A-99C8-EC106941D32A"></Bookmark>
@@ -147,7 +147,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>97,0</TextSelection>
+                                        <TextSelection>105,69</TextSelection>
                                     </TextSettings>
                                     <Bookmarks>
                                         <Bookmark BinderUUID="BBE7194B-8ACC-47A6-92E5-3150D9C65344"></Bookmark>
@@ -378,13 +378,22 @@
                                         <TextSelection>0,0</TextSelection>
                                     </TextSettings>
                                     <Children>
-                                        <BinderItem UUID="84DB52AB-2658-48DC-90E4-6164B536CF02" Type="Text" Created="2018-09-29 04:46:24 +0300" Modified="2018-09-29 05:17:20 +0300">
+                                        <BinderItem UUID="84DB52AB-2658-48DC-90E4-6164B536CF02" Type="Text" Created="2018-09-29 04:46:24 +0300" Modified="2018-10-02 09:30:14 +0300">
                                             <Title>Création du dossier et contenu</Title>
                                             <MetaData>
                                                 <IncludeInCompile>Yes</IncludeInCompile>
                                             </MetaData>
                                             <TextSettings>
-                                                <TextSelection>874,0</TextSelection>
+                                                <TextSelection>1670,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="AA852350-F90D-44BB-A210-84E06C68A365" Type="Text" Created="2018-10-02 09:30:49 +0300" Modified="2018-10-02 09:32:07 +0300">
+                                            <Title>Notification</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>71,0</TextSelection>
                                             </TextSettings>
                                         </BinderItem>
                                         <BinderItem UUID="8E87DB4A-9EC9-4F69-A6F7-CDDD7B578372" Type="Text" Created="2018-09-29 04:29:30 +0300" Modified="2018-09-29 04:36:47 +0300">
@@ -1030,17 +1039,18 @@
     </StatusSettings>
     <ProjectBookmarks>
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/test/test_helper.rb">test_helper</Bookmark>
+        <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/app/helpers/sessions_helper.rb">sessions_helper</Bookmark>
     </ProjectBookmarks>
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="71" Characters="490" Date="2018-10-01 07:31:20 +0300"></PreviousSession>
+        <PreviousSession Words="28" Characters="242" Date="2018-10-02 08:07:51 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-10-01 00:00:00 +0300">
-        <DraftWordCount>71</DraftWordCount>
-        <DraftCharCount>490</DraftCharCount>
-        <OtherWordCount>51</OtherWordCount>
-        <OtherCharCount>365</OtherCharCount>
+    <RecentWritingHistory Date="2018-10-02 00:00:00 +0300">
+        <DraftWordCount>28</DraftWordCount>
+        <DraftCharCount>242</DraftCharCount>
+        <OtherWordCount>11</OtherWordCount>
+        <OtherCharCount>89</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

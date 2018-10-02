@@ -1,9 +1,15 @@
 // Place all the styles related to the ActionWatchers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div.notification {
-  background-color: red;
-  &.danger {
-    background-color: red;
+li.main-action-required {
+  background-color: #ffb2b2 !important;
+}
+li.action-required {
+  background-color: #FFEEEE !important;
+}
+li.simple-notice {
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
   }
 }

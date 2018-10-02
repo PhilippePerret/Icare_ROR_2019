@@ -57,14 +57,16 @@ class User < ApplicationRecord
     self.options[offset].to_i
   end
   def postulant?  ; option(0) == 0  end
-  def actif?      ; option(0) == 1  end
-  def en_pause?   ; option(0) == 2  end
-  def ancien?     ; option(0) == 3  end
+  def accepted?   ; option(0) == 1  end
+  def actif?      ; option(0) == 2  end
+  def en_pause?   ; option(0) == 3  end
+  def ancien?     ; option(0) == 4  end
   def detruit?    ; option(0) == 9  end
   # Méthodes de transformation
-  def set_actif     ; set_option(0,1)  end
-  def set_en_pause  ; set_option(0,2)  end
-  def set_ancien    ; set_option(0,3)  end
+  def set_accepted  ; set_option(0,1) end
+  def set_actif     ; set_option(0,2) end
+  def set_en_pause  ; set_option(0,3) end
+  def set_ancien    ; set_option(0,4) end
   def femme?    ; @is_femme ||= sexe == 1 end
 
   def set_option offset, value

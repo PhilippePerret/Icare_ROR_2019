@@ -8,6 +8,8 @@ fr:
     module:
       current_etape:
         label:          'étape courante'
+      owner:
+        label:          'icarien'
 
   module:
     status:

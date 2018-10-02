@@ -1,3 +1,4 @@
+
 class ActionWatcher < ApplicationRecord
 
   # Validation de la candidature ou refus.
@@ -16,10 +17,19 @@ class ActionWatcher < ApplicationRecord
   end
 
   def execute_validation
-    self.success_message = "J'exécute la validation"
+    require_relative 'creation_icmodule'
+    # On marque qu'il est accepté
+    user.set_accepted
+    # On lui crée son module d'apprentissage
+    icmodule = create_icmodule_for_user(user, params[:module_id].first.to_i)
+    # Note : un email lui sera automatiquement envoyé
+    self.success_message = I18n.t('users.candidature.confirmed', {pseudo: user.name, id: icmodule.id})
   end
   def execute_refus
-    self.mailto_user_after_name = 'mail_user_refus.html.haml'
-    self.success_message = "J'exécute le refus de la candidature"
+    # On marque que l'user est détruit
+    user.destroy
+    # On doit modifier le mail envoyé
+    self.mailto_user_after_name = 'mailto_user_refus.html.erb'
+    self.success_message = "Le refus de la candidature de la candidature de #{user.name} a été exécutée."
   end
 end

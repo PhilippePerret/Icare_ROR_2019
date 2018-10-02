@@ -40,4 +40,16 @@ module ApplicationHelper
     (options[:cap] || options[:capitalize]) && lab = lab.mb_chars.capitalize.to_s
     content_tag(:label, lab, class: options[:class])
   end
+
+  def site
+    @site ||= begin
+      {
+        name:         'Atelier Icare',
+        locale_url:   'localhost:3000',
+        distant_url:  'www.atelier-icare.net',
+        facebook:     'Atelier-Icare-711999635586581/',
+        twitter:      nil
+      }
+    end
+  end
 end

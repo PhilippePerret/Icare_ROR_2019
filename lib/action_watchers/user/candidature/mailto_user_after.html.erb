@@ -2,14 +2,27 @@
 #
 # Mail envoyé à l'USER À L'EXÉCUTION de l'action watcher
 #
-aw = action_watcher
-aw.subject = "Email de test envoyé à l'USER à l'EXÉCUTION du watcher"
+self.subject = "Bravo ! votre candidature à l'atelier Icare a été acceptée"
+ic_module = self.user.ic_modules.last
 %>
-
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-</div>
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-  <%= objet_designation %>
-</div>
+<p>
+  <%= user.name %>,
+</p>
+<p>
+  J'ai le plaisir de vous annoncer que votre candidature à l’atelier Icare vient d’être acceptée. Bravo à vous !
+</p>
+<p>
+  Le module d’apprentissage “<%= ic_module.abs_module.name %>” vient de vous être attribué, vous pouvez le démarrer (le commencer) dès que vous serez <%= 'prêt%{e}'.sexize(user) %> en rejoignant <%= link_to 'votre bureau', bureau_url %> sur le site de l’atelier.
+</p>
+<p>
+  Pour toute information complémentaire, n’hésitez pas à consulter <%= link_to 'l’aide du site', help_url %> ou, le cas échéant, à <%= link_to 'contacter Phil', mailto: 'phil@atelier-icare.net' %>.
+</p>
+<p>
+  Il ne nous reste plus qu’à vous féliciter encore une fois et vous souhaiter un séjour très profitable à l’atelier Icare.
+</p>
+<p>
+  Bien à vous,
+</p>
+<p>
+  L’administration de l’atelier Icare.
+</p>

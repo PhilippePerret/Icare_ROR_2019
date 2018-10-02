@@ -1,3 +1,5 @@
+require_relative 'feminines'
+
 module UsersHelper
 
   def user_pseudo user, options = nil
@@ -37,6 +39,7 @@ module UsersHelper
   # Statut humain de l'icarien (actif, en pause, etc.)
   def human_statut(user)
     case
+    when user.accepted?   then 'Fraichement reçu%{e}'.sexize(user)
     when user.admin?      then 'Administra%{trice}'.sexize(user)
     when user.actif?      then 'Icarien%{ne} acti%{ve}'.sexize(user)
     when user.en_pause?   then 'En pause'
@@ -46,19 +49,4 @@ module UsersHelper
     end
   end
 
-end
-class String
-  def sexize(user = nil)
-    user ||= current_user
-    self % hash_feminin_masculin(user)
-  end
-  def hash_feminin_masculin(user)
-    is_f = user.femme?
-    {
-      e:      is_f ? 'e'      : '',
-      ne:     is_f ? 'ne'     : '',
-      trice:  is_f ? 'trice'  : 'teur',
-      ve:     is_f ? 've'     : 'f',      # actif/active
-    }
-  end
 end

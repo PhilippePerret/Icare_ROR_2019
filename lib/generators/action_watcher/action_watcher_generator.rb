@@ -26,7 +26,10 @@ class ActionWatcherGenerator < Rails::Generators::NamedBase
     puts "Construction du dossier `#{folder}'…"
     `mkdir -p "#{folder}"`
 
-    ext = 'html.haml'
+    # Pour le moment, on prend la version ERB car la version HAML ne semble
+    # pas fonctionner pour le moment avec les mails
+    ext = 'html.erb'
+    # ext = 'html.haml'
 
     Dir["#{__dir__}/templates/*.*"].each do |f|
       fname = File.basename(f)

@@ -12,5 +12,12 @@ class ActionWatcher < ApplicationRecord
   #
   # end
 
-  
+  def notification_type(cuser)
+  if owner?(cuser)
+    'simple-notice'
+  else
+    'main-action-required'
+  end
+end
+
 end

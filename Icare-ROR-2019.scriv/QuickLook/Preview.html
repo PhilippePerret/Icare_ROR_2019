@@ -151,12 +151,35 @@
 <li>
 <p class="itemTitle">Options</p>
 <p class="itemText">Propriété : options</p>
-<p class="itemText">C'est un mot de 32 chiffres où chaque chiffre représente une option.</p>
+<p class="itemText">C'est un mot de 16 chiffres où chaque chiffre représente une option.</p>
 <p class="itemText"></p>
-<p class="itemText">BIT (le premier chiffre est le nombre pour la base de données)</p>
-<p class="itemText">1 (0)  État : 0 = à confirmer/1 = actif/2=en pause/3=inactif/9=détruit</p>
-<p class="itemText">2 (1)  Confirmation du mail : 0 = non confirmé</p>
-<p class="itemText">3 (2)  Redirection après l'identification </p>
+<p class="itemText"></p>
+<p class="itemText"> Bit</p>
+<p class="itemText">Valeurs possibles</p>
+<p class="itemText">0</p>
+<p class="itemText">1</p>
+<p class="itemText">0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit</p>
+<p class="itemText">1</p>
+<p class="itemText">2</p>
+<p class="itemText">Confirmation du mail (1 = confirmé, 0 = non confirmé)</p>
+<p class="itemText">2</p>
+<p class="itemText">3</p>
+<p class="itemText">Redirection après l'identification</p>
+<p class="itemText">cf. la méthode `redirection_after_login` du fichier sessions_helper</p>
+<p class="itemText">3</p>
+<p class="itemText">4</p>
+<p class="itemText"></p>
+<p class="itemText">4</p>
+<p class="itemText">5</p>
+<p class="itemText"></p>
+<p class="itemText">5</p>
+<p class="itemText">6</p>
+<p class="itemText"></p>
+<p class="itemText">6</p>
+<p class="itemText">7</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
 </li>
 </ul>
 <hr class="afterText"/>
@@ -674,7 +697,7 @@
 <p class="itemText">Le plus simple est d'utiliser mon générateur rails :</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
-<p class="itemText"> $ rails g action_watcher <nom_du_watcher>[ <options>]</p>
+<p class="itemText"> $ rails g action_watcher <folder>/<nom_du_watcher>[ <options>]</p>
 <p class="itemText"></p>
 <p class="itemText"></p>
 <p class="itemText">Cela crée tout ce qu'il faut dans le dossier ./lib/action_watchers/<nom_du_watcher>/</p>
@@ -683,7 +706,16 @@
 <p class="itemText"> --mails-before # pour les créer les deux</p>
 <p class="itemText"> --mail-admin-before</p>
 <p class="itemText"> --mail-user-before</p>
-<p class="itemText">Par défaut, les mails envoyés à l'exécution du watcher sont ...</p>
+<p class="itemText">Par défaut, les mails envoyés à l'exécution du watc...</p>
+</li>
+<li>
+<p class="itemTitle">Notification</p>
+<p class="itemText">Formulaire type pour une notification qui doit jouer l'action-watcher :</p>
+<p class="itemText"></p>
+<p class="itemText">= form_for('<prefix>', url: aw.form_url) do</p>
+<p class="itemText"> = ... champs</p>
+<p class="itemText"> .right.vair</p>
+<p class="itemText">  = submit_tag('Soumettre')</p>
 </li>
 <li>
 <p class="itemTitle">Modification du mail envoyé</p>
