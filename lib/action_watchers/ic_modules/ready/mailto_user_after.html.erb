@@ -6,11 +6,15 @@
 #
 self.subject = "Confirmation du démarrage de votre module d'apprentissage"
 %>
-
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
+<div>
+  <%= user.name %>,
 </div>
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-  <%= objet_designation %>
+<div>
+  Je vous confirme le bon démarrage de votre module d'apprentissage “<%= objet.abs_module.name %>”.
+</div>
+<div>
+  Bonne chance et bonne inspiration à vous dans votre travail !
+</div>
+<div>
+  Ernest, le bot-manutentionnaire de l'atelier Icare
 </div>

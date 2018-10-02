@@ -15,6 +15,10 @@ class ActionWatcher < ApplicationRecord
   # note : "directes" signifie que ce sont des propriétés de l'action-watcher,
   # pas des méthodes d'helper où il faudrait envoyer l'instance
 
+  def form_url
+    "/action_watchers/#{self.id}/run"
+  end
+
   # Propriétés volatiles utiles
   # Noter qu'à la création, :objet a pu être transmis à l'instance. Donc cette
   # propriété fonctionne aussi bien à la création qu'à l'exécution du watcher.
@@ -28,10 +32,6 @@ class ActionWatcher < ApplicationRecord
   # Pour connaitre l'objet (en cas d'erreur par exemple)
   def objet_designation
     "Objet de classe #{objet.class} et d'ID ##{objet.id}"
-  end
-
-  def form_url
-    "/action_watchers/#{self.id}/run"
   end
 
   # /---------------------------------------------------------------------
@@ -97,8 +97,7 @@ class ActionWatcher < ApplicationRecord
     execute
     unless interrupted?
       send_after_mails_if_any
-      puts "Pour le moment, je ne détruis pas le watcher ##{self.id}"
-      # self.destroy
+      self.destroy
     end
   ensure
     return self # pour le chainage

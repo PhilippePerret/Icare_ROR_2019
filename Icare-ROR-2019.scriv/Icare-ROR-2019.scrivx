@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-02 10:21:56 +0300" ModID="474191CE-525C-4234-A87B-E83066E8690D">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-02 13:05:54 +0300" ModID="AD3F712D-106C-45A4-AFE8-8A1B0DF150A8">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-02 10:21:54 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-02 10:44:30 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
@@ -395,6 +395,17 @@
                                             <TextSettings>
                                                 <TextSelection>71,0</TextSelection>
                                             </TextSettings>
+                                            <Children>
+                                                <BinderItem UUID="69EC93B0-3A0E-4DCC-B50E-9F9F7F9CF49D" Type="Text" Created="2018-10-02 10:44:40 +0300" Modified="2018-10-02 10:54:40 +0300">
+                                                    <Title>Type de la rangée</Title>
+                                                    <MetaData>
+                                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                                    </MetaData>
+                                                    <TextSettings>
+                                                        <TextSelection>699,0</TextSelection>
+                                                    </TextSettings>
+                                                </BinderItem>
+                                            </Children>
                                         </BinderItem>
                                         <BinderItem UUID="8E87DB4A-9EC9-4F69-A6F7-CDDD7B578372" Type="Text" Created="2018-09-29 04:29:30 +0300" Modified="2018-09-29 04:36:47 +0300">
                                             <Title>Modification du mail envoyé</Title>
@@ -412,6 +423,15 @@
                                             </MetaData>
                                             <TextSettings>
                                                 <TextSelection>156,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="04B90E21-621A-4938-A9C0-D1BA3D4D3684" Type="Text" Created="2018-10-02 12:50:19 +0300" Modified="2018-10-02 12:52:17 +0300">
+                                            <Title>Message de fin</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>161,0</TextSelection>
                                             </TextSettings>
                                         </BinderItem>
                                     </Children>
@@ -1044,13 +1064,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="28" Characters="242" Date="2018-10-02 08:07:51 +0300"></PreviousSession>
+        <PreviousSession Words="165" Characters="1264" Date="2018-10-02 08:07:51 +0300"></PreviousSession>
     </ProjectTargets>
     <RecentWritingHistory Date="2018-10-02 00:00:00 +0300">
-        <DraftWordCount>28</DraftWordCount>
-        <DraftCharCount>242</DraftCharCount>
-        <OtherWordCount>11</OtherWordCount>
-        <OtherCharCount>89</OtherCharCount>
+        <DraftWordCount>165</DraftWordCount>
+        <DraftCharCount>1264</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>-1</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

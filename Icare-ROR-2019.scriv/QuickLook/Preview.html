@@ -717,6 +717,24 @@
 <p class="itemText"> .right.vair</p>
 <p class="itemText">  = submit_tag('Soumettre')</p>
 </li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Type de la rangée</p>
+<p class="itemText">La notification a un type qui est renvoyé par la méthode `notification_type` qui doit être définie dans l'action_watcher_helpers.rb du watcher.</p>
+<p class="itemText"></p>
+<p class="itemText">Ce type permet de définit l'aspect de la notification. Les types possibles sont :</p>
+<p class="itemText"></p>
+<p class="itemText">simple-notice</p>
+<p class="itemText">Une note d'information sans importance</p>
+<p class="itemText">action-required</p>
+<p class="itemText">Une action requise, mais pas urgente, comme par exemple une attribution de note à un document lu.</p>
+<p class="itemText">main-action-required</p>
+<p class="itemText">Une action importante requise, comme par exemple le démarrage d'un module d'apprenti...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
 <li>
 <p class="itemTitle">Modification du mail envoyé</p>
 <p class="itemText">Le mail envoyé à l'exécution peut être modifié de deux façons. La première consiste à mettre une alternative dans le mail (if… else… end), le second consiste à modifier le nom du mail choisi.</p>
@@ -744,6 +762,16 @@
 <p class="itemText"></p>
 <p class="itemText"></p>
 <p class="itemText">Cela produit l'interruption totale du processus. Les mails `after` ne seront pas envoyés et l'action-watcher ne sera pas détruit. </p>
+</li>
+<li>
+<p class="itemTitle">Message de fin</p>
+<p class="itemText">On définit le message de fin en utilisant l'une de ces deux méthodes :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> success_message  = '<le message de succès>'</p>
+<p class="itemText"> failure_message  = '<le message d'échec>'</p>
+<p class="itemText"></p>
+
 </li>
 </ul>
 <hr class="afterText"/>

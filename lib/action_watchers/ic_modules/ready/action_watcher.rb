@@ -1,13 +1,15 @@
 class ActionWatcher < ApplicationRecord
 
-  # La méthode principale qui exécute l'action-watcher quand on invoque
-  # sa méthode `run`
+  # Méthode qui procède au démarrage du module. C'est l'user qui
+  # le lance.
   #
   def execute
-    puts "JE DOIS PROCÉDER AU DÉMARRAGE DU MODULE"
+    require_relative 'demarrage_module'
+    if start_icmodule
+      success_message = I18n.t('module.started')
+    else
+      failure_message = I18n.t('module.unstarted')
+    end
   end
 
-  def sous_methode_utile
-
-  end
 end

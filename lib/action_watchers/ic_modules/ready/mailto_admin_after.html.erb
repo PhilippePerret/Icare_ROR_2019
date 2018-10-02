@@ -7,10 +7,15 @@
 self.subject = "Démarrage de module d'apprentissage"
 %>
 
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
+<div>
+  Phil, je t'annonce le démarrage d'un module d'apprentissage.
 </div>
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-  <%= objet_designation %>
-</div>
+<pre>
+  INFORMATION SUR LE MODULE :
+  -------------------------
+  Propriétaire : <%= user.name %> (#<%= user.id %>)
+          mail : <%= user.email %>
+        Module : <%= objet.abs_module.name %> (#<%= objet.abs_module.id %>)
+   IcModule ID : #<%= objet.id %>
+  ========================================================================
+</pre>

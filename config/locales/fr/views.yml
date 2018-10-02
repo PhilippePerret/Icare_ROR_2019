@@ -11,6 +11,8 @@ fr:
       owner:
         label:          'icarien'
 
+  modules:
+    annonce_informations_affiched: 'Ici seront affichées les informations sur votre module d’apprentissage.'
   module:
     status:
       is_current:           'en cours de travail'
