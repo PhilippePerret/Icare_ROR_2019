@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Pour ActiveStorage, système de upload/download de documents
+  # TODO Est-ce qu'il faut mettre ça aussi en production ?
+  # config.active_storage.service = :local
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

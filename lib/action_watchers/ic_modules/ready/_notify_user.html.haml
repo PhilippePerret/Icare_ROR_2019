@@ -1,11 +1,10 @@
 -# Notification pour le bureau de l'user/icarien
 -#
 - aw = action_watcher
--# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
--# information soit un formulaire permettant de jouer l'action-watcher.
--# Voir le détail dans le fichier d'aide Scrivener
+- absmodule = aw.objet.abs_module
+%h4 Démarrage de module d’apprentissage
 = form_for('start', url: aw.form_url) do
   %small
-    = "Votre module d'apprentissage “#{aw.objet.abs_module.name}” est en attente de démarrage."
+    = "Votre module d'apprentissage “#{absmodule.name}” est en attente de démarrage."
   .center.vair
-    = submit_tag 'Démarrer le module', class: 'btn btn-lg btn-primary'
+    = submit_tag ('Démarrer le module “%s”' % [absmodule.name]), class: 'btn btn-lg btn-primary'

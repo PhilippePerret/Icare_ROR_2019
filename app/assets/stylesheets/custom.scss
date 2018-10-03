@@ -55,6 +55,12 @@ header {
   @include box_sizing;
 }
 
+.inline {display: inline!important;width:auto!important;}
+.block  {display: block !important;}
+.block-inline, .inline-block {
+  display: inline-block!important;
+  width: auto!important;
+}
 .italic {
   font-style: italic !important;
 }

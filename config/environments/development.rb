@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Pour ActiveStorage, système de upload/download de documents
+  config.active_storage.service = :local
+
   # Ajouté au développement pour obtenir des noms avec le gem faker
   Faker::Config.locale = 'fr'
 

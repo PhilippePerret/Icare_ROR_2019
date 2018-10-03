@@ -1,0 +1,4 @@
+fr:
+  documents:
+    upload:
+      success: 'Document “%{name}” téléchargé avec succès (note attribuée : %{note}).'

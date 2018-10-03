@@ -1,0 +1,14 @@
+<%
+#
+# Mail envoyé à l'USER À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Confirmation de la réception de vos documents par Phil"
+%>
+<p><%= user.name %>,</p>
+<p>Nous vous confirmons de que vos documents de travail de l'<%= designation_for(aw.objet) %> ont bien été reçus par Phil qui va les examiner et les commenter.</p>
+<p>La date de remise des commentaires sera approximativement le <%= human_date_remise_commentaires %> (*)</p>
+<p style="font-size:0.85rem;">(*) notez bien que cette date est purement indicative.</p>
+<p>Bien à vous,</p>
+<p>Ernest, le bot <%= etat_bot %> de l’atelier Icare</p>

@@ -1,5 +1,11 @@
 class ActionWatcher < ApplicationRecord
 
+  # Pour pouvoir utiliser les méthodes d'helper dans les notifications et autres
+  # mail (tout ce qui peut être utilisé dans les views)
+  def helpers
+    ActionController::Base.helpers
+  end
+  
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
   attr_accessor :at, :in, :action
@@ -34,10 +40,17 @@ class ActionWatcher < ApplicationRecord
     "Objet de classe #{objet.class} et d'ID ##{objet.id}"
   end
 
+  def dont_destroy
+    @do_not_destroy = true
+  end
+  def dont_send_mails
+    @do_not_send_any_mail = true
+  end
+
   # /---------------------------------------------------------------------
 
   # L'utilisateur courant (icarien ou administrateur)
-  attr_reader :current_user
+  attr_accessor :current_user
   attr_accessor :params # accessorable surtout pour preview
   attr_accessor :success_message
   attr_writer :danger_message, :failure_message
@@ -90,15 +103,19 @@ class ActionWatcher < ApplicationRecord
 
   # Pour jouer l'action-watcher
   def run_for(cuser, params)
-    @current_user = cuser # TODO Il faudrait pouvoir récupérer l'user courant
+    self.current_user = cuser
     @params = params
     is_valid? || return
     load_required
     execute
     unless interrupted?
-      send_after_mails_if_any
-      self.destroy
+      send_after_mails_if_any unless !!@do_not_send_any_mail
+      self.destroy            unless !!@do_not_destroy
     end
+  rescue Exception => e
+    puts "# ERREUR: #{e.message}"
+    puts e.backtrace[0..5].join("\n")
+    self.failure_message = 'Une erreur est survenue. Consulter le log du serveur.'
   ensure
     return self # pour le chainage
   end
@@ -110,9 +127,17 @@ class ActionWatcher < ApplicationRecord
 
   # Retourne true s'il existe une notification pour le destinataire +dest+
   # qui peut être soit le propriétaire du watcher soit l'administrateur
+  # Retourne false si le watcher ne doit pas être encore triggué (cette méthode
+  # est appelée juste avant l'affichage du watcher dans la liste des notifica-
+  # tions)
   def notification_for?(dest = nil)
+    if dest.nil?
+      dest = self.current_user
+    else
+      self.current_user = dest
+    end
+    watchable_by_current? || (return false)
     load_helper # notamment pour le type de la notification
-    dest ||= current_user
     owner?(dest) || dest.admin? || raise(I18.t('action_watchers.errors.destinataire.unknown'))
     File.exist?(notification_path(dest))
   end
@@ -234,12 +259,27 @@ class ActionWatcher < ApplicationRecord
       load File.join(folder,'action_watcher_helpers.rb')
     end
 
+    # Retourne True s'il est possible d'afficher ce watcher, c'es-à-dire s'il
+    # est valide pour l'user courant et si son temps est venu.
+    #
+    # Il est temps si la propriété triggered_at n'est pas définie ou si elle
+    # est inférieure au temps courant.
+    def watchable_by_current?
+      is_valid? && (triggered_at.nil? || (triggered_at < Time.now))
+    end
 
     # Retourne TRUE si le watcher est valide
     # Il est valide si l'user courant existe et qu'il est l'user possesseur
     # du watcher ou si c'est un administrateur.
     def is_valid?
-      current_user && (self.user == current_user || current_user.admin?)
+      self.current_user && (self.user == self.current_user || self.current_user.admin?)
+    end
+
+
+    # Renvoie true si le watcher est trop vieux.
+    # Inutilisé pour le moment.
+    def out_of_date?
+
     end
 
 end

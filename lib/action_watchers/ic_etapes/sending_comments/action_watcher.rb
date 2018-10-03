@@ -4,7 +4,10 @@ class ActionWatcher < ApplicationRecord
   # sa méthode `run`
   #
   def execute
-    # TODO On procède à l'envoi du travail
+    dont_destroy
+    dont_send_mails 
+    # TODO Marquer que le document commentaire existe pour ceux qui ont été
+    # envoyés
   end
 
 end

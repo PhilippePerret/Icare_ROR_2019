@@ -52,4 +52,20 @@ module ApplicationHelper
       }
     end
   end
+
+  # Retourne un état pour Ernest, dans les mails, qui se retrouvera dans la
+  # signature :
+  #   Ernest, le bot <etat bot> de l'atelier icare.
+  def etat_bot
+    [
+      'bien tranquille',
+      'complètement surmené',
+      'dévoué',
+      'en chef',
+      'surmené',
+      'tout à vos soins',
+      'un peu surmené',
+      'un peu stressé'
+    ].shuffle.first
+  end
 end

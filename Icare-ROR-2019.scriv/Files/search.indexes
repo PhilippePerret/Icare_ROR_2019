@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
-            <Title>MAILS</Title>
+        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
+            <Title>ActionWatchers</Title>
+            <Text>Watchers
+Réflexion
+Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
+À quoi est-ce que ça ressemblerait dans une application Rails ?
+
+Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
+Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
+Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
+
+Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
+La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
+La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
+La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
+La méthode `action_user` return le code du formulaire 'action_user.html.erb'
+La méthode `watcher_admin` retournerait la notification pour l'user.
+Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
+
+L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
+</Text>
         </Document>
         <Document ID="3EDB798B-84FA-4E88-BDA1-9B005E335D27">
             <Title>ActionWatchers</Title>
@@ -205,11 +224,20 @@ Ensuite, il suffit donc de faire :
             <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
-	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.
-</Text>
+	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.</Text>
         </Document>
         <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
             <Title>De l'action-watcher lui-même</Title>
+        </Document>
+        <Document ID="F1D85AF7-3543-4C42-9A42-C249FF1EC1BC">
+            <Title>Détruire le document</Title>
+            <Text>Utiliser la méthode `purge'
+
+		icdocument.original.purge
+		ou
+		icdocument.original.purge_later # avec Active Job
+
+</Text>
         </Document>
         <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
             <Title>Processus courants</Title>
@@ -258,11 +286,71 @@ Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisate
             <Title>Pauses</Title>
             <Text>Les pauses des modules d'icarien.</Text>
         </Document>
+        <Document ID="380EB6BA-F860-4D28-B1D5-3AD51CADFF0F">
+            <Title>Modèle avec documents</Title>
+            <Text>Si un modèle utilise des documents, par exemple la classe IcDocuments sur l'atelier Icare, on utilise soit has_one_attached :&lt;nom&gt; soit has_many_attached :&lt;nom&gt;.
+
+Par exemple, puisque les IcDocuments possèdent une version originale et une version commentées :
+
+
+	class IcDocument &lt; ApplicationRecord
+		has_one_attached :original
+		has_one_attached :comments
+		...
+	end
+
+
+Ensuite pour attacher un fichier en revenant du formulaire par exemple :
+
+	&lt;model&gt;.&lt;nom attachement&gt;.attach(params[:&lt;nom champ file&gt;])
+
+Par exemple, soit icdocument l'instance IcDocument d'un double document de travail :
+
+	icdocument.original.attach(params[:work][:original_file])
+
+Et plus tard pour rendre les commentaires
+
+	icdocument.comments.attach(params[:work][:comments_file])
+
+Note : penser à ajouter :original_file et :comments_file aux paramètres permis. Par exemple :
+
+
+	def work_params
+		params.require(:work).permit(:original_file)
+	end
+
+	def comments_params
+		params.require(:work).permit(:comments_file)
+	end
+
+
+Pour attacher un fichier autrement que par un formulaire, on utilise :
+
+		icdocument.original.attach(
+			io: 				File.open('path/to/file'), 
+			filename: 		'filename.ext', 
+			content_type:		 'application/pdf' # ou autre
+		)
+
+</Text>
+        </Document>
         <Document ID="4F4727C1-4967-4AE9-98FB-955A4531697C">
             <Title>Paiements</Title>
             <Text>Les paiements concernant un module d'icarien.
 
 </Text>
+        </Document>
+        <Document ID="AA852350-F90D-44BB-A210-84E06C68A365">
+            <Title>Notification</Title>
+            <Text>Formulaire type pour une notification qui doit jouer l'action-watcher :
+
+= form_for('&lt;prefix&gt;', url: aw.form_url) do
+	= ... champs
+	.right.vair
+		= submit_tag('Soumettre')</Text>
+        </Document>
+        <Document ID="307E09A9-6774-4120-8FDD-9FA845F959FC">
+            <Title>Transformations</Title>
         </Document>
         <Document ID="7E5FC383-7CAE-4AA6-B3AE-851220B7CB10">
             <Title>Propriétés</Title>
@@ -281,6 +369,68 @@ note
 Une note (de l'admin) sur ce paiement
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
+        </Document>
+        <Document ID="69EC93B0-3A0E-4DCC-B50E-9F9F7F9CF49D">
+            <Title>Type de la rangée</Title>
+            <Text>La notification a un type qui est renvoyé par la méthode `notification_type` qui doit être définie dans l'action_watcher_helpers.rb du watcher.
+
+Ce type permet de définit l'aspect de la notification. Les types possibles sont :
+
+simple-notice
+Une note d'information sans importance
+action-required
+Une action requise, mais pas urgente, comme par exemple une attribution de note à un document lu.
+main-action-required
+Une action importante requise, comme par exemple le démarrage d'un module d'apprentissage ou un paiement.
+
+
+			
+
+On le définit dans la méthode notification_type qui est définie par défaut dans l'helper du watcher (./lib/action_watchers/&lt;dossier/watcher&gt;/action_watcher_helpers.rb) :
+
+
+	def notification_type(cuser)
+		if owner?(cuser)
+			'&lt;type quand c'est la notification USER&gt;'
+		else
+			'&lt;type quand c'est la notification ADMIN&gt;'
+		end
+	end
+
+</Text>
+        </Document>
+        <Document ID="5CC616C9-DB87-4C8C-84C9-3CF5CBF94C8D">
+            <Title>Mise en place Action Storage</Title>
+            <Text>Pour tous les détails, cf. https://guides.rubyonrails.org/active_storage_overview.html
+
+	$ rails active_storage:install
+
+Dans ./config/storage.yml, définir où se fera le stockage.
+
+
+	local:
+		service: Disk
+		root: &lt;%= Rails.root.join("storage") %&gt;
+ 	
+	test:
+		service: Disk
+		root: &lt;%= Rails.root.join("tmp/storage") %&gt;
+
+	# Les lignes suivantes sont ajoutées par moi, sans vérification
+	production:
+		service: Disk
+		root: &lt;%= Rails.root.join("storage") %&gt;
+
+
+Dans ./config/environments/development.rb et le test certainement :
+
+
+	# ./config/environments/development.rb
+	# ./config/environments/test.rb
+	config.active_storage.service = :local
+
+
+Peut-être faire la même chose en production.</Text>
         </Document>
         <Document ID="B263E8D4-8EB7-4ACF-A69C-D34E2C6C4D99">
             <Title>Récupérer une variable</Title>
@@ -453,7 +603,7 @@ Motif de la pause
             <Text>Le plus simple est d'utiliser mon générateur rails :
 
 
-	$ rails g action_watcher &lt;nom_du_watcher&gt;[ &lt;options&gt;]
+	$ rails g action_watcher &lt;folder&gt;/&lt;nom_du_watcher&gt;[ &lt;options&gt;]
 
 
 Cela crée tout ce qu'il faut dans le dossier ./lib/action_watchers/&lt;nom_du_watcher&gt;/
@@ -468,8 +618,8 @@ Par défaut, les mails envoyés à l'exécution du watcher sont créés. Pour ne
 	--no-mail-user-after
 
 Par défaut, les deux fichiers notification sont créés, pour l'user et pour l'admin :
-	– notify_admin.html.erb
-	– notify_user.html.erb
+	– notify_admin.html.haml
+	– notify_user.html.haml
 On peut demander à ce que ces fichiers ne soient pas créés avec les options :
 	--no-notifies	# Aucune des deux ne sera créé
 	--no-notify-admin
@@ -498,9 +648,7 @@ Si un mail doit être envoyé à l'administration à la création de cet action-
 Note : dans tous ces fichiers mails, on doit définir :
 
 
-	&lt;%
-		self.subject = 'Le sujet du message'
-	%&gt;
+	&lt;% self.subject = 'Le sujet du message' %&gt;
 
 
 Si un mail doit être envoyé à l'user à la création de l'action-watcher, on le définit dans le fichier :
@@ -571,6 +719,21 @@ Quand on ajoute un nouveau gem, il faut :
 (note : le `--without production' n'est utile qu'une fois)
 
 Puis exécuter les opérations de dépôt ci-dessus.</Text>
+        </Document>
+        <Document ID="A4CF1F8F-3F7F-4FE5-A9E2-5C1989BD7645">
+            <Title>Transformations</Title>
+            <Text>Utiliser la méthode `url_for` ou `rails_blob_{path|url}` :
+
+	url_for(icdocument.comments)
+	# =&gt; Lien de téléchargement du document (à vérifier)
+
+	rails_blob_path(icdocument.original, disposition: 'attachment')
+
+Pour créer un lien à l'extérieur d'un contrôleur ou d'une vue :
+
+	Rails.application.routes.url_helpers.rails_blob_path(icdoc.original, only_path: true)
+
+</Text>
         </Document>
         <Document ID="946B4A4D-AFF2-4C26-AE92-DC92068D6B01">
             <Title>ActionWatchers</Title>
@@ -866,6 +1029,19 @@ Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) déf
 
 </Text>
         </Document>
+        <Document ID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5">
+            <Title>Transformations</Title>
+            <Text>On peut récupérer le document à l'intérieur de l'application par :
+
+	binary = &lt;owner&gt;.&lt;docref&gt;.download
+
+Par exemple :
+
+	binary = IcDocument.find(12).comments.download
+	# mets dans `binary` le code binaire du document commentaires
+
+</Text>
+        </Document>
         <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
             <Title>Possessions</Title>
             <Text>Un user peut posséder :
@@ -884,12 +1060,35 @@ Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) déf
         <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
             <Title>Options</Title>
             <Text>Propriété : options
-C'est un mot de 32 chiffres où chaque chiffre représente une option.
+C'est un mot de 16 chiffres où chaque chiffre représente une option.
 
-BIT (le premier chiffre est le nombre pour la base de données)
-1 (0)		État : 0 = à confirmer/1 = actif/2=en pause/3=inactif/9=détruit
-2 (1)		Confirmation du mail : 0 = non confirmé
-3 (2)		Redirection après l'identification </Text>
+
+ Bit
+Valeurs possibles
+0
+1
+0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit
+1
+2
+Confirmation du mail (1 = confirmé, 0 = non confirmé)
+2
+3
+Redirection après l'identification
+cf. la méthode `redirection_after_login` du fichier sessions_helper
+3
+4
+
+4
+5
+
+5
+6
+
+6
+7
+
+
+</Text>
         </Document>
         <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
             <Title>Générer sans fiche test</Title>
@@ -1344,7 +1543,7 @@ has_many :lectures
 
 original_name
 Le nom original du fichier tel qu'il a été transmis
-doc_affixe
+affixe
 Affixe donné au document
 expected_comments_at
 Date espérée de remise des commentaires
@@ -1363,6 +1562,16 @@ comments_cote
 Cote du document commentaires, en fonction des lectures.
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
+        </Document>
+        <Document ID="04B90E21-621A-4938-A9C0-D1BA3D4D3684">
+            <Title>Message de fin</Title>
+            <Text>On définit le message de fin en utilisant l'une de ces deux méthodes :
+
+
+	success_message 	= '&lt;le message de succès&gt;'
+	failure_message 	= '&lt;le message d'échec&gt;'
+
+</Text>
         </Document>
         <Document ID="F7FB0D91-055F-4B5F-9372-2B29CA06D129">
             <Title>Propriétés</Title>
@@ -1475,31 +1684,12 @@ Par exemple, pour choisir un utilisateur :
             <Title>Object.create / .save</Title>
             <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
         </Document>
+        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
+            <Title>MAILS</Title>
+        </Document>
         <Document ID="0811B557-4572-49A6-8419-67912A32F57B">
             <Title>Générateurs (rails generate)</Title>
             <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
-</Text>
-        </Document>
-        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
-            <Title>ActionWatchers</Title>
-            <Text>Watchers
-Réflexion
-Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
-À quoi est-ce que ça ressemblerait dans une application Rails ?
-
-Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
-Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
-Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
-
-Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
-La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
-La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
-La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
-La méthode `action_user` return le code du formulaire 'action_user.html.erb'
-La méthode `watcher_admin` retournerait la notification pour l'user.
-Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
-
-L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
 </Text>
         </Document>
         <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">

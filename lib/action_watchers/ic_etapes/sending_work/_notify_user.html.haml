@@ -1,0 +1,24 @@
+-# Notification pour le bureau de l'user/icarien
+-#
+- aw = action_watcher
+- icetape = aw.objet
+-# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
+-# information soit un formulaire permettant de jouer l'action-watcher.
+-# Voir le détail dans le fichier d'aide Scrivener
+%h4= "Travail pour l’#{designation_for(icetape)}"
+
+= form_for(action_watcher.objet, url: aw.form_url, multipart: true, method: :post) do |f|
+  - {1 => 'Premier', 2 => 'Deuxième', 3 => 'Troisième'}.each do |idoc, inddoc|
+    - key_doc = "original#{idoc}".to_sym
+    - key_note_doc = "ic_etape[#{key_doc}_note_auteur]".to_sym
+    = f.label(key_doc, ('%s document de travail' % inddoc))
+    = f.file_field(key_doc)
+    = f.label(key_note_doc, 'La note que vous attribuez à votre travail : ')
+    = select_tag(key_note_doc, options_for_select((0..20), 12), class: 'inline')
+  .right.vair
+    = f.submit('Envoyer ce travail', class: 'btn btn-primary btn-small')
+  .small.vair
+    Attention : vous n’avez droit qu’à un seul essai pour tous les documents. Une fois vos documents envoyés, vous ne pouvez pas les modifier, comme dans une école “en dur”.
+
+-# TODO note : si l'icetape n'a pas de date de démarrage, la définir ici,
+-# ça signifie que l'user voit ce travail pour la première fois.

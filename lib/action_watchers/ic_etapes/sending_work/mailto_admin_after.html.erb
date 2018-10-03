@@ -1,0 +1,15 @@
+<%
+#
+# Mail envoyé à l'ADMIN À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Envoi du travail pour une étape"
+icetape = self.objet
+%>
+<p>
+  Phil, je t'informe que <%= icetape.user.name %> vient d’envoyer ses documents pour l'<%= designation_for(icetape) %>.
+</p>
+<p>
+  Rejoins <%= link_to('ton bureau', bureau_url) %> pour les télécharger.
+</p>

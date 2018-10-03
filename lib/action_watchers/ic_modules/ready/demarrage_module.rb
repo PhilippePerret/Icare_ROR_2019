@@ -65,10 +65,10 @@ class ActionWatcher < ApplicationRecord
   # /start_icmodule
 
   def create_watcher_paiement(triggered_at)
-    user.action_watchers.create(name: 'ic_modules/paiement', objet: objet)
+    user.action_watchers.create(name: 'ic_modules/paiement', objet: objet, triggered_at: triggered_at)
   end
 
   def create_watcher_to_send_work(icetape)
-    user.action_watchers.create(name: 'ic_etapes/send_work', objet: icetape)
+    user.action_watchers.create(name: 'ic_etapes/sending_work', objet: icetape)
   end
 end

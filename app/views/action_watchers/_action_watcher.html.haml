@@ -1,5 +1,5 @@
 - if action_watcher.notification_for?(current_user)
-  %li.list-group-item{style:'background-color: palegreen;', class: action_watcher.notification_type(current_user)}
+  %li.list-group-item{id: "action-watcher-#{action_watcher.id}", style:'background-color: palegreen;', class: action_watcher.notification_type(current_user)}
     = render( file: "/lib/action_watchers/#{action_watcher.notification_partial(current_user)}",
         handlers: :haml,
         locals: {action_watcher: action_watcher})

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  original_name: MyString
+  affixe: MyString
+  commented_at: 2018-10-03 10:21:42
+  note_auteur: 1
+  original_options: MyString
+  comments_options: MyString
+  original_cote: 1
+  comments_cote: 1
+
+two:
+  original_name: MyString
+  affixe: MyString
+  commented_at: 2018-10-03 10:21:42
+  note_auteur: 1
+  original_options: MyString
+  comments_options: MyString
+  original_cote: 1
+  comments_cote: 1

@@ -512,7 +512,7 @@
 <p class="itemText"></p>
 <p class="itemText">original_name</p>
 <p class="itemText">Le nom original du fichier tel qu'il a été transmis</p>
-<p class="itemText">doc_affixe</p>
+<p class="itemText">affixe</p>
 <p class="itemText">Affixe donné au document</p>
 <p class="itemText">expected_comments_at</p>
 <p class="itemText">Date espérée de remise des commentaires</p>
@@ -520,7 +520,7 @@
 <p class="itemText">commented_at</p>
 <p class="itemText">Date effective de remise des commentaires</p>
 <p class="itemText">note_auteur</p>
-<p class="itemText">La note donnée par l'auteur à...</p>
+<p class="itemText">La note donnée par l'auteur à son...</p>
 </li>
 <li>
 <p class="itemTitle">Options</p>
@@ -693,6 +693,13 @@
 <hr class="afterTitle"/>
 <ul>
 <li>
+<p class="itemTitle">Introduction</p>
+<p class="itemText">Pendant la phase de conception du watcher, on peut utiliser les méthodes suivantes dans la méthode `execute` du watcher pour ne pas tout recommencer à chaque fois :</p>
+<p class="itemText"></p>
+<p class="itemText"> dont_destroy   Empêche la destruction du watcher</p>
+<p class="itemText"> dont_send_mails  Ne procède pas à l'envoi des mails</p>
+</li>
+<li>
 <p class="itemTitle">Création du dossier et contenu</p>
 <p class="itemText">Le plus simple est d'utiliser mon générateur rails :</p>
 <p class="itemText"></p>
@@ -707,6 +714,18 @@
 <p class="itemText"> --mail-admin-before</p>
 <p class="itemText"> --mail-user-before</p>
 <p class="itemText">Par défaut, les mails envoyés à l'exécution du watc...</p>
+</li>
+<li>
+<p class="itemTitle">Formulaire</p>
+<p class="itemText">Pour faire un un formulaire devant jouer l'action-watcher, utiliser :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> = form_for(action_watcher.objet, url: action_watcher.form_url, method: :post) do |f|</p>
+<p class="itemText">  ...</p>
+<p class="itemText">  .right.vair</p>
+<p class="itemText">   = f.submit('Soumettre le formulaire', class: 'btn btn-primary btn-small')</p>
+<p class="itemText"></p>
+
 </li>
 <li>
 <p class="itemTitle">Notification</p>

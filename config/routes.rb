@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  # Pour la gestion administrative
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ACCUEIL (URL de base)
@@ -45,6 +43,12 @@ Rails.application.routes.draw do
   # === MODULES D'APPRENTISSAGE DE L'ICARIEN (ICMODULES) ===
   resources :ic_modules
   resources :ic_etapes
+
+  # === DOCUMENTS ===
+  resources :ic_documents
+  get 'ic_documents/download'
+  # get 'ic_documents/show'
+  # get 'ic_documents/edit'
 
   # === TICKETS ===
   # resources :tickets

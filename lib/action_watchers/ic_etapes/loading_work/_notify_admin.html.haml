@@ -1,0 +1,16 @@
+-# Formulaire permettant à l'administrateur de télécharger les documents
+-# de travail de l'icarien.
+-#
+- aw = action_watcher
+- icetape = aw.objet
+
+%h4= "Documents d’étape de #{icetape.user.name}"
+.bold
+  = "#{designation_for(icetape, full: true, cap: true)}"
+- icetape.ic_documents.each do |icdocument|
+  - document = icdocument.original
+  .document-icetape{style: 'padding-left:2rem;'}
+    = link_to "<strong>#{document.filename}</strong> (IcDocument ##{icdocument.id}) — note : #{icdocument.note_auteur}".html_safe, rails_blob_path(document, disposition: 'attachment')
+=form_for(icetape, url: aw.form_url, method: :post) do |f|
+  .center.vair
+    = f.submit('Marquer les documents reçus', class: 'btn btn-primary btn-small')

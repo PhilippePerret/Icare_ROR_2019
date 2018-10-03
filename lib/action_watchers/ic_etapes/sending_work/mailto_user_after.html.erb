@@ -1,0 +1,19 @@
+<%
+#
+# Mail envoyé à l'USER À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Confirmation d'envoi de votre travail d'étape"
+%>
+<p>
+  <%= user.name %>,
+</p>
+<p>
+  Je vous confirme que vos documents ont bien été reçus par l'atelier.
+</p>
+<p>
+  Vous serez informé<%= e.sexize(user) %> dès que Phil les aura téléchargés.
+</p>
+<p>Bien à vous,</p>
+<p>Ernest, le bot <%= etat_bot %> de l'atelier Icare</p>

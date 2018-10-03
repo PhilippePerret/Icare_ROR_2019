@@ -1,0 +1,8 @@
+- set_title('Téléchargement/visualisation')
+- document = @document
+.bold Pour le télécharger
+%p
+  = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+.bold Aperçu
+%p
+  = link_to document.filename, rails_blob_path(document, disposition: 'preview')
