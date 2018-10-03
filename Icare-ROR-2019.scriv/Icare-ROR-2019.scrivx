@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-03 15:47:56 +0300" ModID="1CAAB0BF-78EF-460F-A957-D06C70536122">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 01:01:39 +0300" ModID="4145C367-6E82-4DD5-834E-9BEB4311077E">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-02 10:44:30 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-03 16:13:09 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>381,0</TextSelection>
+                <TextSelection>658,0</TextSelection>
             </TextSettings>
         </BinderItem>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
@@ -204,7 +204,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>92,0</TextSelection>
+                                        <TextSelection>673,20</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem UUID="78658323-A6C4-4F71-9779-AD1AAA428281" Type="Text" Created="2018-09-27 09:27:50 +0300" Modified="2018-09-28 09:11:27 +0300">
@@ -213,7 +213,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>138,0</TextSelection>
+                                        <TextSelection>212,10</TextSelection>
                                     </TextSettings>
                                     <Bookmarks>
                                         <Bookmark BinderUUID="BBE7194B-8ACC-47A6-92E5-3150D9C65344"></Bookmark>
@@ -268,7 +268,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>258,0</TextSelection>
+                                        <TextSelection>587,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem UUID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E" Type="Text" Created="2018-09-27 09:02:46 +0300" Modified="2018-09-27 09:14:53 +0300">
@@ -277,7 +277,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>568,0</TextSelection>
+                                        <TextSelection>253,1</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -384,7 +384,7 @@
                                                 <IncludeInCompile>Yes</IncludeInCompile>
                                             </MetaData>
                                             <TextSettings>
-                                                <TextSelection>0,0</TextSelection>
+                                                <TextSelection>165,0</TextSelection>
                                             </TextSettings>
                                         </BinderItem>
                                         <BinderItem UUID="84DB52AB-2658-48DC-90E4-6164B536CF02" Type="Text" Created="2018-09-29 04:46:24 +0300" Modified="2018-10-02 09:30:14 +0300">
@@ -492,6 +492,15 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>403,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="AA504757-4CCD-4722-B275-B68347B3B51E" Type="Text" Created="2018-10-04 00:27:28 +0300" Modified="2018-10-04 00:32:23 +0300">
+                    <Title>Dates et heures</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>104,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -729,6 +738,15 @@
                             </MetaData>
                             <TextSettings>
                                 <TextSelection>144,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="3C6FEBA9-2B84-4761-B57B-757DC67AC3F0" Type="Text" Created="2018-10-03 23:00:55 +0300" Modified="2018-10-04 00:27:17 +0300">
+                            <Title>Dates et temps</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>452,25</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem UUID="35F85038-E2A3-4A94-9893-EA03D4942E12" Type="Text" Created="2018-09-23 15:41:57 +0300" Modified="2018-09-28 09:11:27 +0300">
@@ -1154,17 +1172,18 @@
     <ProjectBookmarks>
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/test/test_helper.rb">test_helper</Bookmark>
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/app/helpers/sessions_helper.rb">sessions_helper</Bookmark>
+        <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/config/locales/fr/general.yml">general</Bookmark>
     </ProjectBookmarks>
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="67" Characters="520" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
+        <PreviousSession Words="100" Characters="801" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-10-03 00:00:00 +0300">
-        <DraftWordCount>67</DraftWordCount>
-        <DraftCharCount>520</DraftCharCount>
-        <OtherWordCount>352</OtherWordCount>
-        <OtherCharCount>3171</OtherCharCount>
+    <RecentWritingHistory Date="2018-10-04 00:00:00 +0300">
+        <DraftWordCount>33</DraftWordCount>
+        <DraftCharCount>281</DraftCharCount>
+        <OtherWordCount>57</OtherWordCount>
+        <OtherCharCount>492</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

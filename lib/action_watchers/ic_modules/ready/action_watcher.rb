@@ -6,9 +6,9 @@ class ActionWatcher < ApplicationRecord
   def execute
     require_relative 'demarrage_module'
     if start_icmodule
-      success_message = I18n.t('module.started')
+      success_message = I18n.t('ic_modules.starting.success')
     else
-      failure_message = I18n.t('module.unstarted')
+      failure_message = I18n.t('ic_modules.starting.failure')
     end
   end
 

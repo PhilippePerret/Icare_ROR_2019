@@ -1,5 +1,11 @@
 module ApplicationHelper
 
+  # Retourne une date formatée au format français
+  def human_date_for date, options = nil
+    options ||= Hash.new
+    I18n.localize(date, format: (options.delete(:format) || :simple))
+  end
+
 
   # @return Le titre à utiliser pour la balise HEAD>TITLE de la
   # page

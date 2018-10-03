@@ -16,9 +16,6 @@ fr:
       confirmed:          'Validation de la candidature de %{pseudo} exécutée avec succès.<br>Module ID : %{id}<br><a href="/ic_modules/%{id}">Voir le module</a>'
       errors:
         bad_validation_candidature: 'La validation ou le refus ne semblent pas conforme…'
-  module:
-    started:                  'Votre module d’apprentissage a bien été démarré. ✍️ Bon travail !'
-    unstarted:                'Un problème s’est malheureusement produit en essayant de démarrer votre module d’apprentissage…'
   action:
     errors:
       not_autorised:          'Vous n’êtes pas autorisé%{e} à exécuter cette opération.'

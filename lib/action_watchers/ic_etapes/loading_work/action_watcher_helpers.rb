@@ -6,6 +6,8 @@
 =end
 class ActionWatcher < ApplicationRecord
 
+  include ActionView::Helpers::DateHelper
+
   # Le sujet peut être défini aussi de cette manière, mais seulement s'il est
   # identique entre les mails
   # def subject
@@ -28,4 +30,11 @@ class ActionWatcher < ApplicationRecord
   end
 
 
+  def options_next_days
+    60.times.collect do |itime|
+      futur_time  = Time.now + itime.days
+      distance    = distance_of_time_in_words(Time.now, futur_time)
+      ["#{human_date_for(futur_time)} (dans #{distance})", itime]
+    end
+  end
 end

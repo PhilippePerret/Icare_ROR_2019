@@ -9,4 +9,4 @@ Le module d'apprentissage
 de
 = aw.user.name
 est en attente de démarrage depuis le
-= "#{aw.created_at}."
+= "#{human_date_for(aw.created_at)} (depuis #{distance_of_time_in_words aw.created_at, Date.today})."

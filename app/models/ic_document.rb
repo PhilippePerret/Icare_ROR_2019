@@ -13,13 +13,11 @@ class IcDocument < ApplicationRecord
     set_option(:comments, 0, 1)
   end
 
-  private
-
-    def set_option which, bit, value
-      koptions = "#{which}_options".to_sym
-      opts = send(koptions) || '0'*8
-      opts[bit] = value.to_s
-      update_attribute(koptions, opts)
-    end
+  def set_option which, bit, value
+    koptions = "#{which}_options".to_sym
+    opts = send(koptions) || '0'*8
+    opts[bit] = value.to_s
+    update_attribute(koptions, opts)
+  end
 
 end

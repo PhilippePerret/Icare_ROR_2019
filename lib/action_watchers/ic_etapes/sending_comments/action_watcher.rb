@@ -5,7 +5,8 @@ class ActionWatcher < ApplicationRecord
   #
   def execute
     dont_destroy
-    dont_send_mails 
+    dont_send_mails
+    
     # TODO Marquer que le document commentaire existe pour ceux qui ont été
     # envoyés
   end

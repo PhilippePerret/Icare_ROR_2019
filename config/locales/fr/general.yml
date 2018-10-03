@@ -3,6 +3,10 @@
 
 fr:
   votre_email:    'Votre adresse mail'
+  time:
+    formats:
+      simple:           '%-d %B %Y'
+      simple_with_hour: '%-d %B %Y à %H:%M'
 
   hello:    "Bonjour à vous, bienvenue à l’atelier Icare."
   help:     "Aide"
@@ -16,6 +20,3 @@ fr:
   will_paginate:
     previous_label: Précédent
     next_label:     Suivant
-  time:
-    formats:
-      long:   'Format de date long'

@@ -12,5 +12,9 @@
   .document-icetape{style: 'padding-left:2rem;'}
     = link_to "<strong>#{document.filename}</strong> (IcDocument ##{icdocument.id}) — note : #{icdocument.note_auteur}".html_safe, rails_blob_path(document, disposition: 'attachment')
 =form_for(icetape, url: aw.form_url, method: :post) do |f|
+  = f.label(:date_remise_commentaires)
+  = select_tag('ic_etape[date_remise_commentaires]', options_for_select(aw.options_next_days))
+  .vair.bg-danger{style:'padding:1rem;'}
+    Charge tous les documents, définis une date de remise de commentaires, puis marque les documents reçus à l’aide du bouton ci-dessous.
   .center.vair
     = f.submit('Marquer les documents reçus', class: 'btn btn-primary btn-small')

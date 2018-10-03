@@ -6,8 +6,12 @@
 =end
 class ActionWatcher < ApplicationRecord
 
+  def icetape
+    @icetape ||= objet
+  end
+
   def human_date_commentaires_et_delai
-    '12 21 3030 (dans 30 ans) — TODO à régler dans l action_watcher_helpers'
+    human_date_for(icetape.expected_comments_at) + " (dans #{distance_of_time_in_words Date.today, icetape.expected_comments_at})"
   end
 
   # Le type de la notification (le LI la contenant), en fonction du user

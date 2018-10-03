@@ -1,10 +1,7 @@
 -# Notification pour le bureau de l'user/icarien
 -#
 - aw = action_watcher
--# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
--# information soit un formulaire permettant de jouer l'action-watcher.
--# Voir le détail dans le fichier d'aide Scrivener
-Vos document de
-= designation_for(aw.objet)
-sont en lecture. Les commentaires devraient arriver autour du
-= "#{aw.human_date_commentaires_et_delai}."
+Vos documents de
+= "l’<strong>#{designation_for(aw.objet)}</strong>".html_safe
+sont en lecture. Les commentaires devraient vous parvenir autour du
+= "<strong>#{aw.human_date_commentaires_et_delai}</strong>.".html_safe

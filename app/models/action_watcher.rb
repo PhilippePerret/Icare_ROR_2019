@@ -2,10 +2,14 @@ class ActionWatcher < ApplicationRecord
 
   # Pour pouvoir utiliser les méthodes d'helper dans les notifications et autres
   # mail (tout ce qui peut être utilisé dans les views)
+  # ainsi que les helpers d'application
+  include ApplicationHelper
   def helpers
     ActionController::Base.helpers
   end
-  
+
+
+
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
   attr_accessor :at, :in, :action

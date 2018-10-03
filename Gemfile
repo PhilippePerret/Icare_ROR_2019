@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '3.3.7'
 # gem 'autoprefixer-rails' # auto chargé
 gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails',   '4.3.1'
+# Pour les locales de date, principalement
+gem 'rails-i18n',     '~> 5.1'
 
 # # Utile pour l'administration du site
 # Surtout pas, ça fout le bazard dans bootstrap (et autres)
