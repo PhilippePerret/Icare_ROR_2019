@@ -52,6 +52,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Pour faire des zip (utiliser require 'zip' seulement, maintenant)
+gem 'rubyzip', '1.2.2' # '>= 1.0.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

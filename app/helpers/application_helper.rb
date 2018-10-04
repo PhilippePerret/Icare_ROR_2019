@@ -1,3 +1,5 @@
+require_relative 'html_string_helper'
+
 module ApplicationHelper
 
   # Retourne une date formatée au format français

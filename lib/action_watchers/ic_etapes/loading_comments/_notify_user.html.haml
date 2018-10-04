@@ -1,6 +1,12 @@
 -# Notification pour le bureau de l'user/icarien
 -#
 - aw = action_watcher
--# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
--# information soit un formulaire permettant de jouer l'action-watcher.
--# Voir le détail dans le fichier d'aide Scrivener
+- icetape = aw.objet
+- absmodule = icetape.ic_module.abs_module
+%h4= "Module d’apprentissage “#{absmodule.name}”, étape #{icetape.numero}"
+.italic.grey
+  Documents :
+  = icetape.ic_documents.collect{|icd| icd.original_name.bold }.to_sentence.html_safe
+= form_for('download', url: aw.form_url, method: :post) do |f|
+  .center.vair
+    = f.submit('Télécharger les commentaires', class: 'btn btn-primary')

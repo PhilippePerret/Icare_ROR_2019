@@ -1,3 +1,7 @@
+# Pour pouvoir les utiliser tout de suite dans les notifications, il faut
+# que je mette ça ici.
+require Rails.root.join('app','helpers','html_string_helper')
+
 class ActionWatcher < ApplicationRecord
 
   # Pour pouvoir utiliser les méthodes d'helper dans les notifications et autres
@@ -30,6 +34,17 @@ class ActionWatcher < ApplicationRecord
     "/action_watchers/#{self.id}/run"
   end
 
+  # Pour pouvoir rediriger vers une autre page (par exemple pour le paiement
+  # ou pour un téléchargement)
+  attr_reader :redirection
+  def redirect_to redirection
+    @redirection = redirection
+    @need_to_be_redirected = true
+  end
+  def redirect?
+    !!@need_to_be_redirected
+  end
+
   # Propriétés volatiles utiles
   # Noter qu'à la création, :objet a pu être transmis à l'instance. Donc cette
   # propriété fonctionne aussi bien à la création qu'à l'exécution du watcher.
@@ -50,6 +65,7 @@ class ActionWatcher < ApplicationRecord
     @success_final_message ||= Array.new
     @success_final_message << str
   end
+  alias :add_success_message :add_success_final
   def success_final_message
     @success_final_message.join('<br>')
   end
@@ -58,6 +74,7 @@ class ActionWatcher < ApplicationRecord
     @failure_final_message ||= Array.new
     @failure_final_message << str
   end
+  alias :add_failure_message :add_failure_final
   def failure_final_message
     @failure_final_message.join('<br>')
   end

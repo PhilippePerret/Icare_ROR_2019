@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Palatino-Roman;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 CourierNewPSMT;
+\f3\fmodern\fcharset0 CourierNewPS-BoldMT;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red26\green26\blue26;}
+{\*\expandedcolortbl;;\csgray\c100000;\csgray\c13700;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 Il existe deux moyens principaux pour t\'e9l\'e9charger un document\'a0:\
+\
+\pard\tx220\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\li720\fi-720\sl264\slmult1\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}un lien qui conduit directement au t\'e9l\'e9chargement\
+{\listtext	\uc0\u8226 	}une redirection contenant l'url du document.\
+\pard\tx560\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f0\b\fs36 PAR UN LIEN\
+\pard\tx560\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f0\fs28 \
+Deux m\'e9thodes permettent de g\'e9n\'e9rer le lien (\'e0 \'e9crire dans la page), pour t\'e9l\'e9charger le document\'a0:\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 Utiliser la m\'e9thode `url_for` ou `rails_blob_\{path|url\}` :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	url_for(icdocument.comments)\
+	# => Lien de t\'e9l\'e9chargement du document (\'e0 v\'e9rifier)\
+	# Mais je ne sais pas o\'f9 c'est utilisable, peut-\'eatre dans un contr\'f4leur et\
+	# dans les vues seulement\
+\
+	rails_blob_path(icdocument.original, disposition: 'attachment')\
+\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+Pour cr\'e9er un lien permettant de t\'e9l\'e9charger le document :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	= link_to doc.filename, rails_blob_path(doc, disposition: 'attachment')\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+Pour cr\'e9er un lien \'e0 l'ext\'e9rieur d'un contr\'f4leur ou d'une vue\'a0:\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	Rails.application.routes.url_helpers.rails_blob_path(\
+		icdoc.original, \
+		only_path: true,\
+		# 	disposition: 'attachment' # pour un mail ?\
+	)\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f0\b\fs36 PAR REDIRECTION
+\b0\fs28 \
+\pard\tx560\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f0\fs28 \
+Pour une 
+\b redirection
+\b0 , imaginons qu'on est un document `
+\f1\fs24 <$Scr_Cs::2>
+\f2 mon.zip
+\f1 <!$Scr_Cs::2>
+\f0\fs28 ` dans le dossier 
+\f1\fs24 <$Scr_Cs::2>
+\f2 ./public
+\f1 <!$Scr_Cs::2>
+\f0\fs28  de l'application. Il suffit alors de faire `
+\f1\fs24 <$Scr_Cs::2>
+\f3\b redirect_to '/mon.zip'
+\f1\b0 <!$Scr_Cs::2>
+\f0\fs28 ` dans un contr\'f4leur pour t\'e9l\'e9charger le document en restant sur la m\'eame page ensuite.\
+\
+\
+}

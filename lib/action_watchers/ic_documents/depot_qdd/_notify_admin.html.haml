@@ -1,0 +1,17 @@
+-# Notification pour le bureau de l'administrateur
+-#
+- aw = action_watcher
+-# Ici un formulaire permettant de déposer le document. Avec un champ pour
+-# l'original à tous les coups, et un champ pour le commentaire s'il y en a
+- icdocument = aw.objet
+
+= form_for('qdd', url: aw.form_url, method: :post, multipart: true) do |f|
+  = f.label(:original, 'Document original en PDF')
+  = f.file_field(:original)
+  .small.italic
+    - if icdocument.commented?
+      Noter que le document commentaire en PDF existe déjà et n'a donc pas besoin d’être fourni.
+    - else
+      Pas de document commentaire pour ce travail.
+  .right.vair
+    = f.submit('Déposer sur le QDD', class: 'btn btn-primary btn-small')

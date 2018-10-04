@@ -4,13 +4,17 @@
 #
 # L'action-watcher est bindé à cette vue
 #
-self.subject = "Email de test envoyé à l'ADMIN à l'EXÉCUTION du watcher"
-%>
+self.subject = "#{user.name} a téléchargé ses commentaires"
 
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-</div>
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-  <%= objet_designation %>
-</div>
+icetape   = self.objet
+icmodule  = icetape.ic_module
+%>
+<pre>
+DÉSIGNATION
+-----------
+Module    : <%= icmodule.abs_module.name %> (#<%= icmodule.id %>)
+Étape     : <%= icetape.numero %> <%= icetape.titre %> (#<%= icetape.id %>)
+Documents : <%= icetape.ic_documents.collect{|icd| icd.original_name }.to_sentence %>
+Date      : <%= human_date_for(Date.today, avec_heure: true) %>
+-----------
+</pre>

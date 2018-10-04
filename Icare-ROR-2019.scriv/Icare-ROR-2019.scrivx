@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 07:09:39 +0300" ModID="E890D5F3-41A5-4F4D-ABF3-72B8E624303B">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 10:35:35 +0300" ModID="9FAECE27-0CDF-4CB8-85E5-4FDD2DEDA862">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-04 07:09:38 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-04 08:24:52 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>658,0</TextSelection>
+                <TextSelection>978,0</TextSelection>
             </TextSettings>
         </BinderItem>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
@@ -213,7 +213,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>213,0</TextSelection>
+                                        <TextSelection>322,0</TextSelection>
                                     </TextSettings>
                                     <Bookmarks>
                                         <Bookmark BinderUUID="BBE7194B-8ACC-47A6-92E5-3150D9C65344"></Bookmark>
@@ -277,7 +277,7 @@
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>253,1</TextSelection>
+                                        <TextSelection>263,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -443,13 +443,22 @@
                                                 <TextSelection>156,0</TextSelection>
                                             </TextSettings>
                                         </BinderItem>
-                                        <BinderItem UUID="04B90E21-621A-4938-A9C0-D1BA3D4D3684" Type="Text" Created="2018-10-02 12:50:19 +0300" Modified="2018-10-02 12:52:17 +0300">
-                                            <Title>Message de fin</Title>
+                                        <BinderItem UUID="04B90E21-621A-4938-A9C0-D1BA3D4D3684" Type="Text" Created="2018-10-02 12:50:19 +0300" Modified="2018-10-04 07:58:36 +0300">
+                                            <Title>Messages de fin</Title>
                                             <MetaData>
                                                 <IncludeInCompile>Yes</IncludeInCompile>
                                             </MetaData>
                                             <TextSettings>
-                                                <TextSelection>161,0</TextSelection>
+                                                <TextSelection>228,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="D9C57209-91BA-4805-9725-5E9F17730B56" Type="Text" Created="2018-10-04 07:58:51 +0300" Modified="2018-10-04 08:00:43 +0300">
+                                            <Title>Redirection après run</Title>
+                                            <MetaData>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>261,0</TextSelection>
                                             </TextSettings>
                                         </BinderItem>
                                     </Children>
@@ -890,22 +899,31 @@
                                 <TextSelection>115,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem UUID="A4CF1F8F-3F7F-4FE5-A9E2-5C1989BD7645" Type="Text" Created="2018-10-03 10:11:56 +0300" Modified="2018-10-03 14:35:55 +0300">
-                            <Title>Lien vers le document (download)</Title>
+                        <BinderItem UUID="4CAA24B0-8647-4719-8E05-5068C833BD04" Type="Text" Created="2018-10-04 07:49:47 +0300" Modified="2018-10-04 10:33:49 +0300">
+                            <Title>Download</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>450,0</TextSelection>
+                                <TextSelection>1206,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem UUID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5" Type="Text" Created="2018-10-03 10:14:56 +0300" Modified="2018-10-03 10:16:21 +0300">
+                        <BinderItem UUID="75F2F529-5F9F-4214-9241-CA5E2D2529F9" Type="Text" Created="2018-10-04 10:33:55 +0300" Modified="2018-10-04 10:35:35 +0300">
+                            <Title>Zip et download</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5" Type="Text" Created="2018-10-03 10:14:56 +0300" Modified="2018-10-04 07:54:30 +0300">
                             <Title>Transformations</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>232,0</TextSelection>
+                                <TextSelection>120,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -1114,6 +1132,15 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+                <BinderItem UUID="A4CF1F8F-3F7F-4FE5-A9E2-5C1989BD7645" Type="Text" Created="2018-10-03 10:11:56 +0300" Modified="2018-10-04 07:53:13 +0300">
+                    <Title>Lien vers le document (download)</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
             </Children>
         </BinderItem>
     </Binder>
@@ -1173,17 +1200,19 @@
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/test/test_helper.rb">test_helper</Bookmark>
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/app/helpers/sessions_helper.rb">sessions_helper</Bookmark>
         <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/config/locales/fr/general.yml">general</Bookmark>
+        <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/app/models/action_watcher.rb">action_watcher</Bookmark>
+        <Bookmark Destination="file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/lib/action_watchers/ic_etapes/loading_comments/action_watcher.rb">loading comments watcher</Bookmark>
     </ProjectBookmarks>
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="100" Characters="801" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
+        <PreviousSession Words="180" Characters="1393" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
     </ProjectTargets>
     <RecentWritingHistory Date="2018-10-04 00:00:00 +0300">
-        <DraftWordCount>33</DraftWordCount>
-        <DraftCharCount>281</DraftCharCount>
-        <OtherWordCount>81</OtherWordCount>
-        <OtherCharCount>705</OtherCharCount>
+        <DraftWordCount>113</DraftWordCount>
+        <DraftCharCount>873</DraftCharCount>
+        <OtherWordCount>191</OtherWordCount>
+        <OtherCharCount>1474</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

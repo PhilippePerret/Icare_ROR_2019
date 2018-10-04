@@ -13,4 +13,9 @@ class IcEtape < ApplicationRecord
   def numero  ; abs_etape.numero  end
   def titre   ; abs_etape.titre   end
 
+  # Passe l'étape à l'état (status) suivant
+  def next_status
+    update_attribute(:status, status + 1)
+  end
+
 end

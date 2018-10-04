@@ -18,7 +18,7 @@ class ActionWatcher < ApplicationRecord
   #   'main-action-required'  Une action importante requise
   #   'action-required'       Une action mise en avant
   #   'simple-notice'         Une simple note pour information (discrète)
-  #
+  # 
   def notification_type(cuser)
     if owner?(cuser)
       'action-required'

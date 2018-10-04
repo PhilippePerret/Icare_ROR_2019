@@ -24,7 +24,7 @@ class ActionWatcher < ApplicationRecord
 
     if nombre_comments > 0
       # Passer l'étape au statut suivant
-      icetape.update_attribute(:status, 4)
+      icetape.next_status
       # Créer le watcher suivant : pour permettre à l'icarien(ne) de
       # télécharger les commentaires
       user.action_watchers.create(name: 'ic_etapes/loading_comments', objet: icetape)
@@ -32,19 +32,19 @@ class ActionWatcher < ApplicationRecord
       # <= pas de documents commentaires
       # Passer l'étape au statut suivant
       icetape.update_attribute(:status, 7) # fin de cycle
-      # => Ne pas envoyer de mail      
+      # => Ne pas envoyer de mail
       dont_send_mails
     end
   end
 
-  # Retourne l'ic-document créé pour cet envoi
-def ajoute_comments_to_icetape(file, icdoc)
-  fname = file.original_filename
-  # Il faut attacher ce commentaire à l'instance ic_document
-  icdoc.comments.attach(file)
-  icdoc.set_comments_exists
-  # Ajout d'un message pour l'admin qui transmet les commentaires
-  add_success_final(I18n.t('documents.comments.upload.success', {name: fname}))
-end
+    # Retourne l'ic-document créé pour cet envoi
+  def ajoute_comments_to_icetape(file, icdoc)
+    fname = file.original_filename
+    # Il faut attacher ce commentaire à l'instance ic_document
+    icdoc.comments.attach(file)
+    icdoc.set_comments_exists
+    # Ajout d'un message pour l'admin qui transmet les commentaires
+    add_success_final(I18n.t('documents.comments.upload.success', {name: fname}))
+  end
 
 end
