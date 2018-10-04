@@ -6,6 +6,33 @@ module ApplicationHelper
     I18n.localize(date, format: (options.delete(:format) || :simple))
   end
 
+  # Retourne une désignation de n'importe quel objet
+  # Mettre « l'#{icetape.designation} »
+  def designation_for(obj, options = nil)
+    options ||= Hash.new
+    idobj   = options[:with_ids] || options[:full] ? " (##{obj.id})" : ''
+    obj_name =
+      case obj
+      when IcEtape  then "étape #{obj.abs_etape.numero}"
+      when User     then obj.name
+      else obj.class
+      end
+    # La désignation simple
+    design = "#{obj_name}#{idobj}"
+    design +=
+      case obj
+      when IcEtape
+        idmodule = options[:with_ids] || options[:full] ? " (##{obj.ic_module.id})" : ''
+        " du module “#{obj.ic_module.abs_module.name}”#{idmodule}"
+      else ''
+      end
+    if options[:capitalize] || options[:cap]
+      design.mb_chars.capitalize
+    else
+      design
+    end
+  end
+  # /designation_for
 
   # @return Le titre à utiliser pour la balise HEAD>TITLE de la
   # page

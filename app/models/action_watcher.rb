@@ -4,6 +4,7 @@ class ActionWatcher < ApplicationRecord
   # mail (tout ce qui peut être utilisé dans les views)
   # ainsi que les helpers d'application
   include ApplicationHelper
+  include ActionView::Helpers::DateHelper
   def helpers
     ActionController::Base.helpers
   end
@@ -42,6 +43,23 @@ class ActionWatcher < ApplicationRecord
   # Pour connaitre l'objet (en cas d'erreur par exemple)
   def objet_designation
     "Objet de classe #{objet.class} et d'ID ##{objet.id}"
+  end
+
+  # Pour ajouter un message final de succès
+  def add_success_final str
+    @success_final_message ||= Array.new
+    @success_final_message << str
+  end
+  def success_final_message
+    @success_final_message.join('<br>')
+  end
+  # Pour ajouter un message final de succès
+  def add_failure_final str
+    @failure_final_message ||= Array.new
+    @failure_final_message << str
+  end
+  def failure_final_message
+    @failure_final_message.join('<br>')
   end
 
   def dont_destroy
@@ -116,6 +134,9 @@ class ActionWatcher < ApplicationRecord
       send_after_mails_if_any unless !!@do_not_send_any_mail
       self.destroy            unless !!@do_not_destroy
     end
+    @success_final_message && self.success_message = success_final_message
+    @failure_final_message && self.failure_message = failure_final_message
+
   rescue Exception => e
     puts "# ERREUR: #{e.message}"
     puts e.backtrace[0..5].join("\n")

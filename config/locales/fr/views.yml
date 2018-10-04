@@ -18,6 +18,9 @@ fr:
       is_current:           'en cours de travail'
       waiting_for_start:    'en attente de démarrage'
 
+  ic_documents:
+    comments:
+      btn_send:       'Envoyer ces commentaires'
   # Pour les users
   users:
     status:

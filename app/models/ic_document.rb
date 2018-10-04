@@ -10,14 +10,19 @@ class IcDocument < ApplicationRecord
     set_option(:original, 0, 1)
   end
   def set_comments_exists
-    set_option(:comments, 0, 1)
+    set_option(:comments, 0, 1, dont_save = true)
+    update_columns(
+      comments_options: self.comments_options,
+      commented_at:     Time.now
+    )
   end
 
-  def set_option which, bit, value
+  def set_option which, bit, value, dont_save = false
     koptions = "#{which}_options".to_sym
     opts = send(koptions) || '0'*8
     opts[bit] = value.to_s
-    update_attribute(koptions, opts)
+    self.send("#{koptions}=".to_sym, opts)
+    update_attribute(koptions, opts) unless dont_save
   end
 
 end

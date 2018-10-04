@@ -1,4 +1,10 @@
 fr:
   documents:
-    upload:
-      success: 'Document “%{name}” téléchargé avec succès (note attribuée : %{note}).'
+    original:
+      upload:
+        success: 'Document “%{name}” téléchargé avec succès (note attribuée : %{note}).'
+        failure: 'Impossible de télécharger le document “%{name}”…'
+    comments:
+      upload:
+        success: 'Document commentaires “%{name}” téléchargé avec succès.'
+        failure:  'Impossible de télécharger le document commentaires “%{name}”…'

@@ -37,10 +37,8 @@ class ActionWatcher < ApplicationRecord
     # charger le document
     user.action_watchers.create(name: 'ic_etapes/loading_work', objet: objet)
 
-    # Pour construire le message final
-    # TODO Il faudrait que ce soit un système utilisable pour n'importe quelle
-    # action-watcher
-    self.success_message = final_message
+    # Note : le message final est construit à partir des messages
+    # envoyés au cours de l'opération.
   end
 
 
@@ -53,16 +51,9 @@ class ActionWatcher < ApplicationRecord
     icdoc.original.attach(file)
     # Ajout d'un message pour l'user qui envoie son travail
 
-    add_message_final(I18n.t('documents.upload.success', {name: fname, note: note}))
+    add_success_final(I18n.t('documents.original.upload.success', {name: fname, note: note}))
     # Retourne l'ic-document créé
     return icdoc
   end
 
-  def add_message_final str
-    @final_message ||= Array.new
-    @final_message << str
-  end
-  def final_message
-    @final_message.join('<br>')
-  end
 end

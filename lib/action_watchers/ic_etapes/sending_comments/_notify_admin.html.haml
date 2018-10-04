@@ -1,7 +1,17 @@
 -# Notification pour le bureau de l'administrateur
 -#
 - aw = action_watcher
--# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
--# information soit un formulaire permettant de jouer l'action-watcher.
--# Voir le détail dans le fichier d'aide Scrivener
-[FORMULAIRE PERMETTANT À L'ADMINISTRATEUR DE REMETTRE LES COMMENTAIRES]
+- user    = aw.user
+- icetape = aw.objet
+
+%h4= "Remise des commentaires à #{designation_for(user, with_ids: true)}"
+.vair
+  = designation_for(icetape, cap: true, with_ids: true)
+= form_for(icetape, url: aw.form_url, method: :post, multipart: true) do |f|
+  -# On boucle sur chaque document reçu pour l'étape
+  - icetape.ic_documents.each do |icdocument|
+    - key_doc = "comments-#{icdocument.id}".to_sym
+    = f.label(key_doc, ('Commentaires de “%s” (#%i)' % [icdocument.original_name, icdocument.id]))
+    = f.file_field(key_doc)
+  .right.vair
+    = f.submit(I18n.t('ic_documents.comments.btn_send'), class: 'btn btn-primary btn-small')

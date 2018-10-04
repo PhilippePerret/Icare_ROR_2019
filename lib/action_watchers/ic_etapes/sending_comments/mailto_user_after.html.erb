@@ -4,10 +4,10 @@
 #
 # L'action-watcher est bindé à cette vue
 #
-self.subject = "Les commentaires sur vos documents n'attendent plus que vous"
+self.subject = "Les commentaires sur vos documents n'attendent plus que vous !"
 %>
 <p><%= user.name %>,</p>
-<p>[TODO MESSAGE À ÉTABLIR]</p>
-<p>[TODO LIen pour rejoindre le bureau]</p>
+<p>J’ai le plaisir de vous annoncer que vos commentaires sur votre <%= designation_for(icetape) %> ont été transmis par Phil.</p>
+<p>Pour télécharger ces commentaires, vous pouvez rejoindre <%= link_to 'votre bureau', bureau_path %>.</p>
 <p>Bonne lecture !</p>
 <p>Ernest, le bot <%= etat_bot %> de l’atelier Icare</p>
