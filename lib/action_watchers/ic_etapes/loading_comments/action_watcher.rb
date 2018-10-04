@@ -14,9 +14,6 @@ class ActionWatcher < ApplicationRecord
     # require 'rubygems'
     require 'zip'
 
-    dont_destroy
-    # dont_send_mails
-
     # On prépare les fichiers temporaires qui seront zippés
     arr_comments = preparer_les_commentaires_temporaires
     # On crée le zip contenant les fichiers et on le place dans le
@@ -81,7 +78,7 @@ class ActionWatcher < ApplicationRecord
       @zipfile_name ||= begin
         'Commentaires-M%{mod_id}-E%{etp_id}-U%{user_id}.zip' % {
           mod_id:   icetape.ic_module.id,
-          etp_id:   icetape.id
+          etp_id:   icetape.id,
           user_id:  user.id
         }
       end

@@ -15,17 +15,24 @@ module ApplicationHelper
     idobj   = options[:with_ids] || options[:full] ? " (##{obj.id})" : ''
     obj_name =
       case obj
-      when IcEtape  then "étape #{obj.abs_etape.numero}"
-      when User     then obj.name
+      when IcEtape    then "étape #{obj.abs_etape.numero}"
+      when User       then obj.name
+      when IcDocument then 'document #%{docid}' % {docid: obj.id}
       else obj.class
       end
     # La désignation simple
     design = "#{obj_name}#{idobj}"
+
+    if options.delete(:with_user)
+      design.concat(' de %{pseudo}' % {pseudo: obj.user.name})
+    end
     design +=
       case obj
       when IcEtape
         idmodule = options[:with_ids] || options[:full] ? " (##{obj.ic_module.id})" : ''
         " du module “#{obj.ic_module.abs_module.name}”#{idmodule}"
+      when IcDocument
+        ' pour l’%{etape}' % {etape: designation_for(obj.ic_etape, options)}
       else ''
       end
     if options[:capitalize] || options[:cap]

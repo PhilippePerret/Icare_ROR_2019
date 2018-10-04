@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 10:35:35 +0300" ModID="9FAECE27-0CDF-4CB8-85E5-4FDD2DEDA862">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 13:13:03 +0300" ModID="1EDA04D4-4E44-4CC2-84B2-C4D043C85006">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-04 08:24:52 +0300">
             <Title>TODO</Title>
@@ -271,13 +271,13 @@
                                         <TextSelection>587,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem UUID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E" Type="Text" Created="2018-09-27 09:02:46 +0300" Modified="2018-09-27 09:14:53 +0300">
+                                <BinderItem UUID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E" Type="Text" Created="2018-09-27 09:02:46 +0300" Modified="2018-10-04 12:20:49 +0300">
                                     <Title>Options</Title>
                                     <MetaData>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>263,0</TextSelection>
+                                        <TextSelection>486,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                             </Children>
@@ -914,7 +914,7 @@
                                 <IncludeInCompile>Yes</IncludeInCompile>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>0,0</TextSelection>
+                                <TextSelection>116,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem UUID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5" Type="Text" Created="2018-10-03 10:14:56 +0300" Modified="2018-10-04 07:54:30 +0300">
@@ -1206,11 +1206,11 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="180" Characters="1393" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
+        <PreviousSession Words="186" Characters="1454" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
     </ProjectTargets>
     <RecentWritingHistory Date="2018-10-04 00:00:00 +0300">
-        <DraftWordCount>113</DraftWordCount>
-        <DraftCharCount>873</DraftCharCount>
+        <DraftWordCount>119</DraftWordCount>
+        <DraftCharCount>934</DraftCharCount>
         <OtherWordCount>191</OtherWordCount>
         <OtherCharCount>1474</OtherCharCount>
     </RecentWritingHistory>
