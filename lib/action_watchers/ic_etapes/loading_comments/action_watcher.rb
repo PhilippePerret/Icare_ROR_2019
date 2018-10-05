@@ -1,7 +1,7 @@
 class ActionWatcher < ApplicationRecord
 
   def icetape
-    @icetape ||= objet
+    @icetape ||= self.objet
   end
   def icdocuments
     @icdocuments ||= icetape.ic_documents
@@ -23,7 +23,7 @@ class ActionWatcher < ApplicationRecord
     # Faire passer l'étape à l'état suivant
     icetape.next_status
 
-    # TODO Watcher suivant : celui pour déposer les documents sur le Quai des
+    # Watcher suivant : celui pour déposer les documents sur le Quai des
     # docs.
     wachers_pour_qdd
 
@@ -42,6 +42,7 @@ class ActionWatcher < ApplicationRecord
   # contenant [filename, filepath]
   def preparer_les_commentaires_temporaires
     icdocuments.collect do |icdocument|
+      icdocument.original.attached? || next
       icdocument.comments.attached? || next
       # On crée le fichier dans le dossier temporaire
       filepath = icdocument.save_comments_in_tmpfile
@@ -49,7 +50,7 @@ class ActionWatcher < ApplicationRecord
       icdocument.set_option(:comments, 2, 1)
       # On retourne les valeurs qui serviront pour le zip
       [File.basename(filepath), filepath]
-    end
+    end.compact
   end
   # /preparer_les_commentaires_temporaires
 

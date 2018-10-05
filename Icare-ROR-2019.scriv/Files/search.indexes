@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
-            <Title>ActionWatchers</Title>
-            <Text>Watchers
-Réflexion
-Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
-À quoi est-ce que ça ressemblerait dans une application Rails ?
+        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
+            <Title>Routes</Title>
+            <Text>Concernant les routes
+Toutes les routes
+Pour voir la liste de toutes les routes, jouer en console :
 
-Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
-Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
-Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
 
-Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
-La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
-La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
-La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
-La méthode `action_user` return le code du formulaire 'action_user.html.erb'
-La méthode `watcher_admin` retournerait la notification pour l'user.
-Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
+	$ rails routes
 
-L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
-</Text>
+_url et _path
+On utilise _url pour une URL complète et _path pour une route simple :
+
+about_path 	=&gt; /static_pages/about
+about_url		=&gt; www.monsite.org/static_pages/about</Text>
         </Document>
         <Document ID="3EDB798B-84FA-4E88-BDA1-9B005E335D27">
             <Title>ActionWatchers</Title>
@@ -158,6 +151,10 @@ cf. state
         <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
             <Title>ActionWatchers</Title>
         </Document>
+        <Document ID="75F2F529-5F9F-4214-9241-CA5E2D2529F9">
+            <Title>Zip et download</Title>
+            <Text>Pour voir un exemple complet de zippage avec download (ou inversement), consulter le code du fichier action_watcher.</Text>
+        </Document>
         <Document ID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F">
             <Title>Tickets</Title>
             <Text>Pour créer un ticket à quelqu'un :
@@ -224,7 +221,12 @@ Ensuite, il suffit donc de faire :
             <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
-	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.</Text>
+	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.
+	•	Faire un formulaire me permettant de recharger des documents icariens transmis
+	•	Détruire les documents icariens transmis lorsqu'ils ont été déposés sur le quai des docs. Vérifier régulièrement le dossier storage pour que des documents ne restent pas dedans trop longtemps
+	•	Voir comment implémenter les outils administration (un seul contrôleur et des méthodes, ou autant de contrôleurs administration — UserAdm — que d'objets (UserAdministration, IcModuleAdmin, PaiementAdmin, etc.)
+	•	Depuis le bureau de l'icarien, section Documents, il doit pouvoir re-télécharger tous ses commentaires.
+</Text>
         </Document>
         <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
             <Title>De l'action-watcher lui-même</Title>
@@ -286,6 +288,28 @@ Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisate
             <Title>Pauses</Title>
             <Text>Les pauses des modules d'icarien.</Text>
         </Document>
+        <Document ID="32863252-9761-489B-8798-6F39756A8C19">
+            <Title>Aide</Title>
+            <Text>Les fichiers d'aide doivent se définir dans le dossier :
+
+
+	./app/views/aide/files
+
+
+On les invoque par :
+
+
+	aide_{url|path}('&lt;affixe fichier&gt;')
+
+
+Par exemple :
+
+
+	= link_to 'Le partage', aide_url('partage')
+
+
+Ce lien affiche le contenu du fichier `./app/views/aide/files/partage.html.md`</Text>
+        </Document>
         <Document ID="380EB6BA-F860-4D28-B1D5-3AD51CADFF0F">
             <Title>Modèle avec documents</Title>
             <Text>Si un modèle utilise des documents, par exemple la classe IcDocuments sur l'atelier Icare, on utilise soit has_one_attached :&lt;nom&gt; soit has_many_attached :&lt;nom&gt;.
@@ -340,14 +364,38 @@ Pour attacher un fichier autrement que par un formulaire, on utilise :
 
 </Text>
         </Document>
-        <Document ID="AA852350-F90D-44BB-A210-84E06C68A365">
-            <Title>Notification</Title>
-            <Text>Formulaire type pour une notification qui doit jouer l'action-watcher :
+        <Document ID="5CC616C9-DB87-4C8C-84C9-3CF5CBF94C8D">
+            <Title>Mise en place Action Storage</Title>
+            <Text>Pour tous les détails, cf. https://guides.rubyonrails.org/active_storage_overview.html
 
-= form_for('&lt;prefix&gt;', url: aw.form_url) do
-	= ... champs
-	.right.vair
-		= submit_tag('Soumettre')</Text>
+	$ rails active_storage:install
+
+Dans ./config/storage.yml, définir où se fera le stockage.
+
+
+	local:
+		service: Disk
+		root: &lt;%= Rails.root.join("storage") %&gt;
+ 	
+	test:
+		service: Disk
+		root: &lt;%= Rails.root.join("tmp/storage") %&gt;
+
+	# Les lignes suivantes sont ajoutées par moi, sans vérification
+	production:
+		service: Disk
+		root: &lt;%= Rails.root.join("storage") %&gt;
+
+
+Dans ./config/environments/development.rb et le test certainement :
+
+
+	# ./config/environments/development.rb
+	# ./config/environments/test.rb
+	config.active_storage.service = :local
+
+
+Peut-être faire la même chose en production.</Text>
         </Document>
         <Document ID="307E09A9-6774-4120-8FDD-9FA845F959FC">
             <Title>Transformations</Title>
@@ -399,38 +447,14 @@ On le définit dans la méthode notification_type qui est définie par défaut d
 
 </Text>
         </Document>
-        <Document ID="5CC616C9-DB87-4C8C-84C9-3CF5CBF94C8D">
-            <Title>Mise en place Action Storage</Title>
-            <Text>Pour tous les détails, cf. https://guides.rubyonrails.org/active_storage_overview.html
+        <Document ID="AA852350-F90D-44BB-A210-84E06C68A365">
+            <Title>Notification</Title>
+            <Text>Formulaire type pour une notification qui doit jouer l'action-watcher :
 
-	$ rails active_storage:install
-
-Dans ./config/storage.yml, définir où se fera le stockage.
-
-
-	local:
-		service: Disk
-		root: &lt;%= Rails.root.join("storage") %&gt;
- 	
-	test:
-		service: Disk
-		root: &lt;%= Rails.root.join("tmp/storage") %&gt;
-
-	# Les lignes suivantes sont ajoutées par moi, sans vérification
-	production:
-		service: Disk
-		root: &lt;%= Rails.root.join("storage") %&gt;
-
-
-Dans ./config/environments/development.rb et le test certainement :
-
-
-	# ./config/environments/development.rb
-	# ./config/environments/test.rb
-	config.active_storage.service = :local
-
-
-Peut-être faire la même chose en production.</Text>
+= form_for('&lt;prefix&gt;', url: aw.form_url) do
+	= ... champs
+	.right.vair
+		= submit_tag('Soumettre')</Text>
         </Document>
         <Document ID="B263E8D4-8EB7-4ACF-A69C-D34E2C6C4D99">
             <Title>Récupérer une variable</Title>
@@ -580,6 +604,15 @@ C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
 
 </Text>
         </Document>
+        <Document ID="03AF605A-E96A-432B-B9F7-C7AAAFC5DEB1">
+            <Title>Redictions particulières</Title>
+            <Text>Pour retourner à la page précédente, on peut utiliser :
+
+
+	redirect_back(fallback_location: root_path)
+
+</Text>
+        </Document>
         <Document ID="25446996-C221-49FD-906A-E06392B051C2">
             <Title>Propriétés</Title>
             <Text>Les propriétés d'un module d'apprentissage d'icarien sont :
@@ -721,19 +754,7 @@ Quand on ajoute un nouveau gem, il faut :
 Puis exécuter les opérations de dépôt ci-dessus.</Text>
         </Document>
         <Document ID="A4CF1F8F-3F7F-4FE5-A9E2-5C1989BD7645">
-            <Title>Transformations</Title>
-            <Text>Utiliser la méthode `url_for` ou `rails_blob_{path|url}` :
-
-	url_for(icdocument.comments)
-	# =&gt; Lien de téléchargement du document (à vérifier)
-
-	rails_blob_path(icdocument.original, disposition: 'attachment')
-
-Pour créer un lien à l'extérieur d'un contrôleur ou d'une vue :
-
-	Rails.application.routes.url_helpers.rails_blob_path(icdoc.original, only_path: true)
-
-</Text>
+            <Title>Lien vers le document (download)</Title>
         </Document>
         <Document ID="946B4A4D-AFF2-4C26-AE92-DC92068D6B01">
             <Title>ActionWatchers</Title>
@@ -803,6 +824,18 @@ Pour retrouver un texte dans le corps, par exemple une URL :
 
 </Text>
         </Document>
+        <Document ID="A7BE32C8-0E83-4931-9269-DB974BA7BEAA">
+            <Title>Utilisation hors contrôleurs/views</Title>
+            <Text>Ajouter le code suivant dans la classe où doivent être utilisées les méthodes d'helper :
+
+
+	def helpers
+		ActionController::Base.helpers
+	end
+
+
+</Text>
+        </Document>
         <Document ID="00D37C5D-EF94-41AD-BE9B-6DE698823CAE">
             <Title>Formulaires</Title>
             <Text>Pour définir l'action (avec une route en path), il faut utiliser url: ...._path
@@ -852,7 +885,7 @@ Téléchargement (user ou admin)
 3
 4
 Présence sur le QDD
-0: non déposé, 1: déposé sur le QDD
+0: non déposé, 1: déposé sur le QDD (original si original_options, comments si comments_options)
 4
 5
 Définition du partage (obsolète, cf. le 2ème bit)
@@ -979,9 +1012,22 @@ Pour tester qu'il y a un message flash :
 
 </Text>
         </Document>
-        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
-            <Title>Introduction</Title>
-            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        <Document ID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5">
+            <Title>Transformations</Title>
+            <Text>On peut récupérer le document à l'intérieur de l'application par :
+
+
+	binary = &lt;owner&gt;.&lt;docref&gt;.download
+
+
+Par exemple :
+
+
+	binary = IcDocument.find(12).comments.download
+	# mets dans `binary` le code binaire du document commentaires
+
+
+</Text>
         </Document>
         <Document ID="36F6909E-D617-4006-98D9-7515D7B24D34">
             <Title>Update</Title>
@@ -1008,6 +1054,10 @@ On peut aussi utiliser la méthode qui semble ne pas passer par la validation, l
 
 </Text>
         </Document>
+        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
+            <Title>Introduction</Title>
+            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        </Document>
         <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
             <Title>Reset</Title>
             <Text>Pour resetter la base :
@@ -1015,9 +1065,6 @@ On peut aussi utiliser la méthode qui semble ne pas passer par la validation, l
 	$ rails db:reset
 
 Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
-        </Document>
-        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
-            <Title>Statut</Title>
         </Document>
         <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
             <Title>Mails</Title>
@@ -1029,18 +1076,8 @@ Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) déf
 
 </Text>
         </Document>
-        <Document ID="BC6E8319-2E4B-44CC-AFB7-F5E9403799F5">
-            <Title>Transformations</Title>
-            <Text>On peut récupérer le document à l'intérieur de l'application par :
-
-	binary = &lt;owner&gt;.&lt;docref&gt;.download
-
-Par exemple :
-
-	binary = IcDocument.find(12).comments.download
-	# mets dans `binary` le code binaire du document commentaires
-
-</Text>
+        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
+            <Title>Statut</Title>
         </Document>
         <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
             <Title>Possessions</Title>
@@ -1090,6 +1127,53 @@ cf. la méthode `redirection_after_login` du fichier sessions_helper
 
 </Text>
         </Document>
+        <Document ID="3C6FEBA9-2B84-4761-B57B-757DC67AC3F0">
+            <Title>Dates et temps</Title>
+            <Text>Pour formater humainement les dates, utiliser la méthode I18n.localize
+
+Note : il faut le gem `rails-i18n`
+
+On peut définir un format de date particulier dans `./config/locales/fr/general.yml` en définissant :
+
+
+	fr:
+		time:
+			formats:
+				&lt;nom format&gt;:	'&lt; description avec % &gt;'
+				par_exemple:	'le jour %d et le mois %B'
+
+
+Ensuite, on obtient ce format par :
+
+
+	hdate = I18n.localize(madate, format: :par_exemple)
+
+
+Distance entre deux temps
+
+
+	d = distance_of_time_in_words(temps_debut, temps_fin)
+	# Par exemple "moins d'un jour"
+
+
+Si on est en dehors des views/controllers, il faut ajouter à la classe :
+
+
+	class MaClasse
+		include ActionView::Helpers::DateHelper
+
+		def ma_methode
+			...
+			d = distance_of_time_in_words(t1, t2)
+			...
+		end
+	end
+
+
+Pour le détail, voir https://github.com/rails/rails/blob/4cbb9db0a5ff65b0a626a5b043331abefd89e717/actionpack/lib/action_view/helpers/date_helper.rb#L68-103
+
+</Text>
+        </Document>
         <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
             <Title>Générer sans fiche test</Title>
             <Text>Pour générer un contrôleur sans feuille de test, on ajoute l'option --no-test-framework.
@@ -1116,6 +1200,52 @@ Par exemple, dans un contrôleur :
 	else
 		# =&gt; OK
 	end
+
+</Text>
+        </Document>
+        <Document ID="4CAA24B0-8647-4719-8E05-5068C833BD04">
+            <Title>Download</Title>
+            <Text>Il existe deux moyens principaux pour télécharger un document :
+
+	•	un lien qui conduit directement au téléchargement
+	•	une redirection contenant l'url du document.
+
+PAR UN LIEN
+
+Deux méthodes permettent de générer le lien (à écrire dans la page), pour télécharger le document :
+
+Utiliser la méthode `url_for` ou `rails_blob_{path|url}` :
+
+
+	url_for(icdocument.comments)
+	# =&gt; Lien de téléchargement du document (à vérifier)
+	# Mais je ne sais pas où c'est utilisable, peut-être dans un contrôleur et
+	# dans les vues seulement
+
+	rails_blob_path(icdocument.original, disposition: 'attachment')
+
+
+
+Pour créer un lien permettant de télécharger le document :
+
+
+	= link_to doc.filename, rails_blob_path(doc, disposition: 'attachment')
+
+
+Pour créer un lien à l'extérieur d'un contrôleur ou d'une vue :
+
+
+	Rails.application.routes.url_helpers.rails_blob_path(
+		icdoc.original, 
+		only_path: true,
+		# 	disposition: 'attachment' # pour un mail ?
+	)
+
+
+PAR REDIRECTION
+
+Pour une redirection, imaginons qu'on est un document `mon.zip` dans le dossier ./public de l'application. Il suffit alors de faire `redirect_to '/mon.zip'` dans un contrôleur pour télécharger le document en restant sur la même page ensuite.
+
 
 </Text>
         </Document>
@@ -1153,6 +1283,12 @@ Noter que pour charger le seed principal il faut jouer :
 
 
 </Text>
+        </Document>
+        <Document ID="D9C57209-91BA-4805-9725-5E9F17730B56">
+            <Title>Redirection après run</Title>
+            <Text>Pour rediriger l'action après son exécution, on utilise tout simplement la méthode `redirect_to` avec en argument la nouvelle direction.
+
+Mais noter que cette méthode est propre au modèle watcher, ça n'est pas le redirect_to des contrôleurs. Cf. action_watcher.</Text>
         </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
@@ -1311,6 +1447,25 @@ Description longue du module (HTML)
             <Text>On peut ajouter  allow_nil: true  au  validates  pour dire que la données n'est pas toujours requise pour l'enregistrement, comme c'est le cas avec le mot de passe lors d'une modification du profil.
 
 	validates :password, presence: true, allow_nil: true</Text>
+        </Document>
+        <Document ID="0F5A3B5E-6516-4FE8-8ED4-C4ACE27F9EBC">
+            <Title>Formulaire</Title>
+            <Text>Pour faire un un formulaire devant jouer l'action-watcher, utiliser :
+
+
+	= form_for(action_watcher.objet, url: action_watcher.form_url, method: :post) do |f|
+		...
+		.right.vair
+			= f.submit('Soumettre le formulaire', class: 'btn btn-primary btn-small')
+
+</Text>
+        </Document>
+        <Document ID="205817A2-7E12-4BA5-92B8-3E77A4F51C2B">
+            <Title>Introduction</Title>
+            <Text>Pendant la phase de conception du watcher, on peut utiliser les méthodes suivantes dans la méthode `execute` du watcher pour ne pas tout recommencer à chaque fois :
+
+	dont_destroy			Empêche la destruction du watcher
+	dont_send_mails		Ne procède pas à l'envoi des mails</Text>
         </Document>
         <Document ID="D02C325F-788D-4867-8BFC-9209A19C2841">
             <Title>De l'association</Title>
@@ -1564,14 +1719,22 @@ Cote du document commentaires, en fonction des lectures.
 					</Text>
         </Document>
         <Document ID="04B90E21-621A-4938-A9C0-D1BA3D4D3684">
-            <Title>Message de fin</Title>
+            <Title>Messages de fin</Title>
             <Text>On définit le message de fin en utilisant l'une de ces deux méthodes :
 
 
 	success_message 	= '&lt;le message de succès&gt;'
 	failure_message 	= '&lt;le message d'échec&gt;'
 
-</Text>
+
+Pour « aglutiner » plusieurs messages, on utilise les méthodes :
+
+
+	add_success_message(&lt;message ajouté&gt;) 	# ou add_success_final
+	add_failure_message(&lt;problème ajouté&gt;	# ou add_failure_final
+
+
+Noter qu'il suffit d'utiliser une de ces deux méthodes une seule fois pour que le message de fin soit automatiquement écrit sur la page.</Text>
         </Document>
         <Document ID="F7FB0D91-055F-4B5F-9372-2B29CA06D129">
             <Title>Propriétés</Title>
@@ -1680,9 +1843,38 @@ Par exemple, pour choisir un utilisateur :
         <Document ID="D855DEAA-8B7B-4D60-8AFD-9C46E9944F12">
             <Title>Helpers HTML</Title>
         </Document>
+        <Document ID="AA504757-4CCD-4722-B275-B68347B3B51E">
+            <Title>Dates et heures</Title>
+            <Text>Pour voir les formats utilisables avec I18n.localize(&lt;date&gt;, format: :&lt;format&gt;), cf. le fichier general.
+
+Possibilité aussi d'utiliser la méthode `human_date_for(&lt;date&gt;, &lt;options&gt;)`
+Dans `&lt;options&gt;` on peut définir `:format`. Valeurs principales : `:simple` et `:simple_with_hour`.</Text>
+        </Document>
         <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
             <Title>Object.create / .save</Title>
             <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
+        </Document>
+        <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
+            <Title>ActionWatchers</Title>
+            <Text>Watchers
+Réflexion
+Adopte-t-on le même fonctionnement que sur l'ancien site ? C'est-à-dire que les actions sont déclenchées par des notifications complexes.
+À quoi est-ce que ça ressemblerait dans une application Rails ?
+
+Il y aurait un model ActionWatcher qui serait en même temps un observateur et une action possible. Il surveille d'un côté et opère de l'autre.
+Est-ce qu'il faudrait des AbsActionWatcher qui correspondraient aux choses à faire ? Par exemple, quand l'icarien doit procéder à un paiement, c'est toujours la même action : au moment venu, on lui présente un bouton pour qu'il rejoigne un formulaire de paiement. Quand il a payé, un mail lui est envoyé, confirmant le paiement et un mail est envoyé à l'administration informant du paiement.
+Avant, ces choses se trouvaient dans des fichiers (les mails à envoyer, les formulaires utiles). Maintenant, on pourrait les mettre dans une base de donnée du modèle AbsActionWatcher. Mais j'aimerais mieux conserver les dossiers. 
+
+Il y aurait donc aussi le controller ActionWatchers qui répondrait aux différentes méthodes, comme dans le truc original.
+La méthode `run` exécuterait le watcher, c'est-à-dire le code contenu dans 'action_watcher.rb' du dossier et définissant la méthode ActionWatcher.run.
+La méthode `action_admin` retournerait le code du formulaire 'action_admin.html.erb' s'il existe et que c'est l'admin qui visite
+La méthode `watcher_admin` retournerait la simple notification 'watcher_admin.html.erb' si elle existe et que c'est l'admin.
+La méthode `action_user` return le code du formulaire 'action_user.html.erb'
+La méthode `watcher_admin` retournerait la notification pour l'user.
+Tous ces fichiers se serviraient du fichier `action_watcher_helpers.rb` définissant des méthodes utiles à tous les autres fichiers.
+
+L'ActionWatcher appartient toujours à un user. L'autre personne concernée est l'administrateur, toujours.
+</Text>
         </Document>
         <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
             <Title>MAILS</Title>
@@ -1691,21 +1883,6 @@ Par exemple, pour choisir un utilisateur :
             <Title>Générateurs (rails generate)</Title>
             <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
 </Text>
-        </Document>
-        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
-            <Title>Routes</Title>
-            <Text>Concernant les routes
-Toutes les routes
-Pour voir la liste de toutes les routes, jouer en console :
-
-
-	$ rails routes
-
-_url et _path
-On utilise _url pour une URL complète et _path pour une route simple :
-
-about_path 	=&gt; /static_pages/about
-about_url		=&gt; www.monsite.org/static_pages/about</Text>
         </Document>
     </Documents>
 </SearchIndexes>

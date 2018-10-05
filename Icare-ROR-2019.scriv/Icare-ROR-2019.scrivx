@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-04 13:13:03 +0300" ModID="1EDA04D4-4E44-4CC2-84B2-C4D043C85006">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-05 08:35:56 +0300" ModID="62BEA5C6-703F-4DFA-91CC-06FFCCCE492F">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-04 08:24:52 +0300">
             <Title>TODO</Title>
@@ -333,7 +333,7 @@
                         <TextSelection>406,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F" Type="Text" Created="2018-09-25 10:30:49 +0300" Modified="2018-09-28 09:11:27 +0300">
+                <BinderItem UUID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F" Type="Text" Created="2018-09-25 10:30:49 +0300" Modified="2018-10-05 08:35:56 +0300">
                     <Title>Tickets</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -510,6 +510,15 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>104,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="32863252-9761-489B-8798-6F39756A8C19" Type="Text" Created="2018-10-04 15:47:21 +0300" Modified="2018-10-04 15:49:50 +0300">
+                    <Title>Aide</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>240,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -1206,13 +1215,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="186" Characters="1454" Date="2018-10-03 10:26:05 +0300"></PreviousSession>
+        <PreviousSession Words="209" Characters="1417" Date="2018-10-05 04:07:37 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-10-04 00:00:00 +0300">
-        <DraftWordCount>119</DraftWordCount>
-        <DraftCharCount>934</DraftCharCount>
-        <OtherWordCount>191</OtherWordCount>
-        <OtherCharCount>1474</OtherCharCount>
+    <RecentWritingHistory Date="2018-10-05 00:00:00 +0300">
+        <DraftWordCount>209</DraftWordCount>
+        <DraftCharCount>1417</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

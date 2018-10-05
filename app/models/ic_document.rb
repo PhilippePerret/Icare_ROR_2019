@@ -15,7 +15,7 @@ class IcDocument < ApplicationRecord
 
   # Retourne true si l'ic-document a un commentaire
   def comments?
-    self.comments.attached?
+    self.comments.attached? || option(:comments, 0) == 1
   end
   alias :commented? :comments?
 
@@ -60,7 +60,7 @@ class IcDocument < ApplicationRecord
     @comments_qdd_path ||= Rails.root.join('public','qdd',comments_qdd_name)
   end
   def comments_qdd_name
-    @comments_qdd_name ||= "#{affixe_qdd}.pdf"
+    @comments_qdd_name ||= "#{affixe_qdd}_comsPhil.pdf"
   end
   # Affiche des documents pour le quai des documents
   def affixe_qdd

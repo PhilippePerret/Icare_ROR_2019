@@ -32,23 +32,35 @@ class TicketsController < ApplicationController
     ticket  = Ticket.find(params[:id])
     token = params[:token]
 
-    redirection = home_path
     # On peut vérifier que le ticket est bon et n'est pas out fo date
-    if BCrypt::Password.new(ticket.digest).is_password?(params[:token])
-      if ticket.out_of_date?
-        flash[:danger] = I18n.t('tickets.errors.out_of_date')
-      else
-        redirection = execute(ticket)
-      end
-    else
-      flash[:danger] = I18n.t('tickets.errors.invalid')
-    end
-    redirect_to(redirection || home_path)
+    redirection =
+      if ticket_conform?(ticket)
+        execute(ticket)
+      end || home_path
+
+    # redirect_to(redirection || home_path)
+    redirect_to(redirection)
 
   rescue ActiveRecord::RecordNotFound => e
     flash[:danger] = I18n.t('tickets.errors.unknown')
     redirect_to home_path
   end
   # /run
+
+  # Méthode qui retourne TRUE si le ticket et l'utilisateur sont conforme,
+  # false dans le cas contraire (et retourne une erreur)
+  def ticket_conform?(ticket)
+    BCrypt::Password.new(ticket.digest).is_password?(params[:token]) ||
+      raise('tickets.errors.invalid')
+    !ticket.out_of_date? ||
+      raise('tickets.errors.out_of_date')
+    params[:uid].blank? || ticket.valid_owner?(current_user, params[:uid]) ||
+      raise('tickets.errors.invalid_owner')
+    # tout est OK
+    return true
+  rescue Exception => e
+    Flash[:danger] = I18n.t(e.message)
+    return false
+  end
 
 end

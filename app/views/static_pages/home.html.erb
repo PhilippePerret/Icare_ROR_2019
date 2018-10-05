@@ -13,3 +13,13 @@ TODO Ajouter les actualités (dernières activités)
 <%= link_to "Tous les modules d'icariens", ic_modules_path %>
 
 <%= link_to 'Attribuer un module', new_ic_module_path %>
+
+<%
+# On essaie de créer un ticket
+
+ti = Ticket.new(name:'essai-ticket', action:'/users/1')
+ticket = User.find(1).tickets.create(ti.hash_to_create)
+%>
+<p>
+  <%= ticket.link %>
+</p>

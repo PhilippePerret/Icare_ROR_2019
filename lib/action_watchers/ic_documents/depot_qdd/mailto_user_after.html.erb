@@ -6,4 +6,12 @@
 #
 self.subject = "Dépôt de vos documents sur le Quai des Docs"
 %>
-[TODO rédiger le mail annonçant à l'user que ses documents ont été déposés]
+<p><%= user.name %>,</p>
+<p>J’ai le plaisir de vous annoncer que vos documents pour l'<%= designation_for(icetape) %> ont été déposés sur le Quai des docs de l'atelier.</p>
+<p>Il vous reste à en définir le partage. Pouvez le faire en <%= link_to('rejoignant votre bureau', bureau_url) %> sur le site de l’atelier ou en utilisant le lien ci-dessous si vous voulez rapidement partager ces documents.</p>
+<p class="center">
+<%= self.ticket.link('Partager tous les documents de cette étape') %>
+</p>
+<p class="small">Concernant le partage, je vous invite vivement à lire ce qu’on en dit <%= link_to 'sur l’aide du site', aide_url('partage') %>.</p>
+<p>Bien à vous,</p>
+<p>Ernest, le bot <%= etat_bot %> de l’atelier Icare</p>

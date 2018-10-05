@@ -8,8 +8,12 @@ fr:
       success:
         depot:
           all:        'Tous les documents de l’étape ont été déposés avec succès sur le QDD.'
-          one:        'Ce document de l’étaoe a été déposé avec succès sur le QDD (mais il reste des documents à déposer).'
+          one:        'Ce document de l’étape a été déposé avec succès sur le QDD (mais il reste des documents à déposer).'
       errors:
+        original:
+          unfound:    'Le document original est introuvable sur le QDD… (path: %{path}).'
+        comments:
+          unfound:    'Le document commentaire est introuvable sur le QDD… (path: %{path}).'
         required:     'Le document original est absolument requis pour le dépôt QDD.'
         docs_unfound: 'Bizarrement, les documents sont introuvables sur le QDD…'
     comments:

@@ -55,6 +55,9 @@ gem 'jbuilder', '~> 2.5'
 # Pour faire des zip (utiliser require 'zip' seulement, maintenant)
 gem 'rubyzip', '1.2.2' # '>= 1.0.0'
 
+# Pour traiter les fichiers markdowwn
+gem 'redcarpet', '3.4.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

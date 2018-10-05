@@ -7,7 +7,68 @@
 }
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f0\fs28 \cf0 Pour cr\'e9er un ticket \'e0 quelqu'un :\
+\f0\fs28 \cf0 Description rapide de l'utilisation d'un ticket :\
+\
+Cr\'e9ation du ticket, par exemple pour un ticket qui s'appelle 'jouer_le_ticket' (le nom est purement indicatif) :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	ticket = Ticket.new(name: 'jouer-ticket', action: '/user/1', duree: 4)\
+	# Ce ticket aura une dur\'e9e de vie de 4 jours et rejoindra l'adresse /user/1\
+	# quand il sera invoqu\'e9\
+	@ticket = Phil.tickets.create(ticket.hash_to_create)\
+	# Noter que `@ticket` est une instance distincte de `ticket`\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+Dans le mail (vue) qui contient le lien pour jouer le ticket, on met :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	= @ticket.link('Jouer le ticket')\
+\
+	ou\
+	= link_to 'Jouer le ticket', @ticket.url\
+	ou\
+	= link_to 'Jouer le ticket', ticket_run_url(ticket.id, token: ticket.token)\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+Lorsqu'on joue le ticket (i.e. lorsqu'on clique sur le lien), la m\'e9thode 
+\f1\fs24 <$Scr_Cs::2>
+\f2 TicketController#run
+\f1 <!$Scr_Cs::2>
+\f0\fs28  est appel\'e9e. Si un param\'e8tre 
+\f1\fs24 <$Scr_Cs::2>
+\f2 uid
+\f1 <!$Scr_Cs::2>
+\f0\fs28  a \'e9t\'e9 ajout\'e9 \'e0 l'url du ticket (c'est le cas lorsqu'on utilise 
+\f1\fs24 <$Scr_Cs::2>
+\f2 ticket#link
+\f1 <!$Scr_Cs::2>
+\f0\fs28  pour cr\'e9er le lien), la m\'e9thode commence par v\'e9rifier qu'il s'agit bien de l'user possesseur du ticket ou d'un administrateur. Dans le cas contraire, une exception est lev\'e9e.\
+\
+Ensuite, dans la m\'e9thode appel\'e9e (celle d\'e9finie par `action`, if any), on peut faire un nouveau contr\'f4le pour savoir si c'est le bon user, en utilisant ce code\'a0:\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f0\b\fs36 D\'e9tail des proc\'e9dures\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f0\fs28 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 Pour cr\'e9er un ticket \'e0 quelqu'un :\
 \
 	ticket = Ticket.new(\
 		name: '<nom g\'e9n\'e9rique>', \
@@ -20,7 +81,7 @@ Par exemple :\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 \
 	ticket = Ticket.new(name: 'activation_compte', action: "User.find(#\{benoit.id\}).confirm_compte", duree: 2.days)\
 	# Cr\'e9e un objet qui poss\'e8de les propri\'e9t\'e9s :\
@@ -29,7 +90,7 @@ Par exemple :\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf4 \cb1 \up0 <!$Scr_Cs::0>
+\f1\fs24 \cf4 \cb1 \up0 <!$Scr_Cs::1>
 \f0\b\fs28 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
 
@@ -37,13 +98,13 @@ Par exemple :\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf2 \cb3 \up4 \strikec2 <$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 \strikec2 <$Scr_Cs::1>
 \f2\fs22 \
 	benoit.tickets.create(ticket)\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf0 \cb1 \up0 \strike0\striked0 <!$Scr_Cs::0>
+\f1\fs24 \cf0 \cb1 \up0 \strike0\striked0 <!$Scr_Cs::1>
 \f0\fs28 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
@@ -51,23 +112,23 @@ Par exemple :\
 \b0 \cf0 , si on veut r\'e9cup\'e9rer le token du ticket, il ne faut pas faire `user.tickets.last` (qui cr\'e9erait une nouvelle instance avec un token vide), il faut la prendre du ticket ou autre_ticket.\
 \
 L'
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 :action
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
 \f0\fs28  peut \'eatre soit du code Ruby \'e0 \'e9valuer, soit une route.\
 \
 Quand il s'agit d'une route, il est toujours ajout\'e9e \'e0 cette route le param\'e8tre 
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 :uid
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
 \f0\fs28  qui contient l'ID de l'user poss\'e9dant le ticket. Le ticket, lui est d\'e9truit, donc on ne peut pas le retrouver (mais \'e0 l'avenir, s'il s'av\'e8re qu'il est int\'e9ressant de le reprendre, on pourra le garder et le d\'e9truire apr\'e8s).\
 \
 On peut passer des variables dans l'action ou la route, avec :\
 \
 	
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
-\f2\fs22  %\{<nom variable>\} 
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22  %\{<nom variable ci-dessous>\} 
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
 \f0\fs28 \
 \
 Les noms de variable possible sont :\
@@ -80,17 +141,34 @@ Par exemple\'a0:\
 \
 	action: '/icmodule/%\{digest\}/edit'\
 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\i \cf0 Note : je ne sais plus \'e0 quoi peut servir la suite ci-dessous.
+\i0 \
+\
 Avant l'ex\'e9cution du code (en fait, dans la m\'e9thode), on met le digest du ticket dans la variable session :ticket_digest\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	session['ticket_digest'] = <ledigestduticket>\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f0\fs28 \
+Donc on peut l'obtenir par : \
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 \
 	tdigest = session['ticket_digest']\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
 \f0\fs28 \
 De cette mani\'e8re, on peut faire encore des contr\'f4les, comme lorsque l'url appel\'e9e en action contient le m\'eame token que le ticket, pour double v\'e9rification.\
 Ensuite, il suffit donc de faire :\

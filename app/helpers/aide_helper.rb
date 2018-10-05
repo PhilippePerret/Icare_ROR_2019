@@ -1,0 +1,2 @@
+module AideHelper
+end

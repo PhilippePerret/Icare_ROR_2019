@@ -1,6 +1,6 @@
 # Pour pouvoir les utiliser tout de suite dans les notifications, il faut
 # que je mette ça ici.
-require Rails.root.join('app','helpers','html_string_helper')
+require Rails.root.join('app','helpers','html_string')
 
 class ActionWatcher < ApplicationRecord
 

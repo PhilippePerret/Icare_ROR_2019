@@ -1,5 +1,8 @@
 class Ticket < ApplicationRecord
 
+  include Rails.application.routes.url_helpers
+  include ApplicationHelper
+
   # Un ticket appartient toujours à un unique User/Icarien
   belongs_to :user
 
@@ -22,19 +25,38 @@ class Ticket < ApplicationRecord
     end
     @token = with_data.delete(:token) || SessionsHelper.new_token
     super(with_data)
-
-    # super({
-    #   name: with_data[:name],
-    #   action: with_data[:action],
-    #   digest: with_data[:digest],
-    #   user_id: with_data[:user_id],
-    #   expire_at: with_data[:expire_at]
-    #   })
   end
 
+  # ---------------------------------------------------------------------
+  # Méthodes d'helper
+
+  def link titre = 'Jouer le ticket'
+    ('<a href="%{url}">%{titre}</a>' % {
+      url: self.url,
+      titre: titre
+    }).html_safe
+  end
+
+  # Retourne l'URL à jouer pour invoquer le ticket
+  def url
+    @url ||= begin
+      inprod = Rails.env.production?
+      '%{protocol}://%{host}/tickets/%{ticket_id}/%{token}?uid=%{uid}' % {
+        protocol:   inprod ? 'https' : 'http',
+        host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000',
+        ticket_id:  self.id,
+        token:      self.token,
+        uid:        self.user.id
+      }
+    end
+  end
+
+  # ---------------------------------------------------------------------
+  # Data
   def token
     @token
   end
+
   def calculated_digest
     @calculated_digest ||= BCrypt::Password.create(self.token, cost: 5)
   end
@@ -43,6 +65,14 @@ class Ticket < ApplicationRecord
   # créer un ticket pour l'user
   def hash_to_create
     {name: name, expire_at: expire_at, digest: calculated_digest, action: action, token: token}
+  end
+
+  # ---------------------------------------------------------------------
+  # Méthode de validation
+
+  # RETURN true si l'user courant est bien l'user du ticket
+  def valid_owner?(cuser, uid)
+    cuser.admin? || (cuser == User.find(uid))
   end
 
   # RETURN true si le ticket est périmé. Pour qu'il soit périmé, il faut

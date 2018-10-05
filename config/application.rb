@@ -10,7 +10,7 @@ module IcareRor2019
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    
+
     # Pour définir que le site est en français
     # Mettre les définitions dans config/locales/fr.yml et autres
     # Si les locales sont définies dans un autre dossier, utiliser :
@@ -24,5 +24,6 @@ module IcareRor2019
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
   end
 end

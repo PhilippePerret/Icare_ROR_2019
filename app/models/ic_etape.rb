@@ -18,4 +18,10 @@ class IcEtape < ApplicationRecord
     update_attribute(:status, status + 1)
   end
 
+  # Méthode qui peut être appelée par un ticket
+  def partage_all_documents
+    # On vérifie que ce soit bien le possesseur de l'étape ou un administrateur
+    # TODO Développer la méthode pour partager les documents
+  end
+
 end

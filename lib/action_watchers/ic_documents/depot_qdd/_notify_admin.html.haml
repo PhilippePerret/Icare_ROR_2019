@@ -6,7 +6,7 @@
 - icdocument = aw.objet
 %h4 "Dépôt documents sur QDD"
 = form_for('qdd', url: aw.form_url, method: :post, multipart: true) do |f|
-  %span.small.italic{style: 'margin-bottom:1rem;'}
+  .small.italic{style: 'margin-bottom:1rem;'}
     = " (#{designation_for(icdocument, with_user: true)})"
   = f.label(:original, 'Document original “%s“ en PDF' % [icdocument.original_name])
   = f.file_field(:original, class: 'vair')

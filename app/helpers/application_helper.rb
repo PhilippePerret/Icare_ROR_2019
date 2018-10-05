@@ -1,6 +1,15 @@
-require_relative 'html_string_helper'
+require_relative 'html_string'
 
 module ApplicationHelper
+  #
+  # def default_url_options
+  #   {
+  #     locale:   I18n.locale,
+  #     protocol: (Rails.env == :production ? 'https' : 'http'),
+  #     host:     (Rails.env == :production ? 'www.atelier-icare' : 'localhost:3000'),
+  #   }
+  #
+  # end
 
   # Retourne une date formatée au format français
   def human_date_for date, options = nil

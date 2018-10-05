@@ -62,6 +62,9 @@ Rails.application.routes.draw do
   resources :abs_modules
   resources :abs_etapes
 
+  # === AIDE ===
+  resources :aide, only: [:show, :index]
+  get 'aide/search'
 
   # === Mot de passe réinitialisation ===
   resources :password_resets, only: [:new, :create, :edit, :update]

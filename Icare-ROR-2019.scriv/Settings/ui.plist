@@ -55,7 +55,7 @@
 	<key>binderSplitFrames</key>
 	<array>
 		<string>{{0, 0}, {295, 779}}</string>
-		<string>{{296, 0}, {1187, 779}}</string>
+		<string>{{296, 0}, {1315, 779}}</string>
 	</array>
 	<key>bookmarksPreviewTextSettings</key>
 	<dict>
@@ -117,14 +117,14 @@
 		<real>2</real>
 	</dict>
 	<key>mainWindowFrame</key>
-	<string>0 226 1483 801 0 0 1680 1027 </string>
+	<string>0 226 1611 801 0 0 1680 1027 </string>
 	<key>supportingDocumentEditor.dockedQRTextSettings</key>
 	<dict>
 		<key>textScaleFactor</key>
 		<real>1</real>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 189.5}, {593.5, 330.99999999999977}}</string>
+	<string>{{0, 815.5}, {620, 331}}</string>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>

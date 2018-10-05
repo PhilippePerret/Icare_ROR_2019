@@ -9,6 +9,7 @@ class ActionWatcher < ApplicationRecord
     ##
     # dont_destroy    # Pour ne pas détruire le watcher, pendant conception
     # dont_send_mails # pour ne pas envoyer les mails, idem
+
     original_pdf = params['qdd']['original']
     original_pdf || raise(I18n.t('documents.qdd.errors.required'))
 
@@ -16,23 +17,51 @@ class ActionWatcher < ApplicationRecord
     depose_documents_sur_qdd(original_pdf)
 
     # Une petite vérification s'impose
-    (
-      File.exist?(icdocument.original_qdd_path) &&
-      (icdocument.commented? == File.exist?(icdocument.comments_qdd_path))
-    ) || raise(I18n.t('documents.qdd.errors.docs_unfound'))
+    # Raise en cas d'erreur
+    check_si_documents_existent_sur_qdd
 
     # Il faut vérifier si tous les documents de l'étape ont été
     # traités. Si c'est le cas, on peut passer l'étape à l'état suivant
     if tous_les_documents_traited?
-      icetape.next_state
-      self.success_message = I18n.t('documents.qdd.success.depot.all')
+      fin_traitement_documents_etape
     else
       self.success_message = I18n.t('documents.qdd.success.depot.one')
     end
 
     detruit_documents_provisoires
 
+  rescue Exception => e
+    self.failure_message = e.message
+    puts e.message
+    puts e.backtrace[0..5].join("\n")
   end
+
+  # Méthode appelée lorsque l'on a traité tous les documents de l'étape
+  def fin_traitement_documents_etape
+    icetape.next_state
+    self.success_message = I18n.t('documents.qdd.success.depot.all')
+    # Il faut fabriquer un ticket pour l'user pour qu'il partage ses documents
+    # simplement en cliquant sur un lien de son mail. De toute façon, on crée
+    # les watchers qui permettront de définir ce partage (ces watchers seront
+    # détruits si le lien-ticket du mail est utilisé)
+    ticket = Ticket.new(
+      name:     'partage_documents',
+      action:   'IcEtape.find(%{etp_id}).partage_all_documents' % {etp_id: icetape.id}
+      duree:    30.days
+    )
+    token = ticket.token
+    self.ticket = user.tickets.create(ticket.hash_to_create)
+  end
+  # /fin_traitement_documents_etape
+
+
+  def check_si_documents_existent_sur_qdd
+    File.exist?(icdocument.original_qdd_path) || raise(I18n.t('documents.qdd.errors.original.unfound', {path: icdocument.original_qdd_path}))
+    if icdocument.commented?
+      File.exist?(icdocument.comments_qdd_path) || raise(I18n.t('documents.qdd.errors.comments.unfound', {path: icdocument.original_qdd_path}))
+    end
+  end
+  # /check_si_documents_existent_sur_qdd
 
   # Retourne True si tous les documents de l'étape ont été traités
   def tous_les_documents_traited?
@@ -58,16 +87,14 @@ class ActionWatcher < ApplicationRecord
         f.write(icdocument.comments.download)
       end
     end
-    # TODO Note : à partir d'ici, on pourrait détruire les deux
-    # documents original et commentaire initiaux
   end
   # /depose_documents_sur_qdd
 
   # Maintenant que les documents ont été déposé sur le Quai des docs, on
   # peut détruire ceux d'ActiveStorage
   def detruit_documents_provisoires
-    icdocument.original.purge_later
-    icdocument.comments.purge_later if icdocument.commented?
+    icdocument.original.purge
+    icdocument.comments.purge if icdocument.commented?
   end
   # /detruit_documents_provisoires
 end
