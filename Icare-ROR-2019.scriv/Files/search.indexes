@@ -148,16 +148,46 @@ cf. state
 
 </Text>
         </Document>
-        <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
-            <Title>ActionWatchers</Title>
-        </Document>
         <Document ID="75F2F529-5F9F-4214-9241-CA5E2D2529F9">
             <Title>Zip et download</Title>
             <Text>Pour voir un exemple complet de zippage avec download (ou inversement), consulter le code du fichier action_watcher.</Text>
         </Document>
+        <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
+            <Title>ActionWatchers</Title>
+        </Document>
         <Document ID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F">
             <Title>Tickets</Title>
-            <Text>Pour créer un ticket à quelqu'un :
+            <Text>Description rapide de l'utilisation d'un ticket :
+
+Création du ticket, par exemple pour un ticket qui s'appelle 'jouer_le_ticket' (le nom est purement indicatif) :
+
+
+	ticket = Ticket.new(name: 'jouer-ticket', action: '/user/1', duree: 4)
+	# Ce ticket aura une durée de vie de 4 jours et rejoindra l'adresse /user/1
+	# quand il sera invoqué
+	@ticket = Phil.tickets.create(ticket.hash_to_create)
+	# Noter que `@ticket` est une instance distincte de `ticket`
+
+
+Dans le mail (vue) qui contient le lien pour jouer le ticket, on met :
+
+
+	= @ticket.link('Jouer le ticket')
+
+	ou
+	= link_to 'Jouer le ticket', @ticket.url
+	ou
+	= link_to 'Jouer le ticket', ticket_run_url(ticket.id, token: ticket.token)
+
+
+Lorsqu'on joue le ticket (i.e. lorsqu'on clique sur le lien), la méthode TicketController#run est appelée. Si un paramètre uid a été ajouté à l'url du ticket (c'est le cas lorsqu'on utilise ticket#link pour créer le lien), la méthode commence par vérifier qu'il s'agit bien de l'user possesseur du ticket ou d'un administrateur. Dans le cas contraire, une exception est levée.
+
+Ensuite, dans la méthode appelée (celle définie par `action`, if any), on peut faire un nouveau contrôle pour savoir si c'est le bon user, en utilisant ce code :
+
+
+Détail des procédures
+
+Pour créer un ticket à quelqu'un :
 
 	ticket = Ticket.new(
 		name: '&lt;nom générique&gt;', 
@@ -189,7 +219,7 @@ Quand il s'agit d'une route, il est toujours ajoutée à cette route le paramèt
 
 On peut passer des variables dans l'action ou la route, avec :
 
-	 %{&lt;nom variable&gt;} 
+	 %{&lt;nom variable ci-dessous&gt;} 
 
 Les noms de variable possible sont :
 
@@ -201,7 +231,15 @@ Par exemple :
 
 	action: '/icmodule/%{digest}/edit'
 
+Note : je ne sais plus à quoi peut servir la suite ci-dessous.
+
 Avant l'exécution du code (en fait, dans la méthode), on met le digest du ticket dans la variable session :ticket_digest
+
+
+	session['ticket_digest'] = &lt;ledigestduticket&gt;
+
+
+Donc on peut l'obtenir par : 
 
 
 	tdigest = session['ticket_digest']
@@ -226,6 +264,7 @@ Ensuite, il suffit donc de faire :
 	•	Détruire les documents icariens transmis lorsqu'ils ont été déposés sur le quai des docs. Vérifier régulièrement le dossier storage pour que des documents ne restent pas dedans trop longtemps
 	•	Voir comment implémenter les outils administration (un seul contrôleur et des méthodes, ou autant de contrôleurs administration — UserAdm — que d'objets (UserAdministration, IcModuleAdmin, PaiementAdmin, etc.)
 	•	Depuis le bureau de l'icarien, section Documents, il doit pouvoir re-télécharger tous ses commentaires.
+	•	Le non-partage d'un document envoie automatiquement un mail expliquant l'intérêt du partage (repris intégralement de l'aide)
 </Text>
         </Document>
         <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
@@ -284,10 +323,6 @@ Taper Ctrl-D pour poursuivre le lancement. </Text>
 
 Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
         </Document>
-        <Document ID="CA019198-A84E-4043-B084-6CFC4864D121">
-            <Title>Pauses</Title>
-            <Text>Les pauses des modules d'icarien.</Text>
-        </Document>
         <Document ID="32863252-9761-489B-8798-6F39756A8C19">
             <Title>Aide</Title>
             <Text>Les fichiers d'aide doivent se définir dans le dossier :
@@ -309,6 +344,10 @@ Par exemple :
 
 
 Ce lien affiche le contenu du fichier `./app/views/aide/files/partage.html.md`</Text>
+        </Document>
+        <Document ID="CA019198-A84E-4043-B084-6CFC4864D121">
+            <Title>Pauses</Title>
+            <Text>Les pauses des modules d'icarien.</Text>
         </Document>
         <Document ID="380EB6BA-F860-4D28-B1D5-3AD51CADFF0F">
             <Title>Modèle avec documents</Title>
@@ -611,6 +650,7 @@ C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
 
 	redirect_back(fallback_location: root_path)
 
+
 </Text>
         </Document>
         <Document ID="25446996-C221-49FD-906A-E06392B051C2">
@@ -812,18 +852,6 @@ end
         <Document ID="38C3C0F0-E0FF-4F12-B0D2-D52661303255">
             <Title>ActionWatchers</Title>
         </Document>
-        <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
-            <Title>MAILS</Title>
-            <Text>Récupérer le dernier mail en intégration :
-
-	mail = ActionMailer::Base.deliveries.last  
-
-Pour retrouver un texte dans le corps, par exemple une URL :
-
-	url = mail.body.encoded.match(/"[^"]+"&gt;Modifi/)[1] 
-
-</Text>
-        </Document>
         <Document ID="A7BE32C8-0E83-4931-9269-DB974BA7BEAA">
             <Title>Utilisation hors contrôleurs/views</Title>
             <Text>Ajouter le code suivant dans la classe où doivent être utilisées les méthodes d'helper :
@@ -833,6 +861,18 @@ Pour retrouver un texte dans le corps, par exemple une URL :
 		ActionController::Base.helpers
 	end
 
+
+</Text>
+        </Document>
+        <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
+            <Title>MAILS</Title>
+            <Text>Récupérer le dernier mail en intégration :
+
+	mail = ActionMailer::Base.deliveries.last  
+
+Pour retrouver un texte dans le corps, par exemple une URL :
+
+	url = mail.body.encoded.match(/"[^"]+"&gt;Modifi/)[1] 
 
 </Text>
         </Document>
@@ -892,7 +932,7 @@ Définition du partage (obsolète, cf. le 2ème bit)
 5
 6
 Fin du cycle de vie
-0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD)
+0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD et partage)
 6
 7
 
@@ -907,6 +947,24 @@ https://github.com/rubocop-hq/rails-style-guide</Text>
         </Document>
         <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
             <Title>Production (heroku)</Title>
+        </Document>
+        <Document ID="9090D9B6-DEAF-4775-9196-C6E1B0BEA251">
+            <Title>Désignation</Title>
+            <Text>La méthode `designation_for(&lt;objet&gt;[, &lt;options&gt;])` permet d'obtenir une désignation humaine de l'objet `&lt;objet&gt;` avec les options `&lt;options&gt;`.
+
+Exemple :
+
+
+	= designation_for(icdocument, name: true, with_ids: true)
+
+Options
+
+	with_ids: true			Ajoute les ids (administration)
+	with_user: true		On ajoute le nom de l'icarien.
+	name: true				Utilise le nom (document, étape, module) plutôt que
+								l'identifiant.
+
+	full: true		Toutes les options sont activées, sauf celles précédées de "*"</Text>
         </Document>
         <Document ID="3C7DE251-2F53-4E77-A75A-CBF210890BCC">
             <Title>State</Title>
@@ -1054,79 +1112,6 @@ On peut aussi utiliser la méthode qui semble ne pas passer par la validation, l
 
 </Text>
         </Document>
-        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
-            <Title>Introduction</Title>
-            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
-        </Document>
-        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
-            <Title>Reset</Title>
-            <Text>Pour resetter la base :
-
-	$ rails db:reset
-
-Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
-        </Document>
-        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
-            <Title>Mails</Title>
-            <Text>Pour générer un nouveau "mailer"
-
-
-	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
-						                  &lt;methode-mail&gt; ... 
-
-</Text>
-        </Document>
-        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
-            <Title>Statut</Title>
-        </Document>
-        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
-            <Title>Possessions</Title>
-            <Text>Un user peut posséder :
-	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
-	•	un ou plusieurs icmodules (modules icariens), actifs ou non
-	•	des messages frigo
-	•	des icetapes (étapes de modules icariens)
-	•	des icdocuments (document de travail propres aux modules)
-	•	des tickets
-	•	des watchers (opération atelier)
-	•	des actualités
-	•	des témoignages
-	•	des questions mini-faq
-</Text>
-        </Document>
-        <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
-            <Title>Options</Title>
-            <Text>Propriété : options
-C'est un mot de 16 chiffres où chaque chiffre représente une option.
-
-
- Bit
-Valeurs possibles
-0
-1
-0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit
-1
-2
-Confirmation du mail (1 = confirmé, 0 = non confirmé)
-2
-3
-Redirection après l'identification
-cf. la méthode `redirection_after_login` du fichier sessions_helper
-3
-4
-
-4
-5
-
-5
-6
-
-6
-7
-
-
-</Text>
-        </Document>
         <Document ID="3C6FEBA9-2B84-4761-B57B-757DC67AC3F0">
             <Title>Dates et temps</Title>
             <Text>Pour formater humainement les dates, utiliser la méthode I18n.localize
@@ -1174,6 +1159,79 @@ Pour le détail, voir https://github.com/rails/rails/blob/4cbb9db0a5ff65b0a626a5
 
 </Text>
         </Document>
+        <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
+            <Title>Introduction</Title>
+            <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        </Document>
+        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
+            <Title>Reset</Title>
+            <Text>Pour resetter la base :
+
+	$ rails db:reset
+
+Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
+        </Document>
+        <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
+            <Title>Mails</Title>
+            <Text>Pour générer un nouveau "mailer"
+
+
+	$ rails generate mailer &lt;NomMailer&gt; &lt;methode-mail&gt; \
+						                  &lt;methode-mail&gt; ... 
+
+</Text>
+        </Document>
+        <Document ID="0C9EBC50-9996-44DA-A829-4ECE28824855">
+            <Title>Possessions</Title>
+            <Text>Un user peut posséder :
+	•	un seul profil (question : faut-il détacher le profil de l'enregistrement simple ?)
+	•	un ou plusieurs icmodules (modules icariens), actifs ou non
+	•	des messages frigo
+	•	des icetapes (étapes de modules icariens)
+	•	des icdocuments (document de travail propres aux modules)
+	•	des tickets
+	•	des watchers (opération atelier)
+	•	des actualités
+	•	des témoignages
+	•	des questions mini-faq
+</Text>
+        </Document>
+        <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
+            <Title>Statut</Title>
+        </Document>
+        <Document ID="396A70B0-F39F-463A-999B-8B4DFB627037">
+            <Title>Options</Title>
+            <Text>Propriété : options
+C'est un mot de 16 chiffres où chaque chiffre représente une option.
+
+
+ Bit
+Valeurs possibles
+0
+1
+0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit
+1
+2
+Confirmation du mail (1 = confirmé, 0 = non confirmé)
+2
+3
+Redirection après l'identification
+cf. la méthode `redirection_after_login` du fichier sessions_helper
+3
+4
+
+4
+5
+
+5
+6
+
+6
+7
+
+
+</Text>
+        </Document>
         <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
             <Title>Générer sans fiche test</Title>
             <Text>Pour générer un contrôleur sans feuille de test, on ajoute l'option --no-test-framework.
@@ -1181,25 +1239,6 @@ Par exemple :
 
 
 	$ rails g controller Controls edit new --no-test-framework  
-
-</Text>
-        </Document>
-        <Document ID="09A74A46-A528-4ED0-86B4-74839BC45AF9">
-            <Title>Ajouter un message d'erreur</Title>
-            <Text>On peut ajouter un message d'erreur particulier à un retour de formulaire en utilisant :
-
-
-	&lt;instance&gt;.errors.add(:&lt;property&gt;, "&lt;message&gt;")	
-
-	
-Par exemple, dans un contrôleur :
-
-
-	if password.blank?
-		@user.errors.add(:password, 'ne doit pas être vide')
-	else
-		# =&gt; OK
-	end
 
 </Text>
         </Document>
@@ -1246,6 +1285,25 @@ PAR REDIRECTION
 
 Pour une redirection, imaginons qu'on est un document `mon.zip` dans le dossier ./public de l'application. Il suffit alors de faire `redirect_to '/mon.zip'` dans un contrôleur pour télécharger le document en restant sur la même page ensuite.
 
+
+</Text>
+        </Document>
+        <Document ID="09A74A46-A528-4ED0-86B4-74839BC45AF9">
+            <Title>Ajouter un message d'erreur</Title>
+            <Text>On peut ajouter un message d'erreur particulier à un retour de formulaire en utilisant :
+
+
+	&lt;instance&gt;.errors.add(:&lt;property&gt;, "&lt;message&gt;")	
+
+	
+Par exemple, dans un contrôleur :
+
+
+	if password.blank?
+		@user.errors.add(:password, 'ne doit pas être vide')
+	else
+		# =&gt; OK
+	end
 
 </Text>
         </Document>
@@ -1306,7 +1364,7 @@ h[:inexistant]
         </Document>
         <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
             <Title>Statut</Title>
-            <Text>Propriété privileges
+            <Text>Propriété :statut
 
 0	Simple inscrit
 1	Simple icarien
@@ -1854,6 +1912,11 @@ Dans `&lt;options&gt;` on peut définir `:format`. Valeurs principales : `:simpl
             <Title>Object.create / .save</Title>
             <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
         </Document>
+        <Document ID="0811B557-4572-49A6-8419-67912A32F57B">
+            <Title>Générateurs (rails generate)</Title>
+            <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
+</Text>
+        </Document>
         <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
             <Title>ActionWatchers</Title>
             <Text>Watchers
@@ -1878,11 +1941,6 @@ L'ActionWatcher appartient toujours à un user. L'autre personne concernée est 
         </Document>
         <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
             <Title>MAILS</Title>
-        </Document>
-        <Document ID="0811B557-4572-49A6-8419-67912A32F57B">
-            <Title>Générateurs (rails generate)</Title>
-            <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
-</Text>
         </Document>
     </Documents>
 </SearchIndexes>

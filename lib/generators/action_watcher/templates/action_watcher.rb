@@ -18,4 +18,18 @@ class ActionWatcher < ApplicationRecord
   def sous_methode_utile
 
   end
+
+  # = Observateur =
+  # Cette méthode doit être implémentée si on veut "surveiller" quelque chose
+  # qui déterminera l'affichage ou non de la notification.
+  # C'est la méthode utilisée, par exemple, pour voir si le partage des documents
+  # a été défini. Si c'est le cas, l'action-watcher est détruit, si ce n'est pas
+  # le cas, une notification indique à l'user qu'il faut définir le partage de
+  # ses documents.
+  # Doit retourner TRUE si on doit supprimer l'action-water et ne pas afficher
+  # la notification.
+  # def watcher
+  #   return false # false => garder le watcher + afficher la notification
+  # end
+
 end

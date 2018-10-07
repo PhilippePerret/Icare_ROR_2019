@@ -1,0 +1,26 @@
+<%
+#
+# Mail envoyé à l'ADMIN À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Définition de partage de document"
+
+icdocument  = self.objet
+icetape     = icdocument.ic_etape
+icmodule    = icetape.ic_module
+
+%>
+<p>Phil, je t'informe que <%= user.name %> vient de définir le partage de son document.</p>
+<pre>
+Désignation :
+-----------
+Auteur   : <%= designation_for(user, with_ids: true) %>
+Module   : <%= icmodule.abs_module.name %> (#<%= icmodule.id %>)
+Étape    : <%= icetape.abs_etape.numero %> <%= icetape.abs_etape.titre %> (#<%= icetape.id %>)
+Document : <%= icdocument.original_name %> (#<%= icdocument.id %>)
+Partage
+-------
+    original     : <%= icdocument.shared?(:original) ? 'partagé' : 'non partagé' %>
+    Commentaires : <%= icdocument.shared?(:comments) ? 'partagé' : 'non partagé' %>
+</pre>

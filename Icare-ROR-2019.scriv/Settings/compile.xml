@@ -2,7 +2,9 @@
 <CompileSettings>
     <ProjectSettings>
         <Content Scope="Included">
+            <CompileGroup Type="Selection"></CompileGroup>
             <Filter State="Off" Exclude="No" Type="Label">
+                <CollectionID>2A6327B8-7BC0-4A82-9D94-20E20E4D1B01</CollectionID>
                 <Label>-1</Label>
                 <Status>-1</Status>
             </Filter>
@@ -48,7 +50,7 @@
             </MMDMetaData>
         </MetaData>
     </ProjectSettings>
-    <CurrentFileType>Print</CurrentFileType>
+    <CurrentFileType>pdf</CurrentFileType>
     <FormatSettings>
         <Format ID="DEFAULT">
             <SectionLayouts>
@@ -57,5 +59,8 @@
             </SectionLayouts>
         </Format>
     </FormatSettings>
-    <LastUsedFormats></LastUsedFormats>
+    <LastUsedFormats>
+        <Print>DEFAULT</Print>
+        <pdf>DEFAULT</pdf>
+    </LastUsedFormats>
 </CompileSettings>

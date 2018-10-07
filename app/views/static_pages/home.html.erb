@@ -1,3 +1,5 @@
+<div class="container">
+
 <p>Bienvenue sur l’accueil de l’atelier d’écriture Icare.</p>
 
 <%= link_to 'Les Icarien(ne)s', users_path, class: 'btn btn-secondary' %>
@@ -15,11 +17,12 @@ TODO Ajouter les actualités (dernières activités)
 <%= link_to 'Attribuer un module', new_ic_module_path %>
 
 <%
-# On essaie de créer un ticket
 
-ti = Ticket.new(name:'essai-ticket', action:'/users/1')
-ticket = User.find(1).tickets.create(ti.hash_to_create)
 %>
 <p>
-  <%= ticket.link %>
+<%= link_to 'POUR VOIR', '/ic_etapes/1/share?did=1&osh=0&csh=1' %>
 </p>
+
+
+</div>
+<%# /container %>

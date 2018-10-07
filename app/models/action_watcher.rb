@@ -18,7 +18,7 @@ class ActionWatcher < ApplicationRecord
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
   attr_accessor :at, :in, :action
-  attr_writer :path, :name, :objet
+  attr_writer   :path, :name, :objet
 
   # Méthode définissant la classe du LI principal contenant la notification
   # cette méthode sera surclassée par la méthode définie dans l'action_watcher.rb
@@ -267,7 +267,7 @@ class ActionWatcher < ApplicationRecord
     #   * :path pour action_watcher_path
     def amenage_data
 
-      # Model et ID du model transmis par :objet
+      # Model et ID du model transmis par la propriété :objet
       if objet
         self.model    = objet.class.to_s
         self.model_id = objet.id
@@ -320,6 +320,8 @@ class ActionWatcher < ApplicationRecord
 
     # Renvoie true si le watcher est trop vieux.
     # Inutilisé pour le moment.
+    # TODO Programmer cette méthode pour envoyer un avertissement à l'icarien
+    # et/ou à l'administration
     def out_of_date?
 
     end

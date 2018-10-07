@@ -13,29 +13,8 @@ class IcDocument < ApplicationRecord
     @user ||= ic_module.user
   end
 
-  # Retourne true si l'ic-document a un commentaire
-  def comments?
-    self.comments.attached? || option(:comments, 0) == 1
-  end
-  alias :commented? :comments?
-
-  # Retourne true si au moins le document original a été déposé sur le
-  # Quai des docs
-  def on_qdd?
-    option(:original, 3) == 1
-  end
-
-  # Indiquent que le document original et/ou commentaires existe
-  def set_original_exists
-    set_option(:original, 0, 1)
-  end
-  def set_comments_exists
-    set_option(:comments, 0, 1, dont_save = true)
-    update_columns(
-      comments_options: self.comments_options,
-      commented_at:     Time.now
-    )
-  end
+  # ---------------------------------------------------------------------
+  #   Méthodes d'action sur les fichiers
 
   # Enregistre le fichier commentaire dans un fichier temporaire
   def save_comments_in_tmpfile
@@ -49,18 +28,81 @@ class IcDocument < ApplicationRecord
     return original_tmppath
   end
 
+  # ---------------------------------------------------------------------
+  #   Méthodes d'état
 
-  def original_qdd_path
-    @original_qdd_path ||= Rails.root.join('public','qdd',original_qdd_name)
+  # Retourne true si l'ic-document a un commentaire
+  def comments?
+    self.comments.attached? || option(:comments, 0) == 1
   end
-  def original_qdd_name
-    @original_qdd_name ||= "#{affixe_qdd}.pdf"
+  alias :commented? :comments?
+
+  # Retourne true si le document +which+ existe et est partagé
+  def shared?(which)
+    option(which, 1) == 1
   end
-  def comments_qdd_path
-    @comments_qdd_path ||= Rails.root.join('public','qdd',comments_qdd_name)
+
+  # Retourne true si au moins le document original a été déposé sur le
+  # Quai des docs
+  def on_qdd?
+    option(:original, 3) == 1
   end
-  def comments_qdd_name
-    @comments_qdd_name ||= "#{affixe_qdd}_comsPhil.pdf"
+
+  # ---------------------------------------------------------------------
+  # Méthode d'options
+
+  def set_option which, bit, value, dont_save = false
+    opts = options(which)
+    opts[bit] = value.to_s
+    self.send("#{koptions(which)}=".to_sym, opts)
+    update_attribute(koptions(which), opts) unless dont_save
+  end
+  def save_options
+    update_attributes(
+      comments_options: self.comments_options,
+      original_options: self.original_options
+    )
+  end
+  # Retourne l'option du document +which+ (original ou comments) pour le bit
+  # +bit+ (0-start)
+  def option(which, bit)
+    options(which)[bit].to_i
+  end
+
+  # Indiquent que le document original et/ou commentaires existe
+  def set_original_exists
+    set_option(:original, 0, 1)
+  end
+  def set_comments_exists
+    set_option(:comments, 0, 1, dont_save = true)
+    update_attributes(
+      comments_options: self.comments_options,
+      commented_at:     Time.now
+    )
+  end
+
+  # Méthode appelée quand on partage tous les documents
+  def share_all
+    share(:original, dont_save = true)
+    share(:comments, dont_save = true) if commented?
+    save_options
+  end
+  def share which, dont_save = false
+    set_option(which, 1, 1, dont_save)
+  end
+  def dont_share(which, dont_save = false)
+    set_option(which, 1, 2, dont_save)
+  end
+
+  # ---------------------------------------------------------------------
+  #   Méthodes de path
+
+  def qdd_path(which)
+    @qdd_paths ||= Hash.new
+    @qdd_paths[which] ||= Rails.root.join('public','qdd',qdd_name(which))
+  end
+  def qdd_name(which)
+    "#{affixe_qdd}#{which == :comments ? '_comsPhil' : ''}.pdf"
   end
   # Affiche des documents pour le quai des documents
   def affixe_qdd
@@ -88,17 +130,6 @@ class IcDocument < ApplicationRecord
     @original_affixe ||= File.basename(original_name, File.extname(original_name))
   end
 
-  def set_option which, bit, value, dont_save = false
-    opts = options(which)
-    opts[bit] = value.to_s
-    self.send("#{koptions(which)}=".to_sym, opts)
-    update_attribute(koptions(which), opts) unless dont_save
-  end
-  # Retourne l'option du document +which+ (original ou comments) pour le bit
-  # +bit+ (0-start)
-  def option(which, bit)
-    options(which)[bit].to_i
-  end
   def options(which)
     opts = send(koptions(which)) || '0'*8
   end

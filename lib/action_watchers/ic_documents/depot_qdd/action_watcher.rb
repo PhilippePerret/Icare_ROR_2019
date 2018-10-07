@@ -46,7 +46,7 @@ class ActionWatcher < ApplicationRecord
     # détruits si le lien-ticket du mail est utilisé)
     ticket = Ticket.new(
       name:     'partage_documents',
-      action:   'IcEtape.find(%{etp_id}).partage_all_documents' % {etp_id: icetape.id}
+      action:   '/ic_etapes/%{id}/document_sharing?shared=all' % {id: icetape.id},
       duree:    30.days
     )
     token = ticket.token
@@ -56,9 +56,9 @@ class ActionWatcher < ApplicationRecord
 
 
   def check_si_documents_existent_sur_qdd
-    File.exist?(icdocument.original_qdd_path) || raise(I18n.t('documents.qdd.errors.original.unfound', {path: icdocument.original_qdd_path}))
+    File.exist?(icdocument.qdd_path(:original)) || raise(I18n.t('documents.qdd.errors.original.unfound', {path: icdocument.qdd_path(:original)}))
     if icdocument.commented?
-      File.exist?(icdocument.comments_qdd_path) || raise(I18n.t('documents.qdd.errors.comments.unfound', {path: icdocument.original_qdd_path}))
+      File.exist?(icdocument.qdd_path(:comments)) || raise(I18n.t('documents.qdd.errors.comments.unfound', {path: icdocument.qdd_path(:comments)}))
     end
   end
   # /check_si_documents_existent_sur_qdd
@@ -79,11 +79,11 @@ class ActionWatcher < ApplicationRecord
 
   def depose_documents_sur_qdd(original_pdf)
     `mkdir -p "#{Rails.root.join('public','qdd')}"`
-    File.open(icdocument.original_qdd_path,'wb') do |f|
+    File.open(icdocument.qdd_path(:original),'wb') do |f|
       f.write(original_pdf.read)
     end
     if icdocument.comments?
-      File.open(icdocument.comments_qdd_path,'wb') do |f|
+      File.open(icdocument.qdd_path(:comments),'wb') do |f|
         f.write(icdocument.comments.download)
       end
     end

@@ -26,7 +26,12 @@ module ApplicationHelper
       case obj
       when IcEtape    then "étape #{obj.abs_etape.numero}"
       when User       then obj.name
-      when IcDocument then 'document #%{docid}' % {docid: obj.id}
+      when IcDocument then
+        if options[:name] || options[:full]
+          'document “%{name}”' % {name: obj.original_name}
+        else
+          'document #%{docid}' % {docid: obj.id}
+        end
       else obj.class
       end
     # La désignation simple
@@ -41,7 +46,7 @@ module ApplicationHelper
         idmodule = options[:with_ids] || options[:full] ? " (##{obj.ic_module.id})" : ''
         " du module “#{obj.ic_module.abs_module.name}”#{idmodule}"
       when IcDocument
-        ' pour l’%{etape}' % {etape: designation_for(obj.ic_etape, options)}
+        ' de l’%{etape}' % {etape: designation_for(obj.ic_etape, options)}
       else ''
       end
     if options[:capitalize] || options[:cap]

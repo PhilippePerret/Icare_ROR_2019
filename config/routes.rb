@@ -47,8 +47,9 @@ Rails.application.routes.draw do
   # === DOCUMENTS ===
   resources :ic_documents
   get 'ic_documents/download'
-  # get 'ic_documents/show'
-  # get 'ic_documents/edit'
+
+  get 'ic_etapes/:id/share' => 'ic_etapes#document_sharing'
+
 
   # === TICKETS ===
   # resources :tickets

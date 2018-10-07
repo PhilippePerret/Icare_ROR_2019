@@ -136,7 +136,7 @@
 </li>
 <li>
 <p class="itemTitle">Statut</p>
-<p class="itemText">Propriété privileges</p>
+<p class="itemText">Propriété :statut</p>
 <p class="itemText"></p>
 <p class="itemText">0 Simple inscrit</p>
 <p class="itemText">1 Simple icarien</p>
@@ -621,6 +621,24 @@
 <p class="itemText">(note : le `--without production' n'est utile qu'une fois)</p>
 <p class="itemText"></p>
 <p class="itemText">Puis exécuter les opérations de dépôt ci-dessus.</p>
+</li>
+<li>
+<p class="topLevelItemTitle">Désignation</p>
+<p class="itemText">La méthode `designation_for(<objet>[, <options>])` permet d'obtenir une désignation humaine de l'objet `<objet>` avec les options `<options>`.</p>
+<p class="itemText"></p>
+<p class="itemText">Exemple :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> = designation_for(icdocument, name: true, with_ids: true)</p>
+<p class="itemText"></p>
+<p class="itemText">Options</p>
+<p class="itemText"></p>
+<p class="itemText"> with_ids: true   Ajoute les ids (administration)</p>
+<p class="itemText"> with_user: true  On ajoute le nom de l'icarien.</p>
+<p class="itemText"> name: true    Utilise le nom (document, étape, module) plutôt que</p>
+<p class="itemText">        l'identifiant.</p>
+<p class="itemText"></p>
+<p class="itemText"> full: true  Toutes les options sont activées, sauf celles précédées de "*"</p>
 </li>
 <li>
 <p class="topLevelItemTitle">Tickets</p>

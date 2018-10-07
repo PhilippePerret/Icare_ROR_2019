@@ -1,0 +1,19 @@
+-# Notification pour le bureau de l'user/icarien
+-#
+- aw = action_watcher
+- icdocument = aw.objet
+- kdoc = "icdoc[#{icdocument.id}]"
+%h4
+  Partage du
+  = designation_for(icdocument, name: true)
+= form_for(icdocument, url: aw.form_url, method: :post) do |f|
+  = f.hidden_field(:id)
+  .row.container-fluid
+    .col-lg-6
+      = check_box(kdoc, :osh, value: '1', checked: true)
+      = label(kdoc, :osh, 'Partager l’original')
+    .col-lg-6
+      = check_box(kdoc, :csh, value: '1', checked: true)
+      = label(kdoc, :csh, 'Partager le commentaire')
+  .right.vair
+    = f.submit('Définir le partage', class: 'btn btn-primary')

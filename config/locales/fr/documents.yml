@@ -1,5 +1,16 @@
 fr:
   documents:
+    errors:
+      owner_required:       'Vous n’êtes pas propriétaire de ce document !'
+      sharing:
+        already_defined:    'Le partage de ce document est déjà défini !'
+    sharing:
+      defined:            'Le partage du document “%{name}” a été défini.'
+      thanks_for_all:     'Merci à vous d’avoir partagé vos deux documents ! 😉 Toujours ravi de voir des auteurs jouer pleinement le jeu de l’atelier !'
+      only_original:      'Merci de partager votre original, mais c’est dommage de ne pas faire profiter aux autres des commentaires de Phil…'
+      only_comments:      'Merci de partager les commentaires reçus. Mais vous savez, parfois, le lecteur aime bien se faire une idée en lisant d’abord l’original 😉.'
+      regret_none:        'Mais il est dommage de ne pas jouer le jeu de l’atelier et de ne pas en avoir partagé un seul…'
+      read_charte:        'Je vous invite, si vous le voulez, à (re)lire la <a href="aide/partage" target="_new">Charte de partage</a> de l’atelier à ce propos.'
     original:
       upload:
         success: 'Document “%{name}” téléchargé avec succès (note attribuée : %{note}).'
