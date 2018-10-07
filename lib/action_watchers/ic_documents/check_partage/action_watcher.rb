@@ -5,9 +5,6 @@ class ActionWatcher < ApplicationRecord
   #
   def execute
 
-    ## On peut décommenter les lignes suivantes pendant la conception de
-    ## l'action-watcher pour ne pas avoir à en recréer tout le temps.
-    ##
     # dont_destroy    # Pour ne pas détruire le watcher, pendant conception
     # dont_send_mails # pour ne pas envoyer les mails, idem
 
@@ -22,7 +19,7 @@ class ActionWatcher < ApplicationRecord
 
     # Le document doit appartenir au user courant
     icdocument.user == current_user || raise(I18n.t('documents.errors.owner_required'))
-    # TODO Le document doit avoir un partage non défini (attention : cela
+    # Le document doit avoir un partage non défini (ATTENTION : cela
     # signifie qu'on ne pourra pas utiliser cette action-watcher pour redéfinir
     # le partage du document)
     (icdocument.option(:original,1) == 0 && icdocument.option(:comments,1) == 0) || begin

@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-07 06:45:50 +0300" ModID="AD9CC236-C3AF-42EF-93DD-39AB668C4F1D">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-07 07:10:55 +0300" ModID="CB35911A-4CBD-4A22-A9EE-68336F699366">
     <Binder>
-        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-07 06:45:48 +0300">
+        <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-07 07:07:50 +0300">
             <Title>TODO</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>1106,0</TextSelection>
+                <TextSelection>1125,0</TextSelection>
             </TextSettings>
+            <Children>
+                <BinderItem UUID="DE69DD5C-BF52-4BE9-8D6E-71C7F5B139E7" Type="Text" Created="2018-10-07 07:04:55 +0300" Modified="2018-10-07 07:10:53 +0300">
+                    <Title>Fonctionnalites</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>128,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
         </BinderItem>
         <BinderItem UUID="9F311ED5-158F-4B88-B8ED-A48771C7F74A" Type="DraftFolder" Created="2018-09-20 07:24:29 +0300" Modified="2018-09-20 07:24:42 +0300">
             <Title>Manuel</Title>
@@ -1232,8 +1243,8 @@
     <RecentWritingHistory Date="2018-10-07 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>8</OtherWordCount>
-        <OtherCharCount>38</OtherCharCount>
+        <OtherWordCount>78</OtherWordCount>
+        <OtherCharCount>488</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
