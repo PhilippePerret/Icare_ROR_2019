@@ -29,7 +29,7 @@
   # TODO L'administrateur pourra aussi détruire l'user
   # TODO L'administrateur pourra visiter avec ce profil.
   %>
-  <% if current_user? && (current_user.id == @user.id || current_user.admin?) %>
+  <% if current_user.id == @user.id || current_user.admin? %>
     <%= link_to 'modifier', edit_user_path(@user) %>
   <% end %>
 </div>

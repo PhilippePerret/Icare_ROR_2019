@@ -8,3 +8,6 @@
     = mini_faq.question.to_s.html_safe
   .reponse.col-md-offset-1.col-md-8
     = mini_faq.reponse.to_s.html_safe
+  - if current_user.admin?
+    .vair.right
+      = link_to '[Éditer]', edit_mini_faq_path(mini_faq)

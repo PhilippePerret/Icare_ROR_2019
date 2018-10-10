@@ -28,12 +28,14 @@ module SessionsHelper
         log_in utested
         utested
       end
+    else
+      UserNone.new # user fictif, pour ne pas avoir à faire current_user?
     end
   end
 
   # Retourne true s'il y a un user courant
-  def current_user?
-    !!current_user
+  def real_user?
+    current_user.is_a?(User) # sinon, c'est un UserNone
   end
 
   def log_in(user)

@@ -9,7 +9,7 @@
         <li><%= link_to 'À propos', about_path, class: 'nav-item' %></li>
         <li><%= link_to 'Aide', help_path, class: 'nav-item' %></li>
         <li><%= link_to 'Contact', contact_path, class: 'nav-item' %></li>
-        <% if current_user? %>
+        <% if real_user? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= raw user_pseudo(current_user, avatar: true, size: :small) %><b class="caret"></b>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="col-md-4 right">
-      <% unless current_user? || signup_route? %>
+      <% unless real_user? || signup_route? %>
         <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
       <% end %>
     </div>

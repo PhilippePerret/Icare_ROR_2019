@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
 
   # Détruire la session courante (logout)
   def destroy
-    if current_user?
+    if real_user?
       u = current_user
       log_out
       flash[:success] = I18n.t('users.success.goodbye', name: u.name)

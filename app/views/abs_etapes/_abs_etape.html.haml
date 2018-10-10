@@ -9,13 +9,22 @@
 -#
 -# Le partiel peut être utilisé soit simplement pour voir l'étape absolue,
 -# soit pour afficher le travail d'un ic-etape
-- ic_etape ||= nil
-- etape_bindee = ic_etape && ic_etape.bind
+-# Que faut-il faire lorsqu'aucune IcEtape n'est définie, comme c'est le cas
+-# par exemple lorsque c'est l'administrateur qui visualise l'étape. On a la
+-# possibilité de récupérer une étape existante, mais quid s'il n'y en a pas.
+-# Il est pourtant impératif d'en trouver une, dans le cas contraire, les textes
+-# qui ont besoin de connaitre l'user (tous… pour l'encouragement final) ne
+-# pourront pas connaitre l'user
+-# Une possibilité relativement simple : créer une class NoneIcEtape qui
+-# répondrait aux méthode utiles
+- ic_etape ||= IcEtapeNone.new
+- etape_bindee = ic_etape.bind
 -# Si le format d'affichage n'est pas défini, on met le format complet
 - format ||= :complet
 .container-fluid
-  %h3
+  %h3.col-md-7
     = abs_etape.numero
+    –
     = abs_etape.titre
 
   -# OBJECTIF
@@ -41,7 +50,13 @@
   -# de ses modules, alors on regarde s'il a du travail propre pour cette
   -# étape et on l'affiche le cas échéant.
   - if travail_propre_for_etape(current_user, abs_etape, ic_etape)
-    = travail_propre_for_etape(current_user, abs_etape, ic_etape)
+    - if format == :complet
+      .col-md-8.justify
+        %label Travail propre
+        .col-md-offset-1
+          = travail_propre_for_etape(current_user, abs_etape, ic_etape).html_safe
+    - else
+      = link_to 'voir', abs_etape_path(abs_etape)
 
   -# LA MÉTHODE
   -# ----------

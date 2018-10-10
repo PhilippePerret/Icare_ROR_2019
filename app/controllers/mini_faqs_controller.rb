@@ -38,7 +38,14 @@ class MiniFaqsController < ApplicationController
   end
 
   # Enregistrement de la modification de la question minifaq
+  # Noter que si le texte est vide, on doit détruire la question
+  # Cette méthode peut être appelée soit depuis une notification (admin) soit
+  # depuis l'affichage d'une étape de travail absolue lorsque c'est l'admin
+  # qui visualise (en fait, depuis l'étape de travail, c'est un lien pour
+  # éditer la minifaq)
   def update
+    @minifaq = MiniFaq.find(params[:id])
+
   end
 
   private

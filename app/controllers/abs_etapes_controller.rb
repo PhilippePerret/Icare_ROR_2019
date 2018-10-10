@@ -3,5 +3,6 @@ class AbsEtapesController < ApplicationController
   end
 
   def show
+    @absetape = AbsEtape.find(params[:id])
   end
 end
