@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :action_watchers
   has_many :tickets
+  has_many :mini_faqs # les questions mini-faq de chaque étape
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -37,7 +38,9 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
-
+  def pseudo
+    self.name
+  end
   def remember
     self.remember_token = SessionsHelper.new_token
     update_attribute(:remember_digest, SessionsHelper.digest(remember_token))

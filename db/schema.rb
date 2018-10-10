@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_072237) do
+ActiveRecord::Schema.define(version: 2018_10_09_060533) do
 
   create_table "abs_etapes", force: :cascade do |t|
     t.integer "numero", limit: 3
@@ -132,6 +132,29 @@ ActiveRecord::Schema.define(version: 2018_10_03_072237) do
     t.datetime "updated_at", null: false
     t.index ["abs_module_id"], name: "index_ic_modules_on_abs_module_id"
     t.index ["user_id"], name: "index_ic_modules_on_user_id"
+  end
+
+  create_table "mini_faqs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "abs_etape_id"
+    t.text "question"
+    t.text "reponse"
+    t.integer "state", limit: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["abs_etape_id"], name: "index_mini_faqs_on_abs_etape_id"
+    t.index ["user_id"], name: "index_mini_faqs_on_user_id"
+  end
+
+  create_table "paiements", force: :cascade do |t|
+    t.string "objet"
+    t.integer "montant", limit: 3
+    t.text "facture"
+    t.text "note"
+    t.integer "ic_module_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ic_module_id"], name: "index_paiements_on_ic_module_id"
   end
 
   create_table "tickets", force: :cascade do |t|

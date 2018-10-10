@@ -18,11 +18,19 @@
   -# se trouvera
   .row
     - if current_user.actif?
-      [DESCRIPTION DU TRAVAIL DES MODULES EN COURS]
+      - if current_user.current_modules.count > 1
+        -# Si l'icarien(en) a plusieurs modules, on propose la liste
+        -# et un lien pour se rendre au travail du module choisi
+        = liste_modules_courants_user(current_user)
+      - else
+        -# Si l'icarien(ne) a un seul module, on affiche son travail
+        -# ici.
+        = render current_user.current_modules.first.ic_etape
     - elsif current_user.en_pause?
       [BOUTON POUR REDÉMARRER SON MODULE]
     - elsif current_user.admin?
       = render 'admin_dashboard'
     - else
       .text-muted.center.py-3.italic
-        Description du travail de l’étape quand un module est en cours.
+        -# Simple annonce aux futus actifs
+        Lorsque vous aurez commencé un module, votre travail s’affichera ici.

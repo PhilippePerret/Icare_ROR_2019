@@ -1,0 +1,7 @@
+fr:
+  question:             'La question'
+  reponse:              'La réponse'
+  mini_faq:
+    question:
+      success:
+        sent_to_phil:   'La question a été transmise à Phil. Il devrait y répondre bientôt.'

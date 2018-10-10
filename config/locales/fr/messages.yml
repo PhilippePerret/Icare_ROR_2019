@@ -37,3 +37,15 @@ fr:
     errors:
       reset_not_allowed:          'Désolé, mais vous n’êtes pas en mesure de modifier ce mot de passe.'
       confirmation_doesnt_match:  '🤔 La confirmation ne correspond pas au mot de passe. Merci de reconfirmer.'
+
+  paiements:
+    errors:
+      cancelled:                  'Paiement annulé.'
+      not_paiement_author:        'vous n’êtes pas l’auteur de ce paiement…'
+      not_module_author:          'vous n’êtes pas l’auteur du module à payer…'
+      paiement_not_authentified:  'l’authentification du paiement est douteuse…'
+      tarif_doesnt_match:         'le montant payé ne correspond pas au prix du module…'
+      action_watcher:
+        bad_action:               'l’action du watcher ne correspond pas…'
+        bad_owner:                'vous n’êtes pas le propriétaire de l’action-watcher de ce paiement !'
+        bad_objet:                'le module de l’action-watcher ne correspond pas au module payé…'

@@ -11,4 +11,5 @@ module IcModulable
     self.ic_modules.where(state: 1)
   end
 
+
 end

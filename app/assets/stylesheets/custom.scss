@@ -61,20 +61,15 @@ header {
   display: inline-block!important;
   width: auto!important;
 }
-.italic {
-  font-style: italic !important;
-}
-.right {
-  text-align: right;
-}
+.italic {font-style: italic !important;}
+.bold{font-weight: bold !important;}
+// Alignements
+.right {text-align: right;}
 .fright {float: right}
 .fleft  {float: left}
-.center {
-  text-align: center;
-}
-.justify {
-  text-align: justify!important;
-}
+.center {text-align: center;}
+.justify {text-align: justify!important;}
+// Espacements
 .vair { /* pour "vertical air" */
   margin-top: 1rem;
   margin-bottom: 1rem;

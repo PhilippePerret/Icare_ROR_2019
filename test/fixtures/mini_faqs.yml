@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  abs_etape: one
+  question: MyText
+  reponse: MyText
+  state: 1
+
+two:
+  user: two
+  abs_etape: two
+  question: MyText
+  reponse: MyText
+  state: 1

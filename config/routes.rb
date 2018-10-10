@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   # === P A G E S   S T A T I Q U E S ===
 
-  get 'home'    => 'static_pages#home'
-  get 'help'    => 'static_pages#help'
-  get 'about'   => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
+  get 'home'      => 'static_pages#home'
+  get 'help'      => 'static_pages#help'
+  get 'about'     => 'static_pages#about'
+  get 'contact'   => 'static_pages#contact'
 
   # === ACTIONS-WATCHERS ===
 
@@ -62,10 +62,16 @@ Rails.application.routes.draw do
   # Concernant les modules d'apprentissage
   resources :abs_modules
   resources :abs_etapes
+  resources :mini_faqs
 
   # === AIDE ===
   resources :aide, only: [:show, :index]
   get 'aide/search'
+
+  # === PAIEMENT ===
+  get 'paiement' => 'paiement#proc'
+  get 'paiement/ok'
+  get 'paiement/cancel'
 
   # === Mot de passe réinitialisation ===
   resources :password_resets, only: [:new, :create, :edit, :update]

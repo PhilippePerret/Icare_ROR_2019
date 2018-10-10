@@ -1,7 +1,8 @@
 -# Notification pour le bureau de l'administrateur
 -#
 - aw = action_watcher
+- user = aw.user
 -# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
 -# information soit un formulaire permettant de jouer l'action-watcher.
 -# Voir le détail dans le fichier d'aide Scrivener
-= "Paiement de #{user.name} (##{user.id}) attendu pour le #{triggered_at + 4.days}. Montant : #{objet.montant} €."
+= "Paiement de #{user.name} (##{user.id}) attendu pour le #{human_date_for(aw.triggered_at + 4.days)}. Montant : #{aw.objet.abs_module.tarif} €."

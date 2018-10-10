@@ -1,7 +1,12 @@
 -# Notification pour le bureau de l'user/icarien
 -#
 - aw = action_watcher
--# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
--# information soit un formulaire permettant de jouer l'action-watcher.
--# Voir le détail dans le fichier d'aide Scrivener
-[ICI UN FORMULAIRE DE PAIEMENT]
+- absmodule = aw.objet.abs_module
+-# NOTE : contrairement aux watchers habituels, noter que celui-ci appelle
+-# un contrôleur (Paiement#proc), il ne joue pas le watcher
+%h3
+  = "Paiement du module “#{absmodule.name}” (%i €)" % absmodule.tarif
+= form_for('paiement', url: paiement_path, method: :get) do |f|
+  = hidden_field_tag('wid', aw.id)
+  .center.vair
+    = f.submit('Payer le module…', class: 'btn btn-primary btn-lg')

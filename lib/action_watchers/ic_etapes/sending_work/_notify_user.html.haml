@@ -2,6 +2,14 @@
 -#
 - aw = action_watcher
 - icetape = aw.objet
+-# TODO note : si l'icetape n'a pas de date de démarrage, la définir ici,
+-# ça signifie que l'user voit ce travail pour la première fois.
+- if icetape.started_at.nil?
+  - puts "---- Réglage de la date de démarrage de l'étape ##{icetape}"
+  - icetape.update_attribute(:started_at, Time.now)
+- else
+  - puts "---- La date de démarrage est déjà réglée."
+
 -# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
 -# information soit un formulaire permettant de jouer l'action-watcher.
 -# Voir le détail dans le fichier d'aide Scrivener
@@ -15,10 +23,7 @@
     = f.file_field(key_doc)
     = f.label(key_note_doc, 'La note que vous attribuez à votre travail : ')
     = select_tag(key_note_doc, options_for_select((0..20), 12), class: 'inline')
-  .right.vair
-    = f.submit('Envoyer ce travail', class: 'btn btn-primary btn-small')
+  .center.vair
+    = f.submit('Envoyer ce travail', class: 'btn btn-primary btn-lg')
   .small.vair
-    Attention : vous n’avez droit qu’à un seul essai pour tous les documents. Une fois vos documents envoyés, vous ne pouvez pas les modifier, comme dans une école “en dur”.
-
--# TODO note : si l'icetape n'a pas de date de démarrage, la définir ici,
--# ça signifie que l'user voit ce travail pour la première fois.
+    Attention : vous n’avez droit qu’à un seul essai pour tous les documents. Une fois vos documents envoyés, vous ne pouvez ni les modifier ni en ajouter d’autres, donc comme dans une école “en dur”.

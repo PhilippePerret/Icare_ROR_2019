@@ -1,0 +1,10 @@
+.container-fluid
+  .info-question.right.italic.small
+    de
+    = designation_for(mini_faq.user)
+    le
+    = human_date_for(mini_faq.created_at)
+  .question.bold.mb-5
+    = mini_faq.question.to_s.html_safe
+  .reponse.col-md-offset-1.col-md-8
+    = mini_faq.reponse.to_s.html_safe

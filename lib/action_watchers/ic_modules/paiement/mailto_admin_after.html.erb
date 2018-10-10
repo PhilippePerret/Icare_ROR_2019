@@ -6,3 +6,13 @@
 #
 self.subject = "Paiement exécuté"
 %>
+<pre>
+
+Phil, je t'informe d'un nouveau paiement.
+
+=============================================================
+Icarien(ne) : <%= designation_for(user, with_ids: true) %>
+Module      : <%= designation_for(objet, with_ids: true) %>
+=============================================================
+
+</pre>

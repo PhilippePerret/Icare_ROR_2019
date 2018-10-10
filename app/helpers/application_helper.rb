@@ -24,7 +24,9 @@ module ApplicationHelper
     idobj   = options[:with_ids] || options[:full] ? " (##{obj.id})" : ''
     obj_name =
       case obj
+      when AbsEtape   then "étape absolue “#{obj.numero} #{obj.titre}”"
       when IcEtape    then "étape #{obj.abs_etape.numero}"
+      when IcModule   then "module “#{obj.abs_module.name}”"
       when User       then obj.name
       when IcDocument then
         if options[:name] || options[:full]
@@ -42,6 +44,9 @@ module ApplicationHelper
     end
     design +=
       case obj
+      when AbsEtape
+        idmodule = options[:with_ids] || options[:full] ? " (##{obj.abs_module.id})" : ''
+        " du module d’apprentissage “#{obj.abs_module.name}”#{idmodule}"
       when IcEtape
         idmodule = options[:with_ids] || options[:full] ? " (##{obj.ic_module.id})" : ''
         " du module “#{obj.ic_module.abs_module.name}”#{idmodule}"
@@ -49,6 +54,13 @@ module ApplicationHelper
         ' de l’%{etape}' % {etape: designation_for(obj.ic_etape, options)}
       else ''
       end
+
+    # S'il faut lier l'objet à sa visualisation
+    # En général, ça ressemble à "<objet>/<id>/show"
+    if options[:linked]
+      design.concat( ' ' + link_to( '[voir]', '/%{objet}s/%{id}' % {objet: obj.class.name.underscore, id: obj.id}, class: 'small', target: :new).html_safe)
+    end
+
     if options[:capitalize] || options[:cap]
       design.mb_chars.capitalize
     else

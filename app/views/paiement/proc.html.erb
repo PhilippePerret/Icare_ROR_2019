@@ -1,0 +1,104 @@
+<%
+require Rails.root.join('config','secret','paypal')
+# => PAYPAL_DATA
+
+
+# TODO Doit être appelé avec 'wid', l'identifiant du watcher
+
+begin
+  action_watcher  = ActionWatcher.find(params[:wid])
+  icmodule        = action_watcher.objet
+rescue ActiveRecord::RecordNotFound => e
+  raise 'Action-Watcher ou module introuvable…'
+end
+
+absmodule = icmodule.abs_module
+module_references = "Module “#{absmodule.name}”"
+montant           = sprintf('%.2f', absmodule.tarif) # => String
+# On met dans sku (propriété de l'item du paiement) toutes les informations des
+# IDs de la transaction courante, ce qui permettra de contrôler que c'est
+# bon. On utilise notamment un token qu'on met en session
+token = SessionsHelper.new_token
+session['paiement_digest'] = SessionsHelper.digest(token)
+sku = "#{current_user.id}-#{icmodule.id}-#{params['wid']}-#{absmodule.tarif}-#{token}"
+# note : params['wid'] est l'identifiant du watcher, passé en argument
+
+%>
+<div class="jumbotron text-center bg-grey">
+  <div class="col-md-4 col-md-offset-3 border-rounded bg-white p-5">
+    <div class="vair">
+      Paiement du module d’apprentissage “<%= absmodule.name %>”
+    </div>
+    <div id="containerBoutonPaypal"></div>
+  </div>
+</div>
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<script type="text/javascript">
+paypal.Button.render({
+
+  // Environnement pour effectuer le paiement.
+  env: '<%= Rails.env == :production ? 'production' : 'sandbox' %>',
+
+  // Définition des clients
+  client: {
+    sandbox:    '<%= PAYPAL_DATA[:sandbox_account][:client_id] %>',
+    production: '<%= PAYPAL_DATA[:live_account][:client_id] %>'
+  },
+
+  // Pass the payment details for your transaction
+  // See https://developer.paypal.com/docs/api/payments/#payment_create for the expected json parameters
+
+  payment: function(data, actions) {
+    return actions.payment.create({
+      transactions: [
+        {
+          // Ajouté pour l'atelier
+          reference_id: '<%= module_references %>',
+          description:  "Paiement d’un module d’apprentissage de l'atelier Icare",
+          //
+          item_list:{items:[
+            {
+              sku:      '<%= sku %>',
+              name:     '<%= icmodule.abs_module.name %>',
+              quantity: '1',
+              price:    '<%= montant %>',
+              currency: 'EUR'
+            }
+          ]},
+          amount: {
+            total:    '<%= montant %>',
+            currency: 'EUR'
+          }
+        }
+      ],
+    });
+  },
+
+  // Display a "Pay Now" button rather than a "Continue" button
+
+  commit: true,
+
+  // Pass a function to be called when the customer completes the payment
+
+  onAuthorize: function(data, actions) {
+    return actions.payment.execute().then(function(r) {
+      // console.log('Paiement effectué avec succès');
+      console.log(r);
+      dresp = ['id='+r.id, 'cart='+r.cart,'email='+encodeURI(r.payer.payer_info.email)];
+      tr = r.transactions[0];
+      item = tr.item_list.items[0];
+      dresp.push('sku='+item.sku);
+      dresp.push('price='+item.price);
+      window.location.href = '/paiement/ok?' + dresp.join('&');
+    });
+  },
+
+  // Pass a function to be called when the customer cancels the payment
+
+  onCancel: function(data) {
+    window.location.href = '/paiement/cancel';
+  }
+
+ }, '#containerBoutonPaypal');
+
+</script>

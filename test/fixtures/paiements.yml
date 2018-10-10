@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  objet: MyString
+  montant: 1
+  facture: MyText
+  note: MyText
+  ic_module: one
+
+two:
+  objet: MyString
+  montant: 1
+  facture: MyText
+  note: MyText
+  ic_module: two

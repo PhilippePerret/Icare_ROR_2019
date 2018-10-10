@@ -1,0 +1,9 @@
+.container-fluid.border.bg-success.rounded.p-md-3
+  = form_for(:mini_faq, url: mini_faqs_path, method: :post) do |f|
+    = f.hidden_field(:abs_etape_id, value: abs_etape_id.to_s)
+    = f.label(:question, 'Nouvelle question pour le travail de cette étape')
+    = f.text_field(:question, placeholder: 'Tapez ici votre question sur cette étape')
+    .small.italic
+      Ne posez ici qu’une question <em>publique</em> concernant le travail de cette étape et seulement le travail de cette étape. Pour une question plus personnelle à Phil, utilisez le formulaire de contact.
+    .right.vair
+      = f.submit('Poser cette question à Phil', class: 'btn btn-primary btn-x-small')

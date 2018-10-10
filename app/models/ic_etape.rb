@@ -6,7 +6,7 @@ class IcEtape < ApplicationRecord
 
 
   def user ; ic_module.user end
-
+  def bind ; binding()      end
 
   # Raccourcis des méthodes d'AbsEtape
   # TODO : trouver un moyen en hériter sans rien faire
@@ -33,7 +33,7 @@ class IcEtape < ApplicationRecord
       # Une liste d'identifiants.
       # Mais il faut vérifier qu'ils appartiennent bien à l'étape
       which_ones.each do |doc_id|
-        
+
       end
     end
 

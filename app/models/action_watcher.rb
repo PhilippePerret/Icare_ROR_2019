@@ -17,8 +17,8 @@ class ActionWatcher < ApplicationRecord
 
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
-  attr_accessor :at, :in, :action
-  attr_writer   :path, :name, :objet
+  attr_accessor :at, :in
+  attr_writer   :objet
 
   # Méthode définissant la classe du LI principal contenant la notification
   # cette méthode sera surclassée par la méthode définie dans l'action_watcher.rb
@@ -98,8 +98,12 @@ class ActionWatcher < ApplicationRecord
   end
 
   # Pour quand l'instance est rechargée de la table
-  def path ; @path ||= action_watcher_path end
-  def name ; @name ||= action_watcher_path end
+  def path= val ; self.action_watcher_path = val end
+  alias :name= :path=
+  alias :action= :path=
+  def path    ; @path   ||= action_watcher_path end
+  alias :name :path
+  alias :action :path
 
   # Pour définir à la volée le sujet du mail qui sera envoyé
   attr_accessor :subject

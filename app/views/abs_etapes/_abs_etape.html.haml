@@ -1,0 +1,73 @@
+-# # partiel pour afficher une étape
+-# #
+-# # On peut définir :format pour dire ce qu'il faut afficher. On peut avoir
+-# # les valeurs :
+-# #
+-# #   format: :complet      Affichage de toutes les informations
+-# #   format: :simple       Le format le plus simple, avec des boutons
+-# #
+-#
+-# Le partiel peut être utilisé soit simplement pour voir l'étape absolue,
+-# soit pour afficher le travail d'un ic-etape
+- ic_etape ||= nil
+- etape_bindee = ic_etape && ic_etape.bind
+-# Si le format d'affichage n'est pas défini, on met le format complet
+- format ||= :complet
+.container-fluid
+  %h3
+    = abs_etape.numero
+    = abs_etape.titre
+
+  -# OBJECTIF
+  -# --------
+  .col-md-8.justify
+    %label Objectif
+    .col-md-offset-1
+      = abs_etape.objectif
+
+  -# LE TRAVAIL
+  -# ----------
+  - if format == :complet
+    .col-md-8.justify
+      %label Intitulé du travail
+      .col-md-offset-1
+        = ERB.new(abs_etape.travail).result(etape_bindee).html_safe
+  - else
+    = link_to 'voir', abs_etape_path(abs_etape)
+
+  -# TRAVAIL PROPRE
+  -# --------------
+  -# Si l'user est défini, qu'il est actif et que c'est l'étape courante d'un
+  -# de ses modules, alors on regarde s'il a du travail propre pour cette
+  -# étape et on l'affiche le cas échéant.
+  - if travail_propre_for_etape(current_user, abs_etape, ic_etape)
+    = travail_propre_for_etape(current_user, abs_etape, ic_etape)
+
+  -# LA MÉTHODE
+  -# ----------
+  .col-md-8.justify
+    %label Éléments de méthode
+    .col-md-offset-1
+      - if abs_etape.methode.blank?
+        <em>Aucun élément de méthode n’est donné pour cette étape.</em>
+      - else
+        = ERB.new(abs_etape.methode).result(etape_bindee).html_safe
+
+
+  -# LES LIENS
+  -# ---------
+  .col-md-8
+    %label Liens utiles
+    .col-md-offset-1
+      - if abs_etape.liens.blank?
+        <em>Aucun lien n’est suggéré pour cette étape.</em>
+      - else
+        = liste_liens_for(abs_etape)
+
+  -# LA MINI-FAQ
+  -# -----------
+  .col-md-8
+    %label Mini-faq de l’étape
+    .col-md-offset-1
+      = questions_reponses_for(abs_etape)
+      = render 'mini_faqs/form', {abs_etape_id: abs_etape.id}

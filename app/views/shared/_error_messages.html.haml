@@ -1,0 +1,7 @@
+-# Pour les messages d'erreur de toutes les parties
+- if objet.errors.any?
+  #error_explanation
+    .alert.alert-danger
+      %ul
+        - objet.errors.full_messages.each do |fmessage|
+          %li= fmessage

@@ -1,13 +1,24 @@
 // Place all the styles related to the ActionWatchers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+li.action-watcher {
+  border: 3px solid;
+  border-radius: 4px;
+  margin-bottom:  4px;
+}
 li.main-action-required {
-  background-color: #ffb2b2 !important;
+  border-color: #FF0000 !important;
 }
 li.action-required {
-  background-color: #FFEEEE !important;
+  border-color: #00AA00 !important;
 }
 li.simple-notice {
+  border-color: #CCCCCC !important;
+  font-size:  0.8rem;
+  * {
+    font-size:  0.8rem;
+  }
   opacity: 0.5;
   &:hover {
     opacity: 1;
