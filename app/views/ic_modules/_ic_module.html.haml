@@ -7,24 +7,39 @@
     = "Module « #{ic_module.abs_module.name} » "
     %small
       = "(##{ic_module.id})"
+
   - if current_user != ic_module.user
-    #module-owner
-      = myLabel('module.owner.label', suffix: ' : ', cap: true)
-      = ic_module.user.name
-  #module-informations
-    .col.col-xs-offset-1{class: ('col-xs-5' if ic_module.ended?)}
-      = myLabel('time.started_at', suffix: ' : ', cap: true)
-      = ic_module.started? ? ic_module.started_at : I18n.t('module.status.waiting_for_start')
+    .module-owner.row
+      %label.col-md-4
+        = I18n.t('icmodule.owner.Label')
+      .value.col-md-8
+        = ic_module.user.name
+
+  -# Je ré-essaye la mise en page ici
+  .module-information
+    .row
+      %label.col-md-4
+        = I18n.t('time.Started_at')
+      .value.col-md-8
+        = human_start_for(ic_module)
     - if ic_module.ended?
-      .col.col-xs-offset-8.col-xs-6
-        = myLabel('time.ended_at', suffix: ' : ', cap: true)
-        = ic_module.ended_at
+      .row
+        %label.col-md-4
+          = I18n.t('time.Ended_at')
+        .value.col-md-8
+          = designation_for(ic_module.ended_at)
+
   - if ic_module.current? && ic_module.current_etape
     -# === ÉTAPE COURANTE DU MODULE (IF ANY) ===
-    #module-etape.col-xs-offset-1
-      = myLabel('module.current_etape.label', suffix: ' : ', cap: true)
-      = "<strong class='x-large'>#{ic_module.current_etape.numero} #{ic_module.current_etape.titre}</strong>".html_safe
+    .row
+      %label.col-md-4
+        = I18n.t('icmodule.current_etape.Label')
+      .value.col-md-8
+        = numero_et_titre_for(ic_module.current_etape)
+    .row
+      %label.col-md-4
+        = I18n.t('icmodule.etape.work.expected_at.Label')
+      .value.col-md-8
+        = human_expected_work_at_for(ic_module.current_etape)
     -# Formulaire pour modifier l'échéance de l'étape courante
     = render 'ic_etapes/form_echeance', ic_etape: ic_module.current_etape
--# TODO Plus tard, ici, la liste des étapes du module.
--# TODO Plus tard, ici, la liste des documents du module (ou avec étapes ?)

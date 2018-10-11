@@ -1,11 +1,10 @@
 -# Formulaire pour afficher et redéfinir l'échéance de travail
 -# ic_etape est fourni en argument
-.echeance-etape.col-xs-offset-1
-  = myLabel('module.echeance_etape.label', suffix: ' : ', cap: true)
-  = human_date_for(ic_etape.expected_end_at || (ic_etape.started_at + ic_etape.abs_etape.duree.days))
+.row
   = form_for(ic_etape, url: ic_etape_echeance_path(ic_etape), method: :post) do |f|
     = f.hidden_field(:id)
-    = myLabel('module.echeance_etape.change.label', cap: true)
-    = human_date_select(id: 'new_echeance', from: Time.now, for: 60, class: 'inline')
-    .right
-      = f.submit('Modifier l’échéance', class: 'btn btn-x-small')
+    %label.col-md-4
+      = I18n.t('icmodule.etape.echeance.change.Label')
+    .col-md-8
+      = human_date_select(id: 'new_echeance', from: Time.now, for: 60, class: 'inline')
+      = f.submit('Modifier', class: 'btn btn-x-small')

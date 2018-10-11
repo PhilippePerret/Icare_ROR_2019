@@ -1,20 +1,24 @@
 fr:
   # Généralités
-  # Pour la méthode 'myLabel' (ne pas mettre 'myLabel' pour l'appeler)
-  myLabel:
-    time:
-      started_at:       'commencé le'
-      ended_at:         'achevé le'
-    module:
-      current_etape:
-        label:          'étape courante'
-      echeance_etape:
-        label:          'travail attendu pour le'
+  time:
+    started_at:       'commencé le'
+    Started_at:       'Commencé le'
+    ended_at:         'achevé le'
+    Ended_at:         'Achevé le'
+  icmodule:
+    owner:
+      Label:          'Icarien'
+      label:          'icarien'
+    etape:
+      work:
+        expected_at:
+          Label:      'Remise du travail'
+      echeance:
         change:
-          label:        'repousser l’échéance au'
-      owner:
-        label:          'icarien'
-
+          Label:      'Mettre l’échéance au'
+    current_etape:
+      label:          'étape courante'
+      Label:          'Étape courante'
   modules:
     annonce_informations_affiched: 'Ici seront affichées les informations sur votre module d’apprentissage.'
   module:
