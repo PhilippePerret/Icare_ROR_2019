@@ -1,4 +1,0 @@
-module IcEtapesHelper
-
-  
-end

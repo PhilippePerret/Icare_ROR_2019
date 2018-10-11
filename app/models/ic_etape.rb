@@ -9,9 +9,15 @@ class IcEtape < ApplicationRecord
   def bind ; binding()      end
 
   # Raccourcis des méthodes d'AbsEtape
-  # TODO : trouver un moyen en hériter sans rien faire
+  # TODO : trouver un moyen d'en hériter sans rien faire
   def numero  ; abs_etape.numero  end
   def titre   ; abs_etape.titre   end
+
+  # Retourne true si cette ic-étape est l'étape courante
+  # du module
+  def current?
+    ic_module.current_etape == self
+  end
 
   # Passe l'étape à l'état (status) suivant
   def next_status
@@ -36,8 +42,7 @@ class IcEtape < ApplicationRecord
 
       end
     end
-
-
   end
+  # /share_documents
 
 end

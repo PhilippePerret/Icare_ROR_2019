@@ -51,7 +51,7 @@ Page d'édition de l'user
 </Text>
         </Document>
         <Document ID="4ECD23B3-5580-4099-8B3F-57FB1359B9F1">
-            <Title>ActionWatchers</Title>
+            <Title>AbsEtapes</Title>
         </Document>
         <Document ID="4CAA24B0-8647-4719-8E05-5068C833BD04">
             <Title>Download</Title>
@@ -329,7 +329,7 @@ On envoie le mail normalement avec :
 </Text>
         </Document>
         <Document ID="B539AEB0-86C9-4849-8EC0-E8F4F6F2D2A5">
-            <Title>Propriétés</Title>
+            <Title>MiniFaq</Title>
         </Document>
         <Document ID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD">
             <Title>Introduction</Title>
@@ -444,7 +444,7 @@ Pour le détail, voir https://github.com/rails/rails/blob/4cbb9db0a5ff65b0a626a5
 </Text>
         </Document>
         <Document ID="946B4A4D-AFF2-4C26-AE92-DC92068D6B01">
-            <Title>ActionWatchers</Title>
+            <Title>IcDocuments</Title>
         </Document>
         <Document ID="09716B8B-3043-4D9D-B067-E8BAACF46E34">
             <Title>Debugger</Title>
@@ -533,10 +533,10 @@ Ou avec une classe User existante :
 </Text>
         </Document>
         <Document ID="307E09A9-6774-4120-8FDD-9FA845F959FC">
-            <Title>Transformations</Title>
+            <Title>Documents</Title>
         </Document>
         <Document ID="4E13651D-70C3-4E95-9484-68853AA9B1DA">
-            <Title>ActionWatchers</Title>
+            <Title>Administration</Title>
         </Document>
         <Document ID="2EEF34E8-AA8F-4467-83F5-71B195456BAC">
             <Title>Menu Select</Title>
@@ -615,7 +615,7 @@ end
 </Text>
         </Document>
         <Document ID="3EDB798B-84FA-4E88-BDA1-9B005E335D27">
-            <Title>ActionWatchers</Title>
+            <Title>Lectures</Title>
         </Document>
         <Document ID="A4CF1F8F-3F7F-4FE5-A9E2-5C1989BD7645">
             <Title>Lien vers le document (download)</Title>
@@ -655,7 +655,7 @@ Pour tester la correspondance :
 	end</Text>
         </Document>
         <Document ID="8875D1F2-783A-4A58-9A6D-45B9CB0C5E74">
-            <Title>Glyphicons</Title>
+            <Title>CSS</Title>
         </Document>
         <Document ID="A7BE32C8-0E83-4931-9269-DB974BA7BEAA">
             <Title>Utilisation hors contrôleurs/views</Title>
@@ -687,10 +687,10 @@ Par exemple :
 </Text>
         </Document>
         <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
-            <Title>Production (heroku)</Title>
+            <Title>User</Title>
         </Document>
         <Document ID="38C3C0F0-E0FF-4F12-B0D2-D52661303255">
-            <Title>ActionWatchers</Title>
+            <Title>DB</Title>
         </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
@@ -1153,7 +1153,7 @@ Par exemple, si on a un mailer `UserMailer` et qu'on envoie un message `mon_mess
 </Text>
         </Document>
         <Document ID="76F67813-0941-4603-A1D3-54C572B2F64F">
-            <Title>ActionWatchers</Title>
+            <Title>AbsModules</Title>
         </Document>
         <Document ID="43597D1A-4853-408C-A109-903346FF9956">
             <Title>Glyphicons</Title>
@@ -1170,7 +1170,7 @@ La taille se règle en fonction du conteneur, mais on peut utiliser aussi des `b
 Ajouter un `aria-label' si c'est un bouton , pour l'accessibilité.</Text>
         </Document>
         <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
-            <Title>Production (heroku)</Title>
+            <Title>Notes testing</Title>
         </Document>
         <Document ID="DF310288-799D-45D4-80B4-79459E833115">
             <Title>Options</Title>
@@ -1224,7 +1224,7 @@ Par exemple :
 </Text>
         </Document>
         <Document ID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A">
-            <Title>Statut</Title>
+            <Title>Integration</Title>
         </Document>
         <Document ID="FD490A50-CD60-460B-8A8F-02FB90543C80">
             <Title>Mails</Title>
@@ -1372,7 +1372,7 @@ Par exemple, dans un contrôleur :
 </Text>
         </Document>
         <Document ID="56881565-8CB5-47DA-ADE1-F08A61B3A0CE">
-            <Title>ActionWatchers</Title>
+            <Title>IcModules</Title>
         </Document>
         <Document ID="91C3EFDC-8A8B-48A0-A7A9-682663C2801E">
             <Title>Processus courants</Title>
@@ -1502,7 +1502,7 @@ On peut aussi utiliser la méthode qui semble ne pas passer par la validation, l
 </Text>
         </Document>
         <Document ID="1A8D135B-0EFE-4E5C-BDF6-CF7EDB4D5F86">
-            <Title>Glyphicons</Title>
+            <Title>Design</Title>
         </Document>
         <Document ID="FA60E3B3-A4F7-47F5-BE63-FBFF169CDBDB">
             <Title>Générer sans fiche test</Title>
@@ -1549,9 +1549,6 @@ TODO : voir comment elles seront évaluées. Ce sera peut-être un json.
 	rails s -e production
 
 </Text>
-        </Document>
-        <Document ID="9F311ED5-158F-4B88-B8ED-A48771C7F74A">
-            <Title>Production (heroku)</Title>
         </Document>
         <Document ID="0F5A3B5E-6516-4FE8-8ED4-C4ACE27F9EBC">
             <Title>Formulaire</Title>
@@ -1681,19 +1678,6 @@ Pour tester qu'il y a un message flash :
 
 </Text>
         </Document>
-        <Document ID="9CA6B40A-65C2-4C36-8B12-EB2AA9DF1B7A">
-            <Title>MAILS</Title>
-        </Document>
-        <Document ID="F1D85AF7-3543-4C42-9A42-C249FF1EC1BC">
-            <Title>Détruire le document</Title>
-            <Text>Utiliser la méthode `purge'
-
-		icdocument.original.purge
-		ou
-		icdocument.original.purge_later # avec Active Job
-
-</Text>
-        </Document>
         <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
             <Title>MAILS</Title>
             <Text>Récupérer le dernier mail en intégration :
@@ -1706,8 +1690,18 @@ Pour retrouver un texte dans le corps, par exemple une URL :
 
 </Text>
         </Document>
+        <Document ID="F1D85AF7-3543-4C42-9A42-C249FF1EC1BC">
+            <Title>Détruire le document</Title>
+            <Text>Utiliser la méthode `purge'
+
+		icdocument.original.purge
+		ou
+		icdocument.original.purge_later # avec Active Job
+
+</Text>
+        </Document>
         <Document ID="BDF6C165-D027-4AD0-A539-F2A4BBD3D815">
-            <Title>MAILS</Title>
+            <Title>Controller</Title>
         </Document>
         <Document ID="205817A2-7E12-4BA5-92B8-3E77A4F51C2B">
             <Title>Introduction</Title>
@@ -1716,12 +1710,12 @@ Pour retrouver un texte dans le corps, par exemple une URL :
 	dont_destroy			Empêche la destruction du watcher
 	dont_send_mails		Ne procède pas à l'envoi des mails</Text>
         </Document>
-        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
-            <Title>ActionWatchers</Title>
-        </Document>
         <Document ID="96F6FF97-6E89-4C6A-89F0-84B8C91A3F7D">
             <Title>Object.create / .save</Title>
             <Text>La méthode ActiveRecord#create retourne l'objet créé (on peut donc obtenir tout de suite son ID) tandis que ActiveRecord#save retourne true (si OK) ou false (si pas OK).</Text>
+        </Document>
+        <Document ID="2A7D54BE-CAC8-44CE-A563-2726572156F8">
+            <Title>Modules Icariens</Title>
         </Document>
         <Document ID="7A1089CE-9B6C-4224-A256-2A6BFADA70D2">
             <Title>De l'action-watcher lui-même</Title>

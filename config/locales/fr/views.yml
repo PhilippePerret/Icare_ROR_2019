@@ -8,6 +8,10 @@ fr:
     module:
       current_etape:
         label:          'étape courante'
+      echeance_etape:
+        label:          'travail attendu pour le'
+        change:
+          label:        'repousser l’échéance au'
       owner:
         label:          'icarien'
 

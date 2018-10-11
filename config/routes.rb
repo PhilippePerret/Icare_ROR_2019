@@ -43,11 +43,11 @@ Rails.application.routes.draw do
   # === MODULES D'APPRENTISSAGE DE L'ICARIEN (ICMODULES) ===
   resources :ic_modules
   resources :ic_etapes
+  post 'ic_etapes/:id/echeance' => 'ic_etapes#update_echeance', as: 'ic_etape_echeance'
 
   # === DOCUMENTS ===
   resources :ic_documents
   get 'ic_documents/download'
-
   get 'ic_etapes/:id/share' => 'ic_etapes#document_sharing'
 
 

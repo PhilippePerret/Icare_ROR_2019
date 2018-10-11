@@ -1,5 +1,7 @@
 class IcEtapesController < ApplicationController
 
+  include ApplicationHelper
+
   before_action :legal_current_user?, except: []
 
   # Méthode appelée pour définir le partage des documents de l'étape.
@@ -67,10 +69,39 @@ class IcEtapesController < ApplicationController
   end
   # /share
 
+  # Pour modifier l'échéance de l'ic étape
+  # Les paramètres doivent convenir :
+  #   :id   ID de l'ic-étape à modifier (seul un administrateur ou le bon user
+  #         peut la modifier)
+  #   :new_echeance   Timestamp de la nouvelle échéance de travail
+  #
+  # Noter que l'user courant est vérifié par un before_action ci-dessus
+  def update_echeance
+    icetape = IcEtape.find(params[:id])
+    new_echeance = params[:new_echeance]
+    new_echeance || raise('echeance_required')
+    new_echeance = Time.parse(new_echeance)
+    human_new_echeance = designation_for(new_echeance, distance: true)
+    new_echeance >= Time.now || raise('echeance_hier')
+    icetape.current? || raise('not_current')
+    new_echeance < (Time.now + 120.days) || raise('too_far')
+    # Tout est OK, on peut prendre en compte la nouvelle échéance
+    icetape.update_attribute(:expected_end_at, new_echeance)
+    flash[:success] = I18n.t('ic_etapes.echeance.change.success', date: human_new_echeance)
+  rescue ActiveRecord::RecordNotFound => e
+    I18n.t('activerecord.errors.models.record_not_found', classe: 'IcEtape', id: params[:id].inspect)
+  rescue Exception => e
+    kmotif = "ic_etapes.echeance.change.motif_error.#{e.message}"
+    flash[:danger] = I18n.t('ic_etapes.echeance.change.error', {date: human_new_echeance, motif: I18n.t(kmotif)})
+  ensure
+    redirect_back(fallback_location: root_path)
+  end
+  # /update_echeance
+
   private
 
     def legal_current_user?
-      return if current_user && (current_user.admin? || IcEtape.find(params[:id]).user == current_user)
+      return if current_user.admin? || IcEtape.find(params[:id]).user == current_user
       flash[:danger] = I18n.t('action.errors.not_autorised')
       redirect_to home_path
     end
