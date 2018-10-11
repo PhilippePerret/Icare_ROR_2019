@@ -2,8 +2,18 @@ fr:
   ic_modules:
     # Démarrage ou non du module d'apprentissage
     starting:
-      success:    'Votre module d’apprentissage a bien été démarré. ✍️ Bon travail !'
-      failure:    'Un problème s’est malheureusement produit en essayant de démarrer votre module d’apprentissage…'
+      success:          'Votre module d’apprentissage a bien été démarré. ✍️ Bon travail !'
+      failure:          'Un problème s’est malheureusement produit en essayant de démarrer votre module d’apprentissage…'
   ic_etapes:
     setup:
-      success:    'Réglage de l’étape effectuée avec succès.'
+      success:          'Réglage de l’étape effectuée avec succès.'
+    echeance:
+      change:
+        success:        'La nouvelle échéance de l’étape a été mise au %{date}'
+        error:          'L’échéance de l’étape n’a pas pu être mise à %{date} : %{motif}'
+        motif_error:
+          not_auteur:   'vous n’êtes ni l’auteur de cette étape ni un administrateur…'
+          not_current:  'cette étape n’est pas une étape courante…'
+          too_far:      'cette échéance est trop lointaine…'
+          echeance_required:  'la nouvelle échéance n’est pas définie…'
+          echeance_hier:      'l’échéance ne peut pas être dans le passé…'

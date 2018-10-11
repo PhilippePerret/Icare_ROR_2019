@@ -1,4 +1,6 @@
 -# Template pour afficher un module d'apprentissage d'icarien
+-# Noter que c'est l'affichage qui sert aussi bien dans le bureau de
+-# l'icarien (home) que pour un affichage isolé du module.
 %li.list-group-item
   %h4#module-designation
     %span.glyphicon.glyphicon-inbox.btn-md{'aria-hidden' => 'true', style:'color:#578088;'}
@@ -17,9 +19,12 @@
       .col.col-xs-offset-8.col-xs-6
         = myLabel('time.ended_at', suffix: ' : ', cap: true)
         = ic_module.ended_at
-  -# === ÉTAPE COURANTE DU MODULE (IF ANY) ===
-  #module-etape.col-xs-offset-1
-    = myLabel('module.current_etape.label', suffix: ' : ', cap: true)
-    = ic_module.current? ? "<strong class='x-large'>#{ic_module.current_etape.numero} #{ic_module.current_etape.titre}</strong>".html_safe : I18n.t('module.status.waiting_for_start')
+  - if ic_module.current? && ic_module.current_etape
+    -# === ÉTAPE COURANTE DU MODULE (IF ANY) ===
+    #module-etape.col-xs-offset-1
+      = myLabel('module.current_etape.label', suffix: ' : ', cap: true)
+      = "<strong class='x-large'>#{ic_module.current_etape.numero} #{ic_module.current_etape.titre}</strong>".html_safe
+    -# Formulaire pour modifier l'échéance de l'étape courante
+    = render 'ic_etapes/form_echeance', ic_etape: ic_module.current_etape
 -# TODO Plus tard, ici, la liste des étapes du module.
 -# TODO Plus tard, ici, la liste des documents du module (ou avec étapes ?)

@@ -1,26 +1,49 @@
 require_relative 'html_string'
 
 module ApplicationHelper
-  #
-  # def default_url_options
-  #   {
-  #     locale:   I18n.locale,
-  #     protocol: (Rails.env == :production ? 'https' : 'http'),
-  #     host:     (Rails.env == :production ? 'www.atelier-icare' : 'localhost:3000'),
-  #   }
-  #
-  # end
+
+  # Parce que parfois, par exemple lorsqu'on appelle la méthode
+  # distance_of_time_in_words, le module n'est pas chargé
+  include ActionView::Helpers::DateHelper
 
   # Retourne une date formatée au format français
+  #
+  # options[:distance] = true => ajoute la distance depuis maintenant
+  #
+  # Note : on peut aussi utiliser `designation_for(<date>[,<options>])`
   def human_date_for date, options = nil
     options ||= Hash.new
-    I18n.localize(date, format: (options.delete(:format) || :simple))
+    d = I18n.localize(date, format: (options.delete(:format) || :simple))
+    if options[:distance]
+      '%s (dans %s)' % [d, distance_of_time_in_words(Time.now, date)]
+    else
+      d
+    end
   end
 
-  # Retourne une désignation de n'importe quel objet
+  # Retourne un menu pour choisir une date depuis +args[:from]+ jusqu'à
+  # +args[:to]+ ou pour +args[:for]+ jours (donc items)
+  # On peut définir le format avec +args[:format]+
+  # L'ID du select sera +args[:id]+
+  def human_date_select args
+    args.key?(:to) || args.merge!(to: args[:from] + args[:for].days)
+    args[:format] ||= :simple
+    items = args[:for].times.collect do |itime|
+      date = args[:from] + itime.days
+      distance = distance_of_time_in_words(Time.now, date)
+      ["#{I18n.localize(date, format: args[:format])} (dans #{distance})", date]
+    end
+    select_tag(args[:id] || 'date_select', options_for_select(items), class: args[:class])
+  end
+
+  # Retourne une désignation de n'importe quel objet, même une date
   # Mettre « l'#{icetape.designation} »
   def designation_for(obj, options = nil)
     options ||= Hash.new
+    # Cas particulier de la date
+    if obj.is_a?(Date) || obj.is_a?(Time)
+      return human_date_for(obj, options)
+    end
     idobj   = options[:with_ids] || options[:full] ? " (##{obj.id})" : ''
     obj_name =
       case obj
@@ -132,6 +155,7 @@ module ApplicationHelper
       'en chef',
       'surmené',
       'tout à vos soins',
+      'tranquille',
       'un peu surmené',
       'un peu stressé'
     ].shuffle.first

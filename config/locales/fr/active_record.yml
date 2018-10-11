@@ -17,7 +17,7 @@ fr:
     # Erreurs
     errors:
       models:
-        record_not_found:     'L’instance %{classe} d’identifiant %{id} est introuvable.'
+        record_not_found:     'L’instance %{classe} d’identifiant #%{id} est introuvable.'
         user:
           attributes:
             name:

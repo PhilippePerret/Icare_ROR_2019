@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   # Classes incluses
   include UsersHelper
   include SessionsHelper
-  include TicketsHelper
 
   def home
 
