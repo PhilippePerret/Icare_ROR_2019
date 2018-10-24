@@ -287,7 +287,9 @@ Options
 	name: true				Utilise le nom (document, étape, module) plutôt que
 								l'identifiant.
 
-	full: true		Toutes les options sont activées, sauf celles précédées de "*"</Text>
+	full: true		Toutes les options sont activées, sauf celles précédées de "*"
+	distance: true			Quand c'est une date/time, ajoute la distance depuis
+								maintenant ou aujourd'hui.</Text>
         </Document>
         <Document ID="8BF94C6F-FBE6-41F2-89D2-F3D02B4208A8">
             <Title>Transmettre le body</Title>
@@ -343,8 +345,8 @@ On envoie le mail normalement avec :
             <Text>On définit le message de fin en utilisant l'une de ces deux méthodes :
 
 
-	success_message 	= '&lt;le message de succès&gt;'
-	failure_message 	= '&lt;le message d'échec&gt;'
+	self.success_message 	= '&lt;le message de succès&gt;'
+	self.failure_message 	= '&lt;le message d'échec&gt;'
 
 
 Pour « aglutiner » plusieurs messages, on utilise les méthodes :
@@ -834,8 +836,9 @@ Peut-être faire la même chose en production.</Text>
             <Title>Dates et heures</Title>
             <Text>Pour voir les formats utilisables avec I18n.localize(&lt;date&gt;, format: :&lt;format&gt;), cf. le fichier general.
 
-Possibilité aussi d'utiliser la méthode `human_date_for(&lt;date&gt;, &lt;options&gt;)`
-Dans `&lt;options&gt;` on peut définir `:format`. Valeurs principales : `:simple` et `:simple_with_hour`.</Text>
+Possibilité aussi d'utiliser la méthode `human_date_for(&lt;date&gt;, &lt;options&gt;)` ou son alias `designation_for(&lt;date&gt;[, &lt;options&gt;)`.
+Dans `&lt;options&gt;` on peut définir `:format`. Valeurs principales : `:simple` et `:simple_with_hour`.
+options[:distance] permet d'ajouter la distance (p.e. " (dans 8 jours)")</Text>
         </Document>
         <Document ID="DE69DD5C-BF52-4BE9-8D6E-71C7F5B139E7">
             <Title>Fonctionnalites</Title>
@@ -956,7 +959,8 @@ Une note (de l'admin) sur cette question, peut-être pour indiquer pourquoi la r
         </Document>
         <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
             <Title>TODO</Title>
-            <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
+            <Text>	•	Corriger la méthode human_date_for quand la distance est demandée (il ne faut pas toujours écrire "dans")
+	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
 	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.

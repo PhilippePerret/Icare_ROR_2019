@@ -1,0 +1,19 @@
+-# Notification pour le bureau de l'user/icarien
+-#
+- aw = action_watcher
+- mf = aw.objet
+-# TODO Un lien pour voir sur quelle étape portait la question
+%p
+  = "Merci d'estimer cette réponse de Phil à la question que vous avez posée pour l'#{designation_for(mf.abs_etape)}"
+  = lien_vers(mf.abs_etape, '(voir)', {target: :new})
+.question
+  %span.bold= "Votre question :"
+  = mf.question.html_safe
+.reponse
+  %span.bold= "Réponse de Phil :"
+  = mf.reponse.html_safe
+= form_for(mf, url: aw.form_url, method: :post) do |f|
+  = f.hidden_field(:id)
+  = select(:mini_faq, :estimation, [['Cette réponse me convient', 2], ['Cette réponse ne me convient pas', 3]])
+  .right.vair
+    = f.submit('Donner cette estimation', class: 'btn btn-primary btn-x-small')

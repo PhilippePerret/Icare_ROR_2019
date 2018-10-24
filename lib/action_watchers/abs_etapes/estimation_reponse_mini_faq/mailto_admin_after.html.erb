@@ -1,0 +1,30 @@
+<%
+#
+# Mail envoyé à l'ADMIN À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Evaluation d'un réponse mini-faq"
+minifaq = self.objet
+%>
+
+<div class="container">
+  Phil, je t'informe de l'estimation d'une réponse à une question mini-faq.
+</div>
+<pre>
+
+DÉSIGNATION
+-----------
+Auteur question : <%= designation_for(self.user) %>
+Étape visée     : <%= designation_for(minifaq.abs_etape) %>
+Question        : <%= minifaq.question %>
+Réponse donnée  : <%= minifaq.reponse %>
+Estimation      : l’icarien <%= minifaq.state < 3 ? 'est' : 'n’est pas' %> satisfait
+</pre>
+
+<% if minifaq.state == 3 %>
+  <p>
+    Pour améliorer la réponse, vous pouvez rejoindre
+    l’<%= link_to 'édition de cette question minifaq', edit_mini_faq_url(minifaq) %>.
+  </p>
+<% end %>

@@ -4,13 +4,10 @@
 #
 # L'action-watcher est bindé à cette vue
 #
-self.subject = "Email de test envoyé à l'USER à l'EXÉCUTION du watcher"
+self.subject = "Réponse donnée à une de vos questions mini-faq"
 %>
 
 <div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-</div>
-<div class="container">
-  Je suis un mail envoyé à l'EXÉCUTION de l'action-watcher.
-  <%= objet_designation %>
+<p>Une réponse à été donnée à votre question <%= objet.question %>.</p>
+<p>Vous pouvez ne trouver la réponse sur <%= link_to 'votre bureau', bureau_url %>.</p>
 </div>

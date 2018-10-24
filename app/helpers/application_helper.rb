@@ -6,6 +6,25 @@ module ApplicationHelper
   # distance_of_time_in_words, le module n'est pas chargé
   include ActionView::Helpers::DateHelper
 
+
+  # Retourne un lien vers l'objet +objet+ (par exemple une étape absolue) en
+  # utilisant le titre +titre+ ou alors le `designation_for(objet)`, avec les
+  # options +options+ qui peuvent définir :
+  #   target: :new  pour ouvrir le lien dans une nouvelle fenêtre
+  def lien_vers objet, titre = nil, options = nil
+    titre   ||= designation_for(objet)
+    options ||= Hash.new
+    href =
+      case objet
+      when AbsModule, AbsEtape, IcEtape
+        "/#{objet.class.to_s.underscore}s/#{objet.id}"
+      else root_url
+      end
+    ('<a href="%{href}" target="%{cible}" class="%{css}">%{titre}</a>' % {
+      href: href, cible: options[:target], css: options[:class], titre: titre
+    }).html_safe
+  end
+
   # Retourne une date formatée au format français
   #
   # options[:distance] = true => ajoute la distance depuis maintenant

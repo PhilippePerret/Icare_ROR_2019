@@ -35,6 +35,7 @@ class MiniFaqsController < ApplicationController
 
   # Édition d'une question mini-faq, pour y répondre ou la corriger
   def edit
+
   end
 
   # Enregistrement de la modification de la question minifaq
@@ -45,7 +46,10 @@ class MiniFaqsController < ApplicationController
   # éditer la minifaq)
   def update
     @minifaq = MiniFaq.find(params[:id])
-
+    mf_reponse = params[:mini_faq][:reponse].strip
+    flash[:danger] = "Pour le moment je ne passe pas par là pour enregistrer la réponse"
+  ensure
+    redirect_back(fallback_location: root_path)
   end
 
   private

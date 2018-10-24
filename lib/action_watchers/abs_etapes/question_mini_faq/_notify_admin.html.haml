@@ -5,8 +5,10 @@
 .italic
   = "Répondre à la question “<strong>#{minif.question}</strong>”".html_safe
   = "pour l’#{designation_for(minif.abs_etape, with_ids: true, linked: true)}".html_safe
-= form_for(:mini_faq, url: mini_faqs_path(minif), method: :patch) do |f|
+= form_for(:mini_faq, url: aw.form_url, method: :post) do |f|
   = f.text_area(:reponse, rows: 8)
+  .small.italic
+    Code HTML, sauf pour les paragraphes qui seront traités comme tels (délimités par des doubles-retours chariot).
   .small.italic
     Laisser simplement le champ vide pour détruire la question. Attention, aucun confirmation ne sera demandée.
   .right
