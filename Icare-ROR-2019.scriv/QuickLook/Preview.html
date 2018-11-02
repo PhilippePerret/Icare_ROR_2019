@@ -882,9 +882,23 @@
 <hr class="afterText"/>
 
 <li>
-<p class="topLevelItemTitle">Essayer une URL</p>
+<p class="topLevelItemTitle">Liens</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Méthode lien_vers</p>
+<p class="itemText">La méthode `lien_vers` (en référence à `link_to`) est une méthode pour pouvoir créer un lien vers n'importe quel page en fonction de l'objet fourni en paramètre (contrairement à `link_to` qui attend un titre et une url précise).</p>
+<p class="itemText">Par exemple, `lien_vers(user)` va créer un lien vers l'utilisateur `user` en mettant en titre son pseudonyme.</p>
+<p class="itemText">On note deux choses avec l'utilisation ci-dessus : par défaut, c'est la visualisation de l'élément qui est demandé, donc généralement la méthode `show`. Ensuite,...</p>
+</li>
+<li>
+<p class="itemTitle">Essayer une URL</p>
 <p class="itemText">Pour essayer une url, on peut ajouter le paramètre `urltry` à l'url. Cela ajoute un "essayer l'URL : ...." dans l'entête.</p>
 </li>
+</ul>
+<hr class="afterText"/>
+
 <li>
 <p class="topLevelItemTitle">Seed</p>
 <p class="itemText">Pour pouvoir essayer des configurations différentes, on peut utiliser des seeds différents.</p>

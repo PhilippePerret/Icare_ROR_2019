@@ -1,0 +1,18 @@
+.container
+  %p
+    Bienvenue sur l’accueil de l’atelier d’écriture Icare.
+  %p
+    = link_to 'Les Icarien(ne)s', users_path, class: 'btn btn-secondary'
+
+    -# TODO Ajouter la citation du jour
+    -# TODO Ajouter les actualités (dernières activités)
+
+    = link_to "Tous les modules", abs_modules_path
+
+    = link_to "Tous les modules d'icariens", ic_modules_path
+
+    = link_to 'Attribuer un module', new_ic_module_path
+
+
+  %p
+    = lien_vers(User.find(1), 'voir le profil de Phil', {distant: true})

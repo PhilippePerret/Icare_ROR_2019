@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-10-24 10:14:18 +0300" ModID="AA2CEF40-5E57-4210-B2C9-9D0588CA6E46">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-11-02 07:54:14 +0300" ModID="B58D912C-2594-43AC-B5F3-0FD398E1A4E6">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-10-11 09:20:25 +0300">
             <Title>TODO</Title>
@@ -528,14 +528,34 @@
                         </BinderItem>
                     </Children>
                 </BinderItem>
-                <BinderItem UUID="19E59F12-6DD0-4D7C-A210-D717164470F3" Type="Text" Created="2018-09-26 12:38:50 +0300" Modified="2018-09-26 12:39:41 +0300">
-                    <Title>Essayer une URL</Title>
+                <BinderItem UUID="ABCE81DA-28AF-4698-9EF3-B39AAA3EAA4E" Type="Text" Created="2018-10-24 11:35:47 +0300" Modified="2018-10-24 11:35:48 +0300">
+                    <Title>Liens</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>121,0</TextSelection>
+                        <TextSelection>0,0</TextSelection>
                     </TextSettings>
+                    <Children>
+                        <BinderItem UUID="5FAF25B1-41FE-4CB7-B237-80B6EDDE5B7E" Type="Text" Created="2018-10-24 11:35:53 +0300" Modified="2018-10-24 15:21:57 +0300">
+                            <Title>Méthode lien_vers</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>991,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="19E59F12-6DD0-4D7C-A210-D717164470F3" Type="Text" Created="2018-09-26 12:38:50 +0300" Modified="2018-09-26 12:39:41 +0300">
+                            <Title>Essayer une URL</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>121,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
                 </BinderItem>
                 <BinderItem UUID="29D8F8EB-0FBE-4514-946B-997F1AB597A7" Type="Text" Created="2018-10-01 09:38:33 +0300" Modified="2018-10-01 09:40:36 +0300">
                     <Title>Seed</Title>
@@ -1054,6 +1074,15 @@
                         <TextSelection>222,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+                <BinderItem UUID="40C40DB1-1FA3-486E-971E-628A9B09F3B2" Type="Text" Created="2018-11-02 07:52:15 +0300" Modified="2018-11-02 07:54:14 +0300">
+                    <Title>Server</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
             </Children>
         </BinderItem>
         <BinderItem UUID="F4920AD3-E838-49ED-AE17-6C88E0C4A799" Type="Folder" Created="2018-09-20 08:08:34 +0300" Modified="2018-09-20 08:08:40 +0300">
@@ -1258,13 +1287,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="0" Characters="0" Date="2018-10-24 07:25:09 +0300"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-11-02 07:37:34 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-10-24 00:00:00 +0300">
+    <RecentWritingHistory Date="2018-11-02 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
-        <OtherWordCount>0</OtherWordCount>
-        <OtherCharCount>0</OtherCharCount>
+        <OtherWordCount>34</OtherWordCount>
+        <OtherCharCount>208</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

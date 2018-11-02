@@ -1,0 +1,82 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Palatino-Roman;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 CourierNewPSMT;
+}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red26\green26\blue26;}
+{\*\expandedcolortbl;;\csgray\c100000;\csgray\c13700;}
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 La m\'e9thode `
+\f1\fs24 <$Scr_Cs::1>
+\f2 lien_vers
+\f1 <!$Scr_Cs::1>
+\f0\fs28 ` (en r\'e9f\'e9rence \'e0 `
+\f1\fs24 <$Scr_Cs::1>
+\f2 link_to
+\f1 <!$Scr_Cs::1>
+\f0\fs28 `) est une m\'e9thode pour pouvoir cr\'e9er un lien vers n'importe quel page en fonction de l'objet fourni en param\'e8tre (contrairement \'e0 `
+\f1\fs24 <$Scr_Cs::1>
+\f2 link_to
+\f1 <!$Scr_Cs::1>
+\f0\fs28 ` qui attend un titre et une url pr\'e9cise).\
+Par exemple, `
+\f1\fs24 <$Scr_Cs::1>
+\f2 lien_vers(user)
+\f1 <!$Scr_Cs::1>
+\f0\fs28 ` va cr\'e9er un lien vers l'utilisateur `user` en mettant en titre son pseudonyme.\
+On note deux choses avec l'utilisation ci-dessus : par d\'e9faut, c'est la visualisation de l'\'e9l\'e9ment qui est demand\'e9, donc g\'e9n\'e9ralement la m\'e9thode `
+\f1\fs24 <$Scr_Cs::1>
+\f2 show
+\f1 <!$Scr_Cs::1>
+\f0\fs28 `. Ensuite, est mis en titre le texte le plus vraisemblable. En fait, c'est le texte renvoy\'e9 quand on utilise `
+\f1\fs24 <$Scr_Cs::1>
+\f2 designation_for(<objet>)
+\f1 <!$Scr_Cs::1>
+\f0\fs28 `.\
+\
+Utilisation rudimentaire :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::2>
+\f2\fs22 \
+	lien_vers(<objet>)\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::2>
+\f0\fs28 \
+Pour sp\'e9cifier le titre explicitement :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::2>
+\f2\fs22 \
+	lien_vers(<objet>, "<titre>")\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::2>
+\f0\fs28 \
+Pour ajouter des options :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::2>
+\f2\fs22 \
+	lien_vers(<objet>, "titre"|nil, \{<options>\})\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::2>
+\f0\fs28 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f0\b\fs36 Options\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f0\fs28 \
+	:target				Mettre :new pour ouvrir le lien dans une nouvelle fen\'eatre\
+	:distant				Mettre \'e0 true pour produire une URL compl\'e8te, avec host et protocole.\
+							false par d\'e9faut.}

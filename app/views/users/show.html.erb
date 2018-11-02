@@ -1,37 +1,39 @@
 
-<% provide(:title, 'Profil')%>
+<%= set_title('Profil')%>
 
-<h2>Profil</h2>
+<div class="container">
 
-<h3>Identité</h3>
+  <h3>Identité</h3>
 
-<div id="" class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <%= gravatar_for @user %>
-      <%= @user.name %> (<%= @user.email %>)
-    </section>
-  </aside>
+  <div id="" class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= gravatar_for @user %>
+        <%= @user.name %> (<%= @user.email %>)
+      </section>
+    </aside>
+  </div>
+
+
+  <p>
+    Inscrit le : <%= @user.created_at %>
+  </p>
+  <p>
+    Dernière modification : <%= @user.updated_at %>
+  </p>
+
+  <div class="container right">
+    <%
+    # TODO Il faudra laisser cette possibilité de modifier seulement au
+    # propriétaire du profil ou à l'administrateur.
+    # TODO L'administrateur pourra aussi détruire l'user
+    # TODO L'administrateur pourra visiter avec ce profil.
+    %>
+    <% if current_user.id == @user.id || current_user.admin? %>
+      <%= link_to 'modifier', edit_user_path(@user) %>
+    <% end %>
+  </div>
+
+  <h3>Modules d’apprentissage</h3>
+
 </div>
-
-
-<p>
-  Inscrit le : <%= @user.created_at %>
-</p>
-<p>
-  Dernière modification : <%= @user.updated_at %>
-</p>
-
-<div class="container right">
-  <%
-  # TODO Il faudra laisser cette possibilité de modifier seulement au
-  # propriétaire du profil ou à l'administrateur.
-  # TODO L'administrateur pourra aussi détruire l'user
-  # TODO L'administrateur pourra visiter avec ce profil.
-  %>
-  <% if current_user.id == @user.id || current_user.admin? %>
-    <%= link_to 'modifier', edit_user_path(@user) %>
-  <% end %>
-</div>
-
-<h3>Modules d’apprentissage</h3>

@@ -9,17 +9,25 @@ module ApplicationHelper
 
   # Retourne un lien vers l'objet +objet+ (par exemple une étape absolue) en
   # utilisant le titre +titre+ ou alors le `designation_for(objet)`, avec les
-  # options +options+ qui peuvent définir :
-  #   target: :new  pour ouvrir le lien dans une nouvelle fenêtre
+  # options +options+ Cf. le fichier dans le manuel
   def lien_vers objet, titre = nil, options = nil
     titre   ||= designation_for(objet)
     options ||= Hash.new
     href =
       case objet
-      when AbsModule, AbsEtape, IcEtape
+      when 'on verra une classe peut-être'
+      else
+        # Pour la plupart des classes, on peut voir les choses comme ça
         "/#{objet.class.to_s.underscore}s/#{objet.id}"
-      else root_url
       end
+    # Faut-il une url distante ou locale ?
+    options[:distant] && begin
+      inprod = Rails.env.production?
+      href.prepend('%{protocol}://%{host}' % {
+        protocol:   inprod ? 'https' : 'http',
+        host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000'
+        })
+    end
     ('<a href="%{href}" target="%{cible}" class="%{css}">%{titre}</a>' % {
       href: href, cible: options[:target], css: options[:class], titre: titre
     }).html_safe

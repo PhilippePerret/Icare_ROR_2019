@@ -989,6 +989,9 @@ Une note (de l'admin) sur cette question, peut-être pour indiquer pourquoi la r
 	•	des questions mini-faq
 </Text>
         </Document>
+        <Document ID="ABCE81DA-28AF-4698-9EF3-B39AAA3EAA4E">
+            <Title>Liens</Title>
+        </Document>
         <Document ID="84DB52AB-2658-48DC-90E4-6164B536CF02">
             <Title>Création du dossier et contenu</Title>
             <Text>Le plus simple est d'utiliser mon générateur rails :
@@ -1333,6 +1336,36 @@ Pour pouvoir utiliser require_dependency, il faut ajouter dans le fichier config
 
 
 Note : en fait, j'ai utilisé simplement `load` et ça fonctionne.</Text>
+        </Document>
+        <Document ID="5FAF25B1-41FE-4CB7-B237-80B6EDDE5B7E">
+            <Title>Méthode lien_vers</Title>
+            <Text>La méthode `lien_vers` (en référence à `link_to`) est une méthode pour pouvoir créer un lien vers n'importe quel page en fonction de l'objet fourni en paramètre (contrairement à `link_to` qui attend un titre et une url précise).
+Par exemple, `lien_vers(user)` va créer un lien vers l'utilisateur `user` en mettant en titre son pseudonyme.
+On note deux choses avec l'utilisation ci-dessus : par défaut, c'est la visualisation de l'élément qui est demandé, donc généralement la méthode `show`. Ensuite, est mis en titre le texte le plus vraisemblable. En fait, c'est le texte renvoyé quand on utilise `designation_for(&lt;objet&gt;)`.
+
+Utilisation rudimentaire :
+
+
+	lien_vers(&lt;objet&gt;)
+
+
+Pour spécifier le titre explicitement :
+
+
+	lien_vers(&lt;objet&gt;, "&lt;titre&gt;")
+
+
+Pour ajouter des options :
+
+
+	lien_vers(&lt;objet&gt;, "titre"|nil, {&lt;options&gt;})
+
+
+Options
+
+	:target				Mettre :new pour ouvrir le lien dans une nouvelle fenêtre
+	:distant				Mettre à true pour produire une URL complète, avec host et protocole.
+							false par défaut.</Text>
         </Document>
         <Document ID="3C7F480B-142F-454E-AC8A-BC1FD34ABBB2">
             <Title>ActionWatchers</Title>
