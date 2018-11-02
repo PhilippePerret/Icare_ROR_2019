@@ -1,33 +1,111 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
-{\fonttbl\f0\froman\fcharset0 Palatino-Roman;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 CourierNewPSMT;
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Palatino-Roman;\f2\fmodern\fcharset0 CourierNewPSMT;
 }
 {\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red26\green26\blue26;}
 {\*\expandedcolortbl;;\csgray\c100000;\csgray\c13700;}
-\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
-
-\f0\fs28 \cf0 Le gem `byebug` permet de connaitre l'\'e9tat de l'application \'e0 un moment donn\'e9.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
 
-\f1\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
-\f0\b\fs36 Utilisation\
+\f0\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f1\b\fs36 \'c9crire dans le log\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f1\fs28 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	logger.debug "<message de d\'e9bug>"\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 \
+Ce message, en mode d\'e9veloppement, s'\'e9crira dans le fichier `./log/development.log` (et en console de serveur).\
+\
+Note : on peut utiliser un autre niveau de d\'e9bug avec une autre m\'e9thode :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	logger.<niveau> "<message>"\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 \
+Avec 
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22  <niveau> 
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28  qui peut prendre les valeurs ci-dessous.\
+\
+Et jouer sur le niveau de d\'e9buggage de l'application pour d\'e9finir les messages \'e0 afficher\'a0:\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	# Dans un initializer d'environnement\
+	config.log_level = <niveau>\
+	# o\'f9 <niveau> peut avoir les valeurs :\
+	#		:debug			0\
+	#		:info				1\
+	#		:warn				2\
+	#		:error			3\
+	#		:fatal			4\
+	#		:unknown			5\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 \
+ou\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f2\fs22 \
+	# N'importe o\'f9 dans le programme\
+	Rails.logger.level = <niveau>\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f1\b\fs36 ByeBug\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx4275\tx5760\tx7200\tx10080\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f1\fs28 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 Le gem `byebug` permet de connaitre l'\'e9tat de l'application \'e0 un moment donn\'e9.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\sb260\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <$ScrKeepWithNext><$Scr_H::1><$Scr_Ps::0>
+\f1\b\fs36 Utilisation\
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f1\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
-\f0\fs28 \
+\f0\b0\fs24 \cf0 <!$Scr_H::1><!$Scr_Ps::0>
+\f1\fs28 \
 Placer `
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 debugger
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
-\f0\fs28 ` \'e0 l'endroit o\'f9 l'on veut connaitre l'\'e9tat de l'application\
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 ` \'e0 l'endroit o\'f9 l'on veut connaitre l'\'e9tat de l'application\
 Lancer l'application (une URL par exemple)\
 Le serveur s'arr\'eate sur `debugger` et pr\'e9sente une ligne de commande `
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 (byebug)
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
-\f0\fs28 `\
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 `\
 Taper les valeurs \'e0 connaitre, par exemple `
-\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
+\f0\fs24 \cf2 \cb3 \up4 <$Scr_Cs::1>
 \f2\fs22 params[controller]
-\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
-\f0\fs28 ` pour connaitre le contr\'f4leur courant.\
+\f0\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::1>
+\f1\fs28 ` pour connaitre le contr\'f4leur courant.\
 Taper Ctrl-D pour poursuivre le lancement. }

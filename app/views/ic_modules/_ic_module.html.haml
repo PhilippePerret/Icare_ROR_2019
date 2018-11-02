@@ -1,6 +1,7 @@
 -# Template pour afficher un module d'apprentissage d'icarien
 -# Noter que c'est l'affichage qui sert aussi bien dans le bureau de
 -# l'icarien (home) que pour un affichage isolé du module.
+- vu_par_owner = current_user == ic_module.user
 %li.list-group-item
   %h4#module-designation
     %span.glyphicon.glyphicon-inbox.btn-md{'aria-hidden' => 'true', style:'color:#578088;'}
@@ -8,7 +9,7 @@
     %small
       = "(##{ic_module.id})"
 
-  - if current_user != ic_module.user
+  - if !vu_par_owner
     .module-owner.row
       %label.col-md-4
         = I18n.t('icmodule.owner.Label')
@@ -30,16 +31,19 @@
           = designation_for(ic_module.ended_at)
 
   - if ic_module.current? && ic_module.current_etape
+
     -# === ÉTAPE COURANTE DU MODULE (IF ANY) ===
+
     .row
       %label.col-md-4
         = I18n.t('icmodule.current_etape.Label')
       .value.col-md-8
         = numero_et_titre_for(ic_module.current_etape)
-    .row
-      %label.col-md-4
-        = I18n.t('icmodule.etape.work.expected_at.Label')
-      .value.col-md-8
-        = human_expected_work_at_for(ic_module.current_etape)
-    -# Formulaire pour modifier l'échéance de l'étape courante
-    = render 'ic_etapes/form_echeance', ic_etape: ic_module.current_etape
+    - if vu_par_owner
+      .row
+        %label.col-md-4
+          = I18n.t('icmodule.etape.work.expected_at.Label')
+        .value.col-md-8
+          = human_expected_work_at_for(ic_module.current_etape)
+      -# Formulaire pour modifier l'échéance de l'étape courante
+      = render 'ic_etapes/form_echeance', ic_etape: ic_module.current_etape

@@ -1,0 +1,35 @@
+
+- set_title('Profil')
+
+.container
+  .fright
+    = link_to 'Tous les icariens', users_path
+  %h3 Identité
+  .row
+    %aside.col-md-4
+      %section.user_info
+        = gravatar_for(@user)
+        = @user.name
+        -# si l'user accepte les contacts mail
+        - if current_user.admin? || false
+          = " (#{@user.email})"
+  %p
+    Inscrit le :
+    = human_date_for(@user.created_at)
+  %p
+    Dernière modification :
+    = human_date_for(@user.updated_at)
+
+  .container.right
+    -# # TODO Il faudra laisser cette possibilité de modifier seulement au
+    -# # propriétaire du profil ou à l'administrateur.
+    -# # TODO L'administrateur pourra aussi détruire l'user
+    -# # TODO L'administrateur pourra visiter avec ce profil.
+
+    - if current_user.id == @user.id || current_user.admin?
+      = link_to 'modifier', edit_user_path(@user)
+
+  %h3
+    Modules d’apprentissage
+  .container
+    = render @user.ic_modules

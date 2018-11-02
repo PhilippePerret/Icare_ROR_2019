@@ -13,14 +13,21 @@ class String
     self % hash_feminin_masculin(user)
   end
   def hash_feminin_masculin(user)
-    is_f = user.femme?
+    if user.femme?
+      @hash_feminines_feminin   ||= get_hash_feminin_masculin(true)
+    else
+      @hash_feminines_masculin  ||= get_hash_feminin_masculin(false)
+    end
+  end
+  def get_hash_feminin_masculin(is_f)
     {
       belle:  is_f ? 'belle'  : 'beau',
       e:      is_f ? 'e'      : '',
+      eur:    is_f ? 'rice'   : 'eur',    # lect{eur}/lect{rice}
       le:     is_f ? 'le'     : '',       # quel/quelle
       ne:     is_f ? 'ne'     : '',
-      trice:  is_f ? 'trice'  : 'teur',
-      ve:     is_f ? 've'     : 'f',      # actif/active
+      te:     is_f ? 'te'     : '',       # cet/cette
+      ve:     is_f ? 've'     : 'f'       # actif/active
     }
   end
 end

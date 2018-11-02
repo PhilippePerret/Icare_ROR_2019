@@ -34,8 +34,8 @@ module SessionsHelper
   end
 
   # Retourne true s'il y a un user courant
-  def real_user?
-    current_user.is_a?(User) # sinon, c'est un UserNone
+  def real_user?(u = nil)
+    (u || current_user).is_a?(User) # sinon, c'est un UserNone
   end
 
   def log_in(user)

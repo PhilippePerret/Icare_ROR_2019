@@ -147,6 +147,15 @@
 <p class="itemText">Donc : </p>
 <p class="itemText">14 : tous les droits (super administrateur, rédacteur)</p>
 <p class="itemText">6  : administration et rédaction (4 + 2)</p>
+<p class="itemText"></p>
+<p class="itemText">La méthode pour afficher la version humaine du statut est :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> human_privileges(user)</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Note : la méthode `human_statut(user)` concerne le statut de l'icarien pour savoir s'il est en pause, actif, etc.</p>
+
 </li>
 <li>
 <p class="itemTitle">Options</p>
@@ -181,6 +190,30 @@
 <p class="itemText"></p>
 
 </li>
+<li>
+<p class="itemTitle">Helpers</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Féminines</p>
+<p class="itemText">Féminisation des textes</p>
+<p class="itemText"></p>
+<p class="itemText">Pour gérer les féminines, on utilise la méthode String#sexize qui va remplacer tous les templates %{…} se trouvant dans le texte par leur valeur masculine ou féminine.</p>
+<p class="itemText"></p>
+<p class="itemText">Par exemple : </p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> 'icarien%{ne}'.sexize(user)</p>
+<p class="itemText"></p>
+<p class="itemText"> # => "icarien" si homme, "icarienne" si femme</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Si user n'est pas fourni, c'est l'utilisateur courant qui est utilisé.</p>
+<p class="itemText"></p>
+<p class="itemText">Les féminines sont définies dans le fichier feminines.</p>
+</li>
+</ul>
 </ul>
 <hr class="afterText"/>
 

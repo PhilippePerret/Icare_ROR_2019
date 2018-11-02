@@ -37,15 +37,34 @@ module UsersHelper
   end
 
   # Statut humain de l'icarien (actif, en pause, etc.)
+  # C'est le statut qui est affiché sur le bureau de l'icarien(ne), pas
+  # la valeur correspondant à la propriété `statut` de l'icarien qu'on obtient
+  # avec la méthode suivante : human_privileges
   def human_statut(user)
     case
     when user.accepted?   then 'Fraichement reçu%{e}'.sexize(user)
-    when user.admin?      then 'Administra%{trice}'.sexize(user)
+    when user.admin?      then 'Administrat%{rice}'.sexize(user)
     when user.actif?      then 'Icarien%{ne} acti%{ve}'.sexize(user)
     when user.en_pause?   then 'En pause'
     when user.ancien?     then 'Ancien%{ne} icarien%{ne}'.sexize(user)
     when user.postulant?  then 'Postulant%{e}'.sexize(user)
     when user.detruit?    then 'Détruit%{e}'.sexize(user)
+    end
+  end
+
+  def human_privileges(user)
+    case user.statut
+    when 0 then 'aucun (simple inscrit%{e})'.sexize(user)
+    when 1 then 'minimum (simple icarien%{ne})'.sexize(user)
+    else
+      if user.statut & 8
+        'tout puissant'
+      else
+        privs = Array.new
+        user.statut & 2 > 0 && privs << 'rédact%{eur}'.sexize(user)
+        user.statut & 4 > 0 && privs << 'administ%{eur}'.sexize(user)
+        privs.join(', ')
+      end
     end
   end
 

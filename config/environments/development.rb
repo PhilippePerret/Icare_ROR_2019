@@ -66,6 +66,10 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  # Pour définir le niveau de débug. Seuls les messages au-dessus et égal à ce
+  # niveau seront envoyés au log
+  # config.log_level = :debug
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 

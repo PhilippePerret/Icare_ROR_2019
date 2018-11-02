@@ -1,0 +1,43 @@
+- current_is_user_traited = current_user == user
+- user_traited_is_real    = real_user?(user)
+.row.mb-3.border
+  = gravatar_for(user, size: 40)
+  = lien_vers(user)
+  = "(né en #{user.birthyear})"
+  - if user_traited_is_real
+    -# TODO à afficher quand c'est un vrai user
+  - else
+    %span.tiny.cadre
+      EN ATTENTE
+
+  -# Indication pour dire que c'est l'user courant
+  - if current_is_user_traited
+    %span.tiny.cadre
+      VOUS
+
+  -# Administrateur ou icarien
+  - if user.admin?
+    %span.tiny.cadre
+      = 'administrat%{eur}'.sexize(user).upcase
+  - else
+    %span.tiny.cadre
+      = 'icarien%{ne}'.sexize(user).upcase
+
+  - if current_user.admin? && !user.admin?
+    = link_to '[détruire]', user, method: :delete, data: {confirm: 'Êtes-vous certain de vouloir détruire %s' % user.name}
+  - if real_user?
+    .container
+      .col-sm-offset-1
+        Inscription le
+        = human_date_for(user.created_at)
+      .col-sm-offset-1
+        Privilèges :
+        = human_privileges(user)
+    .container
+      .col-sm-offset-1
+        Modules suivis :
+        - if real_user?
+          - user.ic_modules.each do |ic_module|
+            = lien_vers(ic_module, nil, {target: :new})
+        - else
+          aucun
