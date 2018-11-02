@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   # s'il est valide
   def create
     @user = User.new(user_params)
+    # TODO Traiter les documents
+    # TODO Traiter les modules optionnés
     if @user.save
       # Icarien.ne OK
       # On lui envoie un mail pour confirmer son adresse email

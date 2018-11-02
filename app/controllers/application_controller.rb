@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
 
   def correct_user
     return if (params[:id].nil? || current_user.id == params[:id].to_i)
-    flash[:danger] = I18n.t('action.errors.not_autorised'.sexize)
+    flash[:danger] = I18n.t('action.errors.not_autorised'.sexize(current_user))
     redirect_to home_path
   end
 
   def only_for_admin
     return if current_user.admin?
-    flash[:danger] = I18n.t('action.errors.not_enough_privileges'.sexize)
+    flash[:danger] = I18n.t('action.errors.not_enough_privileges'.sexize(current_user))
     redirect_to home_path
   end
 

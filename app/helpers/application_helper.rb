@@ -1,11 +1,11 @@
 require_relative 'html_string'
+require_relative 'my_helpers'
 
 module ApplicationHelper
 
   # Parce que parfois, par exemple lorsqu'on appelle la méthode
   # distance_of_time_in_words, le module n'est pas chargé
   include ActionView::Helpers::DateHelper
-
 
   # Retourne un lien vers l'objet +objet+ (par exemple une étape absolue) en
   # utilisant le titre +titre+ ou alors le `designation_for(objet)`, avec les
@@ -28,7 +28,7 @@ module ApplicationHelper
         host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000'
         })
     end
-    ('<a href="%{href}" target="%{cible}" class="%{css}">%{titre}</a>' % {
+    ('<a href="%{href}" target="_%{cible}" class="%{css}">%{titre}</a>' % {
       href: href, cible: options[:target], css: options[:class], titre: titre
     }).html_safe
   end
@@ -42,7 +42,9 @@ module ApplicationHelper
     options ||= Hash.new
     d = I18n.localize(date, format: (options.delete(:format) || :simple))
     if options[:distance]
-      '%s (dans %s)' % [d, distance_of_time_in_words(Time.now, date)]
+      ilya = Time.now > date ? 'il y a' : 'dans'
+      dist = distance_of_time_in_words(Time.now, date)
+      '%s (%s %s)' % [d, ilya, dist]
     else
       d
     end
@@ -74,6 +76,7 @@ module ApplicationHelper
     idobj   = options[:with_ids] || options[:full] ? " (##{obj.id})" : ''
     obj_name =
       case obj
+      when AbsModule  then 'module d’apprentissage “%s”' % obj.name
       when AbsEtape   then "étape absolue “#{obj.numero} #{obj.titre}”"
       when IcEtape    then "étape #{obj.abs_etape.numero}"
       when IcModule   then "module “#{obj.abs_module.name}”"

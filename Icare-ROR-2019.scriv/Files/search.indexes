@@ -135,6 +135,21 @@ Date de dernière modification des données de l'user
 
 Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
         </Document>
+        <Document ID="40C40DB1-1FA3-486E-971E-628A9B09F3B2">
+            <Title>Server</Title>
+            <Text>Pour stopper le serveur quand Ctrl-C n'est plus possible (fenêtre fermée)
+
+
+	&gt; ps aux | grep puma # récupère les processus Puma et les affiche
+	&gt; kill -9 &lt;pid 1&gt;
+	&gt; kill -9 &lt;pid 2&gt;
+	...
+	&gt; kill -9 &lt;pid N&gt;
+
+
+
+</Text>
+        </Document>
         <Document ID="A86A6632-0AF1-4B0E-BD81-A5416A907900">
             <Title>Validation</Title>
             <Text>On peut ajouter  allow_nil: true  au  validates  pour dire que la données n'est pas toujours requise pour l'enregistrement, comme c'est le cas avec le mot de passe lors d'une modification du profil.
@@ -450,7 +465,46 @@ Pour le détail, voir https://github.com/rails/rails/blob/4cbb9db0a5ff65b0a626a5
         </Document>
         <Document ID="09716B8B-3043-4D9D-B067-E8BAACF46E34">
             <Title>Debugger</Title>
-            <Text>Le gem `byebug` permet de connaitre l'état de l'application à un moment donné.
+            <Text>Écrire dans le log
+
+
+	logger.debug "&lt;message de débug&gt;"
+
+
+Ce message, en mode développement, s'écrira dans le fichier `./log/development.log` (et en console de serveur).
+
+Note : on peut utiliser un autre niveau de débug avec une autre méthode :
+
+
+	logger.&lt;niveau&gt; "&lt;message&gt;"
+
+
+Avec  &lt;niveau&gt;  qui peut prendre les valeurs ci-dessous.
+
+Et jouer sur le niveau de débuggage de l'application pour définir les messages à afficher :
+
+
+	# Dans un initializer d'environnement
+	config.log_level = &lt;niveau&gt;
+	# où &lt;niveau&gt; peut avoir les valeurs :
+	#		:debug			0
+	#		:info				1
+	#		:warn				2
+	#		:error			3
+	#		:fatal			4
+	#		:unknown			5
+
+
+ou
+
+
+	# N'importe où dans le programme
+	Rails.logger.level = &lt;niveau&gt;
+
+
+ByeBug
+
+Le gem `byebug` permet de connaitre l'état de l'application à un moment donné.
 Utilisation
 
 Placer `debugger` à l'endroit où l'on veut connaitre l'état de l'application
@@ -599,6 +653,24 @@ On utilise _url pour une URL complète et _path pour une route simple :
 
 about_path 	=&gt; /static_pages/about
 about_url		=&gt; www.monsite.org/static_pages/about</Text>
+        </Document>
+        <Document ID="6EB7D943-93FB-4F77-94E0-DF7185A1FACF">
+            <Title>Féminines</Title>
+            <Text>Féminisation des textes
+
+Pour gérer les féminines, on utilise la méthode String#sexize qui va remplacer tous les templates %{…} se trouvant dans le texte par leur valeur masculine ou féminine.
+
+Par exemple : 
+
+
+	'icarien%{ne}'.sexize(user)
+
+	# =&gt; "icarien" si homme, "icarienne" si femme
+
+
+Si user n'est pas fourni, c'est l'utilisateur courant qui est utilisé.
+
+Les féminines sont définies dans le fichier feminines.</Text>
         </Document>
         <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
             <Title>Mass assignement</Title>
@@ -1464,6 +1536,9 @@ Liens utiles, par exemple vers la collection Narration
 
 Mais noter que cette méthode est propre au modèle watcher, ça n'est pas le redirect_to des contrôleurs. Cf. action_watcher.</Text>
         </Document>
+        <Document ID="DC95E7B0-DE06-44D8-A4AA-CEA944DEEFD3">
+            <Title>Féminines</Title>
+        </Document>
         <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
             <Title>Statut</Title>
             <Text>Propriété :statut
@@ -1476,7 +1551,16 @@ Mais noter que cette méthode est propre au modèle watcher, ça n'est pas le re
 
 Donc : 
 14 : tous les droits (super administrateur, rédacteur)
-6 	: administration et rédaction (4 + 2)</Text>
+6 	: administration et rédaction (4 + 2)
+
+La méthode pour afficher la version humaine du statut est :
+
+
+	human_privileges(user)
+
+
+Note : la méthode `human_statut(user)` concerne le statut de l'icarien pour savoir s'il est en pause, actif, etc.
+</Text>
         </Document>
         <Document ID="4F4727C1-4967-4AE9-98FB-955A4531697C">
             <Title>Paiements</Title>

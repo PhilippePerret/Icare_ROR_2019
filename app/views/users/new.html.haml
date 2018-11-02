@@ -1,0 +1,28 @@
+- set_title('Poser sa candidature')
+
+.container
+  .col-md-6.col-md-offset-3
+    = form_for(@user, url: signup_path, multipart: true) do |f|
+      = render 'shared/error_messages', objet: @user
+      %h3 Identité
+      .container-fluid
+        = render 'users/form', f: f
+      .w-100
+         
+      %h3 Documents de présentation
+      .container
+        = f.label(:doc_presentation, 'Votre présentation (Bio/CV)')
+        = f.file_field(:doc_presentation)
+        = f.label(:doc_motivation, 'Lettre de motivation')
+        = f.file_field(:doc_motivation)
+        = f.label(:doc_extraits, 'Extraits de textes (facultatif)')
+        = f.file_field(:doc_extraits)
+      .w-100
+         
+      %h3 Modules d’apprentissage optionnés
+      .container.italic.small
+        Cochez les modules envisagés dans la liste ci-dessous.
+      .container
+        = AbsModulesHelper.liste_modules_a_checker(prefix_id: 'user', form: f)
+      .right.vair
+        = f.submit('Poser ma candidature', name: 'commit', class: 'btn btn-primary')

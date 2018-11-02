@@ -26,6 +26,7 @@ class String
       eur:    is_f ? 'rice'   : 'eur',    # lect{eur}/lect{rice}
       le:     is_f ? 'le'     : '',       # quel/quelle
       ne:     is_f ? 'ne'     : '',
+      rice:   is_f ? 'rice'   : 'eur',    # lect{eur}/lect{rice}
       te:     is_f ? 'te'     : '',       # cet/cette
       ve:     is_f ? 've'     : 'f'       # actif/active
     }

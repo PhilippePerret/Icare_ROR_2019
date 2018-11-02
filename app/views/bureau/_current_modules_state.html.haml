@@ -1,9 +1,11 @@
 - if current_user.actif?
   %ul.list-group.px-3
     = render current_user.current_modules
+- elsif current_user.admin?
+  -# Pour un administrateur, on ne met rien
 - elsif current_user.accepted? || current_user.postulant?
   %small.italic= I18n.t('modules.annonce_informations_affiched')
-- elsif !current_user.admin?
+- else
   -# L'user courant n'est pas actif, on lui présente un lien
   -# pour commander un autre module.
   -# TODO
