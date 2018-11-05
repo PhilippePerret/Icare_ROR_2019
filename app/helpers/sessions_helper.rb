@@ -19,6 +19,16 @@ module SessionsHelper
     @current_user ||= get_current_user
   end
 
+  # Défini ou erase l'user courant
+  def set_current_user(u)
+    if u.is_a?(User)
+      session[:user_id] = u.id
+    else
+      session.delete(:user_id)
+    end
+    @current_user = u
+  end
+
   def get_current_user
     if user_id = session[:user_id]
       User.find_by(id: user_id)
@@ -39,7 +49,7 @@ module SessionsHelper
   end
 
   def log_in(user)
-    session[:user_id] = user.id
+    set_current_user(user)
   end
   def log_out
     forget(current_user)

@@ -127,14 +127,6 @@ Date de dernière modification des données de l'user
 					has_many :watchers
 </Text>
         </Document>
-        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
-            <Title>Reset</Title>
-            <Text>Pour resetter la base :
-
-	$ rails db:reset
-
-Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
-        </Document>
         <Document ID="40C40DB1-1FA3-486E-971E-628A9B09F3B2">
             <Title>Server</Title>
             <Text>Pour stopper le serveur quand Ctrl-C n'est plus possible (fenêtre fermée)
@@ -149,6 +141,14 @@ Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) déf
 
 
 </Text>
+        </Document>
+        <Document ID="25D5E120-67F9-43EF-B549-2368D4915AF8">
+            <Title>Reset</Title>
+            <Text>Pour resetter la base :
+
+	$ rails db:reset
+
+Cela détruit les tables et les reconstruit, puis ajoute les graines (seed) définies.</Text>
         </Document>
         <Document ID="A86A6632-0AF1-4B0E-BD81-A5416A907900">
             <Title>Validation</Title>
@@ -639,20 +639,29 @@ Par exemple :
 
 Cela produit l'interruption totale du processus. Les mails `after` ne seront pas envoyés et l'action-watcher ne sera pas détruit. </Text>
         </Document>
-        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
-            <Title>Routes</Title>
-            <Text>Concernant les routes
-Toutes les routes
-Pour voir la liste de toutes les routes, jouer en console :
+        <Document ID="792F2F5C-A2D1-4FEB-810E-212F3A122E54">
+            <Title>Résultat de l'exécution</Title>
+            <Text>Quand le watcher n'est pas joué "automatiquement" comme pour exemple pour la création de la candidature, il faut tester son bon déroulement. Pour ça, on utilise la méthode test :
 
 
-	$ rails routes
+	&lt;action_watcher&gt;.success?
+	# =&gt; true si le watcher a été joué avec succès.
 
-_url et _path
-On utilise _url pour une URL complète et _path pour une route simple :
 
-about_path 	=&gt; /static_pages/about
-about_url		=&gt; www.monsite.org/static_pages/about</Text>
+Donc l'opération complète va être :
+
+
+	aw = &lt;user&gt;.action_watchers.create(&lt;paramètres&gt;)
+	[aw =] aw.run_for(&lt;user&gt;, &lt;params&gt;)
+	if aw.success?
+		# C'est un succès
+	else
+		# Une erreur est survenue
+		# Elle se trouve dans aw.fatal_error
+	end
+
+
+</Text>
         </Document>
         <Document ID="6EB7D943-93FB-4F77-94E0-DF7185A1FACF">
             <Title>Féminines</Title>
@@ -671,6 +680,21 @@ Par exemple :
 Si user n'est pas fourni, c'est l'utilisateur courant qui est utilisé.
 
 Les féminines sont définies dans le fichier feminines.</Text>
+        </Document>
+        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
+            <Title>Routes</Title>
+            <Text>Concernant les routes
+Toutes les routes
+Pour voir la liste de toutes les routes, jouer en console :
+
+
+	$ rails routes
+
+_url et _path
+On utilise _url pour une URL complète et _path pour une route simple :
+
+about_path 	=&gt; /static_pages/about
+about_url		=&gt; www.monsite.org/static_pages/about</Text>
         </Document>
         <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
             <Title>Mass assignement</Title>
@@ -1031,7 +1055,8 @@ Une note (de l'admin) sur cette question, peut-être pour indiquer pourquoi la r
         </Document>
         <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
             <Title>TODO</Title>
-            <Text>	•	Corriger la méthode human_date_for quand la distance est demandée (il ne faut pas toujours écrire "dans")
+            <Text>	•	Lors de l'inscription, quand l'user est créé incomplètement, il faut utiliser une option pour l'indiquer. Noter qu'il n'apparaitra pas dans les listes puisque sa candidature n'a pas été validée. Mais, là, en plus, s'il se reconnecte, il sera toujours redirigé vers le formulaire d'inscription pour fournir ce qui manque (documents de présentation et/ou choix des modules d'apprentissage)
+	•	
 	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
@@ -1148,14 +1173,16 @@ Valeurs possibles
 0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit
 1
 2
-Confirmation du mail (1 = confirmé, 0 = non confirmé)
+Confirmation du mail 
+1: confirmé, 0: non confirmé
 2
 3
 Redirection après l'identification
 cf. la méthode `redirection_after_login` du fichier sessions_helper
 3
 4
-
+Candidature incomplète
+Ce bit est mis à 1 quand l'user a pu être créé mais que sa candidature est incomplète (manque documents et/ou modules optionnés).
 4
 5
 

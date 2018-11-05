@@ -1,0 +1,13 @@
+-# Notification pour le bureau de l'administrateur
+-#
+- aw = action_watcher
+-# Mettre ici le code qui devra apparaitre sur le bureau, soit une simple
+-# information soit un formulaire permettant de jouer l'action-watcher.
+-# Voir le détail dans le fichier d'aide Scrivener
+%p
+  Un problème est survenu lors d’une inscription. C’est la raison pour laquelle
+  vous voyez cette notification.
+%p
+  Les paramètres lors du problème étaient les suivants :
+%pre
+  = aw.params.to_yaml

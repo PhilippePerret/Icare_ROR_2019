@@ -2,27 +2,48 @@
 
 .container
   .col-md-6.col-md-offset-3
-    = form_for(@user, url: signup_path, multipart: true) do |f|
-      = render 'shared/error_messages', objet: @user
-      %h3 Identité
-      .container-fluid
-        = render 'users/form', f: f
-      .w-100
-         
-      %h3 Documents de présentation
-      .container
-        = f.label(:doc_presentation, 'Votre présentation (Bio/CV)')
-        = f.file_field(:doc_presentation)
-        = f.label(:doc_motivation, 'Lettre de motivation')
-        = f.file_field(:doc_motivation)
-        = f.label(:doc_extraits, 'Extraits de textes (facultatif)')
-        = f.file_field(:doc_extraits)
-      .w-100
-         
-      %h3 Modules d’apprentissage optionnés
-      .container.italic.small
-        Cochez les modules envisagés dans la liste ci-dessous.
-      .container
-        = AbsModulesHelper.liste_modules_a_checker(prefix_id: 'user', form: f)
+    = form_for(@user, url: signup_path, multipart: true, method: :post) do |f|
+      -# = render 'shared/error_messages', objet: @user
+      = render 'shared/error_messages', objet: current_user
+
+      -# On présente le formulaire d'identité, mais seulement si
+      -# l'user n'a pas déjà été enregistré dans la base. Cela se produit
+      -# lorsque les données sont valides, mais qu'il n'a pas fourni ses
+      -# documents ou choisit des modules d'apprentissage
+      - unless current_user.real?
+        %h3 Identité
+        .container-fluid
+          = render 'users/form', f: f
+        .w-100
+      - else
+        -# Pour que params[:user] soit toujours retourné
+        = f.hidden_field(:id)
+
+      - unless current_user.respond_to?(:cv_motiv_ok?) && current_user.cv_motiv_ok?
+        %h3 Documents de présentation
+        .container
+          .bold.small.italic{style:'color:red;'}
+            Attention : la présentation et la lettre de motivation sont obligatoires.
+          = f.label(:doc_presentation, 'Votre présentation (Bio/CV)')
+          = f.file_field(:doc_presentation)
+          = f.label(:doc_motivation, 'Lettre de motivation')
+          = f.file_field(:doc_motivation)
+          = f.label(:doc_extraits, 'Extraits de textes (facultatif)')
+          = f.file_field(:doc_extraits)
+        .w-100
+
+      - unless current_user.respond_to?(:modules_optionned) && current_user.modules_optionned
+        %h3 Modules d’apprentissage optionnés
+        .container.italic.small
+          Cochez les modules envisagés dans la liste ci-dessous.
+          .bold{style:'color:red;'}
+            Attention : il faut choisir au moins un module d’apprentissage.
+        .container
+          = AbsModulesHelper.liste_modules_a_checker(prefix_id: 'user', form: f)
+      - else
+        -# Si les modules d'apprentissage ont déjà été choisis
+        = f.hidden_field(:modules_optionned)
+
+      -# ------- LE BOUTON DE SOUMISSION -----------
       .right.vair
         = f.submit('Poser ma candidature', name: 'commit', class: 'btn btn-primary')

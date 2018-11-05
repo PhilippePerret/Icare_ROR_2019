@@ -8,29 +8,51 @@ class UsersController < ApplicationController
     @users = User.where("options NOT LIKE '9%'").paginate(page: params[:page])
   end
 
-  # Demande d'inscription
+  # Demande d'inscription.
+  # Mais l'on repasse aussi par ici lorsque des erreurs ont été trouvées en
+  # essayant d'enregistrer la candidature du postulant. Donc soit on crée une
+  # toute nouvelle instance pour l'user, soit on prend l'user enregistré.
   def new
-    @user = User.new
+    @user = current_user.real? ? current_user : User.new
   end
 
   # Soumission de l'inscription, avec création de l'user
   # s'il est valide
   def create
-    @user = User.new(user_params)
-    # TODO Traiter les documents
-    # TODO Traiter les modules optionnés
-    if @user.save
-      # Icarien.ne OK
-      # On lui envoie un mail pour confirmer son adresse email
-      @user.create_activation_digest
-      # Rediriger vers une page statique expliquant la suite
+
+    # # Pour détruire l'user créé avant (test)
+    # if u = User.find_by_name('filou')
+    #   u.destroy
+    #   set_current_user(nil)
+    # end
+    #
+
+    if current_user.real?
+      @user = current_user
+    else
+      @user = User.new(user_params)
+      @user.save || begin
+        render :new
+        return
+      end
+      set_current_user(@user)
+    end
+
+    # L'idée ici est de créer un watcher pour le candidat et de le
+    # jouer aussitôt. De cette manière, tout le processus de création de la
+    # candidature, avec enregistrement des documents et des modules optionnés,
+    # se trouve dans un endroit qu'on peut retrouver facilement.
+    aw = @user.action_watchers.create(objet: @user, action: 'user/create_candidature')
+    aw.is_a?(ActionWatcher) || raise('Impossible de créer la candidature…')
+    aw.run_for(@user, params)
+
+    if aw.success?
       redirect_to ('/static_pages/after_signup?id=%i' % [@user.id])
     else
-      # Si l'enregistrement n'a pas pu se faire, on réaffiche
-      # le formulaire en affichant les erreurs
       render :new
     end
   end
+
 
   def update
     @user = User.find(params[:id])

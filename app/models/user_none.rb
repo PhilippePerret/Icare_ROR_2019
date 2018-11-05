@@ -6,6 +6,7 @@ User fictif, quand le visiteur n'est pas identifié
 class UserNone
   def id            ; 0         end
   def name          ; 'Dude'    end
+  def real?         ; false     end
   alias :pseudo :name
   def super_admin?  ; false     end
   def admin?        ; false     end
@@ -17,4 +18,6 @@ class UserNone
   def detruit?      ; false     end
   def femme?        ; false     end
   def compte_actif? ; false     end
+
+  def errors ; [] end
 end#/Class UserNone

@@ -14,6 +14,8 @@ class ActionWatcher < ApplicationRecord
   end
 
 
+  # Pour enregistrer l'erreur fatale si elle se produit.
+  attr_accessor :fatal_error
 
   # Peuvent être transmis à la création de l'objet, et transformés avant
   # la validation.
@@ -146,9 +148,10 @@ class ActionWatcher < ApplicationRecord
 
   # Pour jouer l'action-watcher
   def run_for(cuser, params)
+    @running_is_successfull = false
     self.current_user = cuser
     @params = params
-    is_valid? || return
+    is_valid? || (return self)
     load_required
     execute
     unless interrupted?
@@ -161,9 +164,23 @@ class ActionWatcher < ApplicationRecord
   rescue Exception => e
     puts "# ERREUR: #{e.message}"
     puts e.backtrace[0..5].join("\n")
-    self.failure_message = 'Une erreur est survenue. Consulter le log du serveur.'
+    self.fatal_error      = e
+    self.failure_message  = 'Une erreur est survenue. Consulter le log du serveur.'
+  else
+    @running_is_successfull = true # pour que aw.success? soit true
   ensure
     return self # pour le chainage
+  end
+
+  # Pour raiser (donc interrompre brutalement le watcher) en le détruisant.
+  # Méthode utile pour
+  def destroy_and_raise erreur = nil
+    self.destroy unless !!@do_not_destroy
+    if erreur.nil?
+      raise
+    else
+      raise erreur
+    end
   end
 
   # Retourne true si l'User +utested+ est le propriétaire de l'action-watcher
@@ -201,6 +218,11 @@ class ActionWatcher < ApplicationRecord
     @notification_user_partial  ||= '_notify_user'
   end
 
+
+  # Retourne true si la méthode `run_for` a été exécuté avec succès
+  def success?
+    @running_is_successfull || false
+  end
 
 
   # Faut-il interrompre le programme ? Retourne TRUE si c'est le cas

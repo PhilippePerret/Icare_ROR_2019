@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_060533) do
+ActiveRecord::Schema.define(version: 2018_10_09_972142) do
 
   create_table "abs_etapes", force: :cascade do |t|
     t.integer "numero", limit: 3
@@ -144,6 +144,19 @@ ActiveRecord::Schema.define(version: 2018_10_09_060533) do
     t.datetime "updated_at", null: false
     t.index ["abs_etape_id"], name: "index_mini_faqs_on_abs_etape_id"
     t.index ["user_id"], name: "index_mini_faqs_on_user_id"
+  end
+
+  create_table "other_documents", force: :cascade do |t|
+    t.string "type", limit: 4
+    t.string "original_name"
+    t.string "affixe"
+    t.datetime "commented_at"
+    t.string "original_options", limit: 8
+    t.string "comments_options", limit: 8
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_other_documents_on_user_id"
   end
 
   create_table "paiements", force: :cascade do |t|

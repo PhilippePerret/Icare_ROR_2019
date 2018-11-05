@@ -10,7 +10,11 @@ class User < ApplicationRecord
 
   has_many :ic_modules
   has_many :ic_etapes, through: :ic_modules
-  has_many :documents, through: :ic_etapes
+  # has_many :documents, through: :ic_etapes
+
+  # Des documents qui n'appartiennent pas faux étape, comme par exemple
+  # les documents de présentation
+  has_many :other_documents
 
   has_many :action_watchers
   has_many :tickets
@@ -49,6 +53,8 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def real? ; true end # contrairement à UserNone
+  
   def admin?
     self.statut & 4 > 0
   end
@@ -79,23 +85,6 @@ class User < ApplicationRecord
 
   def destroy
     set_option(0, 9)
-  end
-
-  # Envoie un mail pour que l'user puisse confirmer son adresse email et
-  # donc activer son compte vraiment.
-  # RETURN l'instance mail envoyée, utile pour les tests
-  def create_activation_digest
-    ticket = self.tickets.create(
-      Ticket.new(
-              name: 'activation_compte',
-              action: "User.find(%{user_id}).active_compte"
-              ).hash_to_create
-              )
-    self.ticket_token = ticket.token
-    # Laisser en bas pour retourner le mail produit
-    mail = UserMailer.activation_compte(self, ticket) #=> Class Mail
-    mail.deliver_now
-    return mail
   end
 
   # Méthode d'activation du compte

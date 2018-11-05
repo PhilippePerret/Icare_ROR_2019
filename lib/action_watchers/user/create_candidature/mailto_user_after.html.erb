@@ -1,0 +1,13 @@
+<%
+#
+# Mail envoyé à l'USER À L'EXÉCUTION de l'action watcher
+#
+# L'action-watcher est bindé à cette vue
+#
+self.subject = "Confirmation de votre inscription"
+%>
+
+<div class="container">
+  <p>Bonjour <%= user.name %>,</p>
+  <p>Je vous confirme que votre candidature pour l’Atelier Icare a bien été enregistrée.</p>
+</div>

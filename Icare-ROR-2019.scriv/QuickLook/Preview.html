@@ -170,25 +170,16 @@
 <p class="itemText">0: à valider, 1: accepté, 2: actif, 3: en pause, 4: inactif, 9: détruit</p>
 <p class="itemText">1</p>
 <p class="itemText">2</p>
-<p class="itemText">Confirmation du mail (1 = confirmé, 0 = non confirmé)</p>
+<p class="itemText">Confirmation du mail </p>
+<p class="itemText">1: confirmé, 0: non confirmé</p>
 <p class="itemText">2</p>
 <p class="itemText">3</p>
 <p class="itemText">Redirection après l'identification</p>
 <p class="itemText">cf. la méthode `redirection_after_login` du fichier sessions_helper</p>
 <p class="itemText">3</p>
 <p class="itemText">4</p>
-<p class="itemText"></p>
-<p class="itemText">4</p>
-<p class="itemText">5</p>
-<p class="itemText"></p>
-<p class="itemText">5</p>
-<p class="itemText">6</p>
-<p class="itemText"></p>
-<p class="itemText">6</p>
-<p class="itemText">7</p>
-<p class="itemText"></p>
-<p class="itemText"></p>
-
+<p class="itemText">Candidature incomplète</p>
+<p class="itemText">Ce bit est mis à 1 quand l'user a pu être créé mais que sa candidature est incomplète (manque documents et/ou modules opt...</p>
 </li>
 <li>
 <p class="itemTitle">Helpers</p>
@@ -874,6 +865,30 @@
 <p class="itemText">Pour rediriger l'action après son exécution, on utilise tout simplement la méthode `redirect_to` avec en argument la nouvelle direction.</p>
 <p class="itemText"></p>
 <p class="itemText">Mais noter que cette méthode est propre au modèle watcher, ça n'est pas le redirect_to des contrôleurs. Cf. action_watcher.</p>
+</li>
+<li>
+<p class="itemTitle">Résultat de l'exécution</p>
+<p class="itemText">Quand le watcher n'est pas joué "automatiquement" comme pour exemple pour la création de la candidature, il faut tester son bon déroulement. Pour ça, on utilise la méthode test :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> <action_watcher>.success?</p>
+<p class="itemText"> # => true si le watcher a été joué avec succès.</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText">Donc l'opération complète va être :</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+<p class="itemText"> aw = <user>.action_watchers.create(<paramètres>)</p>
+<p class="itemText"> [aw =] aw.run_for(<user>, <params>)</p>
+<p class="itemText"> if aw.success?</p>
+<p class="itemText">  # C'est un succès</p>
+<p class="itemText"> else</p>
+<p class="itemText">  # Une erreur est survenue</p>
+<p class="itemText">  # Elle se trouve dans aw.fatal_error</p>
+<p class="itemText"> end</p>
+<p class="itemText"></p>
+<p class="itemText"></p>
+
 </li>
 </ul>
 <hr class="afterText"/>
