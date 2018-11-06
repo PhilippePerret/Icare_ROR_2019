@@ -173,12 +173,10 @@ class ActionWatcher < ApplicationRecord
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
     ticket = user.tickets.create(
-      Ticket.new(
-              name: 'activation_compte',
-              action: "User.find(%{user_id}).active_compte"
-              ).hash_to_create
-      )
-    user.ticket_token = ticket.token
+      name:   'Activer mon compte Icare',
+      action: 'User.find(%{user_id}).active_compte',
+      duree:  7.days
+    )
     # Laisser en bas pour retourner le mail produit
     mail = UserMailer.activation_compte(user, ticket) #=> Class Mail
     mail.deliver_now

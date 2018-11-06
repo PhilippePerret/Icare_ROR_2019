@@ -6,33 +6,27 @@ class Ticket < ApplicationRecord
   # Un ticket appartient toujours à un unique User/Icarien
   belongs_to :user
 
-  # Pour renseigner les variables qui ont peut-être été placées dans l'action,
-  # surtout lorsque c'est une route.
-  # after_create :rectifie_action
+  # Choses à faire avant la validation des données. Par exemple, la date
+  # d'expiration peut être transmise par la propriété `duree`
+  before_validation :exec_before_validation
 
+  # Choses à faire avant la création du ticket
+  before_create :exec_before_creation
+
+  # Choses à faire après la création du ticket
   after_create :exec_after_creation
 
-  def initialize with_data
-    # # On peut avoir fourni le ticket à la création de l'association
-    # puts "with_data.class: #{with_data.class}"
-    # with_data = with_data.hash_to_create if with_data.instance_of?(Ticket)
-    # puts "with_data.class: #{with_data.class}"
+  # les valeurs qui peuvent être passées dans les paramètres envoyés à
+  # <user>.tickets.create(<params>)
+  # Elles seront traitées ensuite par exec_before_validation pour être
+  # transformées ou supprimées
+  attr_accessor :duree, :duration
 
-    with_data.key?(:digest) && @digest = with_data[:digest]
-    # Définition de la date de péremption si une durée de vie
-    # est définie.
-    (with_data.key?(:duree) || with_data.key?(:duration)) && begin
-      duree = with_data.delete(:duree) || with_data.delete(:duration)
-      with_data.merge!(expire_at: Time.current + duree)
-    end
-    # TODO Vérifier si c'est toujours nécessaire de procéder comme ça
-    @token = with_data.delete(:token) || SessionsHelper.new_token
-    super(with_data)
-  end
 
   # ---------------------------------------------------------------------
   # Méthodes d'helper
 
+  # Utiliser la méthode `lien_vers(ticket[, <titre>])`
   def link titre = 'Jouer le ticket'
     ('<a href="%{url}">%{titre}</a>' % {
       url: self.url,
@@ -49,31 +43,33 @@ class Ticket < ApplicationRecord
   def url
     @url ||= begin
       inprod = Rails.env.production?
-      '%{protocol}://%{host}/tickets/%{ticket_id}/%{token}?uid=%{uid}' % {
+      '%{protocol}://%{host}%{route}' % {
         protocol:   inprod ? 'https' : 'http',
         host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000',
-        ticket_id:  self.id,
-        token:      self.token,
-        uid:        self.user.id
+        route:      route
       }
     end
+  end
+  def route
+    @route ||= "/tickets/#{id}/#{token}?uid=#{user.id}"
   end
 
   # ---------------------------------------------------------------------
   # Data
+
   def token
     @token || get_token_in_ticket
   end
 
-  def calculated_digest
-    @calculated_digest ||= BCrypt::Password.create(self.token, cost: 5)
-  end
-
-  # Le hash qui doit être envoyé à <user>.tickets.create(<... hash ...>) pour
-  # créer un ticket pour l'user
-  def hash_to_create
-    {name: name, expire_at: expire_at, digest: calculated_digest, action: action, token: token}
-  end
+  # def calculated_digest
+  #   @calculated_digest ||= BCrypt::Password.create(self.token, cost: 5)
+  # end
+  #
+  # # Le hash qui doit être envoyé à <user>.tickets.create(<... hash ...>) pour
+  # # créer un ticket pour l'user
+  # def hash_to_create
+  #   {name: name, expire_at: expire_at, digest: calculated_digest, action: action, token: token}
+  # end
 
   # ---------------------------------------------------------------------
   # Méthode du watcher
@@ -89,7 +85,7 @@ class Ticket < ApplicationRecord
     action_watcher && action_watcher.data
   end
   def create_ticket_action_watcher(token)
-    user.action_watchers.create(action: 'user/watcher_ticket', objet: self, data: token, expire_at: expire_at)
+    user.action_watchers.create(action: 'user/watcher_ticket', objet: self, data: token, triggered_at: expire_at)
   end
 
   # ---------------------------------------------------------------------
@@ -108,6 +104,19 @@ class Ticket < ApplicationRecord
 
   private
 
+    # Ce qu'il faut faire avant la validation
+    def exec_before_validation
+      if self.duree || self.duration
+        self.expire_at = Time.current + (self.duree || self.duration)
+      end
+    end
+
+    # Ce qu'il y a à faire avant la création
+    def exec_before_creation
+      @token      = SessionsHelper.new_token # pour le watcher du ticket
+      self.digest = BCrypt::Password.create(@token, cost: 5)
+    end
+
     # Opérations à exécuter après la création du ticket :
     #   1. Rectifier les valeurs template dans l'action à jouer
     #   2. Création de l'action-watcher associé au ticket.
@@ -115,10 +124,10 @@ class Ticket < ApplicationRecord
       rectifie_action
       create_ticket_action_watcher(@token)
     end
-    
+
     # Après l'enregistrement (after_save), on corrige certaines valeurs qui
     # ont pu être transmises par variable % dans l'action
     def rectifie_action
-      update_attribute(:action, action % {token: token, user_id: user.id, digest: calculated_digest})
+      update_attribute(:action, action % {token: token, user_id: user.id, digest: digest})
     end
 end

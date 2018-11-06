@@ -15,7 +15,10 @@ module ApplicationHelper
     options ||= Hash.new
     href =
       case objet
-      when 'on verra une classe peut-être'
+      when Ticket
+        # Par défaut, toujours distant
+        options.key?(:distant) || options.merge!(distant: true)
+        objet.route
       else
         # Pour la plupart des classes, on peut voir les choses comme ça
         "/#{objet.class.to_s.underscore}s/#{objet.id}"
@@ -87,7 +90,12 @@ module ApplicationHelper
         else
           'document #%{docid}' % {docid: obj.id}
         end
-      else obj.class
+      else
+        if obj.respond_to?(:name)
+          obj.name
+        else
+          obj.class
+        end
       end
     # La désignation simple
     design = "#{obj_name}#{idobj}"

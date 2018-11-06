@@ -2,8 +2,7 @@ class CreateTickets < ActiveRecord::Migration[5.2]
   def change
     create_table :tickets do |t|
       t.belongs_to :user, index: true
-      # t.integer :user_id
-      t.string    :name          # Pour le nom du ticket
+      t.string    :name          # Pour le nom du ticket et le titre du lien
       t.string    :digest
       t.string    :action
       t.datetime  :expire_at

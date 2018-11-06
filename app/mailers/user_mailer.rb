@@ -5,8 +5,8 @@ class UserMailer < ApplicationMailer
   # Attention : ça n'envoie pas le mail.
   def activation_compte(user, ticket)
     @greeting = "Bonjour #{user.name}"
-    @user = user # pour le mail
-    @url_for_ticket = ticket_run_url(ticket.id, token: ticket.token)
+    @user   = user    # pour le mail
+    @ticket = ticket  # idem
     mail(to: user.email) # retourné à la méthode appelante
   end
 
@@ -16,8 +16,8 @@ class UserMailer < ApplicationMailer
   # appelante)
   def reset_password(user, ticket)
     @greeting = "Bonjour #{user.name}"
-    @user = user
-    @url_for_ticket = ticket_run_url(ticket.id, token: ticket.token)
+    @user   = user    # pour le mail
+    @ticket = ticket  # idem
     mail(to: user.email)
   end
 end

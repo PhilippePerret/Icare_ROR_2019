@@ -44,13 +44,11 @@ class ActionWatcher < ApplicationRecord
     # simplement en cliquant sur un lien de son mail. De toute façon, on crée
     # les watchers qui permettront de définir ce partage (ces watchers seront
     # détruits si le lien-ticket du mail est utilisé)
-    ticket = Ticket.new(
-      name:     'partage_documents',
+    self.ticket = user.tickets.create(
+      name:     'Partager les documents',
       action:   '/ic_etapes/%{id}/document_sharing?shared=all' % {id: icetape.id},
       duree:    30.days
     )
-    token = ticket.token
-    self.ticket = user.tickets.create(ticket.hash_to_create)
   end
   # /fin_traitement_documents_etape
 

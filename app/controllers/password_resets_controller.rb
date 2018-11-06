@@ -7,12 +7,11 @@ class PasswordResetsController < ApplicationController
     # Si l'adresse existe, on prend l'user et on lui fait un ticket.
     u = User.find_by(email: params[:infopassword][:email])
     u || raise(ActiveRecord::RecordNotFound)
-    ticket = Ticket.new(
-      name:    'reset_password',
+    ticket = u.tickets.create(
+      name:    'Réinitialiser le mot de passe',
       action:  '/password_resets/%{token}/edit',
       duree:   2.hours
-      )
-    ticket = u.tickets.create(ticket.hash_to_create)
+    )
     UserMailer.reset_password(u, ticket).deliver_now
     flash[:success] = I18n.t('email.success.mail_reset_sent', email: u.email)
   rescue ActiveRecord::RecordNotFound => e

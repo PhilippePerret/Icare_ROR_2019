@@ -18,11 +18,11 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "reset_password" do
-    @ticket = @phil.tickets.create(Ticket.new(
-      name:     'password_reset',
+    @ticket = @phil.tickets.create(
+      name:     'Réinitialiser le mot de passe',
       action:   '/password_resets/%{token}/edit',
       duree:    2.days
-    ).hash_to_create)
+    )
 
     mail = UserMailer.reset_password(@phil, @ticket)
     assert_equal I18n.t('user_mailer.reset_password.subject'), mail.subject
