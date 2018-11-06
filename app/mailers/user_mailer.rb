@@ -6,7 +6,6 @@ class UserMailer < ApplicationMailer
   def activation_compte(user, ticket)
     @greeting = "Bonjour #{user.name}"
     @user = user # pour le mail
-    @user.ticket_token ||= SessionsHelper.new_token # non défini quand preview
     @url_for_ticket = ticket_run_url(ticket.id, token: ticket.token)
     mail(to: user.email) # retourné à la méthode appelante
   end

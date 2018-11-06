@@ -69,12 +69,8 @@ class ActionWatcher < ApplicationRecord
 
     # On envoie un mail au candidat pour qu'il confirme son adresse email. Mais
     # seulement si ça n'a pas encore été fait.
-    logger.debug "---- current_user.mail_activation_sent? = #{current_user.mail_activation_sent?.inspect}"
-    logger.debug "---- current_user.options : #{current_user.options}"
     unless current_user.mail_activation_sent?
-      logger.debug "-> On doit envoyer le mail d'activation de compte"
       create_activation_digest
-      logger.debug "<- Mail d'activation de compte envoyé"
     end
 
     # On peut enregistrer l'user, ou on raise
@@ -97,6 +93,7 @@ class ActionWatcher < ApplicationRecord
       user.action_watchers.create(objet: user, action: 'user/candidature', data: user.modules_optionned)
     else
       # Candidature invalide
+      # --------------------
       # On indique que la candidature est incomplète
       user.set_option(3, 0)
       destroy_and_raise
@@ -175,7 +172,6 @@ class ActionWatcher < ApplicationRecord
   # donc activer son compte vraiment.
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
-    logger.debug "----> create_activation_digest"
     ticket = user.tickets.create(
       Ticket.new(
               name: 'activation_compte',
@@ -188,7 +184,6 @@ class ActionWatcher < ApplicationRecord
     mail.deliver_now
     # On indique que le mail d'activation a été envoyé
     user.set_option(4,1)
-    logger.debug "<---- create_activation_digest"
     return mail # utile ?
   end
 

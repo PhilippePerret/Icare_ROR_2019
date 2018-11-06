@@ -1,0 +1,9 @@
+-# Notification pour le bureau de l'administrateur
+-#
+- aw = action_watcher
+-#
+- ticket = aw.objet
+.container
+  = "Un ticket est arrivé à expiration. Possesseur : #{designation_for(ticket.user, with_ids: true)}. Ticket : #{designation_for(ticket)}."
+= form_for('destruction_ticket', url: awrun_path(aw)) do
+  = f.submit('Détruire ce ticket')

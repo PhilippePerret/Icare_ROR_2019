@@ -1,13 +1,21 @@
 <%
 #
-# Mail envoyé à l'USER À L'EXÉCUTION de l'action watcher
+# Mail envoyé à l'USER à la CRÉATION du watcher
 #
-# L'action-watcher est bindé à cette vue
-#
-self.subject = "Confirmation de votre inscription"
+self.subject = "Confirmation de votre candidature"
 %>
-
-<div class="container">
-  <p>Bonjour <%= user.name %>,</p>
-  <p>Je vous confirme que votre candidature pour l’Atelier Icare a bien été enregistrée.</p>
-</div>
+<p>
+  <%= user.name %>,
+</p>
+<p>
+  Je vous confirme la bonne réception de votre dossier de candidature à l'atelier Icare.
+</p>
+<p>
+  Vous recevez une réponse de Philippe Perret (alias « Phil »), pédagogue de l'atelier, dans les jours prochains.
+</p>
+<p>
+  En vous remerciant de votre intérêt pour l'atelier,
+</p>
+<p>
+  L'administration de l'atelier Icare
+</p>

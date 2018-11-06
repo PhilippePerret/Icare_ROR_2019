@@ -30,7 +30,7 @@ class TicketsController < ApplicationController
   def run
     # Note : si on ne peut pas le trouver, ça raise ActiveRecord::RecordNotFound
     ticket  = Ticket.find(params[:id])
-    token = params[:token]
+    token   = params[:token]
 
     # On peut vérifier que le ticket est bon et n'est pas out fo date
     redirection =
