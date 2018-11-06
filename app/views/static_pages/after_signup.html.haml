@@ -2,16 +2,23 @@
 .container
   .col-md-7.justify
     %p
-      = "#{@user.name ,}"
+      = "#{@user.name},"
       votre candidature pour rejoindre l’atelier Icare a bien été enregistrée.
-    %p
-      = "Il vous reste à confirmer cette candidature grâce au mail que vous avez dû recevoir à l'adresse #{@user.email}."
+    -# L'user a pu s'y reprendre en plusieurs fois pour transmettre ses
+    -# document et indiquer ses modules optionnés et, entre temps, il a pu
+    -# activer son compte (valider son adresse mail)
+    - unless @user.compte_actif?
+      %p
+        = "Il vous reste à confirmer cette candidature grâce au mail que vous avez dû recevoir à l'adresse #{@user.email}."
     %p
       Elle sera examinée dans les prochains jours par Phil et une réponse vous sera communiquée.
     %p
-      = "En attendant, <strong>dès que vous aurez confirmé votre candidature</strong>, vous pourrez visiter #{link_to('votre profil', @user)} ou #{link_to('votre bureau', bureau_path)}."
+      = "En attendant, "
+      - unless @user.compte_actif?
+        = "<strong>dès que vous aurez confirmé votre candidature</strong>, ".html_safe
+      = "vous pourrez visiter #{link_to('votre profil', @user)} ou #{link_to('votre bureau', bureau_path)}.".html_safe
     %p
-      = "Vous pouvez aussi consulter #{link_to('l’aide', help_path)} pour tout savoir de l'atelier Icare et de son fonctionnement."
+      = "Vous pouvez aussi consulter #{link_to('l’aide', help_path)} pour tout savoir de l'atelier Icare et de son fonctionnement.".html_safe
     %p
       Au plaisir de vous compter peut-être bientôt parmi nous,
     %p

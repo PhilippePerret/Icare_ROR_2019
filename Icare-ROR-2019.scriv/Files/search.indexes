@@ -355,6 +355,24 @@ On envoie le mail normalement avec :
         <Document ID="2C65CED0-60E6-422B-8C55-590CF10161C9">
             <Title>Création</Title>
         </Document>
+        <Document ID="61A3731D-7C09-4703-A047-EAC2DC5E3314">
+            <Title>Peupler la base</Title>
+            <Text>Pour peupler la base de données comme en développement, on peut utiliser :
+
+
+	&gt; rails db:seed RAILS_ENV=test
+
+
+Mais attention : il ne faut pas, alors, utiliser de fichier fixtures pour les tests, sinon le peuplement sera initialisé pour être remplacé par les données de ces fixtures.
+
+On peut faire de même pour un seed particulier :
+
+
+	&gt; rails db:reset:&lt;nom seed&gt; RAILS_ENV=test
+
+
+</Text>
+        </Document>
         <Document ID="04B90E21-621A-4938-A9C0-D1BA3D4D3684">
             <Title>Messages de fin</Title>
             <Text>On définit le message de fin en utilisant l'une de ces deux méthodes :
@@ -544,6 +562,48 @@ Description longue du module (HTML)
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
         </Document>
+        <Document ID="792F2F5C-A2D1-4FEB-810E-212F3A122E54">
+            <Title>Résultat de l'exécution</Title>
+            <Text>Quand le watcher n'est pas joué "automatiquement" comme pour exemple pour la création de la candidature, il faut tester son bon déroulement. Pour ça, on utilise la méthode test :
+
+
+	&lt;action_watcher&gt;.success?
+	# =&gt; true si le watcher a été joué avec succès.
+
+
+Donc l'opération complète va être :
+
+
+	aw = &lt;user&gt;.action_watchers.create(&lt;paramètres&gt;)
+	[aw =] aw.run_for(&lt;user&gt;, &lt;params&gt;)
+	if aw.success?
+		# C'est un succès
+	else
+		# Une erreur est survenue
+		# Elle se trouve dans aw.fatal_error
+	end
+
+
+</Text>
+        </Document>
+        <Document ID="FD4D3546-4C14-4455-8D60-EEFE2988D1C1">
+            <Title>Introduction</Title>
+            <Text>L'administration est gérée par le gem `activeadmin` :
+
+	gem 'activeadmin', '1.3.1'
+
+Pour l'installer pour les utilisateurs, sans utiliser Devise :
+
+	$ rails g active_admin:install --skip-users
+
+Ou avec une classe User existante :
+
+	$ rails g active_admin:install User --skip-users
+</Text>
+        </Document>
+        <Document ID="307E09A9-6774-4120-8FDD-9FA845F959FC">
+            <Title>Documents</Title>
+        </Document>
         <Document ID="D02C325F-788D-4867-8BFC-9209A19C2841">
             <Title>De l'association</Title>
             <Text>On crée un action-watcher avec :
@@ -573,44 +633,8 @@ Hash data doit impérativement comporter :
 		action-watcher de paiement avec `in: 15.days`.
 		</Text>
         </Document>
-        <Document ID="FD4D3546-4C14-4455-8D60-EEFE2988D1C1">
-            <Title>Introduction</Title>
-            <Text>L'administration est gérée par le gem `activeadmin` :
-
-	gem 'activeadmin', '1.3.1'
-
-Pour l'installer pour les utilisateurs, sans utiliser Devise :
-
-	$ rails g active_admin:install --skip-users
-
-Ou avec une classe User existante :
-
-	$ rails g active_admin:install User --skip-users
-</Text>
-        </Document>
-        <Document ID="307E09A9-6774-4120-8FDD-9FA845F959FC">
-            <Title>Documents</Title>
-        </Document>
         <Document ID="4E13651D-70C3-4E95-9484-68853AA9B1DA">
             <Title>Administration</Title>
-        </Document>
-        <Document ID="2EEF34E8-AA8F-4467-83F5-71B195456BAC">
-            <Title>Menu Select</Title>
-            <Text>À partir d'une table :
-
-	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;[, &lt;valeur sélectionnée&gt;]) %&gt;
-
-Note : si multiple: true, &lt;valeur sélectionnée&gt; est un Array des valeurs sélectionnées.
-
-Pour définir la taille du menu : size: &lt;taille&gt; (par exemple size: 10 pour montrer 10 valeurs)
-
-Par exemple, pour choisir un utilisateur :
-
-	- users_selected = [2, 12, 34]
-
-	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name, users_selected), size: 20, multiple: true %&gt;
-
-</Text>
         </Document>
         <Document ID="00D37C5D-EF94-41AD-BE9B-6DE698823CAE">
             <Title>Formulaires</Title>
@@ -639,27 +663,21 @@ Par exemple :
 
 Cela produit l'interruption totale du processus. Les mails `after` ne seront pas envoyés et l'action-watcher ne sera pas détruit. </Text>
         </Document>
-        <Document ID="792F2F5C-A2D1-4FEB-810E-212F3A122E54">
-            <Title>Résultat de l'exécution</Title>
-            <Text>Quand le watcher n'est pas joué "automatiquement" comme pour exemple pour la création de la candidature, il faut tester son bon déroulement. Pour ça, on utilise la méthode test :
+        <Document ID="2EEF34E8-AA8F-4467-83F5-71B195456BAC">
+            <Title>Menu Select</Title>
+            <Text>À partir d'une table :
 
+	&lt;%= select_tag(:&lt;prop&gt;, options_from_collection_for_select(&lt;Table&gt;.all, &lt;clé valeur&gt;, &lt;clé titre&gt;[, &lt;valeur sélectionnée&gt;]) %&gt;
 
-	&lt;action_watcher&gt;.success?
-	# =&gt; true si le watcher a été joué avec succès.
+Note : si multiple: true, &lt;valeur sélectionnée&gt; est un Array des valeurs sélectionnées.
 
+Pour définir la taille du menu : size: &lt;taille&gt; (par exemple size: 10 pour montrer 10 valeurs)
 
-Donc l'opération complète va être :
+Par exemple, pour choisir un utilisateur :
 
+	- users_selected = [2, 12, 34]
 
-	aw = &lt;user&gt;.action_watchers.create(&lt;paramètres&gt;)
-	[aw =] aw.run_for(&lt;user&gt;, &lt;params&gt;)
-	if aw.success?
-		# C'est un succès
-	else
-		# Une erreur est survenue
-		# Elle se trouve dans aw.fatal_error
-	end
-
+	&lt;%= select_tag(:user, options_from_collection_for_select(User.all, :id, :name, users_selected), size: 20, multiple: true %&gt;
 
 </Text>
         </Document>
@@ -755,6 +773,37 @@ Pour tester la correspondance :
         <Document ID="8875D1F2-783A-4A58-9A6D-45B9CB0C5E74">
             <Title>CSS</Title>
         </Document>
+        <Document ID="2EEA561F-90DB-48AE-BDB1-64B41BBD8DCD">
+            <Title>Lancement du test</Title>
+            <Text>Pour lancer un test (dans Atom), plusieurs solutions :
+Lancement du fichier actif
+Afficher le test dans l'éditeur et jouer  ^⌘T .
+Lancement avec rspec
+Copier le chemin relatif du fichier test (Ctrl-cliquer sur le nom du fichier dans le view-tree et choisir « Project path ».
+Taper en console :
+
+
+	&gt; rails test ./&lt;path fichier&gt;
+
+
+Cette méthode permet de passer des paramètres intéressant.
+
+Par exemple le nom précis du test à jouer :
+
+
+	&gt; rails test ./&lt;path fichier&gt; -n 'le nom du test'
+
+
+ou la ligne :
+
+
+	&gt; rails test ./&lt;path fichier&gt;:&lt;ligne&gt;
+
+
+
+
+</Text>
+        </Document>
         <Document ID="A7BE32C8-0E83-4931-9269-DB974BA7BEAA">
             <Title>Utilisation hors contrôleurs/views</Title>
             <Text>Ajouter le code suivant dans la classe où doivent être utilisées les méthodes d'helper :
@@ -784,11 +833,11 @@ Par exemple :
 
 </Text>
         </Document>
-        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
-            <Title>User</Title>
-        </Document>
         <Document ID="38C3C0F0-E0FF-4F12-B0D2-D52661303255">
             <Title>DB</Title>
+        </Document>
+        <Document ID="268196E3-4E44-4A38-AB15-5B6979A7F846">
+            <Title>User</Title>
         </Document>
         <Document ID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14">
             <Title>Hash</Title>
@@ -800,6 +849,57 @@ h[:inexistant]
 h = Hash.new('boudin')
 h[:inexistant]
 =&gt; 'boudin'</Text>
+        </Document>
+        <Document ID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E">
+            <Title>Options</Title>
+            <Text>Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.
+
+ Bit
+Valeurs possibles
+0
+1
+Existence
+1: Le document existe, 0: le document  n'existe pas
+1
+2
+Partage
+0: non défini, 1: partagé, 2: non partagé
+2
+3
+Téléchargement (user ou admin)
+0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)
+3
+4
+Présence sur le QDD
+0: non déposé, 1: déposé sur le QDD (original si original_options, comments si comments_options)
+4
+5
+Définition du partage (obsolète, cf. le 2ème bit)
+5
+6
+Fin du cycle de vie
+0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD et partage)
+6
+7
+
+
+</Text>
+        </Document>
+        <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
+            <Title>Tester une route</Title>
+            <Text>Quand on a…
+
+ get 'controller/action' 
+
+… dans le fichier routes, on peut tester ensuite que la page fonctionne par :
+
+
+	test "le contrôleur répond à l'action" do
+		get controller_action_url
+		assert_response :success
+	end
+
+</Text>
         </Document>
         <Document ID="1697DBCF-E46D-4502-A1B5-3438F7D1B30A">
             <Title>Production (heroku)</Title>
@@ -843,57 +943,17 @@ Pour essayer le bac à sable sur heroku :
  $ heroku run rails console --sandbox 
 </Text>
         </Document>
-        <Document ID="07B24F46-B64D-47F2-B2BD-6A510C8EFA9E">
-            <Title>Options</Title>
-            <Text>Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.
-
- Bit
-Valeurs possibles
-0
-1
-Existence
-1: Le document existe, 0: le document  n'existe pas
-1
-2
-Partage
-0: non défini, 1: partagé, 2: non partagé
-2
-3
-Téléchargement (user ou admin)
-0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)
-3
-4
-Présence sur le QDD
-0: non déposé, 1: déposé sur le QDD (original si original_options, comments si comments_options)
-4
-5
-Définition du partage (obsolète, cf. le 2ème bit)
-5
-6
-Fin du cycle de vie
-0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD et partage)
-6
-7
+        <Document ID="C7102217-48E2-42C8-A236-015119EEC914">
+            <Title>Document (file)</Title>
+            <Text>Pour mettre un fichier dans un formulaire
 
 
-</Text>
-        </Document>
-        <Document ID="EC3EBABA-166D-43B6-828A-5E3098017CAF">
-            <Title>Tester une route</Title>
-            <Text>Quand on a…
- get 'controller/action' 
-… dans le fichier routes, on peut tester ensuite que la page fonctionne par :
+	within('form#mon_forumaire') do
+		attach_file '&lt;name|id champ&gt;', '&lt;path absolu du fichier&gt;'
+	end
 
-test "le contrôleur répond à l'action" do
-	get controller_action_url
-	assert_response :success
-end
-</Text>
-        </Document>
-        <Document ID="0811B557-4572-49A6-8419-67912A32F57B">
-            <Title>Générateurs (rails generate)</Title>
-            <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
-</Text>
+
+Noter qu'il s'agit du path absolu du fichier (qu'on peut obtenir avec `File.expand_path(&lt;path&gt;)`.</Text>
         </Document>
         <Document ID="5CC616C9-DB87-4C8C-84C9-3CF5CBF94C8D">
             <Title>Mise en place Action Storage</Title>
@@ -991,6 +1051,35 @@ comments_cote
 Cote du document commentaires, en fonction des lectures.
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
+        </Document>
+        <Document ID="D7F3514D-CA5E-4E05-BF77-54422086F873">
+            <Title>Environnement</Title>
+            <Text>Pour connaitre l'environnement courant dans le code ruby :
+
+
+	environnement = Rails.env
+	# Par exemple =&gt; "development"
+
+
+On peut tester aussi avec :
+
+
+	Rails.env.production?
+	# =&gt; true si production
+
+	Rails.env.test?
+	# =&gt; true si environnement de test
+
+	Rails.env.development?
+	# =&gt; true si environnement de développement
+
+
+</Text>
+        </Document>
+        <Document ID="0811B557-4572-49A6-8419-67912A32F57B">
+            <Title>Générateurs (rails generate)</Title>
+            <Text>Infos intéressantes https://api.rubyonrails.org/classes/Rails/Generators/NamedBase.html
+</Text>
         </Document>
         <Document ID="B0D092CD-0E58-4410-A80C-30D09876E418">
             <Title>Git</Title>
@@ -1181,11 +1270,12 @@ Redirection après l'identification
 cf. la méthode `redirection_after_login` du fichier sessions_helper
 3
 4
-Candidature incomplète
-Ce bit est mis à 1 quand l'user a pu être créé mais que sa candidature est incomplète (manque documents et/ou modules optionnés).
+Candidature complète
+Ce bit est mis à 1 quand l'user a pu être créé avec une inscription complète, donc les documents et les modules choisis. Sinon, le bit est laissé à 0 (manque documents et/ou modules optionnés).
 4
 5
-
+Mail d'activation de compte envoyé
+0: mail non envoyé, 1: mail envoyé
 5
 6
 
@@ -1240,6 +1330,41 @@ Module interrompu/abandonné
 
 </Text>
         </Document>
+        <Document ID="B23A61A0-30C9-40BC-B453-DAB10BE33C8E">
+            <Title>Options</Title>
+            <Text>Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.
+
+ Bit
+Valeurs possibles
+0
+1
+Existence
+1: Le document existe, 0: le document  n'existe pas
+1
+2
+Partage
+0: non défini, 1: partagé, 2: non partagé
+2
+3
+Téléchargement (user ou admin)
+0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)
+3
+4
+Présence sur le QDD
+0: non déposé, 1: déposé sur le QDD (original si original_options, comments si comments_options)
+4
+5
+Définition du partage (obsolète, cf. le 2ème bit)
+5
+6
+Fin du cycle de vie
+0: en cours de vie, 1: fin du cycle (avec dépôt sur le QDD et partage)
+6
+7
+
+
+</Text>
+        </Document>
         <Document ID="58768660-DA20-42FD-B4DF-FB51595A3C15">
             <Title>Modules</Title>
             <Text>Voir : 
@@ -1275,8 +1400,18 @@ On peut les mettre dans la couleur qu'on veut ('color: ...')
 La taille se règle en fonction du conteneur, mais on peut utiliser aussi des `btn-&lt;taille&gt;' pour la régler, comme `btn-sm', `btn-lg', etc.
 Ajouter un `aria-label' si c'est un bouton , pour l'accessibilité.</Text>
         </Document>
-        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
-            <Title>Notes testing</Title>
+        <Document ID="A1B2707E-47CD-4A65-AB2E-0F72755D3486">
+            <Title>Test system</Title>
+            <Text>Le meilleur (?) système de test, pour voir ce qui se passe, c'est avec les "test system" de rails.
+On crée un premier test système avec :
+
+
+	&gt; rails generate test_system Users
+
+
+… qui va créer tout ce qu'il faut.
+
+Et notamment le fichier ./test/application_system_test_case.rb qui permet de choisir le navigateur et la taille de fenêtre pour les tests.</Text>
         </Document>
         <Document ID="DF310288-799D-45D4-80B4-79459E833115">
             <Title>Options</Title>
@@ -1309,6 +1444,9 @@ cf. state
 
 
 </Text>
+        </Document>
+        <Document ID="F4920AD3-E838-49ED-AE17-6C88E0C4A799">
+            <Title>Notes testing</Title>
         </Document>
         <Document ID="8A7EADC0-235B-46CA-B142-90FAEE6A846C">
             <Title>content_tag</Title>
@@ -1374,7 +1512,9 @@ Puis exécuter les opérations de dépôt ci-dessus.</Text>
             <Title>Redirection</Title>
             <Text>Pour suivre une redirection dans un test, il faut utiliser la ligne :
 
- follow_redirect! 
+
+ 	follow_redirect! 
+
 
 Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisateur vers une page de confirmation complète.</Text>
         </Document>
@@ -1382,7 +1522,9 @@ Je le fais par exemple après une inscription OK, lorsqu'on redirige l'utilisate
             <Title>Récupérer une variable</Title>
             <Text>Il faut que ce soit une variable d'instance (@...)
 
-	v = assigns(:variable)</Text>
+	v = assigns(:variable)
+
+Attention, ça ne fonctionne pas avec les tests-system.</Text>
         </Document>
         <Document ID="B5ABE287-7122-48A9-9B89-9C1687BE9664">
             <Title>Autres ressources</Title>
@@ -1557,6 +1699,9 @@ Liens utiles, par exemple vers la collection Narration
 	+ les timestamps par défaut, created_at et updated_at
 					</Text>
         </Document>
+        <Document ID="375B717D-E199-4D70-B249-6B7FD1C0A13D">
+            <Title>Document (file)</Title>
+        </Document>
         <Document ID="D9C57209-91BA-4805-9725-5E9F17730B56">
             <Title>Redirection après run</Title>
             <Text>Pour rediriger l'action après son exécution, on utilise tout simplement la méthode `redirect_to` avec en argument la nouvelle direction.
@@ -1710,6 +1855,29 @@ TODO : voir comment elles seront évaluées. Ce sera peut-être un json.
 
 </Text>
         </Document>
+        <Document ID="BAA8ACA2-E8D1-4CBB-B2EC-5EF17D56AB4C">
+            <Title>Propriétés</Title>
+            <Text>Les propriétés d'un document quelconque, donc autre qu'un document de module d'apprentissage d'icarien :
+
+belongs_to :user
+
+has_many :lectures
+
+original_name
+Le nom original du fichier tel qu'il a été transmis
+affixe
+Affixe donné au document
+commented_at
+Date effective de remise des commentaires
+dtype
+Le type du document, tel que défini dans la table DTYPES. Par exemple, le document de présentation a le dtype 'PRES' et la lettre de motivation le dtype 'MOTI'.
+original_options
+Les options concernant le document original
+comments_options
+Les options concernant le document commentaire
+	+ les timestamps par défaut, created_at et updated_at
+					</Text>
+        </Document>
         <Document ID="35D45C28-0FAC-4792-AEF7-BDEAEA2943BF">
             <Title>Propriétés</Title>
             <Text>Les propriétés des lectures d'un document sont :
@@ -1765,13 +1933,16 @@ Note : penser à ajouter :original_file et :comments_file aux paramètres permis
 	end
 
 
+
 Pour attacher un fichier autrement que par un formulaire, on utilise :
+
 
 		icdocument.original.attach(
 			io: 				File.open('path/to/file'), 
 			filename: 		'filename.ext', 
 			content_type:		 'application/pdf' # ou autre
 		)
+
 
 </Text>
         </Document>
@@ -2084,10 +2255,16 @@ C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
         </Document>
         <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
             <Title>Définition générale avant test</Title>
-            <Text>def set_up
-	@variable = "valeur"
-	@autre_variable = "autre valeur"
-end</Text>
+            <Text>
+
+
+	def set_up
+		@variable = "valeur"
+		@autre_variable = "autre valeur"
+	end
+
+
+</Text>
         </Document>
         <Document ID="03AF605A-E96A-432B-B9F7-C7AAAFC5DEB1">
             <Title>Redictions particulières</Title>

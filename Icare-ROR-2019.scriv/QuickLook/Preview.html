@@ -178,8 +178,8 @@
 <p class="itemText">cf. la méthode `redirection_after_login` du fichier sessions_helper</p>
 <p class="itemText">3</p>
 <p class="itemText">4</p>
-<p class="itemText">Candidature incomplète</p>
-<p class="itemText">Ce bit est mis à 1 quand l'user a pu être créé mais que sa candidature est incomplète (manque documents et/ou modules opt...</p>
+<p class="itemText">Candidature complète</p>
+<p class="itemText">Ce bit est mis à 1 quand l'user a pu être créé avec une inscription complète, donc les documents et les modules choisis. Si...</p>
 </li>
 <li>
 <p class="itemTitle">Helpers</p>
@@ -653,6 +653,59 @@
 <p class="itemText">     </p>
 </li>
 </ul>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="topLevelItemTitle">OtherDocuments</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Propriétés</p>
+<p class="itemText">Les propriétés d'un document quelconque, donc autre qu'un document de module d'apprentissage d'icarien :</p>
+<p class="itemText"></p>
+<p class="itemText">belongs_to :user</p>
+<p class="itemText"></p>
+<p class="itemText">has_many :lectures</p>
+<p class="itemText"></p>
+<p class="itemText">original_name</p>
+<p class="itemText">Le nom original du fichier tel qu'il a été transmis</p>
+<p class="itemText">affixe</p>
+<p class="itemText">Affixe donné au document</p>
+<p class="itemText">commented_at</p>
+<p class="itemText">Date effective de remise des commentaires</p>
+<p class="itemText">dtype</p>
+<p class="itemText">Le type du document, tel que défini dans la table DTYPES. Par exemple, le document de présentation a le dtype 'PRES' et la lettre de motivation le dtype 'MOTI'.</p>
+<p class="itemText">original_options</p>
+<p class="itemText">Les options concern...</p>
+</li>
+<li>
+<p class="itemTitle">Options</p>
+<p class="itemText">Options pour `original_options` et `comments_options`, les options des deux documents, original et commenté.</p>
+<p class="itemText"></p>
+<p class="itemText"> Bit</p>
+<p class="itemText">Valeurs possibles</p>
+<p class="itemText">0</p>
+<p class="itemText">1</p>
+<p class="itemText">Existence</p>
+<p class="itemText">1: Le document existe, 0: le document  n'existe pas</p>
+<p class="itemText">1</p>
+<p class="itemText">2</p>
+<p class="itemText">Partage</p>
+<p class="itemText">0: non défini, 1: partagé, 2: non partagé</p>
+<p class="itemText">2</p>
+<p class="itemText">3</p>
+<p class="itemText">Téléchargement (user ou admin)</p>
+<p class="itemText">0: non chargé, 1: chargé (par l'admin si original, par l'icarien si comments)</p>
+<p class="itemText">3</p>
+<p class="itemText">4</p>
+<p class="itemText">Présence sur le QDD</p>
+<p class="itemText">0: non déposé, 1: déposé sur le QDD (original si original_options, comments si comments_options)</p>
+<p class="itemText">4</p>
+<p class="itemText">5</p>
+<p class="itemText">Définitio...</p>
+</li>
 </ul>
 <hr class="afterText"/>
 

@@ -5,14 +5,14 @@ class OtherDocument < ApplicationRecord
   has_one_attached :comments
 
   # Les types d'autre document
-  TYPES = {
+  DTYPES = {
     'PRES'  => {hname: 'Document de présentation'},
     'MOTI'  => {hname: 'Lettre de motivation'},
     'EXTR'  => {hname: 'Extraits de textes'}
   }
 
-  def human_type
-    @human_type ||= TYPES[self.type]
+  def human_dtype
+    @human_dtype ||= DTYPES[self.dtype]
   end
 
 

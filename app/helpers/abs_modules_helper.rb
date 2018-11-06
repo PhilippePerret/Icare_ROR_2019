@@ -5,7 +5,6 @@ module AbsModulesHelper
 
   def self.liste_modules_a_checker options = nil
     options ||= Hash.new
-    form = options.delete(:form)
     prefix_id = options.delete(:prefix_id)
 
     temp_id   = (prefix_id ? "#{prefix_id}" : '') + '%s'

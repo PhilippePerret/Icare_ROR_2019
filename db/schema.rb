@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_972142) do
   end
 
   create_table "other_documents", force: :cascade do |t|
-    t.string "type", limit: 4
+    t.string "dtype", limit: 4
     t.string "original_name"
     t.string "affixe"
     t.datetime "commented_at"

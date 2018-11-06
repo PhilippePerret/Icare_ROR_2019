@@ -1,14 +1,49 @@
 
+# require_relative 'user'
+
 class User
-  def cv_motiv_ok?
-    cv_ok && motiv_ok
+
+  def mail_activation_sent?
+    self.option(4) == 1
   end
-  attr_accessor :motiv_ok
-  attr_accessor :cv_ok
-  attr_accessor :modules_optionned # liste des ID de modules optionnés
+
+  # Liste des modules optionnés, sous-forme de liste d'identifiants
+  # séparés par des ':' (tels qu'ils seront dans le watcher de validation
+  # de l'inscription)
+  attr_accessor :modules_optionned
+
+  # Méthode utilisée par le formulaire pour savoir si les documents
+  # de présentation obligatoires ont été transmis
+  def documents_ok?
+    presentation_ok? && motivation_ok?
+  end
+  # Le détail
+  def presentation_ok?
+    self.other_documents.exists?(dtype: 'PRES')
+  end
+  def motivation_ok?
+    self.other_documents.exists?(dtype: 'MOTI')
+  end
+  def extraits_ok?
+    self.other_documents.exists?(dtype: 'EXTR')
+  end
+
 end
 
 class ActionWatcher < ApplicationRecord
+
+  def doc_presentation
+    @doc_presentation ||= params_candidature[:doc_presentation]
+  end
+  def doc_motivation
+    @doc_motivation ||= params_candidature[:doc_motivation]
+  end
+  def doc_extraits
+    @doc_extraits ||= params_candidature[:doc_extraits]
+  end
+  def params_candidature
+    @params_candidature ||= params[:candidature] || Hash.new
+  end
 
   # La méthode principale qui exécute l'action-watcher quand on invoque
   # sa méthode `run`
@@ -34,8 +69,12 @@ class ActionWatcher < ApplicationRecord
 
     # On envoie un mail au candidat pour qu'il confirme son adresse email. Mais
     # seulement si ça n'a pas encore été fait.
-    unless current_user.compte_actif? || (session['mail_confirmation_sent'] == '1')
+    logger.debug "---- current_user.mail_activation_sent? = #{current_user.mail_activation_sent?.inspect}"
+    logger.debug "---- current_user.options : #{current_user.options}"
+    unless current_user.mail_activation_sent?
+      logger.debug "-> On doit envoyer le mail d'activation de compte"
       create_activation_digest
+      logger.debug "<- Mail d'activation de compte envoyé"
     end
 
     # On peut enregistrer l'user, ou on raise
@@ -53,11 +92,13 @@ class ActionWatcher < ApplicationRecord
     # formulaire d'inscription.
     if candidature_valide?
       # On indique que la candidature est complète
-      user.set_option(3, 0)
+      user.set_option(3, 1)
+      # On crée un watcher pour valider l'inscription
+      user.action_watchers.create(objet: user, action: 'user/candidature', data: user.modules_optionned)
     else
       # Candidature invalide
       # On indique que la candidature est incomplète
-      user.set_option(3, 1)
+      user.set_option(3, 0)
       destroy_and_raise
     end
 
@@ -82,13 +123,13 @@ class ActionWatcher < ApplicationRecord
 
   def traite_modules_apprentissage_optionned
 
-    if params[:user][:absmodules].nil?
+    if params[:candidature][:absmodules].nil? && !user.modules_optionned
       user.errors.add(' ', 'Il faut choisir au moins un module d’apprentissage à suivre.')
       @no_error_found = false
     else
-      user.modules_optionned = params[:user][:absmodules].keys
+      user.modules_optionned = params[:candidature][:absmodules].keys.join(':')
     end
-    
+
   end
   # /traite_modules_apprentissage_optionned
 
@@ -97,16 +138,9 @@ class ActionWatcher < ApplicationRecord
   def traite_documents_inscription
     # Soit l'utilisateur a envoyé ses documents de présentation et de motivation
     # soit il faut générer une erreur
-    doc_field = params[:user][:doc_presentation]
-    current_user.cv_ok =
-      traite_document_inscription(doc_field, 'Le document de présentation', 'PRES')
-
-    doc_field = params[:user][:doc_motivation]
-    current_user.motiv_ok =
-      traite_document_inscription(doc_field, 'La lettre de motivation', 'MOTI')
-
-    doc_field = params[:user][:doc_extraits]
-    traite_document_inscription(doc_field, 'Les extraits', 'EXTR', false)
+    traite_document_inscription(doc_presentation, 'Le document de présentation', 'PRES')
+    traite_document_inscription(doc_motivation,   'La lettre de motivation', 'MOTI')
+    traite_document_inscription(doc_extraits,     'Les extraits', 'EXTR', false)
 
   end
   # /traite_documents_inscription
@@ -118,10 +152,7 @@ class ActionWatcher < ApplicationRecord
         # C'est un document obligatoire. Il faut vérifier s'il existe déjà
         # d'une précédente soumission.
         # Sinon, c'est une erreur
-        if user.other_documents.exists?(type: doc_type)
-          # C'est bon il a été trouvé
-          debug "#{doc_le_name} a été trouvé"
-        else
+        unless user.other_documents.exists?(type: doc_type)
           user.errors.add(doc_le_name, ' est obligatoire.')
           @no_error_found = false
           return false
@@ -130,7 +161,9 @@ class ActionWatcher < ApplicationRecord
     else
       # Le document a été fourni, on l'enregistre
       idoc = user.other_documents.create(
-        original_name: doc_field.original_filename, type: doc_type)
+        original_name: doc_field.original_filename,
+        dtype: doc_type
+        )
       idoc.original.attach(doc_field)
     end
     return true
@@ -142,17 +175,20 @@ class ActionWatcher < ApplicationRecord
   # donc activer son compte vraiment.
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
+    logger.debug "----> create_activation_digest"
     ticket = user.tickets.create(
       Ticket.new(
               name: 'activation_compte',
               action: "User.find(%{user_id}).active_compte"
               ).hash_to_create
-              )
+      )
     user.ticket_token = ticket.token
     # Laisser en bas pour retourner le mail produit
     mail = UserMailer.activation_compte(user, ticket) #=> Class Mail
     mail.deliver_now
-    session['mail_confirmation_sent'] = '1'
+    # On indique que le mail d'activation a été envoyé
+    user.set_option(4,1)
+    logger.debug "<---- create_activation_digest"
     return mail # utile ?
   end
 

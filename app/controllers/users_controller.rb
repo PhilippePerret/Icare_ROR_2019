@@ -20,22 +20,23 @@ class UsersController < ApplicationController
   # s'il est valide
   def create
 
-    # # Pour détruire l'user créé avant (test)
-    # if u = User.find_by_name('filou')
-    #   u.destroy
-    #   set_current_user(nil)
-    # end
-    #
+    # Par prudence, dans le cas où, en développement, on aurait une connexion
+    # à la base déjà ouverte
+    if Rails.env.development?
+      ActiveRecord::Base.connection.execute("BEGIN TRANSACTION;")
+      ActiveRecord::Base.connection.execute("END;")
+    end
 
     if current_user.real?
       @user = current_user
     else
       @user = User.new(user_params)
-      @user.save || begin
+      if @user.save
+        set_current_user(@user)
+      else
         render :new
         return
       end
-      set_current_user(@user)
     end
 
     # L'idée ici est de créer un watcher pour le candidat et de le

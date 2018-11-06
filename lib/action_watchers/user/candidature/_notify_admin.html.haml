@@ -1,9 +1,26 @@
 -# Notification pour le bureau de l'administrateur
 - aw = action_watcher
 - modules_optionnes = aw.data.to_s.split(':')
-- puts modules_optionnes.inspect
+- user = aw.objet
+
 %h4.font-weight-bold
   = "Candidature de #{aw.objet.name}."
+-# Documents de présentation à télécharger
+%h5.bold Documents de présentation
+.container
+  %div
+    - doc_cv = user.other_documents.where(dtype: 'PRES').first
+    = link_to 'Bio du candidat', rails_blob_path(doc_cv.original, disposition: 'attachment')
+  %div
+    - doc_motiv = user.other_documents.where(dtype: 'MOTI').first
+    = link_to 'Lettre de motivation', rails_blob_path(doc_motiv.original, disposition: 'attachment')
+  - if user.other_documents.exists?(dtype: 'EXTR')
+    %div
+      - doc_extraits = user.other_documents.where(dtype: 'EXTR').first
+      = link_to 'Extraits', rails_blob_path(doc_extraits.original, disposition: 'attachment')
+
+-# Formulaire pour valider ou refuser la candidature
+%h5.bold Choix du module d’apprentissage
 = form_for('validation_candidature', url: awrun_path(aw)) do
   = select_tag(:module_id, options_from_collection_for_select(AbsModule.all, :id, :name, modules_optionnes), multiple: true, size: 10)
   .right

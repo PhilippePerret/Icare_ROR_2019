@@ -16,7 +16,7 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= get_current_user
+    @current_user ||= get_current_user || UserNone.new
   end
 
   # Défini ou erase l'user courant
@@ -25,6 +25,7 @@ module SessionsHelper
       session[:user_id] = u.id
     else
       session.delete(:user_id)
+      u = UserNone.new
     end
     @current_user = u
   end

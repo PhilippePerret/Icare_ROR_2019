@@ -27,11 +27,11 @@ require "#{Rails.root}/config/secret/data_phil"   # => DATA_PHIL
 require "#{Rails.root}/config/secret/data_marion" # => DATA_MARION
 
 User.create([
-  {name: DATA_PHIL[:pseudo], email: DATA_PHIL[:email],
+  { id:1, name: DATA_PHIL[:pseudo], email: DATA_PHIL[:email],
     prenom: 'Philippe', nom: 'Perret', birthyear: DATA_PHIL[:birthyear],
     statut: 14, sexe: 0, options: '01100000',
     password: DATA_PHIL[:password], password_confirmation: DATA_PHIL[:password]},
-  {name: DATA_MARION[:pseudo], email: DATA_MARION[:email],
+  { id: 2, name: DATA_MARION[:pseudo], email: DATA_MARION[:email],
     prenom: 'Marion', nom: 'Michel', birthyear: DATA_MARION[:birthyear],
     statut: 6, sexe: 1, options: '01200000',
     password: DATA_MARION[:password], password_confirmation: DATA_MARION[:password]},
@@ -41,7 +41,9 @@ User.create([
     password: 'mot de passe', password_confirmation: 'mot de passe'}
   ])
 
-unless Rails.env == 'production'
+puts "Injection des données de users de base (administrateurs) OK"
+
+unless Rails.env.production?
 
   # On fait d'autres utilisateurs
   annees = (1970..(Time.now.year-16)).to_a.shuffle.shuffle
@@ -89,7 +91,7 @@ AbsEtape.create(final_abs_etapes)
 
 
 
-unless Rails.env == 'production'
+unless Rails.env.production?
 
   # On donne des modules d'apprentissage à benoit
   benoit = User.find(3)

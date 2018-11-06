@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string    :remember_digest
 
       t.integer   :statut,  default: 0, limit: 2
-      t.string    :options, default: '00000000'
+      t.string    :options, default: '0'*8
 
       t.timestamps
     end

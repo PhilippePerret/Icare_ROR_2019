@@ -2,7 +2,13 @@
 
 .container
   .col-md-6.col-md-offset-3
-    = form_for(@user, url: signup_path, multipart: true, method: :post) do |f|
+    -# Noter que ci-dessous on n'utilise pas 'multipart: true' parce que
+    -# les fichiers (présentation, motivation, extraits) ne sont pas dans les
+    -# propriétés de @user et 'multipart: true' ne fonctionnerait que si
+    -# on utilisait f.file_field. Mais si on utilisait f.file_field, les
+    -# documents seraient mis dans les propriétés de :user dans params et ça
+    -# poserait un problème pour le filtre des StrongParamètres.
+    = form_for(@user, url: signup_path, method: :post, html: {'enctype' => 'multipart/form-data'}) do |f|
       -# = render 'shared/error_messages', objet: @user
       = render 'shared/error_messages', objet: current_user
 
@@ -19,18 +25,21 @@
         -# Pour que params[:user] soit toujours retourné
         = f.hidden_field(:id)
 
-      - unless current_user.respond_to?(:cv_motiv_ok?) && current_user.cv_motiv_ok?
-        %h3 Documents de présentation
-        .container
-          .bold.small.italic{style:'color:red;'}
-            Attention : la présentation et la lettre de motivation sont obligatoires.
-          = f.label(:doc_presentation, 'Votre présentation (Bio/CV)')
-          = f.file_field(:doc_presentation)
-          = f.label(:doc_motivation, 'Lettre de motivation')
-          = f.file_field(:doc_motivation)
-          = f.label(:doc_extraits, 'Extraits de textes (facultatif)')
-          = f.file_field(:doc_extraits)
-        .w-100
+      -# -------- LES DOCUMENTS DE PRÉSENTATION --------------------
+      %h3 Documents de présentation
+      .container
+        .bold.small.italic{style:'color:red;'}
+          Attention : la présentation et la lettre de motivation sont obligatoires.
+        - unless current_user.respond_to?(:presentation_ok?) && current_user.presentation_ok?
+          = label_tag('candidature[doc_presentation]', 'Votre présentation (Bio/CV)')
+          = file_field_tag('candidature[doc_presentation]')
+        - unless current_user.respond_to?(:motivation_ok?) && current_user.motivation_ok?
+          = label_tag('candidature[doc_motivation]', 'Lettre de motivation')
+          = file_field_tag('candidature[doc_motivation]')
+        - unless current_user.respond_to?(:extraits_ok?) && current_user.extraits_ok?
+          = label_tag('candidature[doc_extraits]', 'Extraits de textes (facultatif)')
+          = file_field_tag('candidature[doc_extraits]')
+      .w-100
 
       - unless current_user.respond_to?(:modules_optionned) && current_user.modules_optionned
         %h3 Modules d’apprentissage optionnés
@@ -39,7 +48,7 @@
           .bold{style:'color:red;'}
             Attention : il faut choisir au moins un module d’apprentissage.
         .container
-          = AbsModulesHelper.liste_modules_a_checker(prefix_id: 'user', form: f)
+          = AbsModulesHelper.liste_modules_a_checker(prefix_id: 'candidature')
       - else
         -# Si les modules d'apprentissage ont déjà été choisis
         = f.hidden_field(:modules_optionned)

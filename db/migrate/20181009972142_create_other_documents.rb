@@ -1,7 +1,7 @@
 class CreateOtherDocuments < ActiveRecord::Migration[5.2]
   def change
     create_table :other_documents do |t|
-      t.string      :type,                limit: 4
+      t.string      :dtype,               limit: 4
       t.string      :original_name
       t.string      :affixe
       t.datetime    :commented_at

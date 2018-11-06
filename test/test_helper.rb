@@ -3,6 +3,9 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require "minitest/rails/capybara"
 
+# Pour les tests/system
+require 'selenium-webdriver'
+
 # Ajouté du tutoriel pour les reporteurs
 require 'minitest/reporters'
 Minitest::Reporters.use!
