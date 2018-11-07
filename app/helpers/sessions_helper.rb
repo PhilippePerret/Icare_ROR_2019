@@ -77,11 +77,14 @@ module SessionsHelper
   # Pour le moment, on envoie vers le bureau (bureau_path) qui conduit
   # à une page virtuelle
   def redirection_after_login(user)
-    if session[:original_url]
+    if user.option(3) == 0
+      # <= Candidature incomplète
+      # => Renvoyer vers le formulaire d'inscription
+      return '/signup'
+    elsif session[:original_url]
       return session.delete(:original_url)
     else
-      opt = 1 # option choisie par l'user
-      case opt
+      case user.option(2)
       when 1 then '/bureau'
       when 2 then '/profil'
       when 3 then '/'
@@ -92,5 +95,13 @@ module SessionsHelper
       end
     end
   end
+
+  # Login de l'user
+  # La méthode retourne le path à atteindre après l'identification
+  def login_user(user)
+    log_in(user) # dans les helpers de sessions
+    return redirection_after_login(user)
+  end
+  # /login_user
 
 end

@@ -40,7 +40,8 @@ fr:
     signup:
       button:             'Poser ma candidature'
       title:              'Poser sa candidature'
-      merci_de_completer: 'Merci de compléter votre inscription en donnant vos documents de présentation et en choisissant vos modules.'
+      errors:
+        merci_de_completer: 'Merci de compléter votre inscription en donnant vos documents de présentation et en choisissant vos modules.'
     signin:
       button:         'M’identifier'
     password:

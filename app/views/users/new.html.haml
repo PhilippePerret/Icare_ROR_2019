@@ -25,7 +25,7 @@
         -# Si l'identité du candidat a déjà été enregistrée. Ce texte est
         -# affiché soit lors de la première inscription, soit lorsque l'user
         -# revient se connecter.
-        %p.warning
+        %p.red
           = I18n.t('users.signup.errors.merci_de_completer')
         -# Pour que params[:user] soit toujours retourné
         = f.hidden_field(:id)
@@ -33,7 +33,7 @@
       -# -------- LES DOCUMENTS DE PRÉSENTATION --------------------
       %h3 Documents de présentation
       .container
-        .bold.small.italic{style:'color:red;'}
+        .bold.small.italic.red
           Attention : la présentation et la lettre de motivation sont obligatoires.
         - unless current_user.respond_to?(:presentation_ok?) && current_user.presentation_ok?
           = label_tag('candidature[doc_presentation]', 'Votre présentation (Bio/CV)')

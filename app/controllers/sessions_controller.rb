@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
 
   end
 
+  # def login_user(user)
+  #   log_in(user) # dans les helpers de sessions
+  #   redirect_to(redirection_after_login(user))
+  # end
+
   # Créer une session courante (log in)
   def create
     if params[:session]
@@ -12,9 +17,8 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         if user.compte_actif?
           flash[:success] = I18n.t('users.success.welcome', name: user.name)
-          log_in(user) # dans les helpers de sessions
           params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-          redirect_to redirection_after_login(user)
+          redirect_to(login_user(user))
         else
           # Email pas encore confirmé
           flash[:danger] = I18n.t('users.errors.email.not_confirmed', name: user.name)

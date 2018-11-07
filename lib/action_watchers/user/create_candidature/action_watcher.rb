@@ -178,7 +178,7 @@ class ActionWatcher < ApplicationRecord
   def create_activation_digest
     ticket = user.tickets.create(
       name:   I18n.t('tickets.titres.activer_compte'),
-      action: 'u=User.find(%i);u.active_compte;flash[:info]="%s"' % [user.id, I18n.t('users.success.compte_actived', {name: user.name})],
+      action: 'u=User.find(%i);u.active_compte;flash[:info]="%s";u.option(3) == 0 && redirection = login_user(u)' % [user.id, I18n.t('users.success.compte_actived', {name: user.name})],
       duree:  7.days
     )
     # Laisser en bas pour retourner le mail produit

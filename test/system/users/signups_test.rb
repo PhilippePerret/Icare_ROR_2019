@@ -268,11 +268,9 @@ class UsersSignupsTest < ApplicationSystemTestCase
     visit full_href_for(tck.route)
     # Un message doit confirmer la validation (sera-t-il toujours là ?)
     assert_text(I18n.t('users.success.compte_actived', {name: user.name}))
-    sleep 4
 
     assert_selector('h2', I18n.t('users.signup.title'))
     assert_text(I18n.t('users.signup.errors.merci_de_completer'))
-    sleep 4
 
   end
 

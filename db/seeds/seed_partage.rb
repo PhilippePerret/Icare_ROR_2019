@@ -25,11 +25,11 @@ options_benoit = '21100000'
 User.create([
   {name: DATA_PHIL[:pseudo], email: DATA_PHIL[:email],
     prenom: 'Philippe', nom: 'Perret', birthyear: DATA_PHIL[:birthyear],
-    statut: 14, sexe: 0, options: '01100000',
+    statut: 14, sexe: 0, options: '01110000',
     password: DATA_PHIL[:password], password_confirmation: DATA_PHIL[:password]},
   {name: DATA_MARION[:pseudo], email: DATA_MARION[:email],
     prenom: 'Marion', nom: 'Michel', birthyear: DATA_MARION[:birthyear],
-    statut: 6, sexe: 1, options: '01200000',
+    statut: 6, sexe: 1, options: '01210000',
     password: DATA_MARION[:password], password_confirmation: DATA_MARION[:password]},
   {name: 'Benoit Ackerman', email: 'benoit.ackerman@yahoo.fr',
     prenom: 'Benoit', nom: 'Ackerman', birthyear: 1988,
@@ -37,7 +37,7 @@ User.create([
     password: 'mot de passe', password_confirmation: 'mot de passe'},
   {name: 'Alexandra', email: 'alexandra.ackerman@yahoo.fr',
     prenom: 'Alexandra', nom: 'Ackerman', birthyear: 1988,
-    statut: 0, sexe: 1, options: '01300000',
+    statut: 0, sexe: 1, options: '01310000',
     password: 'mot de passe', password_confirmation: 'mot de passe'}
   ])
 benoit    = User.find_by(email: 'benoit.ackerman@yahoo.fr')
