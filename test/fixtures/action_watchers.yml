@@ -3,13 +3,13 @@
 test_user_2:
   model:                User
   model_id:             2
-  action_watcher_path:  _pour_tests_
+  action:               _pour_tests_
   triggered_at:         null
   data:                 null
 
 test_user_3:
   model:                User
   model_id:             3
-  action_watcher_path:  _pour_tests_
+  action:               _pour_tests_
   triggered_at:         null
   data:                 null

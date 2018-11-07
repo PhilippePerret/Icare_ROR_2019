@@ -1,3 +1,8 @@
+class User
+  def candidature_complete?
+    self.option(3) == 1
+  end
+end
 
 class ActionWatcher < ApplicationRecord
 

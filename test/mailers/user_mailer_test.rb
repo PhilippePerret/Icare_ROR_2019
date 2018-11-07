@@ -13,8 +13,6 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal ['admin@atelier-icare.net'], mail.from
     body = mail.body.encoded.gsub(/=\n/, '')
     assert_match "Bonjour #{@phil.name}", body
-    # assert_match I18n.t('user_mailer.activation_compte.link_confirm'), body
-    assert_match @phil.ticket_token, body
   end
 
   test "reset_password" do

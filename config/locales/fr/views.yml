@@ -40,8 +40,10 @@ fr:
     signup:
       button:             'Poser ma candidature'
       title:              'Poser sa candidature'
+      registered:
+        title:            'Candidature enregistrée'
       errors:
-        merci_de_completer: 'Merci de compléter votre inscription en donnant vos documents de présentation et en choisissant vos modules.'
+        merci_de_completer: 'Merci de compléter votre inscription afin qu’elle soit traitée.'
     signin:
       button:         'M’identifier'
     password:

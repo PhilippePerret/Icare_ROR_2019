@@ -100,12 +100,10 @@ class ActionWatcher < ApplicationRecord
   end
 
   # Pour quand l'instance est rechargée de la table
-  def path= val ; self.action_watcher_path = val end
+  def path= val ; self.action = val end
   alias :name= :path=
-  alias :action= :path=
-  def path    ; @path   ||= action_watcher_path end
+  def path    ; @path   ||= action end
   alias :name :path
-  alias :action :path
 
   # Pour définir à la volée le sujet du mail qui sera envoyé
   attr_accessor :subject
@@ -144,7 +142,7 @@ class ActionWatcher < ApplicationRecord
   after_create :send_before_mails_if_any
 
   validates :user_id, presence: true, allow_nil: true
-  validates :action_watcher_path, presence: true, length: {minimum: 6}, on: :create
+  validates :action, presence: true, length: {minimum: 6}, on: :create
 
   # Pour jouer l'action-watcher
   def run_for(cuser, params)
@@ -239,7 +237,7 @@ class ActionWatcher < ApplicationRecord
 
   # Le dossier principal de l'action-watcher
   def folder
-    @folder ||= File.join(Rails.root,'lib','action_watchers',action_watcher_path)
+    @folder ||= File.join(Rails.root,'lib','action_watchers',action)
   end
   def mail_admin_before ; @mail_admin_before  ||= rend_if_exist(mailto_admin_before_name)  end
   def mail_user_before  ; @mail_user_before   ||= rend_if_exist(mailto_user_before_name)   end
@@ -290,7 +288,7 @@ class ActionWatcher < ApplicationRecord
     #   * la propriété :triggered_at peut être transmise par :at ou :in
     #   * :model et :model_id peuvent être transmis par :objet, l'instance de l'objet
     #     à suivre.
-    #   * :path pour action_watcher_path
+    #   * :path pour action
     def amenage_data
 
       # Model et ID du model transmis par la propriété :objet
@@ -307,9 +305,9 @@ class ActionWatcher < ApplicationRecord
       end
 
       # Action_watcher_path
-      if path || action || name
-        self.action_watcher_path = path || action || name
-        self.name = action_watcher_path
+      if path || name
+        self.action = path || name
+        self.name = action
       end
     end
 

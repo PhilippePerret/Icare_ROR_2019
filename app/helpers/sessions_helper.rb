@@ -97,7 +97,8 @@ module SessionsHelper
   end
 
   # Login de l'user
-  # La méthode retourne le path à atteindre après l'identification
+  # La méthode retourne le path à atteindre après l'identification. Donc,
+  # normalement, jouer redirect_to(login_user(user))
   def login_user(user)
     log_in(user) # dans les helpers de sessions
     return redirection_after_login(user)

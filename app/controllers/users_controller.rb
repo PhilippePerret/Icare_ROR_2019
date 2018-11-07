@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :only_for_admin,  only: [:destroy]
   before_action :correct_user,    only: [:edit, :update]
 
+  before_action :load_module_user_signup, only: [:new, :create]
+
   def index
     @users = User.where("options NOT LIKE '9%'").paginate(page: params[:page])
   end
@@ -13,7 +15,11 @@ class UsersController < ApplicationController
   # essayant d'enregistrer la candidature du postulant. Donc soit on crée une
   # toute nouvelle instance pour l'user, soit on prend l'user enregistré.
   def new
-    @user = current_user.real? ? current_user : User.new
+    if current_user.real?
+      @user = current_user
+    else
+      @user = User.new
+    end
   end
 
   # Soumission de l'inscription, avec création de l'user
@@ -104,6 +110,10 @@ class UsersController < ApplicationController
       )
     end
 
+
+    def load_module_user_signup
+      require Rails.root.join('lib','action_watchers','user','create_candidature','user')
+    end
 
   # /private
 

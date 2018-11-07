@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_972142) do
   create_table "action_watchers", force: :cascade do |t|
     t.string "model", limit: 50
     t.integer "model_id"
-    t.string "action_watcher_path"
+    t.string "action"
     t.datetime "triggered_at"
     t.text "data"
     t.integer "user_id"

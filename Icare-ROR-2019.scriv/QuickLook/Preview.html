@@ -807,15 +807,14 @@
 <p class="itemText">model_id</p>
 <p class="itemText">Identifiant de l'instance du modèle.</p>
 <p class="itemText">Avant : `objet_id`</p>
-<p class="itemText">action_watcher_path</p>
+<p class="itemText">action</p>
 <p class="itemText">Path de l'action watcher, là où se trouve ses fichiers.</p>
-<p class="itemText">Avant : `processus`</p>
+<p class="itemText">Avant : `processus` puis `action_watcher_path`</p>
 <p class="itemText">triggered_at</p>
 <p class="itemText">Date où le watcher doit être déclenché. Par exemple, pour un paiement, quelques jours avant son échéance.</p>
 <p class="itemText">Avant : `trigerred`</p>
 <p class="itemText">data</p>
-<p class="itemText">Éventuellement les données dont a besoin l'action-watcher. </p>
-<p class="itemText">TODO : voir ...</p>
+<p class="itemText">Éventuellement les données dont a besoin l'action-watcher....</p>
 </li>
 <li>
 <p class="itemTitle">Création</p>
@@ -978,14 +977,15 @@
 <p class="itemText"></p>
 <p class="itemText">Hash data doit impérativement comporter :</p>
 <p class="itemText"></p>
-<p class="itemText"> :path ou :name ou :action ou :action_watcher_path</p>
+<p class="itemText"> :action ou :path ou :name</p>
 <p class="itemText">  Le chemin d'accès au dossier contenant les éléments du watchers, à partir de</p>
 <p class="itemText">  ./lib/action_watchers/</p>
 <p class="itemText">  Par exemple 'user/traitement_candidature'</p>
 <p class="itemText">  Bien sûr, ce path doit renvoyer à un dossier existant.</p>
 <p class="itemText"></p>
 <p class="itemText"> :model (String) et :model_id (Integer) ou :objet (instance de class :model)</p>
-<p class="itemText">  L'objet visé par l'action-watcher, par e...</p>
+<p class="itemText">  L'objet visé par l'action-watcher, par exemple un document.</p>
+<p class="itemText">  Le...</p>
 </li>
 </ul>
 <hr class="afterText"/>

@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_secure_password
 
   attr_accessor :remember_token
-  attr_accessor :ticket_token # pour les tickets, à commencer par l'activation
 
   has_many :ic_modules
   has_many :ic_etapes, through: :ic_modules
@@ -54,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def real? ; true end # contrairement à UserNone
-  
+
   def admin?
     self.statut & 4 > 0
   end

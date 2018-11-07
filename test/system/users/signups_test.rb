@@ -26,9 +26,9 @@ class UsersSignupsTest < ApplicationSystemTestCase
   test 'Un visiteur peut rejoindre le formulaire d’inscription' do
     # On rejoint le site et on clique sur le bouton "Poser sa candidature"
     visit root_path
-    assert_link('Poser sa candidature')
-    click_link 'Poser sa candidature'
-    assert_selector('h2', text: 'Poser sa candidature')
+    assert_link(I18n.t('users.signup.title'))
+    click_link I18n.t('users.signup.title')
+    assert_selector('h2', text: I18n.t('users.signup.title'))
   end
 
 
@@ -53,7 +53,7 @@ class UsersSignupsTest < ApplicationSystemTestCase
 
     # Dans le formulaire, on remplit les champs d'identité
     assert_selector('h2', text: I18n.t('users.signup.title'))
-    within('form#new_user') do
+    within('form#user_signup') do
 
       fill_in 'user_name',  with: data_user[:name]
       fill_in 'user_email', with: data_user[:mail]
@@ -75,8 +75,8 @@ class UsersSignupsTest < ApplicationSystemTestCase
     # /fin remplissage formulaire
 
     # On doit se retrouver sur une page confirmant l'inscription
-    assert_selector('h2', text:'Candidature enregistrée')
-    sleep 2
+    assert_selector('h2', text: I18n.t('users.signup.registered.title'))
+    sleep 3
     take_screenshot
 
     # À partir de là, on peut vérifier si tout est OK
@@ -103,7 +103,7 @@ class UsersSignupsTest < ApplicationSystemTestCase
 
 
     # Un watcher pour valider l'inscription doit avoir été créé
-    aw = ActionWatcher.where(user_id: last_user.id, action_watcher_path: 'user/candidature').last
+    aw = ActionWatcher.where(user_id: last_user.id, action: 'user/candidature').last
     assert_not_nil(aw, 'Le watcher de validation devrait être créé')
     # Les données du watcher sont correctes
     assert_equal( 'User', aw.model, 'Le model du Watcher devrait être « User »')
@@ -190,7 +190,7 @@ class UsersSignupsTest < ApplicationSystemTestCase
 
     # Dans le formulaire, on remplit les champs d'identité
     assert_selector('h2', text: I18n.t('users.signup.title'))
-    within('form#new_user') do
+    within('form#user_signup') do
 
       fill_in 'user_name',  with: data_user[:name]
       fill_in 'user_email', with: data_user[:mail]
@@ -213,20 +213,20 @@ class UsersSignupsTest < ApplicationSystemTestCase
 
     # On doit se retrouver sur la même page, toujours avec le formulaire mais
     # sans la section 'Identité'
-    sleep 2
-    take_screenshot
     assert_no_selector('h2', text:'Candidature enregistrée')
     assert_selector('h2', text: I18n.t('users.signup.title'))
 
     # Les formulaire d'identité ne sont plus sur la page
     assert_no_selector('input[type=text]#user_name')
     assert_no_selector('input[type=text]#user_email')
-    # Il y a en revanche les formulaires pour les documents et ceux
-    # pour choisir les modules
+
+    # Il y a en revanche les formulaires pour les documents
     assert_selector('input[type=file]#candidature_doc_presentation')
     assert_selector('input[type=file]#candidature_doc_motivation')
-    assert_selector('input[type=checkbox]#candidature_absmodules_1')
-    assert_selector('input[type=checkbox]#candidature_absmodules_5')
+
+    # Ceux pour les modules ne sont pas là non plus
+    assert_no_selector('input[type=checkbox]#candidature_absmodules_1')
+    assert_no_selector('input[type=checkbox]#candidature_absmodules_5')
 
     # Un message indique que l'inscription est incomplète
     assert_text(I18n.t('users.candidature.errors.incomplete'))
@@ -245,7 +245,7 @@ class UsersSignupsTest < ApplicationSystemTestCase
     visit root_path
     # On s'identifie
     click_link 'Connexion'
-    assert_selector('h2', 'Identification')
+    assert_selector('h2', text: 'Identification')
     within('form#user_login') do
       fill_in 'session_email',    with: data_user[:mail]
       fill_in 'session_password', with: data_user[:password]
@@ -269,8 +269,54 @@ class UsersSignupsTest < ApplicationSystemTestCase
     # Un message doit confirmer la validation (sera-t-il toujours là ?)
     assert_text(I18n.t('users.success.compte_actived', {name: user.name}))
 
-    assert_selector('h2', I18n.t('users.signup.title'))
+    # L'user est redirigé vers le formulaire d'inscription (partiel)
+    assert_selector('h2', text: I18n.t('users.signup.title'))
+    # Les formulaire d'identité ne sont plus sur la page
+    assert_no_selector('input[type=text]#user_name')
+    assert_no_selector('input[type=text]#user_email')
+
+    # Il y a en revanche les formulaires pour les documents
+    assert_selector('input[type=file]#candidature_doc_presentation')
+    assert_selector('input[type=file]#candidature_doc_motivation')
+
+    # Ceux pour les modules ne sont pas là non plus
+    assert_no_selector('input[type=checkbox]#candidature_absmodules_1')
+    assert_no_selector('input[type=checkbox]#candidature_absmodules_5')
+
+    # Un message indique que l'inscription est incomplète
     assert_text(I18n.t('users.signup.errors.merci_de_completer'))
+
+    # sleep 20
+
+    # L'user ne donne que le document de présentation
+    within('form#user_signup') do
+      attach_file('candidature_doc_presentation', bio_path)
+      click_button I18n.t('users.signup.button')
+    end
+
+    # On doit être encore sur la page d'inscription
+    assert_selector('h2', text: I18n.t('users.signup.title'))
+    # Le champ pour entrer le document de présentation doit avoir disparu,
+    # mais pas celui pour entre la lettre de motivation et l'extrait
+    within('form#user_signup') do
+      assert_no_selector('input[type=file]#candidature_doc_presentation')
+      assert_selector('input[type=file]#candidature_doc_motivation')
+      assert_selector('input[type=file]#candidature_doc_extraits')
+    end
+
+    # Un message doit encore demander de complèter l'inscription
+    assert_text(I18n.t('users.candidature.errors.incomplete'))
+
+    # L'user finit par donner aussi sa lettre de motivation
+    within('form#user_signup') do
+      attach_file 'candidature_doc_motivation', lettre_motivation_path
+      click_button I18n.t('users.signup.button')
+    end
+
+    # Un message doit confirmer la fin de l'inscription de l'user, en
+    # le dirigeant vers la page de confirmation
+    assert_selector('h2', text: I18n.t('users.signup.registered.title'))
+    sleep 3 # garder pour les tests
 
   end
 

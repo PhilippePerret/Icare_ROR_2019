@@ -8,7 +8,7 @@
     -# on utilisait f.file_field. Mais si on utilisait f.file_field, les
     -# documents seraient mis dans les propriétés de :user dans params et ça
     -# poserait un problème pour le filtre des StrongParamètres.
-    = form_for(@user, url: signup_path, method: :post, html: {'enctype' => 'multipart/form-data'}) do |f|
+    = form_for(@user, url: signup_path, method: :post, html: {id: 'user_signup', 'enctype' => 'multipart/form-data'}) do |f|
       -# = render 'shared/error_messages', objet: @user
       = render 'shared/error_messages', objet: current_user
 

@@ -1,3 +1,7 @@
 -# Notification pour le bureau de l'user
 - aw = action_watcher
-= "#{aw.objet.name}, votre candidature est à l’étude."
+- user = aw.objet
+- if user.candidature_complete?
+  = "#{user.name}, votre candidature est à l’étude."
+- else
+  = "#{user.name}, il faut impérativement compléter votre candidature pour qu’elle soit mise à l’étude (rejoignez rapidement le formulaire d’inscription)."

@@ -1,39 +1,3 @@
-
-# require_relative 'user'
-
-class User
-
-  def mail_activation_sent?
-    self.option(4) == 1
-  end
-
-  def candidature_complete?
-    self.option(3) == 1
-  end
-
-  # Liste des modules optionnés, sous-forme de liste d'identifiants
-  # séparés par des ':' (tels qu'ils seront dans le watcher de validation
-  # de l'inscription)
-  attr_accessor :modules_optionned
-
-  # Méthode utilisée par le formulaire pour savoir si les documents
-  # de présentation obligatoires ont été transmis
-  def documents_ok?
-    presentation_ok? && motivation_ok?
-  end
-  # Le détail
-  def presentation_ok?
-    self.other_documents.exists?(dtype: 'PRES')
-  end
-  def motivation_ok?
-    self.other_documents.exists?(dtype: 'MOTI')
-  end
-  def extraits_ok?
-    self.other_documents.exists?(dtype: 'EXTR')
-  end
-
-end
-
 class ActionWatcher < ApplicationRecord
 
   def doc_presentation
@@ -73,8 +37,17 @@ class ActionWatcher < ApplicationRecord
 
     # On envoie un mail au candidat pour qu'il confirme son adresse email. Mais
     # seulement si ça n'a pas encore été fait.
-    unless current_user.mail_activation_sent?
+    unless user.mail_activation_sent?
       create_activation_digest
+    end
+
+    # Si on passe ici, c'est que l'user a pu être créé dans la base de données
+    # On lui crée un watcher de candidature si nécessaire :
+    # Note : il sera indiqué, pour l'user et pour l'administrateur, que cette
+    # candidature est incomplète.
+    if user.watcher_candidature.nil?
+      # On crée un watcher pour valider l'inscription
+      user.action_watchers.create(objet: user, action: 'user/candidature', data: nil)
     end
 
     # On peut enregistrer l'user, ou on raise
@@ -93,8 +66,6 @@ class ActionWatcher < ApplicationRecord
     if candidature_valide?
       # On indique que la candidature est complète
       user.set_option(3, 1)
-      # On crée un watcher pour valider l'inscription
-      user.action_watchers.create(objet: user, action: 'user/candidature', data: user.modules_optionned)
     else
       # Candidature invalide
       # --------------------
@@ -124,13 +95,19 @@ class ActionWatcher < ApplicationRecord
 
   def traite_modules_apprentissage_optionned
 
-    if params[:candidature][:absmodules].nil? && !user.modules_optionned
-      user.errors.add(' ', 'Il faut choisir au moins un module d’apprentissage à suivre.')
-      @no_error_found = false
-    else
-      user.modules_optionned = params[:candidature][:absmodules].keys.join(':')
+    # On doit traiter seulement si les modules d'apprentissage n'ont pas
+    # encore été choisis.
+    if !user.modules_optionned
+      if params[:candidature][:absmodules].nil?
+        user.errors.add(' ', 'Il faut choisir au moins un module d’apprentissage à suivre.')
+        @no_error_found = false
+      else
+        user.modules_optionned = params[:candidature][:absmodules].keys.join(':')
+        # Il faut les ajouter au watcher de candidature
+        user.watcher_candidature.update_attribute(:data, user.modules_optionned)
+      end
     end
-
+    
   end
   # /traite_modules_apprentissage_optionned
 
@@ -153,7 +130,7 @@ class ActionWatcher < ApplicationRecord
         # C'est un document obligatoire. Il faut vérifier s'il existe déjà
         # d'une précédente soumission.
         # Sinon, c'est une erreur
-        unless user.other_documents.exists?(type: doc_type)
+        unless user.other_documents.exists?(dtype: doc_type)
           user.errors.add(doc_le_name, ' est obligatoire.')
           @no_error_found = false
           return false

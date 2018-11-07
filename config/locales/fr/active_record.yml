@@ -47,6 +47,6 @@ fr:
           attributes:
             user_id:
               blank:        'est requis'
-            action_watcher_path:
+            action:
               blank:        'est requis (il peut être transmis par :path).'
               too_short:    'est trop court (doit faire au moins 6 caractères)'
