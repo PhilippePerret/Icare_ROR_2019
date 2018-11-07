@@ -1,5 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+
+Dir[Rails.root.join("test/support/**/*.rb")].each {|f| require f}
+
 require 'rails/test_help'
 require "minitest/rails/capybara"
 

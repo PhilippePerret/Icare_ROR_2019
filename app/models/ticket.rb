@@ -27,9 +27,9 @@ class Ticket < ApplicationRecord
   # Méthodes d'helper
 
   # Utiliser la méthode `lien_vers(ticket[, <titre>])`
-  def link titre = 'Jouer le ticket'
+  def link titre = 'Jouer le ticket', options = nil
     ('<a href="%{url}">%{titre}</a>' % {
-      url: self.url,
+      url: self.url(options),
       titre: titre
     }).html_safe
   end
@@ -40,18 +40,34 @@ class Ticket < ApplicationRecord
   # que disparait l'instance. Pour le retrouver, on ne peut que passer par
   # le pseudo-watcher créé à la création du ticket qui possède en data ce
   # token.
-  def url
-    @url ||= begin
+  def url(options = nil)
+    if options.nil?
+      @url ||= begin
+        inprod = Rails.env.production?
+        '%{protocol}://%{host}%{route}' % {
+          protocol:   inprod ? 'https' : 'http',
+          host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000',
+          route:      route
+        }
+      end
+    else
+      # Quand les options ne sont pas nulle, il faut faire une url propre
       inprod = Rails.env.production?
-      '%{protocol}://%{host}%{route}' % {
+      '%{protocol}://%{host}%{route(options)}' % {
         protocol:   inprod ? 'https' : 'http',
         host:       inprod ? 'www.atelier-icare.net' : 'localhost:3000',
         route:      route
       }
     end
   end
-  def route
-    @route ||= "/tickets/#{id}/#{token}?uid=#{user.id}"
+
+  def route(options = nil)
+    options ||= Hash.new
+    @base_route ||= "/tickets/#{id}/#{token}"
+    options.empty? && (return @base_route)
+    r = @base_route + '?'
+    options[:secure] && r.concat('uid=%i' % user.id)
+    return r
   end
 
   # ---------------------------------------------------------------------

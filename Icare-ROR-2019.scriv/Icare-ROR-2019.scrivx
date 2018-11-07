@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-11-06 09:06:09 +0300" ModID="A83DF8F0-CCFB-468F-8D1D-BE76AD2AE8DC">
+<ScrivenerProject Identifier="6E1BC62C-4D28-48F4-B99B-F9F1E952E120" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Air-de-Philippe" Author="Philippe Perret" Modified="2018-11-07 10:47:08 +0300" ModID="922CF687-1D64-40BA-B130-EDAF3A7E4331">
     <Binder>
         <BinderItem UUID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50" Type="Text" Created="2018-09-21 09:56:35 +0300" Modified="2018-11-06 09:06:07 +0300">
             <Title>TODO</Title>
@@ -7,7 +7,7 @@
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <TextSettings>
-                <TextSelection>390,0</TextSelection>
+                <TextSelection>596,0</TextSelection>
             </TextSettings>
             <Children>
                 <BinderItem UUID="DE69DD5C-BF52-4BE9-8D6E-71C7F5B139E7" Type="Text" Created="2018-10-07 07:04:55 +0300" Modified="2018-10-07 07:10:53 +0300">
@@ -428,13 +428,13 @@
                         <TextSelection>596,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F" Type="Text" Created="2018-09-25 10:30:49 +0300" Modified="2018-11-06 08:54:01 +0300">
+                <BinderItem UUID="CB60A87B-5AC0-487F-A0AB-8D44672FD41F" Type="Text" Created="2018-09-25 10:30:49 +0300" Modified="2018-11-06 10:43:04 +0300">
                     <Title>Tickets</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>3022,0</TextSelection>
+                        <TextSelection>1128,0</TextSelection>
                     </TextSettings>
                     <Children>
                         <BinderItem UUID="97DA9F9A-83E8-4944-8628-5140CFF78A11" Type="Text" Created="2018-11-06 07:52:00 +0300" Modified="2018-11-06 07:53:44 +0300">
@@ -1175,15 +1175,6 @@
                 <TextSelection>0,0</TextSelection>
             </TextSettings>
             <Children>
-                <BinderItem UUID="2EEA561F-90DB-48AE-BDB1-64B41BBD8DCD" Type="Text" Created="2018-11-05 11:53:44 +0300" Modified="2018-11-05 12:16:43 +0300">
-                    <Title>Lancement du test</Title>
-                    <MetaData>
-                        <IncludeInCompile>Yes</IncludeInCompile>
-                    </MetaData>
-                    <TextSettings>
-                        <TextSelection>542,0</TextSelection>
-                    </TextSettings>
-                </BinderItem>
                 <BinderItem UUID="7559BE7A-0EFB-48FC-8C54-31C94C2BA4AD" Type="Text" Created="2018-09-20 08:08:43 +0300" Modified="2018-09-20 08:09:10 +0300">
                     <Title>Introduction</Title>
                     <MetaData>
@@ -1191,6 +1182,24 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>122,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="2EEA561F-90DB-48AE-BDB1-64B41BBD8DCD" Type="Text" Created="2018-11-05 11:53:44 +0300" Modified="2018-11-06 11:05:27 +0300">
+                    <Title>Lancement du test</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>604,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="6602ED7D-71A3-40E8-80EC-B6D9A78B2F0D" Type="Text" Created="2018-11-06 11:05:30 +0300" Modified="2018-11-06 11:07:01 +0300">
+                    <Title>Tester les messages flash</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>130,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="AC4F88F7-4E13-4695-82E6-D2622D0F2CE7" Type="Text" Created="2018-09-20 09:11:35 +0300" Modified="2018-09-20 09:12:59 +0300">
@@ -1250,13 +1259,13 @@
                         <TextSelection>253,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem UUID="1C315745-E9BA-4191-8F08-48A3439443A8" Type="Text" Created="2018-09-26 15:52:12 +0300" Modified="2018-09-28 09:11:27 +0300">
+                <BinderItem UUID="1C315745-E9BA-4191-8F08-48A3439443A8" Type="Text" Created="2018-09-26 15:52:12 +0300" Modified="2018-11-06 14:55:25 +0300">
                     <Title>MAILS</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>205,0</TextSelection>
+                        <TextSelection>405,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="484A8C6E-2AD2-4AD3-A9A4-990B4614986A" Type="Folder" Created="2018-09-23 08:26:11 +0300" Modified="2018-09-23 08:26:17 +0300">
@@ -1405,13 +1414,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="13" Characters="75" Date="2018-11-06 06:57:11 +0300"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-11-07 08:58:44 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-11-06 00:00:00 +0300">
-        <DraftWordCount>13</DraftWordCount>
-        <DraftCharCount>75</DraftCharCount>
-        <OtherWordCount>9</OtherWordCount>
-        <OtherCharCount>63</OtherCharCount>
+    <RecentWritingHistory Date="2018-11-07 00:00:00 +0300">
+        <DraftWordCount>0</DraftWordCount>
+        <DraftCharCount>0</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="595.275567,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

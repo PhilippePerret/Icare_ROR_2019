@@ -59,7 +59,7 @@ class TicketsController < ApplicationController
     # tout est OK
     return true
   rescue Exception => e
-    Flash[:danger] = I18n.t(e.message)
+    flash[:danger] = I18n.t(e.message)
     return false
   end
 

@@ -5,6 +5,7 @@ fr:
     success:
       welcome:            '🤗 Bienvenue, %{name} !'
       goodbye:            '👋 À très bientôt, %{name} !'
+      compte_actived:     '👏 Bravo, %{name} ! Votre compte a été activé.'
     errors:
       login:
         invalid:          'Adresse mail et/ou mot de passe invalides.'

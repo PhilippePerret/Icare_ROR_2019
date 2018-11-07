@@ -681,6 +681,22 @@ Par exemple, pour choisir un utilisateur :
 
 </Text>
         </Document>
+        <Document ID="97DA9F9A-83E8-4944-8628-5140CFF78A11">
+            <Title>Implémentation</Title>
+            <Text>Un ticket est toujours associé à un action-watcher qui contient son token.
+
+
+	ticket = Ticket.find(2)
+
+	ticket.action_watcher
+	# =&gt; ActionWatcher du ticket
+
+	ticket.action_watcher.data
+	# =&gt; token du ticket (identique à ticket.token)
+
+
+Cet action-watcher à une action user/watcher_ticket.</Text>
+        </Document>
         <Document ID="6EB7D943-93FB-4F77-94E0-DF7185A1FACF">
             <Title>Féminines</Title>
             <Text>Féminisation des textes
@@ -713,6 +729,22 @@ On utilise _url pour une URL complète et _path pour une route simple :
 
 about_path 	=&gt; /static_pages/about
 about_url		=&gt; www.monsite.org/static_pages/about</Text>
+        </Document>
+        <Document ID="6602ED7D-71A3-40E8-80EC-B6D9A78B2F0D">
+            <Title>Tester les messages flash</Title>
+            <Text>Rien de plus simple pour tester les messages flash :
+
+
+	assert_equal "&lt;le message attendu&gt;", flash[:&lt;clé message&gt;]
+
+
+Par exemple :
+
+
+	assert_equal("Bienvenue, Phil !", flash[:notice])
+
+
+</Text>
         </Document>
         <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
             <Title>Mass assignement</Title>
@@ -799,6 +831,11 @@ ou la ligne :
 
 	&gt; rails test ./&lt;path fichier&gt;:&lt;ligne&gt;
 
+
+Ou pour les tests d'intégration :
+
+
+	&gt; rails test:system
 
 
 
@@ -1144,7 +1181,8 @@ Une note (de l'admin) sur cette question, peut-être pour indiquer pourquoi la r
         </Document>
         <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
             <Title>TODO</Title>
-            <Text>	•	Lors de l'inscription, quand l'user est créé incomplètement, il faut utiliser une option pour l'indiquer. Noter qu'il n'apparaitra pas dans les listes puisque sa candidature n'a pas été validée. Mais, là, en plus, s'il se reconnecte, il sera toujours redirigé vers le formulaire d'inscription pour fournir ce qui manque (documents de présentation et/ou choix des modules d'apprentissage)
+            <Text>	•	Faire une recherche sur [user.]ticket_token et le supprimer
+	•	Lors de l'inscription, quand l'user est créé incomplètement, il faut utiliser une option pour l'indiquer. Noter qu'il n'apparaitra pas dans les listes puisque sa candidature n'a pas été validée. Mais, là, en plus, s'il se reconnecte, il sera toujours redirigé vers le formulaire d'inscription pour fournir ce qui manque (documents de présentation et/ou choix des modules d'apprentissage)
 	•	
 	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
@@ -1999,9 +2037,23 @@ Pour tester qu'il y a un message flash :
         </Document>
         <Document ID="1C315745-E9BA-4191-8F08-48A3439443A8">
             <Title>MAILS</Title>
-            <Text>Récupérer le dernier mail en intégration :
+            <Text>Pour réinitialiser les mails envoyés (peut être mis dans le def set_up du test ou au début d'un test)
+
+
+	ActionMailer::Base.deliveries.clear
+
+
+Récupérer le dernier mail en intégration :
+
 
 	mail = ActionMailer::Base.deliveries.last  
+
+
+Pour trouver un mail parmi plusieurs envoyés, on peut utiliser mon extension de la classe ActionMailer::Base (Manuel de l'extension d'ActionMailer::Base) et spécialement la méthode :
+
+
+	assert_mail_exists?({&lt;params&gt;}, {&lt;options&gt;})
+
 
 Pour retrouver un texte dans le corps, par exemple une URL :
 
@@ -2105,18 +2157,20 @@ La date espérée de remise des commentaires de l'étape. Note : ce n'est pas/pl
             <Title>Tickets</Title>
             <Text>Description rapide de l'utilisation d'un ticket :
 
-Création du ticket, par exemple pour un ticket qui s'appelle 'jouer_le_ticket' (le nom est purement indicatif) :
+Création du ticket, par exemple pour un ticket qui s'appelle 'Jouer le ticket' (avec la méthode `lien_vers(ticket)`, ce name sera utilisé comme titre du lien) :
 
 
-	ticket = Ticket.new(name: 'jouer-ticket', action: '/user/1', duree: 4)
 	# Ce ticket aura une durée de vie de 4 jours et rejoindra l'adresse /user/1
 	# quand il sera invoqué
-	@ticket = Phil.tickets.create(ticket.hash_to_create)
-	# Noter que `@ticket` est une instance distincte de `ticket`
+	@ticket = Phil.tickets.create(name: 'Jouer le ticket', action: '/user/1', duree: 4.days)
 
 
 Dans le mail (vue) qui contient le lien pour jouer le ticket, on met :
 
+
+	= lien_vers(@ticket[, &lt;titre&gt;][, &lt;options&gt;])    # MEILLEURE MÉTHODE
+
+	OU
 
 	= @ticket.link('Jouer le ticket')
 
@@ -2124,6 +2178,14 @@ Dans le mail (vue) qui contient le lien pour jouer le ticket, on met :
 	= link_to 'Jouer le ticket', @ticket.url
 	ou
 	= link_to 'Jouer le ticket', ticket_run_url(ticket.id, token: ticket.token)
+
+
+Noter que si la méthode (meilleure) lien_vers(@ticket) est utilisée, le lien est distant par défaut (contrairement aux autres utilisation de la méthode).
+
+Par défaut, un ticket pourra être joué même par un user non identifié. Pour ajouter en plus la sécurité de l'identification de l'user, on peut utiliser l'option `secure: true` en créant le lien :
+
+
+	lien_secure = lien_vers(@ticket, nil, {secure: true})
 
 
 Lorsqu'on joue le ticket (i.e. lorsqu'on clique sur le lien), la méthode TicketController#run est appelée. Si un paramètre uid a été ajouté à l'url du ticket (c'est le cas lorsqu'on utilise ticket#link pour créer le lien), la méthode commence par vérifier qu'il s'agit bien de l'user possesseur du ticket ou d'un administrateur. Dans le cas contraire, une exception est levée.
@@ -2135,35 +2197,32 @@ Détail des procédures
 
 Pour créer un ticket à quelqu'un :
 
-	ticket = Ticket.new(
-		name: '&lt;nom générique&gt;', 
-		action: '&lt;code à exécuter&gt;|&lt;route&gt;',
-		[duree: &lt;durée de vie du ticket&gt;]
+
+	ticket =  &lt;user&gt;.tickets.create(
+		name:   '&lt;nom générique et titre du lien&gt;', 
+		action: '&lt;code à exécuter&gt;|&lt;route&gt;'[,
+		duree:  &lt;durée de vie du ticket&gt;]
 	)
-	&lt;user&gt;.tickets.create(ticket.hash_to_create)
+
 
 Par exemple :
 
 
-	ticket = Ticket.new(name: 'activation_compte', action: "User.find(#{benoit.id}).confirm_compte", duree: 2.days)
+	ticket = benoit.tickets.create(
+		name: 'Activer le votre compte',
+		action:	"User.find(#{benoit.id}.confirm_compte",
+		duree:   2.days
+	)
 	# Crée un objet qui possède les propriétés :
 	#	:name, :digest, :action, :token, :expire_at
-	autre_ticket = benoit.tickets.create(ticket.hash_to_create)
 
 
-Noter qu'on peut aussi envoyer seulement l'instance :
-
-
-	benoit.tickets.create(ticket)
-
-
-ATTENTION, si on veut récupérer le token du ticket, il ne faut pas faire `user.tickets.last` (qui créerait une nouvelle instance avec un token vide), il faut la prendre du ticket ou autre_ticket.
 
 L':action peut être soit du code Ruby à évaluer, soit une route.
 
-Quand il s'agit d'une route, il est toujours ajoutée à cette route le paramètre :uid qui contient l'ID de l'user possédant le ticket. Le ticket, lui est détruit, donc on ne peut pas le retrouver (mais à l'avenir, s'il s'avère qu'il est intéressant de le reprendre, on pourra le garder et le détruire après).
+Quand il s'agit d'une route, il est toujours ajouté à cette route le paramètre :uid qui contient l'ID de l'user possédant le ticket. Le ticket, lui, est détruit, donc on ne peut pas le retrouver (mais à l'avenir, s'il s'avère qu'il est intéressant de le reprendre, on pourra le garder et le détruire après).
 
-On peut passer des variables dans l'action ou la route, avec :
+On peut passer des variables dans l'action ou la route, par template :
 
 	 %{&lt;nom variable ci-dessous&gt;} 
 
@@ -2175,9 +2234,10 @@ Les noms de variable possible sont :
 
 Par exemple :
 
+
 	action: '/icmodule/%{digest}/edit'
 
-Note : je ne sais plus à quoi peut servir la suite ci-dessous.
+
 
 Avant l'exécution du code (en fait, dans la méthode), on met le digest du ticket dans la variable session :ticket_digest
 
@@ -2194,11 +2254,15 @@ Donc on peut l'obtenir par :
 De cette manière, on peut faire encore des contrôles, comme lorsque l'url appelée en action contient le même token que le ticket, pour double vérification.
 Ensuite, il suffit donc de faire :
 
+
 	if BCrypt::Password.new(session['ticket_digest']).is_password?(params[:id])
 		# =&gt; OK
 	else
 		# =&gt; Not OK
-	end</Text>
+	end
+
+
+</Text>
         </Document>
         <Document ID="C5C9C828-8A59-46AD-8E55-4344F29C46BD">
             <Title>Propriétés</Title>

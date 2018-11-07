@@ -23,7 +23,6 @@ class UsersSignupsTest < ApplicationSystemTestCase
   end
 
 
-
   test 'Un visiteur peut rejoindre le formulaire d’inscription' do
     # On rejoint le site et on clique sur le bouton "Poser sa candidature"
     visit root_path
@@ -32,10 +31,17 @@ class UsersSignupsTest < ApplicationSystemTestCase
     assert_selector('h2', text: 'Poser sa candidature')
   end
 
+
+  # test 'Pour voir si l extension ActionMailer fonctionne' do
+  #   assert ActionMailer::Base.exists?(subject: 'Mon sujet'), ActionMailer::Base.search_main_error
+  # end
+
   test 'Un visiteur peut s’inscrire avec des données correctes' do
 
     # ---- AVANT DE COMMENCER ----
+    ActionMailer::Base.deliveries.clear
     nombre_users_init = User.count
+
     # puts "Nombre d'users au début : #{nombre_users_init}"
 
     # ------ ON COMMENCE LE TEST ---------
@@ -91,7 +97,6 @@ class UsersSignupsTest < ApplicationSystemTestCase
 
     # Les options du nouveau candidat doivent être bonnes
     options = last_user.options
-    puts "---- options : #{options}"
     # L'user doit être à valider
     assert_equal '0', options[0]
     # Le mail ne doit pas être confirmé
@@ -111,17 +116,65 @@ class UsersSignupsTest < ApplicationSystemTestCase
     # Les données doivent contenir les modules optionnés
     assert_equal('2:4:6', aw.data, 'Les data du watcher de validation devraient être la liste des modules optionnés.')
 
-    # TODO Un mail envoyé à l'user
+    # Trois mails ont dû être envoyé
+    assert_equal 3, ActionMailer::Base.deliveries.count, 'Trois mails ont été envoyés au cours du processus d’inscription'
+
+
+    # Le mail pour activer le compte doit avoir été envoyé
+    assert ActionMailer::Base.exists?({
+      subject: I18n.t('user_mailer.activation_compte.subject'),
+      to:       last_user.email,
+      from:     'admin@atelier-icare.net'
+      },
+      {lasts: 3}), 'Le mail pour activer le compte aurait dû être envoyé.'
+
+    # Mail pour annoncer le candidat à Phil
+    assert_mail_exists?({
+      subject:    I18n.t('user_mailer.candidature.nouvelle.subject'),
+      to:         'phil@atelier-icare.net',
+      from:       last_user.email,
+      messages:   "#{last_user.name} (##{last_user.id})"
+      },
+      {lasts: 3, failure: 'Le mail pour annoncer le candidat aurait dû être envoyé à Phil.'})
+
+    assert_mail_exists?({
+      subject:  I18n.t('user_mailer.candidature.confirmation.subject'),
+      to:       last_user.email,
+      from:     'admin@atelier-icare.net'
+      },
+      {lasts: 3, failure: 'Le mail de confirmation de la candidature aurait dû être envoyé au candidat.'}
+    )
+
 
     # Un ticket pour activer son compte a été créé
-    tck = Ticket.where(name: 'activation_compte', user_id: last_user.id).last
+    tck = Ticket.where(name: I18n.t('tickets.titres.activer_compte'), user_id: last_user.id).last
     assert_not_nil(tck, 'Un ticket d’activation de compte aurait dû être créé pour le candidat…')
-    url_activation = tck.url
-    puts "url_activation: #{url_activation.inspect}"
+    # Un watcher pour le ticket doit avoir été créé
+    aw = ActionWatcher.where(user_id: last_user.id, model: 'Ticket', model_id: tck.id)
+    assert_not_nil(aw, 'Un watcher pour le ticket d’activation du compte devrait avoir été créé')
+
+
+    # ---------------------------------------------------------------------
+
+    # On déconnecte l'user (car le bouton est trop dur à avoir)
+    visit '/logout'
+
+
+
+    # ---------------------------------------------------------------------
+    # ------- SUITE DU TEST (validation du mail) -----------
 
     # L'user utilise son mail pour valider son ticket
-    visit url_activation
-    sleep 5
+    visit full_href_for(tck.route)
+
+    # Un message doit annoncer à l'user qu'il
+    assert_equal(I18n.t('users.success.compte_actived', {name: last_user.name}), flash[:info])
+    assert_text(I18n.t('users.success.compte_actived', {name: last_user.name}))
+
+    # Maintenant, l'user doit être activé
+    last_user.reload
+    assert last_user.compte_actif?, 'Le compte du candidat devrait être activé'
+    assert_equal(1, last_user.option(1), 'Le 2e bit d’option de l’user devrait être passé à 1.')
 
   end
 end

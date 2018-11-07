@@ -173,8 +173,8 @@ class ActionWatcher < ApplicationRecord
   # RETURN l'instance mail envoyée, utile pour les tests
   def create_activation_digest
     ticket = user.tickets.create(
-      name:   'Activer mon compte Icare',
-      action: 'User.find(%{user_id}).active_compte',
+      name:   I18n.t('tickets.titres.activer_compte'),
+      action: 'u=User.find(%i);u.active_compte;flash[:info]="%s"' % [user.id, I18n.t('users.success.compte_actived', {name: user.name})],
       duree:  7.days
     )
     # Laisser en bas pour retourner le mail produit

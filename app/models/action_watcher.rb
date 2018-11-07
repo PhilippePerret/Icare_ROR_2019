@@ -271,7 +271,7 @@ class ActionWatcher < ApplicationRecord
         ActionWatcherMailer.send_to_admin(self, *mail_admin_before).deliver_now
       end
       unless mail_user_before.nil?
-        ActionWatcherMailer.send_to_admin(self, *mail_user_before).deliver_now
+        ActionWatcherMailer.send_to_user(self, *mail_user_before).deliver_now
       end
     end
 
@@ -280,7 +280,7 @@ class ActionWatcher < ApplicationRecord
         ActionWatcherMailer.send_to_admin(self, *mail_admin_after).deliver_now
       end
       unless mail_user_after.nil?
-        ActionWatcherMailer.send_to_admin(self, *mail_user_after).deliver_now
+        ActionWatcherMailer.send_to_user(self, *mail_user_after).deliver_now
       end
     end
 

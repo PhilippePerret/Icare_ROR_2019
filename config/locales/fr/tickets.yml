@@ -1,5 +1,7 @@
 fr:
   tickets:
+    titres:
+      activer_compte: 'Activer mon compte Icare'
     errors:
       unknown:        'Soit ce ticket a déjà été joué, soit vous tentez de forcer le site, ce qui n’est pas très cool, dude…'
       invalid:        'Malheureusement, je ne peux pas jouer ce ticket. Les informations que vous me transmettez sont invalides…'

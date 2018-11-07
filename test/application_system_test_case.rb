@@ -12,4 +12,22 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # driven_by :selenium, using: :safari, screen_size: [1400, 1400]
 
   driven_by :selenium, using: :firefox, screen_size: [1400, 1400]
+
+  def set_up
+  end
+
+  def host
+    Capybara.current_session.server.host
+  end
+  def port
+    Capybara.current_session.server.port
+  end
+  def protocol
+    'http'
+  end
+
+  def full_href_for route
+    route.start_with?('/') || route.prepend('/')
+    "#{protocol}://#{host}:#{port}#{route}"
+  end
 end

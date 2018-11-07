@@ -18,7 +18,7 @@ module ApplicationHelper
       when Ticket
         # Par défaut, toujours distant
         options.key?(:distant) || options.merge!(distant: true)
-        objet.route
+        objet.route(options)
       else
         # Pour la plupart des classes, on peut voir les choses comme ça
         "/#{objet.class.to_s.underscore}s/#{objet.id}"

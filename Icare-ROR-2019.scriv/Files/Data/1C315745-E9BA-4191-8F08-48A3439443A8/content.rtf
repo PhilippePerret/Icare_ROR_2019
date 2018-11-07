@@ -5,17 +5,45 @@
 {\*\expandedcolortbl;;\csgray\c100000;\csgray\c13700;}
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f0\fs28 \cf0 R\'e9cup\'e9rer le dernier mail en int\'e9gration :\
+\f0\fs28 \cf0 Pour r\'e9initialiser les mails envoy\'e9s (peut \'eatre mis dans le def set_up du test ou au d\'e9but d'un test)\
 \
 \pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
-\f2\fs22 	mail = ActionMailer::Base.deliveries.last  
+\f2\fs22 \
+	ActionMailer::Base.deliveries.clear\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
 \f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
 \f0\fs28 \
+R\'e9cup\'e9rer le dernier mail en int\'e9gration :\
 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f2\fs22 \
+	mail = ActionMailer::Base.deliveries.last  \
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f0\fs28 \
+Pour trouver un mail parmi plusieurs envoy\'e9s, on peut utiliser mon extension de la classe ActionMailer::Base ({\field{\*\fldinst{HYPERLINK "file:///Users/philippeperret/Sites/AlwaysData/Icare_ROR_2019/test/support/mail/ActionMailer_extension/Manuel.md"}}{\fldrslt Manuel de l'extension d'ActionMailer::Base}}) et sp\'e9cialement la m\'e9thode :\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
+\f2\fs22 \
+	assert_mail_exists?(\{<params>\}, \{<options>\})\
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \up0 <!$Scr_Cs::0>
+\f0\fs28 \
 Pour retrouver un texte dans le corps, par exemple une URL\'a0:\
 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\sl264\slmult1\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf2 \cb3 \up4 <$Scr_Cs::0>
 \f2\fs22 	url = mail.body.encoded.match(/"[^"]+">Modifi/)[1] 
