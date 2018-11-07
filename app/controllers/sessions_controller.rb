@@ -17,14 +17,13 @@ class SessionsController < ApplicationController
           redirect_to redirection_after_login(user)
         else
           # Email pas encore confirmé
-
           flash[:danger] = I18n.t('users.errors.email.not_confirmed', name: user.name)
           # TODO : On pourra joindre une adresse dans le message ci-dessus qui
           # pourra renvoyer le lien de confirmation de l'email (en recherchant
           # l'user et en relevant le ticket avec name: 'activation_compte')
-          # NON : le token est définitivement perdu, donc il faut créer un
-          # nouveau ticket (après avoir détruit le précédent). Il faut donc
-          # renvoyer le mail de confirmation de l'email
+          # NOTE : le token se trouve dans le watcher du ticket, il peut être
+          # obtenu simplement en faisant ticket.token. Donc, ticket.url ou
+          # lien_vers(ticket) retournera toujours la bonne adresse.
           redirect_to home_path
         end
       else

@@ -1,4 +1,4 @@
-- set_title('Poser sa candidature')
+- set_title(I18n.t('users.signup.title'))
 
 .container
   .col-md-6.col-md-offset-3
@@ -22,6 +22,11 @@
           = render 'users/form', f: f
         .w-100
       - else
+        -# Si l'identité du candidat a déjà été enregistrée. Ce texte est
+        -# affiché soit lors de la première inscription, soit lorsque l'user
+        -# revient se connecter.
+        %p.warning
+          = I18n.t('users.signup.errors.merci_de_completer')
         -# Pour que params[:user] soit toujours retourné
         = f.hidden_field(:id)
 
@@ -55,4 +60,4 @@
 
       -# ------- LE BOUTON DE SOUMISSION -----------
       .right.vair
-        = f.submit('Poser ma candidature', name: 'commit', class: 'btn btn-primary')
+        = f.submit(I18n.t('users.signup.button'), name: 'commit', class: 'btn btn-primary')

@@ -50,6 +50,9 @@ class UsersController < ApplicationController
     if aw.success?
       redirect_to ('/static_pages/after_signup?id=%i' % [@user.id])
     else
+      unless @user.candidature_complete?
+        flash.now[:danger] = I18n.t('users.candidature.errors.incomplete')
+      end
       render :new
     end
   end

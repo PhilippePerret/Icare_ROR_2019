@@ -42,9 +42,9 @@
       <h2><%= yield(:titre_page) %></h2>
     </div>
 
-    <div class="col-md-4 right">
+    <div class="col-md-4 right vair">
       <% unless real_user? || signup_route? %>
-        <%= link_to 'Poser sa candidature', signup_path, class: 'btn btn-primary' %>
+        <%= link_to I18n.t('users.signup.title'), signup_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

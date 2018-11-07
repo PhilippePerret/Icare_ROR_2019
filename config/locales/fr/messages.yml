@@ -17,6 +17,7 @@ fr:
       confirmed:          'Validation de la candidature de %{pseudo} exécutée avec succès.<br>Module ID : %{id}<br><a href="/ic_modules/%{id}">Voir le module</a>'
       errors:
         bad_validation_candidature: 'La validation ou le refus ne semblent pas conforme…'
+        incomplete:           'Votre candidature est incomplète. Elle a été enrisgrée, mais pour qu’elle soit traitée, il faut que vous fournissiez vos documents de présentation.'
   action:
     errors:
       not_autorised:          'Vous n’êtes pas autorisé%{e} à exécuter cette opération.'

@@ -7,6 +7,10 @@ class User
     self.option(4) == 1
   end
 
+  def candidature_complete?
+    self.option(3) == 1
+  end
+
   # Liste des modules optionnés, sous-forme de liste d'identifiants
   # séparés par des ':' (tels qu'ils seront dans le watcher de validation
   # de l'inscription)
