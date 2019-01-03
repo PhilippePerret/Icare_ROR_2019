@@ -2,5 +2,9 @@
 .container
   = will_paginate
   %ul.users
+    -# Il faut définir le filtre. Par exemple, lorsque l'on est administrateur
+    -# on affiche tous les icariens, sans restriction, alors que lorsque l'on
+    -# est visiteur, ou icarien, on n'affiche pas les administrateurs ni les
+    -# candidats pas encore validés
     = render @users
   = will_paginate

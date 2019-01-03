@@ -7,7 +7,13 @@ class UsersController < ApplicationController
   before_action :load_module_user_signup, only: [:new, :create]
 
   def index
-    @users = User.where("options NOT LIKE '9%'").paginate(page: params[:page])
+    # Filtre différent en fonction du fait qu'il s'agisse d'un
+    # administrateur ou non
+    f = ["SUBSTRING(options,1,1) NOT IN ('0','9')"] # ni non validé ou détruit
+    f << "SUBSTRING(options,3,1) = '1'" # inscription complète
+    f << "SUBSTRING(options,2,1) = '1'" # mail confirmé
+    filtre = current_user.admin? ? "options NOT LIKE '9%'" : f.join(' AND ')
+    @users = User.where(filtre).paginate(page: params[:page])
   end
 
   # Demande d'inscription.

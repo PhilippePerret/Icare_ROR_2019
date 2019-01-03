@@ -1,24 +1,5 @@
-# README
+# ATELIER ICARE - VERSION ROR - 2019
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ouvrir le fichier `Icare-ROR-2019.scriv` pour le détail.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Dans le Terminal, on peut lancer la commande `icare` pour voir les choses à faire, par exemple, avec `icare todo`.

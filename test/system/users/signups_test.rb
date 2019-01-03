@@ -318,6 +318,10 @@ class UsersSignupsTest < ApplicationSystemTestCase
     assert_selector('h2', text: I18n.t('users.signup.registered.title'))
     sleep 3 # garder pour les tests
 
+    # TODO Vérifier les envois de mails et autres modifications qui sont
+    # opérées quand on crée une inscription.
+
   end
+  # /test 'Un visiteur peut s’inscrire avec des données incomplètes'
 
 end

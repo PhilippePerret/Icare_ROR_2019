@@ -336,6 +336,22 @@ On envoie le mail normalement avec :
             <Title>IcEtapes</Title>
             <Text>Les étapes des modules d'icariens</Text>
         </Document>
+        <Document ID="765C2A75-5D23-4B80-9A95-A3F259A55F1C">
+            <Title>Migrations</Title>
+            <Text>Pour rollbacker seulement une migration donnée :
+
+
+	&gt; rails db:migrate:down VERSION=&lt;timestamp migration&gt;
+
+
+Puis rejouer :
+
+
+	&gt; rails db:migrate 
+	&gt; rails db:reset
+
+</Text>
+        </Document>
         <Document ID="1088D74F-8060-4921-A0A8-BCB749FE7D7F">
             <Title>Infos sur la base</Title>
             <Text>Pour obtenir des infos de base sur la base (et notamment le nombre de tables et de rangées), utiliser :
@@ -614,7 +630,7 @@ Ou avec une classe User existante :
 
 Hash data doit impérativement comporter :
 
-	:path ou :name ou :action ou :action_watcher_path
+	:action ou :path ou :name
 		Le chemin d'accès au dossier contenant les éléments du watchers, à partir de
 		./lib/action_watchers/
 		Par exemple 'user/traitement_candidature'
@@ -715,21 +731,6 @@ Si user n'est pas fourni, c'est l'utilisateur courant qui est utilisé.
 
 Les féminines sont définies dans le fichier feminines.</Text>
         </Document>
-        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
-            <Title>Routes</Title>
-            <Text>Concernant les routes
-Toutes les routes
-Pour voir la liste de toutes les routes, jouer en console :
-
-
-	$ rails routes
-
-_url et _path
-On utilise _url pour une URL complète et _path pour une route simple :
-
-about_path 	=&gt; /static_pages/about
-about_url		=&gt; www.monsite.org/static_pages/about</Text>
-        </Document>
         <Document ID="6602ED7D-71A3-40E8-80EC-B6D9A78B2F0D">
             <Title>Tester les messages flash</Title>
             <Text>Rien de plus simple pour tester les messages flash :
@@ -745,6 +746,21 @@ Par exemple :
 
 
 </Text>
+        </Document>
+        <Document ID="BAFA57AC-76A2-4A28-8350-743C562869C3">
+            <Title>Routes</Title>
+            <Text>Concernant les routes
+Toutes les routes
+Pour voir la liste de toutes les routes, jouer en console :
+
+
+	$ rails routes
+
+_url et _path
+On utilise _url pour une URL complète et _path pour une route simple :
+
+about_path 	=&gt; /static_pages/about
+about_url		=&gt; www.monsite.org/static_pages/about</Text>
         </Document>
         <Document ID="551C36A2-9C97-44BA-8D23-439EF971C7A7">
             <Title>Mass assignement</Title>
@@ -1181,10 +1197,7 @@ Une note (de l'admin) sur cette question, peut-être pour indiquer pourquoi la r
         </Document>
         <Document ID="6FB5CCF1-9AD5-4EE6-A013-67D740A56E50">
             <Title>TODO</Title>
-            <Text>	•	Faire une recherche sur [user.]ticket_token et le supprimer
-	•	Lors de l'inscription, quand l'user est créé incomplètement, il faut utiliser une option pour l'indiquer. Noter qu'il n'apparaitra pas dans les listes puisque sa candidature n'a pas été validée. Mais, là, en plus, s'il se reconnecte, il sera toujours redirigé vers le formulaire d'inscription pour fournir ce qui manque (documents de présentation et/ou choix des modules d'apprentissage)
-	•	
-	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça)
+            <Text>	•	Pouvoir renvoyer le mail de confirmation de l'email (activation_compte, quelque chose comme ça). Note : maintenant que le token est enregistré dans une table à part, c'est possible de recréer le lien.
 	•	Affichage de tous les icarien(ne)s : ne pas afficher a) ceux qui sont supprimés, b) ceux qui n'ont pas encore activé leur compte.
 	•	Dans les tâches quotidiennes, supprimer les tickets qui sont périmés
 	•	Reprendre tous les textes des modules/étapes pour les passer par `sexize'.
@@ -1738,7 +1751,7 @@ Liens utiles, par exemple vers la collection Narration
 					</Text>
         </Document>
         <Document ID="375B717D-E199-4D70-B249-6B7FD1C0A13D">
-            <Title>Document (file)</Title>
+            <Title>OtherDocuments</Title>
         </Document>
         <Document ID="D9C57209-91BA-4805-9725-5E9F17730B56">
             <Title>Redirection après run</Title>
@@ -1747,7 +1760,7 @@ Liens utiles, par exemple vers la collection Narration
 Mais noter que cette méthode est propre au modèle watcher, ça n'est pas le redirect_to des contrôleurs. Cf. action_watcher.</Text>
         </Document>
         <Document ID="DC95E7B0-DE06-44D8-A4AA-CEA944DEEFD3">
-            <Title>Féminines</Title>
+            <Title>Helpers</Title>
         </Document>
         <Document ID="6E25DD15-7A1F-4DE7-A705-F0F7C695126A">
             <Title>Statut</Title>
@@ -1858,9 +1871,9 @@ Avant : `objet`.
 model_id
 Identifiant de l'instance du modèle.
 Avant : `objet_id`
-action_watcher_path
+action
 Path de l'action watcher, là où se trouve ses fichiers.
-Avant : `processus`
+Avant : `processus` puis `action_watcher_path`
 triggered_at
 Date où le watcher doit être déclenché. Par exemple, pour un paiement, quelques jours avant son échéance.
 Avant : `trigerred`
@@ -2317,19 +2330,6 @@ C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
 
 </Text>
         </Document>
-        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
-            <Title>Définition générale avant test</Title>
-            <Text>
-
-
-	def set_up
-		@variable = "valeur"
-		@autre_variable = "autre valeur"
-	end
-
-
-</Text>
-        </Document>
         <Document ID="03AF605A-E96A-432B-B9F7-C7AAAFC5DEB1">
             <Title>Redictions particulières</Title>
             <Text>Pour retourner à la page précédente, on peut utiliser :
@@ -2343,6 +2343,19 @@ C'est "web.1" le nom du dyno. Donc la ligne suivante l'arrête :
         <Document ID="8A7ECB95-D272-4713-957D-BB4CBE6F15FA">
             <Title>Introduction</Title>
             <Text>Ce document contient ce que j'ai appris au cours de la (re)lecture du tutoriel de Mickael Hartl.</Text>
+        </Document>
+        <Document ID="231FCC1C-1690-4854-AF63-EBBB69D7B48F">
+            <Title>Définition générale avant test</Title>
+            <Text>
+
+
+	def set_up
+		@variable = "valeur"
+		@autre_variable = "autre valeur"
+	end
+
+
+</Text>
         </Document>
         <Document ID="793D767B-EB19-44E0-A946-EBFBD50D1354">
             <Title>Bootstrap</Title>

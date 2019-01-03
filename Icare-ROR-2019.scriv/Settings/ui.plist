@@ -69,6 +69,8 @@
 		<integer>1</integer>
 		<key>showsLineNumbers</key>
 		<false/>
+		<key>textFocusMode</key>
+		<integer>0</integer>
 		<key>textScaleFactor</key>
 		<real>1</real>
 		<key>usesFacingPages</key>
@@ -93,7 +95,8 @@
 	</dict>
 	<key>editorSplitFrames</key>
 	<array>
-		<string>{{692, 0}, {692, 749}}</string>
+		<string>{{0, 0}, {1384, 374}}</string>
+		<string>{{0, 375}, {1384, 374}}</string>
 	</array>
 	<key>fullScreenTextEditorSettings</key>
 	<dict>
@@ -106,13 +109,15 @@
 	</array>
 	<key>inspectorWidth</key>
 	<real>366</real>
+	<key>lastDocumentSplitType</key>
+	<integer>0</integer>
 	<key>mainDocumentEditor.dockedQRTextSettings</key>
 	<dict>
 		<key>textScaleFactor</key>
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 128}, {620, 346.29999999999973}}</string>
+	<string>{{0, 60.5}, {620, 159}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
@@ -126,7 +131,7 @@
 		<real>1</real>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {620, 294}}</string>
+	<string>{{0, 23.5}, {620, 143.5}}</string>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
