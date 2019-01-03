@@ -4,6 +4,8 @@
 # Note : nom avec CLI pour ne pas confondre avec le site lui-même
 APPCLIFOLDER = APPFOLDER = File.expand_path('..', __dir__)
 
+ICARE_FOLDER = File.dirname(APPCLIFOLDER)
+
 # puts "-- APPCLIFOLDER: #{APPCLIFOLDER}"
 
 ['required_first', 'required_then'].each do |relpath|
