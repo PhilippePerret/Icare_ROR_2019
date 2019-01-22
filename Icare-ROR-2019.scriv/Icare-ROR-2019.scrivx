@@ -1096,7 +1096,7 @@
                         <IncludeInCompile>Yes</IncludeInCompile>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>440,0</TextSelection>
+                        <TextSelection>209,20</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem UUID="1AA0E979-C8A9-4E3A-8C8F-3A4909A9AB14" Type="Text" Created="2018-09-20 10:38:15 +0300" Modified="2018-09-25 08:39:21 +0300">
@@ -1423,9 +1423,9 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-20 07:24:28 +0300" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="0" Characters="0" Date="2019-01-03 18:00:52 +0300"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2019-01-04 14:35:20 +0300"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2019-01-03 00:00:00 +0300">
+    <RecentWritingHistory Date="2019-01-04 00:00:00 +0300">
         <DraftWordCount>0</DraftWordCount>
         <DraftCharCount>0</DraftCharCount>
         <OtherWordCount>0</OtherWordCount>

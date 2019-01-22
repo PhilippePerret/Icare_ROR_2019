@@ -96,7 +96,6 @@
 	<key>editorSplitFrames</key>
 	<array>
 		<string>{{0, 0}, {1384, 374}}</string>
-		<string>{{0, 375}, {1384, 374}}</string>
 	</array>
 	<key>fullScreenTextEditorSettings</key>
 	<dict>
@@ -117,7 +116,7 @@
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 60.5}, {620, 159}}</string>
+	<string>{{0, 0}, {620, 294}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
@@ -131,7 +130,7 @@
 		<real>1</real>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 23.5}, {620, 143.5}}</string>
+	<string>{{0, 0}, {620, 331}}</string>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>

@@ -18,26 +18,8 @@ class << self
   end
 
   def run_by_command
-    case CLI.command
-    when 'open'
-      unless CLI.options[:online]
-        puts "... Ouverture de l'atelier en local"
-        `cd "#{ICARE_FOLDER}";rails server -d`
-        `open http:localhost:3000/`
-      else
-        puts '... Ouverture de l’atelier distant'
-        `open http://www.atelier-icare.net`
-      end
-    when 'kill'
-      # TODO Pour tuer les processus ouverts, au cas où
-      if CLI.params[1]
-        `kill -9 #{CLI.params[1]}`
-        puts "Processus #{CLI.params[1]} tué avec succès (normalement)"
-      end
-      puts `ps aux | grep puma` # spring au départ
-    else
-      puts ('La commande "%s" n’est pas encore implémentée.' % [CLI.command]).rouge
-    end
+    require_command(CLI.command)
+    send("exec_#{CLI.command}".to_sym)
   end
 
 end #/<< self
